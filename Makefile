@@ -48,6 +48,7 @@ check-cran: build
 # 	cp devel/CNAME.tpl docs/CNAME
 # 	touch docs/.nojekyll
 # 	touch .nojekyll
+#  TODO: cross-reference stringi.gagolewski.com
 
 clean:
 	echo "Nothing to do."

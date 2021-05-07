@@ -4,7 +4,25 @@
 
 --------------------------------------------------------------------------------
 
-> TODO: description
+> English is the native language for only 5% of the World population.
+> Also, only 17% of us can understand this text. Moreover, the Latin alphabet
+> is the main one for merely 36% of the total.
+> The early computer era, now a very long time ago, was dominated by the US.
+> Due to the proliferation of the internet, smartphones, social media,
+> and other technologies and media, this is no longer the case.
+> This package replaces all base R string functions with ones that fully
+> support the Unicode standards related to natural language processing.
+> Thanks to ICU (International Components for Unicode) and stringi,
+> they are fast, reliable, and portable across different platforms.
+
+
+
+
+Functions in *stringb*:
+
+* work the same way on every platform,
+* support a wide range of languages and scripts,
+* fix and/or point out some inconsistencies in the base R functions.
 
 **stringb** is a set of wrappers around
 *[stringi](https://stringi.gagolewski.com/)* — a mature
@@ -13,11 +31,6 @@ fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
 [ICU – International Components for Unicode](http://site.icu-project.org/).
 
-Functions in *stringb*:
-
-* work the same way on every platform,
-* support a wide range of languages and scripts,
-* fix and/or point out some inconsistencies in the base R functions.
 
 --------------------------------------------------------------------------------
 

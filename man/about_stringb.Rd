@@ -7,15 +7,14 @@
 \alias{stringb-package}
 \title{Drop-in replacements for base R string functions powered by stringi}
 \description{
-\pkg{stringi} is a mature R package for fast, correct, consistent,
-and convenient string/text manipulation.
-It gives predictable results on every platform, in each locale,
-and under any native character encoding.
+\pkg{stringb} reimplements the built-in R functions for string processing
+based on \pkg{stringi} -- a mature R package for fast, correct, consistent,
+and convenient text manipulation. Thanks to the ICU library, we obtain
+predictable results on every platform, in each locale, and under any
+native character encoding.
 
 \bold{Keywords}: R, text processing, character strings,
 internationalisation, localisation, ICU, ICU4C, i18n, l10n, Unicode.
-
-\bold{Homepage}: \url{https://stringb.gagolewski.com/}
 
 \bold{License}: GNU General Public License version 2 or later.
 }

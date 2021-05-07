@@ -9,15 +9,16 @@ Authors@R: c(
         email = "marek@gagolewski.com",
         comment = c(ORCID = "0000-0003-0637-6028"))
     )
-Description: English is the native language for only 5% of the World population,
-    and only 17% can understand this text. Moreover, the Latin alphabet is the
-    main one for merely 36% of us. The early computer era, very long time ago,
-    was dominated by the US. Due to the proliferation of the internet,
-    smart phones, social media, and other technologies, this is no longer
-    the case. This package replaces all base R string functions with ones
-    that fully support the Unicode standards related to natural language
-    processing. Thanks to ICU (International Components for Unicode) and
-    stringi, they are fast, reliable, and portable across different platforms.
+Description: English is the native language for only 5% of the World population.
+    Also, only 17% of us can understand this text. Moreover, the Latin alphabet
+    is the main one for merely 36% of the total.
+    The early computer era, now a very long time ago, was dominated by the US.
+    Due to the proliferation of the internet, smartphones, social media,
+    and other technologies and media, this is no longer the case.
+    This package replaces all base R string functions with ones that fully
+    support the Unicode standards related to natural language processing.
+    Thanks to ICU (International Components for Unicode) and stringi,
+    they are fast, reliable, and portable across different platforms.
 BugReports: https://github.com/gagolews/stringb/issues
 License: GPL (>= 2)
 Imports:
