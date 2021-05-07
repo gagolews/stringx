@@ -1,15 +1,19 @@
 # **stringb**
 
-### Drop-in replacements for base R string functions powered by stringi
+## Drop-in replacements for base [R](https://www.r-project.org/) string functions powered by *[stringi](https://stringi.gagolewski.com/)*
+
+--------------------------------------------------------------------------------
 
 > TODO: description
 
-
 **stringb** is a set of wrappers around
-*[stringi](https://stringi.gagolewski.com/)* — a mature R package for
+*[stringi](https://stringi.gagolewski.com/)* — a mature
+[R](https://www.r-project.org/) package for
 fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
 [ICU – International Components for Unicode](http://site.icu-project.org/).
+
+--------------------------------------------------------------------------------
 
 
 **Package Maintainer and Author**:
