@@ -1,0 +1,36 @@
+# Roxygen-generated man pages:
+## man/*.Rd -- we *do* want them in the repository.
+
+# Local development environment:
+*.kdev4
+.kdev4
+*.Rproj
+.Rproj.user
+.Rhistory
+.RData
+stringi.Rcheck
+*.kate-swp
+.vscode
+
+# Compiled files:
+*.o
+*.so
+*.dll
+*.a
+src-i386/
+src-x64/
+
+# Backup and temporary files:
+*~
+*.backup
+*.bak
+*.tmp
+
+# LaTeX/knitr dust:
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+cache-knitr/
+cache/
