@@ -13,6 +13,12 @@ fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
 [ICU – International Components for Unicode](http://site.icu-project.org/).
 
+Functions in *stringb*:
+
+* work the same way on every platform,
+* support a wide range of languages and scripts,
+* fix and/or point out some inconsistencies in the base R functions.
+
 --------------------------------------------------------------------------------
 
 

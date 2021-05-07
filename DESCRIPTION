@@ -1,0 +1,26 @@
+Package: stringb
+Type: Package
+Title: Drop-in replacements for base R string functions powered by stringi
+Version: 0.1.0
+Date: 2021-05-07
+Authors@R: c(
+    person("Marek", "Gagolewski",
+        role = c("aut", "cre", "cph"),
+        email = "marek@gagolewski.com",
+        comment = c(ORCID = "0000-0003-0637-6028"))
+    )
+Description: English is the native language for only 5% of the World population,
+    and only 17% can understand this text. Moreover, the Latin alphabet is the
+    main one for merely 36% of us. The early computer era, very long time ago,
+    was dominated by the US. Due to the proliferation of the internet,
+    smart phones, social media, and other technologies, this is no longer
+    the case. This package replaces all base R string functions with ones
+    that fully support the Unicode standards related to natural language
+    processing. Thanks to ICU (International Components for Unicode) and
+    stringi, they are fast, reliable, and portable across different platforms.
+BugReports: https://github.com/gagolews/stringb/issues
+License: GPL (>= 2)
+Imports:
+    stringi
+Encoding: UTF-8
+RoxygenNote: 7.1.1
