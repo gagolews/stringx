@@ -1,11 +1,11 @@
-# What Is New in *stringb*
+# What Is New in *stringx*
 
 
 ## 0.1.0 (2021-XX-YY)
 
-* ...
+* [NEW FEATURE] `paste`, `paste0`
 
 
 ## 0.0.0 (2021-05-07)
 
-* The stringb project has been started.
+* The *stringx* project has been started.

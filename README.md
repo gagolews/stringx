@@ -1,4 +1,4 @@
-# **stringb**
+# **stringx**
 
 ## Drop-in replacements for base [R](https://www.r-project.org/) string functions powered by *[stringi](https://stringi.gagolewski.com/)*
 
@@ -18,13 +18,14 @@
 
 
 
-Functions in *stringb*:
+*stringx* replaces base R functions such as `paste`, `gregexpr`, `tolower`,
+etc., with ones that:
 
 * work the same way on every platform,
 * support a wide range of languages and scripts,
 * fix and/or point out some inconsistencies in the base R functions.
 
-**stringb** is a set of wrappers around
+**stringx** is a set of wrappers around
 *[stringi](https://stringi.gagolewski.com/)* — a mature
 [R](https://www.r-project.org/) package for
 fast, consistent, convenient, and portable string/text/natural language
@@ -43,9 +44,9 @@ processing in any locale that relies on
 **CRAN Entry**: TODO
 
 **License**:
-*stringb* is distributed under the terms of the GNU General Public License,
+*stringx* is distributed under the terms of the GNU General Public License,
 either Version 2 or Version 3, see
-[LICENSE](https://raw.githubusercontent.com/gagolews/stringb/master/LICENSE).
+[LICENSE](https://raw.githubusercontent.com/gagolews/stringx/master/LICENSE).
 
 **Changelog**: see
-[NEWS](https://raw.githubusercontent.com/gagolews/stringb/master/NEWS).
+[NEWS](https://raw.githubusercontent.com/gagolews/stringx/master/NEWS).

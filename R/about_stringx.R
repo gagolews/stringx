@@ -1,6 +1,6 @@
 # kate: default-dictionary en_AU
 
-## stringb package for R
+## stringx package for R
 ## Copyleft (C) 2021, Marek Gagolewski <https://www.gagolewski.com>
 ##
 ## This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #' @title Drop-in replacements for base R string functions powered by stringi
 #'
 #' @description
-#' \pkg{stringb} reimplements the built-in R functions for string processing
+#' \pkg{stringx} reimplements the built-in R functions for string processing
 #' based on \pkg{stringi} -- a mature R package for fast, correct, consistent,
 #' and convenient text manipulation. Thanks to the ICU library, we obtain
 #' predictable results on every platform, in each locale, and under any
@@ -30,9 +30,9 @@
 #' \bold{License}: GNU General Public License version 2 or later.
 #'
 #'
-#' @name about_stringb
-#' @rdname about_stringb
-#' @aliases about_stringb stringb stringb-package
+#' @name about_stringx
+#' @rdname about_stringx
+#' @aliases about_stringx stringx stringx-package
 #'
 #' @docType package
 #' @author Marek Gagolewski

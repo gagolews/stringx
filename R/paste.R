@@ -1,6 +1,6 @@
 # kate: default-dictionary en_AU
 
-## stringb package for R
+## stringx package for R
 ## Copyleft (C) 2021, Marek Gagolewski <https://www.gagolewski.com>
 ##
 ## This program is free software; you can redistribute it and/or modify
@@ -68,7 +68,7 @@
 #'
 #' @examples
 #'
-#' # behaviour of `+` vs. base::paste vs. stringb::paste
+#' # behaviour of `+` vs. base::paste vs. stringx::paste
 #' x <- structure(c(x=1, y=NA, z=100), F="*")
 #' y1 <- structure(c(a=1, b=2), G="#", F="@")
 #' y2 <- structure(c(a=1, b=2, c=3), G="#", F="@")
@@ -76,10 +76,10 @@
 #' x + y2
 #' base::paste(x, y1)
 #' base::paste(x, y2)
-#' stringb::paste(x, y1)
-#' stringb::paste(x, y2)
+#' stringx::paste(x, y1)
+#' stringx::paste(x, y2)
 #' base::paste(x, character(0), y2, sep=",")
-#' stringb::paste(x, character(0), y2, sep=",")
+#' stringx::paste(x, character(0), y2, sep=",")
 #'
 #' @export
 #' @rdname paste

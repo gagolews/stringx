@@ -1,8 +1,8 @@
-Package: stringb
+Package: stringx
 Type: Package
 Title: Drop-in replacements for base R string functions powered by stringi
 Version: 0.1.0
-Date: 2021-05-07
+Date: 2021-05-10
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),
@@ -15,7 +15,8 @@ Description: English is the native language for only 5% of the World population.
     The early computer era, now a very long time ago, was dominated by the US.
     Due to the proliferation of the internet, smartphones, social media,
     and other technologies and media, this is no longer the case.
-    This package replaces all base R string functions with ones that fully
+    This package replaces all base R string functions (such as 'gregexpr',
+    'tolower' and 'paste') with ones that fully
     support the Unicode standards related to natural language processing.
     Thanks to ICU (International Components for Unicode) and stringi,
     they are fast, reliable, and portable across different platforms.

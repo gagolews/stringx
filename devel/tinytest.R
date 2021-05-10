@@ -6,8 +6,8 @@
 
 set.seed(123)
 library("tinytest")
-library("stringb")
-library("methods")
+# library("stringx")
+# library("methods")
 # options(encoding="UTF-8")  # e.g., on Windows
 
 cat(stringi::stri_info(short=TRUE), "\n")
