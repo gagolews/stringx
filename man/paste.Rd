@@ -3,16 +3,19 @@
 \name{paste}
 \alias{paste}
 \alias{paste0}
+\alias{\%+\%}
+\alias{strcat}
 \title{Concatenate Strings}
 \usage{
 paste(..., sep = " ", collapse = NULL, recycle0 = FALSE)
 
 paste0(..., sep = "", collapse = NULL, recycle0 = FALSE)
+
+e1 \%+\% e2
+
+strcat(x, collapse = "", na.rm = FALSE)
 }
 \arguments{
-\item{...}{character vectors (or objects coercible to character vectors)
-whose corresponding elements are to be concatenated}
-
 \item{sep}{a single string; separates terms}
 
 \item{collapse}{a single string or \code{NULL}; an optional
@@ -20,61 +23,51 @@ separator if tokens are to be merged into a single string}
 
 \item{recycle0}{a single logical value; if \code{FALSE}, then empty
 vectors provided via \code{...} are silently ignored}
+
+\item{e1, e2, ...}{character vectors (or objects coercible to character vectors)
+whose corresponding elements are to be concatenated
+whose consecutive elements are to be concatenated}
+
+\item{na.rm}{a single logical value; if \code{TRUE}, missing values
+are silently ignored}
 }
 \value{
 Return a character vector (in UTF-8).
 }
 \description{
-Concatenate (join) the corresponding/consecutive elements, after
-converting them to strings.
+Concatenate (join) the corresponding/consecutive elements of
+given vectors, after converting them to strings.
 
 \code{paste0(...)} is a synonym for \code{paste(..., sep="")}.
 }
 \details{
-Replacement for base \code{\link[base]{paste}}
-implemented with \code{\link[stringi]{stri_join}}.
-These are the \pkg{stringi}'s equivalents of the built-in
-\code{\link{paste}} function.
-\code{stri_c} and \code{stri_paste} are aliases for \code{stri_join}.
 
-In some sense, \code{paste} can be thought of as a string counterpart
-of both the \code{`+`} operator and the \code{\link[base]sum} function.
-Therefore, we would expect it to behave similarly with regards
-to the propagation of missing values and the preservation of object
-attributes. Ideally, it would be nice to have two separate functions
-(one acting elementwisely on a number of vectors, propagating NAs correctly,
-and having \code{sep=""} by default)
-and the other for merging all strings in a single vector
-(with \code{collapse=""} by default and an additional \code{na.rm=FALSE}
-argument).
-
-Inconsistencies in base R:
-\itemize{
-\item missing values treated as \code{"NA"} strings (it is a well-documented
-feature though) [fixed here]
-\item partial recycling with no warning "longer object length is not
-a multiple of shorter object length" [fixed here]
-\item empty vectors are treated as vectors of empty strings [fixed here]
-\item input objects' attributes are not preserved [not fixed]
-\item \code{paste0} multiplies entities without necessity;
-\code{sep=""} should be the default in \code{paste} [not fixed]
-\item \code{paste0} treats named argument \code{sep="..."} as one
-more vector to concatenate [fixed by introducing sep argument]
-}
 }
 \examples{
 
-# behaviour of `+` vs. base::paste vs. stringb::paste
-x <- structure(c(x=1, y=NA, z=100), F="*")
-y1 <- structure(c(a=1, b=2), G="#", F="@")
-y2 <- structure(c(a=1, b=2, c=3), G="#", F="@")
+# behaviour of `+` vs. base::paste vs. stringx::paste
+x <- structure(c(x=1, y=NA, z=100, w=1000), F="*")
+y1 <- structure(c(a=1, b=2, c=3), G="#", F="@")
+y2 <- structure(c(a=1, b=2, c=3, d=4), G="#", F="@")
+y3 <- structure(1:4, G="#", F="@", dim=c(2, 2), dimnames=list(NULL, c("a", "b")))
 x + y1
 x + y2
+x + y3
+y2 + x
 base::paste(x, y1)
 base::paste(x, y2)
-stringb::paste(x, y1)
-stringb::paste(x, y2)
+base::paste(x, y3)
+stringx::paste(x, y1)
+stringx::paste(x, y2)
+stringx::paste(x, y3)
 base::paste(x, character(0), y2, sep=",")
-stringb::paste(x, character(0), y2, sep=",")
+stringx::paste(x, character(0), y2, sep=",")
+x \%+\% y1
+x \%+\% y2
+x \%+\% y3
+y2 \%+\% x
+x \%+\% character(0)
+strcat(x, collapse=",")
+strcat(x, collapse=",", na.rm=TRUE)
 
 }

@@ -39,3 +39,36 @@ expect_equivalent(base::paste0(1, 2, sep=","), "12,")
 expect_equivalent(stringx::paste0(1, 2, sep=","), "1,2")
 
 # TODO: paste should preserve attributes
+
+
+
+expect_equivalent(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collapse=","), NA_character_)
+expect_equivalent(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collapse=",", na.rm=TRUE), "1,100")
+
+expect_equivalent(1:10 %+% character(0), character(0))
+
+
+x <- structure(c(x=1, y=NA, z=100, w=1000), F="*", class="foo")
+y1 <- structure(c(a=1, b=2), G="#", F="@")
+y2 <- structure(c(a=1, b=2, c=3, d=4), G="#", F="@")
+y3 <- matrix(1:4, nrow=2, dimnames=list(c("ROW1", "ROW2"), c("COL1", "COL2")))
+
+sorted_attributes <- function(x) {
+    a <- attributes(suppressWarnings(x))
+    if (is.null(a)) NULL
+    else a[order(names(a))]
+}
+
+expect_equivalent(sorted_attributes(x %+% y1), sorted_attributes(x + y1))
+expect_equivalent(sorted_attributes(x %+% y2), sorted_attributes(x + y2))
+expect_equivalent(sorted_attributes(x %+% y3), sorted_attributes(x + y3))
+expect_equivalent(sorted_attributes(y1 %+% x), sorted_attributes(y1 + x))
+expect_equivalent(sorted_attributes(y2 %+% x), sorted_attributes(y2 + x))
+expect_equivalent(sorted_attributes(y3 %+% x), sorted_attributes(y3 + x))
+expect_equivalent(sorted_attributes(x %+% as.vector(y1)), sorted_attributes(x + as.vector(y1)))
+expect_equivalent(sorted_attributes(x %+% as.vector(y2)), sorted_attributes(x + as.vector(y2)))
+expect_equivalent(sorted_attributes(x %+% as.vector(y3)), sorted_attributes(x + as.vector(y3)))
+expect_equivalent(sorted_attributes(as.vector(y1) %+% x), sorted_attributes(as.vector(y1) + x))
+expect_equivalent(sorted_attributes(as.vector(y2) %+% x), sorted_attributes(as.vector(y2) + x))
+expect_equivalent(sorted_attributes(as.vector(y3) %+% x), sorted_attributes(as.vector(y3) + x))
+expect_equivalent(sorted_attributes(x %+% character(0)), NULL)
