@@ -3,7 +3,7 @@
 \name{paste}
 \alias{paste}
 \alias{paste0}
-\alias{\%+\%}
+\alias{\%x+\%}
 \alias{strcat}
 \title{Concatenate Strings}
 \usage{
@@ -11,7 +11,7 @@ paste(..., sep = " ", collapse = NULL, recycle0 = FALSE)
 
 paste0(..., sep = "", collapse = NULL, recycle0 = FALSE)
 
-e1 \%+\% e2
+e1 \%x+\% e2
 
 strcat(x, collapse = "", na.rm = FALSE)
 }
@@ -24,22 +24,24 @@ separator if tokens are to be merged into a single string}
 \item{recycle0}{a single logical value; if \code{FALSE}, then empty
 vectors provided via \code{...} are silently ignored}
 
-\item{e1, e2, ...}{character vectors (or objects coercible to character vectors)
-whose corresponding elements are to be concatenated
+\item{e1, e2, ...}{character vectors (or objects coercible to
+character vectors) whose corresponding elements are to be concatenated}
+
+\item{x}{character vector (or an object coercible to)
 whose consecutive elements are to be concatenated}
 
 \item{na.rm}{a single logical value; if \code{TRUE}, missing values
 are silently ignored}
 }
 \value{
-Return a character vector (in UTF-8).
+A character vector (in UTF-8).
 }
 \description{
 Concatenate (join) the corresponding and/or consecutive elements of
 given vectors, after converting them to strings.
 
 Instead of \code{paste} and \code{paste0}, we recommend using
-\code{`\%+\%`}, \code{sprintf}, and \code{strcat}.
+\code{`\%x+\%`}, \code{sprintf}, and \code{strcat}.
 }
 \details{
 Replacement for base \code{\link[base]{paste}}
@@ -67,7 +69,7 @@ Inconsistencies in base R and the way we have addressed them here:
     \bold{[not fixed]};
 \item \code{paste0} multiplies entities without necessity;
     \code{sep=""} should be the default in \code{paste} \bold{[not fixed]};
-\item \code{paste0} treats named argument \code{sep="..."} as one
+\item \code{paste0} treats the named argument \code{sep="..."} as one
     more vector to concatenate
     \bold{[fixed by introducing \code{sep} argument]}.
 }
@@ -84,7 +86,7 @@ redundant. Here are our recommendations:
 \itemize{
 \item the most frequent use case - concatenating corresponding
     strings from two character vectors with no separator - is covered
-    by a new operator \code{`\%+\%`} which propagates NAs correctly
+    by a new operator \code{`\%x+\%`} which propagates NAs correctly
     and handles object attributes the same way as the built-in arithmetic
     operators;
 \item for fancy elementwise (like 'Map') concatenation,
@@ -111,11 +113,11 @@ stringx::paste(x, y2)
 stringx::paste(x, y3)
 base::paste(x, character(0), y2, sep=",")
 stringx::paste(x, character(0), y2, sep=",")
-x \%+\% y1
-x \%+\% y2
-x \%+\% y3
-y2 \%+\% x
-x \%+\% character(0)
+x \%x+\% y1
+x \%x+\% y2
+x \%x+\% y3
+y2 \%x+\% x
+x \%x+\% character(0)
 strcat(x, collapse=",")
 strcat(x, collapse=",", na.rm=TRUE)
 

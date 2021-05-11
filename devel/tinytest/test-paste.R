@@ -45,7 +45,13 @@ expect_equivalent(stringx::paste0(1, 2, sep=","), "1,2")
 expect_equivalent(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collapse=","), NA_character_)
 expect_equivalent(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collapse=",", na.rm=TRUE), "1,100")
 
-expect_equivalent(1:10 %+% character(0), character(0))
+
+
+
+
+
+
+expect_equivalent(1:10 %x+% character(0), character(0))
 
 
 x <- structure(c(x=1, y=NA, z=100, w=1000), F="*", class="foo")
@@ -59,16 +65,16 @@ sorted_attributes <- function(x) {
     else a[order(names(a))]
 }
 
-expect_equivalent(sorted_attributes(x %+% y1), sorted_attributes(x + y1))
-expect_equivalent(sorted_attributes(x %+% y2), sorted_attributes(x + y2))
-expect_equivalent(sorted_attributes(x %+% y3), sorted_attributes(x + y3))
-expect_equivalent(sorted_attributes(y1 %+% x), sorted_attributes(y1 + x))
-expect_equivalent(sorted_attributes(y2 %+% x), sorted_attributes(y2 + x))
-expect_equivalent(sorted_attributes(y3 %+% x), sorted_attributes(y3 + x))
-expect_equivalent(sorted_attributes(x %+% as.vector(y1)), sorted_attributes(x + as.vector(y1)))
-expect_equivalent(sorted_attributes(x %+% as.vector(y2)), sorted_attributes(x + as.vector(y2)))
-expect_equivalent(sorted_attributes(x %+% as.vector(y3)), sorted_attributes(x + as.vector(y3)))
-expect_equivalent(sorted_attributes(as.vector(y1) %+% x), sorted_attributes(as.vector(y1) + x))
-expect_equivalent(sorted_attributes(as.vector(y2) %+% x), sorted_attributes(as.vector(y2) + x))
-expect_equivalent(sorted_attributes(as.vector(y3) %+% x), sorted_attributes(as.vector(y3) + x))
-expect_equivalent(sorted_attributes(x %+% character(0)), NULL)
+expect_equivalent(sorted_attributes(x %x+% y1), sorted_attributes(x + y1))
+expect_equivalent(sorted_attributes(x %x+% y2), sorted_attributes(x + y2))
+expect_equivalent(sorted_attributes(x %x+% y3), sorted_attributes(x + y3))
+expect_equivalent(sorted_attributes(y1 %x+% x), sorted_attributes(y1 + x))
+expect_equivalent(sorted_attributes(y2 %x+% x), sorted_attributes(y2 + x))
+expect_equivalent(sorted_attributes(y3 %x+% x), sorted_attributes(y3 + x))
+expect_equivalent(sorted_attributes(x %x+% as.vector(y1)), sorted_attributes(x + as.vector(y1)))
+expect_equivalent(sorted_attributes(x %x+% as.vector(y2)), sorted_attributes(x + as.vector(y2)))
+expect_equivalent(sorted_attributes(x %x+% as.vector(y3)), sorted_attributes(x + as.vector(y3)))
+expect_equivalent(sorted_attributes(as.vector(y1) %x+% x), sorted_attributes(as.vector(y1) + x))
+expect_equivalent(sorted_attributes(as.vector(y2) %x+% x), sorted_attributes(as.vector(y2) + x))
+expect_equivalent(sorted_attributes(as.vector(y3) %x+% x), sorted_attributes(as.vector(y3) + x))
+expect_equivalent(sorted_attributes(x %x+% character(0)), NULL)

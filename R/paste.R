@@ -23,7 +23,7 @@
 #' given vectors, after converting them to strings.
 #'
 #' Instead of \code{paste} and \code{paste0}, we recommend using
-#' \code{`\%+\%`}, \code{sprintf}, and \code{strcat}.
+#' \code{`\%x+\%`}, \code{sprintf}, and \code{strcat}.
 #'
 #' @details
 #' Replacement for base \code{\link[base]{paste}}
@@ -51,7 +51,7 @@
 #'     \bold{[not fixed]};
 #' \item \code{paste0} multiplies entities without necessity;
 #'     \code{sep=""} should be the default in \code{paste} \bold{[not fixed]};
-#' \item \code{paste0} treats named argument \code{sep="..."} as one
+#' \item \code{paste0} treats the named argument \code{sep="..."} as one
 #'     more vector to concatenate
 #'     \bold{[fixed by introducing \code{sep} argument]}.
 #' }
@@ -68,7 +68,7 @@
 #' \itemize{
 #' \item the most frequent use case - concatenating corresponding
 #'     strings from two character vectors with no separator - is covered
-#'     by a new operator \code{`\%+\%`} which propagates NAs correctly
+#'     by a new operator \code{`\%x+\%`} which propagates NAs correctly
 #'     and handles object attributes the same way as the built-in arithmetic
 #'     operators;
 #' \item for fancy elementwise (like 'Map') concatenation,
@@ -78,19 +78,24 @@
 #' }
 #'
 #'
-#' @param e1,e2,... character vectors (or objects coercible to character vectors)
-#'     whose corresponding elements are to be concatenated
-#  @param x character vector (or an object coercible to)
+#' @param x character vector (or an object coercible to)
 #'     whose consecutive elements are to be concatenated
+#'
+#' @param e1,e2,... character vectors (or objects coercible to
+#' character vectors) whose corresponding elements are to be concatenated
+#'
 #' @param sep a single string; separates terms
+#'
 #' @param collapse a single string or \code{NULL}; an optional
 #'     separator if tokens are to be merged into a single string
+#'
 #' @param recycle0 a single logical value; if \code{FALSE}, then empty
 #'     vectors provided via \code{...} are silently ignored
+#'
 #' @param na.rm a single logical value; if \code{TRUE}, missing values
 #'     are silently ignored
 #'
-#' @return Return a character vector (in UTF-8).
+#' @return A character vector (in UTF-8).
 #'
 #' @examples
 #' # behaviour of `+` vs. base::paste vs. stringx::paste
@@ -110,11 +115,11 @@
 #' stringx::paste(x, y3)
 #' base::paste(x, character(0), y2, sep=",")
 #' stringx::paste(x, character(0), y2, sep=",")
-#' x %+% y1
-#' x %+% y2
-#' x %+% y3
-#' y2 %+% x
-#' x %+% character(0)
+#' x %x+% y1
+#' x %x+% y2
+#' x %x+% y3
+#' y2 %x+% x
+#' x %x+% character(0)
 #' strcat(x, collapse=",")
 #' strcat(x, collapse=",", na.rm=TRUE)
 #'
@@ -138,7 +143,7 @@ paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 
 #' @export
 #' @rdname paste
-`%+%` <- function(e1, e2) {
+`%x+%` <- function(e1, e2) {
     if (is.factor(e1)) e1 <- as.character(e1)
     if (is.factor(e2)) e2 <- as.character(e2)
     # ts and s4 are currently not supported

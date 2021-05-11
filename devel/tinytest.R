@@ -1,4 +1,4 @@
-# This file is part of the 'stringb' project.
+# This file is part of the 'stringx' project.
 # Copyright (c) 2021, Marek Gagolewski <https://www.gagolewski.com>
 # All rights reserved.
 
