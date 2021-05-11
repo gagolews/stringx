@@ -27,20 +27,22 @@ check: build
 check-cran: build
 	cd .. && R_DEFAULT_INTERNET_TIMEOUT=240 _R_CHECK_CRAN_INCOMING_REMOTE_=FALSE R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran
 
-weave:
-	cd devel/sphinx/weave && make && cd ../../../
+
+############## Rd2rst: https://github.com/gagolews/Rd2rst ######################
 
 rd2myst:
-	# https://github.com/gagolews/Rd2rst
-	# TODO: if need be, you can also use MyST in the future
-	cd devel/sphinx && Rscript -e "Rd2rst::Rd2myst('${PKGNAME}')" && cd ../../
+	cd devel/sphinx && Rscript -e "Rd2rst::Rd2myst('${PKGNAME}')"
 
 news:
 	cd devel/sphinx && cp ../../NEWS news.md
 
-sphinx: r weave rd2myst news
+weave-examples:
+	cd devel/sphinx/rapi && Rscript -e "Rd2rst::weave_examples('${PKGNAME}', '.')"
+	devel/sphinx/fix-code-blocks.sh devel/sphinx/rapi
+
+sphinx: r rd2myst news weave-examples
 	rm -rf devel/sphinx/_build/
-	cd devel/sphinx && make html && cd ../../
+	cd devel/sphinx && make html
 	rm -rf docs/
 	mkdir docs/
 	cp -rf devel/sphinx/_build/html/* docs/
@@ -48,8 +50,12 @@ sphinx: r weave rd2myst news
 	touch docs/.nojekyll
 	touch .nojekyll
 
+################################################################################
+
 clean:
-	echo "Nothing to do."
+	rm -rf devel/sphinx/_build/
 
 purge: clean
 	rm -f man/*.Rd
+	rm -rf devel/sphinx/rapi/
+	rm -rf docs/

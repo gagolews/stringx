@@ -1,15 +1,12 @@
-paste: Concatenate Strings
-==========================
+# paste: Concatenate Strings
 
-Description
------------
+## Description
 
 Concatenate (join) the corresponding and/or consecutive elements of given vectors, after converting them to strings.
 
 Instead of `paste` and `paste0`, we recommend using `` `%+%` ``, `sprintf`, and `strcat`.
 
-Usage
------
+## Usage
 
 ```r
 paste(..., sep = " ", collapse = NULL, recycle0 = FALSE)
@@ -21,8 +18,7 @@ e1 %+% e2
 strcat(x, collapse = "", na.rm = FALSE)
 ```
 
-Arguments
----------
+## Arguments
 
 |               |                                                                                                                                                                     |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -32,8 +28,7 @@ Arguments
 | `e1, e2, ...` | character vectors (or objects coercible to character vectors) whose corresponding elements are to be concatenated whose consecutive elements are to be concatenated |
 | `na.rm`       | a single logical value; if `TRUE`, missing values are silently ignored                                                                                              |
 
-Details
--------
+## Details
 
 Replacement for base [`paste`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/paste.html) implemented with [`stri_join`](https://stringi.gagolewski.com/rapi/stri_join.html).
 
@@ -63,13 +58,14 @@ Taking into account the above, `paste` and `paste0` seem redundant. Here are our
 
 -   for the \'flattening\' of consecutive strings in a character vector (like \'Reduce\'), use the new function `strcat`.
 
-Value
------
+## Value
 
 Return a character vector (in UTF-8).
 
-Examples
---------
+## Examples
+
+
+
 
 ```r
 # behaviour of `+` vs. base::paste vs. stringx::paste
@@ -78,22 +74,86 @@ y1 <- structure(c(a=1, b=2, c=3), G="#", F="@")
 y2 <- structure(c(a=1, b=2, c=3, d=4), G="#", F="@")
 y3 <- structure(1:4, G="#", F="@", dim=c(2, 2), dimnames=list(NULL, c("a", "b")))
 x + y1
+## Warning in x + y1: longer object length is not a multiple of shorter object
+## length
+##    x    y    z    w 
+##    2   NA  103 1001 
+## attr(,"F")
+## [1] "*"
 x + y2
+##    x    y    z    w 
+##    2   NA  103 1004 
+## attr(,"G")
+## [1] "#"
+## attr(,"F")
+## [1] "*"
 x + y3
+##       a    b
+## [1,]  2  103
+## [2,] NA 1004
+## attr(,"G")
+## [1] "#"
+## attr(,"F")
+## [1] "*"
 y2 + x
+##    a    b    c    d 
+##    2   NA  103 1004 
+## attr(,"F")
+## [1] "@"
+## attr(,"G")
+## [1] "#"
 base::paste(x, y1)
+## [1] "1 1"    "NA 2"   "100 3"  "1000 1"
 base::paste(x, y2)
+## [1] "1 1"    "NA 2"   "100 3"  "1000 4"
 base::paste(x, y3)
+## [1] "1 1"    "NA 2"   "100 3"  "1000 4"
 stringx::paste(x, y1)
+## Warning in stri_join(..., sep = sep, collapse = collapse, ignore_null = !
+## isTRUE(recycle0)): longer object length is not a multiple of shorter object
+## length
+## [1] "1 1"    NA       "100 3"  "1000 1"
 stringx::paste(x, y2)
+## [1] "1 1"    NA       "100 3"  "1000 4"
 stringx::paste(x, y3)
+## [1] "1 1"    NA       "100 3"  "1000 4"
 base::paste(x, character(0), y2, sep=",")
+## [1] "1,,1"    "NA,,2"   "100,,3"  "1000,,4"
 stringx::paste(x, character(0), y2, sep=",")
+## [1] "1,1"    NA       "100,3"  "1000,4"
 x %+% y1
+## Warning in stringi::`%s+%`(e1, e2): longer object length is not a multiple of
+## shorter object length
+##       x       y       z       w 
+##    "11"      NA  "1003" "10001" 
+## attr(,"F")
+## [1] "*"
 x %+% y2
+##       x       y       z       w 
+##    "11"      NA  "1003" "10004" 
+## attr(,"G")
+## [1] "#"
+## attr(,"F")
+## [1] "*"
 x %+% y3
+##      a    b      
+## [1,] "11" "1003" 
+## [2,] NA   "10004"
+## attr(,"G")
+## [1] "#"
+## attr(,"F")
+## [1] "*"
 y2 %+% x
+##       a       b       c       d 
+##    "11"      NA  "3100" "41000" 
+## attr(,"F")
+## [1] "@"
+## attr(,"G")
+## [1] "#"
 x %+% character(0)
+## character(0)
 strcat(x, collapse=",")
+## [1] NA
 strcat(x, collapse=",", na.rm=TRUE)
+## [1] "1,100,1000"
 ```

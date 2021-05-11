@@ -271,24 +271,88 @@
 <span class="n">y2</span> <span class="o">&lt;-</span> <span class="nf">structure</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="m">4</span><span class="p">),</span> <span class="n">G</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="bp">F</span><span class="o">=</span><span class="s">&quot;@&quot;</span><span class="p">)</span>
 <span class="n">y3</span> <span class="o">&lt;-</span> <span class="nf">structure</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="bp">F</span><span class="o">=</span><span class="s">&quot;@&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="n">dimnames</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">)))</span>
 <span class="n">x</span> <span class="o">+</span> <span class="n">y1</span>
+<span class="c1">## Warning in x + y1: longer object length is not a multiple of shorter object</span>
+<span class="c1">## length</span>
+<span class="c1">##    x    y    z    w </span>
+<span class="c1">##    2   NA  103 1001 </span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;*&quot;</span>
 <span class="n">x</span> <span class="o">+</span> <span class="n">y2</span>
+<span class="c1">##    x    y    z    w </span>
+<span class="c1">##    2   NA  103 1004 </span>
+<span class="c1">## attr(,&quot;G&quot;)</span>
+<span class="c1">## [1] &quot;#&quot;</span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;*&quot;</span>
 <span class="n">x</span> <span class="o">+</span> <span class="n">y3</span>
+<span class="c1">##       a    b</span>
+<span class="c1">## [1,]  2  103</span>
+<span class="c1">## [2,] NA 1004</span>
+<span class="c1">## attr(,&quot;G&quot;)</span>
+<span class="c1">## [1] &quot;#&quot;</span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;*&quot;</span>
 <span class="n">y2</span> <span class="o">+</span> <span class="n">x</span>
+<span class="c1">##    a    b    c    d </span>
+<span class="c1">##    2   NA  103 1004 </span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;@&quot;</span>
+<span class="c1">## attr(,&quot;G&quot;)</span>
+<span class="c1">## [1] &quot;#&quot;</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1 1&quot;    &quot;NA 2&quot;   &quot;100 3&quot;  &quot;1000 1&quot;</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1 1&quot;    &quot;NA 2&quot;   &quot;100 3&quot;  &quot;1000 4&quot;</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1 1&quot;    &quot;NA 2&quot;   &quot;100 3&quot;  &quot;1000 4&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="c1">## Warning in stri_join(..., sep = sep, collapse = collapse, ignore_null = !</span>
+<span class="c1">## isTRUE(recycle0)): longer object length is not a multiple of shorter object</span>
+<span class="c1">## length</span>
+<span class="c1">## [1] &quot;1 1&quot;    NA       &quot;100 3&quot;  &quot;1000 1&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1 1&quot;    NA       &quot;100 3&quot;  &quot;1000 4&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1 1&quot;    NA       &quot;100 3&quot;  &quot;1000 4&quot;</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="n">y2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1,,1&quot;    &quot;NA,,2&quot;   &quot;100,,3&quot;  &quot;1000,,4&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="n">y2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1,1&quot;    NA       &quot;100,3&quot;  &quot;1000,4&quot;</span>
 <span class="n">x</span> <span class="o">%+%</span> <span class="n">y1</span>
+<span class="c1">## Warning in stringi::`%s+%`(e1, e2): longer object length is not a multiple of</span>
+<span class="c1">## shorter object length</span>
+<span class="c1">##       x       y       z       w </span>
+<span class="c1">##    &quot;11&quot;      NA  &quot;1003&quot; &quot;10001&quot; </span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;*&quot;</span>
 <span class="n">x</span> <span class="o">%+%</span> <span class="n">y2</span>
+<span class="c1">##       x       y       z       w </span>
+<span class="c1">##    &quot;11&quot;      NA  &quot;1003&quot; &quot;10004&quot; </span>
+<span class="c1">## attr(,&quot;G&quot;)</span>
+<span class="c1">## [1] &quot;#&quot;</span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;*&quot;</span>
 <span class="n">x</span> <span class="o">%+%</span> <span class="n">y3</span>
+<span class="c1">##      a    b      </span>
+<span class="c1">## [1,] &quot;11&quot; &quot;1003&quot; </span>
+<span class="c1">## [2,] NA   &quot;10004&quot;</span>
+<span class="c1">## attr(,&quot;G&quot;)</span>
+<span class="c1">## [1] &quot;#&quot;</span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;*&quot;</span>
 <span class="n">y2</span> <span class="o">%+%</span> <span class="n">x</span>
+<span class="c1">##       a       b       c       d </span>
+<span class="c1">##    &quot;11&quot;      NA  &quot;3100&quot; &quot;41000&quot; </span>
+<span class="c1">## attr(,&quot;F&quot;)</span>
+<span class="c1">## [1] &quot;@&quot;</span>
+<span class="c1">## attr(,&quot;G&quot;)</span>
+<span class="c1">## [1] &quot;#&quot;</span>
 <span class="n">x</span> <span class="o">%+%</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="c1">## character(0)</span>
 <span class="nf">strcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">collapse</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="c1">## [1] NA</span>
 <span class="nf">strcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">collapse</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1,100,1000&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -310,7 +374,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-05-11 16:26:13.
+        Last updated on 2021-05-11 17:58:50.
       </span>
 
     </p>

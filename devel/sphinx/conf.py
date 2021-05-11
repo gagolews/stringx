@@ -1,18 +1,5 @@
 # Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
 
 import sys
 import os
@@ -36,7 +23,6 @@ release = version
 github_project_url = "https://github.com/gagolews/stringx/"
 html_baseurl = "https://stringx.gagolewski.com/"
 
-
 nitpicky = True
 smartquotes = True
 today_fmt = "%Y-%m-%d %H:%M:%S"
@@ -47,11 +33,10 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx_rtd_theme',
     #'sphinxcontrib.bibtex',
-    #'numpydoc'
-    #'sphinx.ext.viewcode',
-    #'sphinx.ext.imgmath',
-    # 'sphinx.ext.napoleon',
 ]
+
+myst_enable_extensions = ["deflist"]
+
 
 templates_path = ['_templates']
 
