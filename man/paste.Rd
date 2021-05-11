@@ -35,16 +35,65 @@ are silently ignored}
 Return a character vector (in UTF-8).
 }
 \description{
-Concatenate (join) the corresponding/consecutive elements of
+Concatenate (join) the corresponding and/or consecutive elements of
 given vectors, after converting them to strings.
 
-\code{paste0(...)} is a synonym for \code{paste(..., sep="")}.
+Instead of \code{paste} and \code{paste0}, we recommend using
+\code{`\%+\%`}, \code{sprintf}, and \code{strcat}.
 }
 \details{
+Replacement for base \code{\link[base]{paste}}
+implemented with \code{\link[stringi]{stri_join}}.
 
+\code{paste} can be thought of as a string counterpart
+of both the \code{`+`} operator (actually, some languages do have a binary
+operator for string concatenation, e.g., \code{`.`} in PHP, \code{`+`}
+in Python; R should have it too, but does not)
+and the \code{\link[base]{sum}} function.
+Therefore, we would expect it to behave similarly with regards
+to the propagation of missing values and the preservation of object
+attributes, but it does not.
+
+Inconsistencies in base R and the way we have addressed them here:
+
+\itemize{
+\item missing values treated as \code{"NA"} strings (it is a well-documented
+    feature though) \bold{[fixed here]};
+\item partial recycling with no warning "longer object length is not
+    a multiple of shorter object length" \bold{[fixed here]};
+\item empty vectors are treated as vectors of empty strings
+    \bold{[fixed here]};
+\item input objects' attributes are not preserved
+    \bold{[not fixed]};
+\item \code{paste0} multiplies entities without necessity;
+    \code{sep=""} should be the default in \code{paste} \bold{[not fixed]};
+\item \code{paste0} treats named argument \code{sep="..."} as one
+    more vector to concatenate
+    \bold{[fixed by introducing \code{sep} argument]}.
+}
+
+It should also be noted that \code{paste} with \code{collapse=NULL} is a
+special case of \code{sprintf} (which is featured in many programming
+languages; R's version is of course vectorised).
+For instance, \code{paste(x, y, sep=",")}
+is equivalent to \code{sprintf("\%s,\%s", x, y)}.
+
+Taking into account the above, \code{paste} and \code{paste0} seem
+redundant. Here are our recommendations:
+
+\itemize{
+\item the most frequent use case - concatenating corresponding
+    strings from two character vectors with no separator - is covered
+    by a new operator \code{`\%+\%`} which propagates NAs correctly
+    and handles object attributes the same way as the built-in arithmetic
+    operators;
+\item for fancy elementwise (like 'Map') concatenation,
+    use our version of \code{\link{sprintf}};
+\item for the 'flattening' of consecutive strings in a character vector
+    (like 'Reduce'), use the new function \code{strcat}.
+}
 }
 \examples{
-
 # behaviour of `+` vs. base::paste vs. stringx::paste
 x <- structure(c(x=1, y=NA, z=100, w=1000), F="*")
 y1 <- structure(c(a=1, b=2, c=3), G="#", F="@")

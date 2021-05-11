@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>paste: Concatenate Strings &mdash; stringx</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="https://stringx.gagolewski.com/rapi/paste.html" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="What Is New in stringx" href="../news.html" />
+    <link rel="prev" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" href="about_stringx.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> stringx
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">stringx</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://stringx.gagolewski.com/">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Manual</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../rapi.html">R Package <em>stringx</em> Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in replacements for base R string functions powered by stringi</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">paste: Concatenate Strings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx">Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx/issues">Bug Tracker and Feature Suggestions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">What Is New in <em>stringx</em></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">stringx</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../rapi.html">R Package <em>stringx</em> Reference</a> &raquo;</li>
+        
+      <li>paste: Concatenate Strings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../news.html" class="btn btn-neutral float-right" title="What Is New in stringx" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+      
+        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="paste-concatenate-strings">
+<h1>paste: Concatenate Strings<a class="headerlink" href="#paste-concatenate-strings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Concatenate (join) the corresponding and/or consecutive elements of given vectors, after converting them to strings.</p>
+<p>Instead of <code class="docutils literal notranslate"><span class="pre">paste</span></code> and <code class="docutils literal notranslate"><span class="pre">paste0</span></code>, we recommend using <code class="docutils literal notranslate"><span class="pre">`%+%`</span></code>, <code class="docutils literal notranslate"><span class="pre">sprintf</span></code>, and <code class="docutils literal notranslate"><span class="pre">strcat</span></code>.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="kc">...</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">recycle0</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="nf">paste0</span><span class="p">(</span><span class="kc">...</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">recycle0</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="n">e1</span> <span class="o">%+%</span> <span class="n">e2</span>
+
+<span class="nf">strcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sep</span></code></p></td>
+<td><p>a single string; separates terms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">collapse</span></code></p></td>
+<td><p>a single string or <code class="docutils literal notranslate"><span class="pre">NULL</span></code>; an optional separator if tokens are to be merged into a single string</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">recycle0</span></code></p></td>
+<td><p>a single logical value; if <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, then empty vectors provided via <code class="docutils literal notranslate"><span class="pre">...</span></code> are silently ignored</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2,</span> <span class="pre">...</span></code></p></td>
+<td><p>character vectors (or objects coercible to character vectors) whose corresponding elements are to be concatenated whose consecutive elements are to be concatenated</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">na.rm</span></code></p></td>
+<td><p>a single logical value; if <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, missing values are silently ignored</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>Replacement for base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/paste.html"><code class="docutils literal notranslate"><span class="pre">paste</span></code></a> implemented with <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_join.html"><code class="docutils literal notranslate"><span class="pre">stri_join</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">paste</span></code> can be thought of as a string counterpart of both the <code class="docutils literal notranslate"><span class="pre">`+`</span></code> operator (actually, some languages do have a binary operator for string concatenation, e.g., <code class="docutils literal notranslate"><span class="pre">`.`</span></code> in PHP, <code class="docutils literal notranslate"><span class="pre">`+`</span></code> in Python; R should have it too, but does not) and the <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/sum.html"><code class="docutils literal notranslate"><span class="pre">sum</span></code></a> function. Therefore, we would expect it to behave similarly with regards to the propagation of missing values and the preservation of object attributes, but it does not.</p>
+<p>Inconsistencies in base R and the way we have addressed them here:</p>
+<ul class="simple">
+<li><p>missing values treated as <code class="docutils literal notranslate"><span class="pre">&quot;NA&quot;</span></code> strings (it is a well-documented feature though) <strong>[fixed here]</strong>;</p></li>
+<li><p>partial recycling with no warning “longer object length is not a multiple of shorter object length” <strong>[fixed here]</strong>;</p></li>
+<li><p>empty vectors are treated as vectors of empty strings <strong>[fixed here]</strong>;</p></li>
+<li><p>input objects’ attributes are not preserved <strong>[not fixed]</strong>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">paste0</span></code> multiplies entities without necessity; <code class="docutils literal notranslate"><span class="pre">sep=&quot;&quot;</span></code> should be the default in <code class="docutils literal notranslate"><span class="pre">paste</span></code> <strong>[not fixed]</strong>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">paste0</span></code> treats named argument <code class="docutils literal notranslate"><span class="pre">sep=&quot;...&quot;</span></code> as one more vector to concatenate <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">sep</span></code> argument]</strong>.</p></li>
+</ul>
+<p>It should also be noted that <code class="docutils literal notranslate"><span class="pre">paste</span></code> with <code class="docutils literal notranslate"><span class="pre">collapse=NULL</span></code> is a special case of <code class="docutils literal notranslate"><span class="pre">sprintf</span></code> (which is featured in many programming languages; R’s version is of course vectorised). For instance, <code class="docutils literal notranslate"><span class="pre">paste(x,</span> <span class="pre">y,</span> <span class="pre">sep=&quot;,&quot;)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">sprintf(&quot;%s,%s&quot;,</span> <span class="pre">x,</span> <span class="pre">y)</span></code>.</p>
+<p>Taking into account the above, <code class="docutils literal notranslate"><span class="pre">paste</span></code> and <code class="docutils literal notranslate"><span class="pre">paste0</span></code> seem redundant. Here are our recommendations:</p>
+<ul class="simple">
+<li><p>the most frequent use case - concatenating corresponding strings from two character vectors with no separator - is covered by a new operator <code class="docutils literal notranslate"><span class="pre">`%+%`</span></code> which propagates NAs correctly and handles object attributes the same way as the built-in arithmetic operators;</p></li>
+<li><p>for fancy elementwise (like ‘Map’) concatenation, use our version of <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/sprintf.html"><code class="docutils literal notranslate"><span class="pre">sprintf</span></code></a>;</p></li>
+<li><p>for the ‘flattening’ of consecutive strings in a character vector (like ‘Reduce’), use the new function <code class="docutils literal notranslate"><span class="pre">strcat</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="value">
+<h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
+<p>Return a character vector (in UTF-8).</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># behaviour of `+` vs. base::paste vs. stringx::paste</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">structure</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="m">100</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="m">1000</span><span class="p">),</span> <span class="bp">F</span><span class="o">=</span><span class="s">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">&lt;-</span> <span class="nf">structure</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="m">3</span><span class="p">),</span> <span class="n">G</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="bp">F</span><span class="o">=</span><span class="s">&quot;@&quot;</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">&lt;-</span> <span class="nf">structure</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="m">4</span><span class="p">),</span> <span class="n">G</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="bp">F</span><span class="o">=</span><span class="s">&quot;@&quot;</span><span class="p">)</span>
+<span class="n">y3</span> <span class="o">&lt;-</span> <span class="nf">structure</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="bp">F</span><span class="o">=</span><span class="s">&quot;@&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="n">dimnames</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">)))</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y1</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y2</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y3</span>
+<span class="n">y2</span> <span class="o">+</span> <span class="n">x</span>
+<span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+<span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="n">y2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="n">y2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">%+%</span> <span class="n">y1</span>
+<span class="n">x</span> <span class="o">%+%</span> <span class="n">y2</span>
+<span class="n">x</span> <span class="o">%+%</span> <span class="n">y3</span>
+<span class="n">y2</span> <span class="o">%+%</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">%+%</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="nf">strcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">collapse</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="nf">strcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">collapse</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../news.html" class="btn btn-neutral float-right" title="What Is New in stringx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Marek Gagolewski.
+      <span class="lastupdated">
+        Last updated on 2021-05-11 16:26:13.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

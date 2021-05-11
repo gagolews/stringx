@@ -19,17 +19,15 @@
 #' Concatenate Strings
 #'
 #' @description
-#' Concatenate (join) the corresponding/consecutive elements of
+#' Concatenate (join) the corresponding and/or consecutive elements of
 #' given vectors, after converting them to strings.
 #'
-#' \code{paste0(...)} is a synonym for \code{paste(..., sep="")}.
+#' Instead of \code{paste} and \code{paste0}, we recommend using
+#' \code{`\%+\%`}, \code{sprintf}, and \code{strcat}.
 #'
 #' @details
 #' Replacement for base \code{\link[base]{paste}}
 #' implemented with \code{\link[stringi]{stri_join}}.
-#' These are the \pkg{stringi}'s equivalents of the built-in
-#' \code{\link{paste}} function.
-#' \code{stri_c} and \code{stri_paste} are aliases for \code{stri_join}.
 #'
 #' \code{paste} can be thought of as a string counterpart
 #' of both the \code{`+`} operator (actually, some languages do have a binary
@@ -41,56 +39,60 @@
 #' attributes, but it does not.
 #'
 #' Inconsistencies in base R and the way we have addressed them here:
+#'
 #' \itemize{
 #' \item missing values treated as \code{"NA"} strings (it is a well-documented
-#' feature though) [fixed here]
+#'     feature though) \bold{[fixed here]};
 #' \item partial recycling with no warning "longer object length is not
-#' a multiple of shorter object length" [fixed here]
-#' \item empty vectors are treated as vectors of empty strings [fixed here]
-#' \item input objects' attributes are not preserved [not fixed]
+#'     a multiple of shorter object length" \bold{[fixed here]};
+#' \item empty vectors are treated as vectors of empty strings
+#'     \bold{[fixed here]};
+#' \item input objects' attributes are not preserved
+#'     \bold{[not fixed]};
 #' \item \code{paste0} multiplies entities without necessity;
-#' \code{sep=""} should be the default in \code{paste} [not fixed]
+#'     \code{sep=""} should be the default in \code{paste} \bold{[not fixed]};
 #' \item \code{paste0} treats named argument \code{sep="..."} as one
-#' more vector to concatenate [fixed by introducing \code{sep} argument]
-#' \item There should be a binary operator for string concatenation
+#'     more vector to concatenate
+#'     \bold{[fixed by introducing \code{sep} argument]}.
 #' }
 #'
-#' It should also be noted that \code{paste} with {collapse=NULL} is a
+#' It should also be noted that \code{paste} with \code{collapse=NULL} is a
 #' special case of \code{sprintf} (which is featured in many programming
 #' languages; R's version is of course vectorised).
 #' For instance, \code{paste(x, y, sep=",")}
-#' is equivalent to \code{sprintf("%s,%s", x, y)}.
+#' is equivalent to \code{sprintf("\%s,\%s", x, y)}.
 #'
-#' Taking into account the above, \code{paste} and \code{paste0} make little
-#' sense. Here are our recommendations:
+#' Taking into account the above, \code{paste} and \code{paste0} seem
+#' redundant. Here are our recommendations:
+#'
 #' \itemize{
 #' \item the most frequent use case - concatenating corresponding
-#' strings from two character vectors with no separator - is covered
-#' by a new operator \code{`%+%`} which propagates NAs correctly
-#' and handles object attributes the same way as the built-in arithmetic
-#' operators;
-#' \item for fancy elementwise concatenation, use \code{sprintf};
+#'     strings from two character vectors with no separator - is covered
+#'     by a new operator \code{`\%+\%`} which propagates NAs correctly
+#'     and handles object attributes the same way as the built-in arithmetic
+#'     operators;
+#' \item for fancy elementwise (like 'Map') concatenation,
+#'     use our version of \code{\link{sprintf}};
 #' \item for the 'flattening' of consecutive strings in a character vector
-#' (like 'Reduce'), use the new function \code{strcat}.
+#'     (like 'Reduce'), use the new function \code{strcat}.
 #' }
 #'
 #'
 #' @param e1,e2,... character vectors (or objects coercible to character vectors)
-#' whose corresponding elements are to be concatenated
+#'     whose corresponding elements are to be concatenated
 #  @param x character vector (or an object coercible to)
-#' whose consecutive elements are to be concatenated
+#'     whose consecutive elements are to be concatenated
 #' @param sep a single string; separates terms
 #' @param collapse a single string or \code{NULL}; an optional
-#' separator if tokens are to be merged into a single string
+#'     separator if tokens are to be merged into a single string
 #' @param recycle0 a single logical value; if \code{FALSE}, then empty
-#' vectors provided via \code{...} are silently ignored
+#'     vectors provided via \code{...} are silently ignored
 #' @param na.rm a single logical value; if \code{TRUE}, missing values
-#' are silently ignored
+#'     are silently ignored
 #'
 #' @return Return a character vector (in UTF-8).
 #'
 #' @examples
-#'
 #' # behaviour of `+` vs. base::paste vs. stringx::paste
 #' x <- structure(c(x=1, y=NA, z=100, w=1000), F="*")
 #' y1 <- structure(c(a=1, b=2, c=3), G="#", F="@")

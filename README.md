@@ -21,9 +21,11 @@
 *stringx* replaces base R functions such as `paste`, `gregexpr`, `tolower`,
 etc., with ones that:
 
-* work the same way on every platform,
+* work in the same way on every platform,
 * support a wide range of languages and scripts,
-* fix and/or point out some inconsistencies in the base R functions.
+* fix some annoying inconsistencies in the base R functions
+(which are pointed out in the package [manual](https://stringx.gagolewski.com)).
+
 
 **stringx** is a set of wrappers around
 *[stringi](https://stringi.gagolewski.com/)* — a mature
@@ -39,7 +41,7 @@ processing in any locale that relies on
 **Package Maintainer and Author**:
 [Marek Gagolewski](https://www.gagolewski.com/)
 
-**Homepage**: TODO
+**Homepage**: https://stringx.gagolewski.com
 
 **CRAN Entry**: TODO
 
