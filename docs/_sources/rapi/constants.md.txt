@@ -4,7 +4,7 @@
 
 Letters and digits sets complementing the built-in `LETTERS` and `letters`, see [Constants](https://stat.ethz.ch/R-manual/R-patched/library/base/html/Constants.html).
 
-Beware: calling, e.g., [`tolower`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/chartr.html) on `LETTERS_FRAK` does not yield `letters_frak`.
+Beware: calling, e.g., [`tolower`](chartr.md) on `LETTERS_FRAK` does not yield `letters_frak`.
 
 ## Usage
 

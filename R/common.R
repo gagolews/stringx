@@ -22,6 +22,23 @@
 # to preserve the OBJECT and S4 bits).
 
 
+
+.attribs_propagate_unary <- function(ret, e)
+{
+    # TODO: rewrite in C
+
+    # treat factors as character vectors:
+    if (is.factor(e)) e <- as.character(e)
+
+    # ts has not yet been tested
+    # s4 has not yet been tested
+
+    mostattributes(ret) <- attributes(e)
+
+    ret
+}
+
+
 # R-ints: Binary operations normally call copyMostAttrib to copy most
 # attributes from the longer argument (and if they are of the same length
 # from both, preferring the values on the first). Here ‘most’ means all

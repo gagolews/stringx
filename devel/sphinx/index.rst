@@ -27,6 +27,19 @@ etc., with ones that:
 
 Also, a few (very few) new operations are introduced.
 
+..  COMMENT
+    but we do not aim to fix the whole nam.ING_meSS
+
+    99% compatible (cannot be 100% as they use a different regex engine,
+    for example, and some inconsistencies are quite obvious and can be a push
+    for a change in the right direction)
+
+    * collator - portable (locales),  Unicode-correct (normalisation)
+    * date/time - portable (locales)
+    * iconv - portable
+    * regex - Unicode-correct, portable
+    * speed
+
 
 **stringx** is a set of wrappers around
 `stringi <https://stringi.gagolewski.com/>`_ — a mature

@@ -39,9 +39,10 @@
 #'     \bold{[nothing to do]};
 #' \item partial recycling with no warning "longer object length is not
 #'     a multiple of shorter object length" \bold{[fixed here]};
-#' \item base \code{strrep} seems to preserve only the \code{names} attribute
+#' \item base \code{strrep} seems to preserve only the \code{names} attribute,
+#'     and only if the input is of type character
 #'     (whilst \code{paste} preserves nothing)
-#'     \bold{[fixed only in \code{`\%x+\%`} operator]};
+#'     \bold{[fixed]};
 #' \item overloading \code{`*.character`} has no effect in R, because S3
 #'     method dispatch is done internally with hard-coded support for
 #'     character arguments. We could have replaced the generic \code{`*`}
@@ -61,9 +62,8 @@
 #' @return
 #' A character vector (in UTF-8).
 #'
-#' \code{`\%x*\%`} preserves object attributes in a similar way as
-#' other \link[base]{Arithmetic} operators.
-#' \code{strrep} preserves no attributes whatsoever.
+#' \code{`\%x*\%`} and \code{strrep} preserve object attributes
+#' in a similar way as other \link[base]{Arithmetic} operators.
 #'
 #'
 #' @examples
@@ -84,7 +84,8 @@
 #' @rdname strrep
 strrep <- function(x, times)
 {
-    stringi::stri_dup(x, times)
+    ret <- stringi::stri_dup(x, times)
+    .attribs_propagate_binary(ret, x, times)
 }
 
 

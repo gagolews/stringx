@@ -6,6 +6,8 @@
 * [NEW FEATURE] `paste`, `paste0`, `strcat`, `%x+%`.
 * [NEW FEATURE] `strrep`, `%x*%`.
 * [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
+* [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`, `strtrans`.
+
 
 ## 0.0.0 (2021-05-07)
 

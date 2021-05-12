@@ -6,9 +6,10 @@
 library("tinytest")
 library("stringx")
 
-to_ascii <- function(x)
+toascii <- function(x)
 {
-    stringi::stri_trans_general(x, "Any-NFKD; Any-ASCII")
+    #stringi::stri_trans_general(x, "Any-NFKD; Any-ASCII")
+    stringx::strtrans(x, "Any-NFKD; Any-ASCII")
 }
 
 sorted_attributes <- function(x)

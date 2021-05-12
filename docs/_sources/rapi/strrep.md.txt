@@ -33,7 +33,7 @@ Inconsistencies in base R (currently; we hope they will be fixed some day) and t
 
 -   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**;
 
--   base `strrep` seems to preserve only the `names` attribute (whilst `paste` preserves nothing) **\[fixed only in `` `%x+%` `` operator\]**;
+-   base `strrep` seems to preserve only the `names` attribute, and only if the input is of type character (whilst `paste` preserves nothing) **\[fixed\]**;
 
 -   overloading `` `*.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `*` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x+%` `` operator\]**;
 
@@ -41,7 +41,7 @@ Inconsistencies in base R (currently; we hope they will be fixed some day) and t
 
 A character vector (in UTF-8).
 
-`` `%x*%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html) operators. `strrep` preserves no attributes whatsoever.
+`` `%x*%` `` and `strrep` preserve object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html) operators.
 
 ## See Also
 
@@ -67,7 +67,10 @@ x %x*% 1:3
 "a" %x*% 1:3
 ## [1] "a"   "aa"  "aaa"
 stringx::strrep(x, 3)
-## [1] "aaa" NA    "ccc"
+##     A     B     C 
+## "aaa"    NA "ccc" 
+## attr(,"attrib1")
+## [1] "value1"
 base::strrep(x, 3)
 ##     A     B     C 
 ## "aaa"    NA "ccc"
@@ -77,7 +80,9 @@ y %x*% 1:2
 ## A "1"  "3"  "5" 
 ## B "22" "44" "66"
 stringx::strrep(y, 1:2)
-## [1] "1"  "22" "3"  "44" "5"  "66"
+##   [,1] [,2] [,3]
+## A "1"  "3"  "5" 
+## B "22" "44" "66"
 base::strrep(y, 1:2)
 ## [1] "1"  "22" "3"  "44" "5"  "66"
 ```

@@ -98,6 +98,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../rapi.html">R Package <em>stringx</em> Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in replacements for base R string functions powered by stringi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paste.html">paste: Concatenate Strings</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">strrep: Duplicate Strings</a><ul>
@@ -236,14 +237,14 @@
 <ul class="simple">
 <li><p>missing values are (luckily) not treated as <code class="docutils literal notranslate"><span class="pre">&quot;NA&quot;</span></code> strings (as in base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/paste.html"><code class="docutils literal notranslate"><span class="pre">paste</span></code></a>) <strong>[nothing to do]</strong>;</p></li>
 <li><p>partial recycling with no warning “longer object length is not a multiple of shorter object length” <strong>[fixed here]</strong>;</p></li>
-<li><p>base <code class="docutils literal notranslate"><span class="pre">strrep</span></code> seems to preserve only the <code class="docutils literal notranslate"><span class="pre">names</span></code> attribute (whilst <code class="docutils literal notranslate"><span class="pre">paste</span></code> preserves nothing) <strong>[fixed only in <code class="docutils literal notranslate"><span class="pre">`%x+%`</span></code> operator]</strong>;</p></li>
+<li><p>base <code class="docutils literal notranslate"><span class="pre">strrep</span></code> seems to preserve only the <code class="docutils literal notranslate"><span class="pre">names</span></code> attribute, and only if the input is of type character (whilst <code class="docutils literal notranslate"><span class="pre">paste</span></code> preserves nothing) <strong>[fixed]</strong>;</p></li>
 <li><p>overloading <code class="docutils literal notranslate"><span class="pre">`*.character`</span></code> has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic <code class="docutils literal notranslate"><span class="pre">`*`</span></code> with the one that calls <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/UseMethod.html"><code class="docutils literal notranslate"><span class="pre">UseMethod</span></code></a>, but it feels like a too intrusive solution <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">`%x+%`</span></code> operator]</strong>;</p></li>
 </ul>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p>A character vector (in UTF-8).</p>
-<p><code class="docutils literal notranslate"><span class="pre">`%x*%`</span></code> preserves object attributes in a similar way as other <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html">Arithmetic</a> operators. <code class="docutils literal notranslate"><span class="pre">strrep</span></code> preserves no attributes whatsoever.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`%x*%`</span></code> and <code class="docutils literal notranslate"><span class="pre">strrep</span></code> preserve object attributes in a similar way as other <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html">Arithmetic</a> operators.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -265,7 +266,10 @@
 <span class="s">&quot;a&quot;</span> <span class="o">%x*%</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span>
 <span class="c1">## [1] &quot;a&quot;   &quot;aa&quot;  &quot;aaa&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">strrep</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
-<span class="c1">## [1] &quot;aaa&quot; NA    &quot;ccc&quot;</span>
+<span class="c1">##     A     B     C </span>
+<span class="c1">## &quot;aaa&quot;    NA &quot;ccc&quot; </span>
+<span class="c1">## attr(,&quot;attrib1&quot;)</span>
+<span class="c1">## [1] &quot;value1&quot;</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">strrep</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
 <span class="c1">##     A     B     C </span>
 <span class="c1">## &quot;aaa&quot;    NA &quot;ccc&quot;</span>
@@ -275,7 +279,9 @@
 <span class="c1">## A &quot;1&quot;  &quot;3&quot;  &quot;5&quot; </span>
 <span class="c1">## B &quot;22&quot; &quot;44&quot; &quot;66&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">strrep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">)</span>
-<span class="c1">## [1] &quot;1&quot;  &quot;22&quot; &quot;3&quot;  &quot;44&quot; &quot;5&quot;  &quot;66&quot;</span>
+<span class="c1">##   [,1] [,2] [,3]</span>
+<span class="c1">## A &quot;1&quot;  &quot;3&quot;  &quot;5&quot; </span>
+<span class="c1">## B &quot;22&quot; &quot;44&quot; &quot;66&quot;</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">strrep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1&quot;  &quot;22&quot; &quot;3&quot;  &quot;44&quot; &quot;5&quot;  &quot;66&quot;</span>
 </pre></div>
@@ -299,7 +305,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-05-12 13:53:54.
+        Last updated on 2021-05-12 18:53:44.
       </span>
 
     </p>
