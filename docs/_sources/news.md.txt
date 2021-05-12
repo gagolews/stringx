@@ -3,8 +3,9 @@
 
 ## 0.1.0 (2021-XX-YY)
 
-* [NEW FEATURE] `paste`, `paste0`, `strcat`, `%+%`.
-
+* [NEW FEATURE] `paste`, `paste0`, `strcat`, `%x+%`.
+* [NEW FEATURE] `strrep`, `%x*%`.
+* [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
 
 ## 0.0.0 (2021-05-07)
 

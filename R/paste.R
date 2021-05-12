@@ -31,14 +31,16 @@
 #'
 #' \code{paste} can be thought of as a string counterpart
 #' of both the \code{`+`} operator (actually, some languages do have a binary
-#' operator for string concatenation, e.g., \code{`.`} in PHP, \code{`+`}
-#' in Python; R should have it too, but does not)
-#' and the \code{\link[base]{sum}} function.
+#' operator for string concatenation, e.g., \code{`.`} in Perl and PHP,
+#' \code{`+`} (\code{str.__add__}) in Python; R should have it too,
+#' but does not) which is additionally vectorised ('Map') and the
+#' \code{\link[base]{sum}} function ('Reduce').
 #' Therefore, we would expect it to behave similarly with regards
 #' to the propagation of missing values and the preservation of object
 #' attributes, but it does not.
 #'
-#' Inconsistencies in base R and the way we have addressed them here:
+#' Inconsistencies in base R (currently; we hope they will be fixed some day)
+#' and the way we have addressed them here:
 #'
 #' \itemize{
 #' \item missing values treated as \code{"NA"} strings (it is a well-documented
@@ -48,12 +50,23 @@
 #' \item empty vectors are treated as vectors of empty strings
 #'     \bold{[fixed here]};
 #' \item input objects' attributes are not preserved
-#'     \bold{[not fixed]};
+#'     \bold{[fixed only in \code{`\%x+\%`} operator]};
 #' \item \code{paste0} multiplies entities without necessity;
 #'     \code{sep=""} should be the default in \code{paste} \bold{[not fixed]};
 #' \item \code{paste0} treats the named argument \code{sep="..."} as one
 #'     more vector to concatenate
-#'     \bold{[fixed by introducing \code{sep} argument]}.
+#'     \bold{[fixed by introducing \code{sep} argument]};
+#' \item overloading \code{`+.character`} has no effect in R, because S3
+#'     method dispatch is done internally with hard-coded support for
+#'     character arguments. We could have replaced the generic \code{`+`}
+#'     with the one that calls \code{\link[base]{UseMethod}}, but the
+#'     dispatch would be done on the type of the first argument anyway
+#'     (not to mention it feels like a too intrusive solution).
+#'     Actually having a separate operator for concatenation (similar to
+#'     PHP's or Perl's \code{`.`}) which always coerces to character
+#'     frees the user from manual coercion (is it such a burden on the other
+#'     hand?)
+#'     \bold{[fixed by introducing \code{`\%x+\%`} operator]};
 #' }
 #'
 #' It should also be noted that \code{paste} with \code{collapse=NULL} is a
@@ -81,8 +94,11 @@
 #' @param x character vector (or an object coercible to)
 #'     whose consecutive elements are to be concatenated
 #'
-#' @param e1,e2,... character vectors (or objects coercible to
-#' character vectors) whose corresponding elements are to be concatenated
+#' @param e1,e2 character vectors (or objects coercible to)
+#'     whose corresponding elements are to be concatenated
+#'
+#' @param ... character vectors (or objects coercible to)
+#'     whose corresponding/consecutive elements are to be concatenated
 #'
 #' @param sep a single string; separates terms
 #'
@@ -95,7 +111,14 @@
 #' @param na.rm a single logical value; if \code{TRUE}, missing values
 #'     are silently ignored
 #'
-#' @return A character vector (in UTF-8).
+#'
+#' @return
+#' A character vector (in UTF-8).
+#'
+#' \code{`\%x+\%`} preserves object attributes in a similar way as
+#' other \link[base]{Arithmetic} operators.
+#' The other functions preserve no attributes whatsoever.
+#'
 #'
 #' @examples
 #' # behaviour of `+` vs. base::paste vs. stringx::paste
@@ -123,12 +146,19 @@
 #' strcat(x, collapse=",")
 #' strcat(x, collapse=",", na.rm=TRUE)
 #'
+#'
+#' @seealso \code{\link{strrep}}
+#'
 #' @export
 #' @rdname paste
-#' @importFrom stringi stri_join
 paste <- function(..., sep=" ", collapse=NULL, recycle0=FALSE)
 {
-    stri_join(..., sep=sep, collapse=collapse, ignore_null=!isTRUE(recycle0))
+    stringi::stri_join(
+        ...,
+        sep=sep,
+        collapse=collapse,
+        ignore_null=!isTRUE(recycle0)
+    )
 }
 
 
@@ -137,37 +167,15 @@ paste <- function(..., sep=" ", collapse=NULL, recycle0=FALSE)
 paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 {
     # note that base::paste0 has no `sep` argument
-    paste(..., sep=sep, collapse=collapse, recycle0=recycle0)
+    stringx::paste(..., sep=sep, collapse=collapse, recycle0=recycle0)
 }
 
 
 #' @export
 #' @rdname paste
 `%x+%` <- function(e1, e2) {
-    if (is.factor(e1)) e1 <- as.character(e1)
-    if (is.factor(e2)) e2 <- as.character(e2)
-    # ts and s4 are currently not supported
-
     ret <- stringi::`%s+%`(e1, e2)
-
-    if (length(ret) == 0) {
-        ;  # do nothing
-    } else if (length(e1) < length(e2)) {
-        attributes(ret) <- attributes(e2)  # take attribs from longer (e2)
-    }
-    else if (length(e1) > length(e2)) {
-        attributes(ret) <- attributes(e1)  # take attribs from longer (e1)
-    }
-    else { # if (length(e1) == length(e2))
-        # either dimnames or names
-        a2 <- attributes(e2)
-        a1 <- attributes(e1)
-        for (n in names(a1))
-            a2[[n]] <- a1[[n]]
-        mostattributes(ret) <- a2  # e.g., ignores names when there's dimnames
-    }
-
-    ret
+    .attribs_propagate_binary(ret, e1, e2)
 }
 
 

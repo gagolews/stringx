@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="What Is New in stringx" href="../news.html" />
-    <link rel="prev" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" href="about_stringx.html" /> 
+    <link rel="next" title="strrep: Duplicate Strings" href="strrep.html" />
+    <link rel="prev" title="constants: Character Constants" href="constants.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,15 +98,18 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../rapi.html">R Package <em>stringx</em> Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in replacements for base R string functions powered by stringi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">paste: Concatenate Strings</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#arguments">Arguments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#details">Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="strrep.html">strrep: Duplicate Strings</a></li>
 </ul>
 </li>
 </ul>
@@ -180,10 +183,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="../news.html" class="btn btn-neutral float-right" title="What Is New in stringx" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="strrep.html" class="btn btn-neutral float-right" title="strrep: Duplicate Strings" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="constants.html" class="btn btn-neutral float-left" title="constants: Character Constants" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -197,7 +200,7 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Concatenate (join) the corresponding and/or consecutive elements of given vectors, after converting them to strings.</p>
-<p>Instead of <code class="docutils literal notranslate"><span class="pre">paste</span></code> and <code class="docutils literal notranslate"><span class="pre">paste0</span></code>, we recommend using <code class="docutils literal notranslate"><span class="pre">`%+%`</span></code>, <code class="docutils literal notranslate"><span class="pre">sprintf</span></code>, and <code class="docutils literal notranslate"><span class="pre">strcat</span></code>.</p>
+<p>Instead of <code class="docutils literal notranslate"><span class="pre">paste</span></code> and <code class="docutils literal notranslate"><span class="pre">paste0</span></code>, we recommend using <code class="docutils literal notranslate"><span class="pre">`%x+%`</span></code>, <code class="docutils literal notranslate"><span class="pre">sprintf</span></code>, and <code class="docutils literal notranslate"><span class="pre">strcat</span></code>.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
@@ -205,7 +208,7 @@
 
 <span class="nf">paste0</span><span class="p">(</span><span class="kc">...</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">recycle0</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
 
-<span class="n">e1</span> <span class="o">%+%</span> <span class="n">e2</span>
+<span class="n">e1</span> <span class="o">%x+%</span> <span class="n">e2</span>
 
 <span class="nf">strcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">collapse</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
@@ -220,17 +223,23 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sep</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+<td><p>character vectors (or objects coercible to) whose corresponding/consecutive elements are to be concatenated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sep</span></code></p></td>
 <td><p>a single string; separates terms</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">collapse</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">collapse</span></code></p></td>
 <td><p>a single string or <code class="docutils literal notranslate"><span class="pre">NULL</span></code>; an optional separator if tokens are to be merged into a single string</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">recycle0</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">recycle0</span></code></p></td>
 <td><p>a single logical value; if <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, then empty vectors provided via <code class="docutils literal notranslate"><span class="pre">...</span></code> are silently ignored</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2,</span> <span class="pre">...</span></code></p></td>
-<td><p>character vectors (or objects coercible to character vectors) whose corresponding elements are to be concatenated whose consecutive elements are to be concatenated</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2</span></code></p></td>
+<td><p>character vectors (or objects coercible to) whose corresponding elements are to be concatenated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p>character vector (or an object coercible to) whose consecutive elements are to be concatenated</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">na.rm</span></code></p></td>
 <td><p>a single logical value; if <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, missing values are silently ignored</p></td>
@@ -241,27 +250,33 @@
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
 <p>Replacement for base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/paste.html"><code class="docutils literal notranslate"><span class="pre">paste</span></code></a> implemented with <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_join.html"><code class="docutils literal notranslate"><span class="pre">stri_join</span></code></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">paste</span></code> can be thought of as a string counterpart of both the <code class="docutils literal notranslate"><span class="pre">`+`</span></code> operator (actually, some languages do have a binary operator for string concatenation, e.g., <code class="docutils literal notranslate"><span class="pre">`.`</span></code> in PHP, <code class="docutils literal notranslate"><span class="pre">`+`</span></code> in Python; R should have it too, but does not) and the <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/sum.html"><code class="docutils literal notranslate"><span class="pre">sum</span></code></a> function. Therefore, we would expect it to behave similarly with regards to the propagation of missing values and the preservation of object attributes, but it does not.</p>
-<p>Inconsistencies in base R and the way we have addressed them here:</p>
+<p><code class="docutils literal notranslate"><span class="pre">paste</span></code> can be thought of as a string counterpart of both the <code class="docutils literal notranslate"><span class="pre">`+`</span></code> operator (actually, some languages do have a binary operator for string concatenation, e.g., <code class="docutils literal notranslate"><span class="pre">`.`</span></code> in Perl and PHP, <code class="docutils literal notranslate"><span class="pre">`+`</span></code> (<code class="docutils literal notranslate"><span class="pre">str.__add__</span></code>) in Python; R should have it too, but does not) which is additionally vectorised (‘Map’) and the <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/sum.html"><code class="docutils literal notranslate"><span class="pre">sum</span></code></a> function (‘Reduce’). Therefore, we would expect it to behave similarly with regards to the propagation of missing values and the preservation of object attributes, but it does not.</p>
+<p>Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:</p>
 <ul class="simple">
 <li><p>missing values treated as <code class="docutils literal notranslate"><span class="pre">&quot;NA&quot;</span></code> strings (it is a well-documented feature though) <strong>[fixed here]</strong>;</p></li>
 <li><p>partial recycling with no warning “longer object length is not a multiple of shorter object length” <strong>[fixed here]</strong>;</p></li>
 <li><p>empty vectors are treated as vectors of empty strings <strong>[fixed here]</strong>;</p></li>
-<li><p>input objects’ attributes are not preserved <strong>[not fixed]</strong>;</p></li>
+<li><p>input objects’ attributes are not preserved <strong>[fixed only in <code class="docutils literal notranslate"><span class="pre">`%x+%`</span></code> operator]</strong>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">paste0</span></code> multiplies entities without necessity; <code class="docutils literal notranslate"><span class="pre">sep=&quot;&quot;</span></code> should be the default in <code class="docutils literal notranslate"><span class="pre">paste</span></code> <strong>[not fixed]</strong>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">paste0</span></code> treats named argument <code class="docutils literal notranslate"><span class="pre">sep=&quot;...&quot;</span></code> as one more vector to concatenate <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">sep</span></code> argument]</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">paste0</span></code> treats the named argument <code class="docutils literal notranslate"><span class="pre">sep=&quot;...&quot;</span></code> as one more vector to concatenate <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">sep</span></code> argument]</strong>;</p></li>
+<li><p>overloading <code class="docutils literal notranslate"><span class="pre">`+.character`</span></code> has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic <code class="docutils literal notranslate"><span class="pre">`+`</span></code> with the one that calls <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/UseMethod.html"><code class="docutils literal notranslate"><span class="pre">UseMethod</span></code></a>, but the dispatch would be done on the type of the first argument anyway (not to mention it feels like a too intrusive solution). Actually having a separate operator for concatenation (similar to PHP’s or Perl’s <code class="docutils literal notranslate"><span class="pre">`.`</span></code>) which always coerces to character frees the user from manual coercion (is it such a burden on the other hand?) <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">`%x+%`</span></code> operator]</strong>;</p></li>
 </ul>
 <p>It should also be noted that <code class="docutils literal notranslate"><span class="pre">paste</span></code> with <code class="docutils literal notranslate"><span class="pre">collapse=NULL</span></code> is a special case of <code class="docutils literal notranslate"><span class="pre">sprintf</span></code> (which is featured in many programming languages; R’s version is of course vectorised). For instance, <code class="docutils literal notranslate"><span class="pre">paste(x,</span> <span class="pre">y,</span> <span class="pre">sep=&quot;,&quot;)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">sprintf(&quot;%s,%s&quot;,</span> <span class="pre">x,</span> <span class="pre">y)</span></code>.</p>
 <p>Taking into account the above, <code class="docutils literal notranslate"><span class="pre">paste</span></code> and <code class="docutils literal notranslate"><span class="pre">paste0</span></code> seem redundant. Here are our recommendations:</p>
 <ul class="simple">
-<li><p>the most frequent use case - concatenating corresponding strings from two character vectors with no separator - is covered by a new operator <code class="docutils literal notranslate"><span class="pre">`%+%`</span></code> which propagates NAs correctly and handles object attributes the same way as the built-in arithmetic operators;</p></li>
+<li><p>the most frequent use case - concatenating corresponding strings from two character vectors with no separator - is covered by a new operator <code class="docutils literal notranslate"><span class="pre">`%x+%`</span></code> which propagates NAs correctly and handles object attributes the same way as the built-in arithmetic operators;</p></li>
 <li><p>for fancy elementwise (like ‘Map’) concatenation, use our version of <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/sprintf.html"><code class="docutils literal notranslate"><span class="pre">sprintf</span></code></a>;</p></li>
 <li><p>for the ‘flattening’ of consecutive strings in a character vector (like ‘Reduce’), use the new function <code class="docutils literal notranslate"><span class="pre">strcat</span></code>.</p></li>
 </ul>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
-<p>Return a character vector (in UTF-8).</p>
+<p>A character vector (in UTF-8).</p>
+<p><code class="docutils literal notranslate"><span class="pre">`%x+%`</span></code> preserves object attributes in a similar way as other <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html">Arithmetic</a> operators. The other functions preserve no attributes whatsoever.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="strrep.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">strrep</span></code></span></a></p>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -306,8 +321,8 @@
 <span class="n">base</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1 1&quot;    &quot;NA 2&quot;   &quot;100 3&quot;  &quot;1000 4&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
-<span class="c1">## Warning in stri_join(..., sep = sep, collapse = collapse, ignore_null = !</span>
-<span class="c1">## isTRUE(recycle0)): longer object length is not a multiple of shorter object</span>
+<span class="c1">## Warning in stringi::stri_join(..., sep = sep, collapse = collapse, ignore_null</span>
+<span class="c1">## = !isTRUE(recycle0)): longer object length is not a multiple of shorter object</span>
 <span class="c1">## length</span>
 <span class="c1">## [1] &quot;1 1&quot;    NA       &quot;100 3&quot;  &quot;1000 1&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
@@ -318,21 +333,21 @@
 <span class="c1">## [1] &quot;1,,1&quot;    &quot;NA,,2&quot;   &quot;100,,3&quot;  &quot;1000,,4&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="n">y2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1,1&quot;    NA       &quot;100,3&quot;  &quot;1000,4&quot;</span>
-<span class="n">x</span> <span class="o">%+%</span> <span class="n">y1</span>
+<span class="n">x</span> <span class="o">%x+%</span> <span class="n">y1</span>
 <span class="c1">## Warning in stringi::`%s+%`(e1, e2): longer object length is not a multiple of</span>
 <span class="c1">## shorter object length</span>
 <span class="c1">##       x       y       z       w </span>
 <span class="c1">##    &quot;11&quot;      NA  &quot;1003&quot; &quot;10001&quot; </span>
 <span class="c1">## attr(,&quot;F&quot;)</span>
 <span class="c1">## [1] &quot;*&quot;</span>
-<span class="n">x</span> <span class="o">%+%</span> <span class="n">y2</span>
+<span class="n">x</span> <span class="o">%x+%</span> <span class="n">y2</span>
 <span class="c1">##       x       y       z       w </span>
 <span class="c1">##    &quot;11&quot;      NA  &quot;1003&quot; &quot;10004&quot; </span>
 <span class="c1">## attr(,&quot;G&quot;)</span>
 <span class="c1">## [1] &quot;#&quot;</span>
 <span class="c1">## attr(,&quot;F&quot;)</span>
 <span class="c1">## [1] &quot;*&quot;</span>
-<span class="n">x</span> <span class="o">%+%</span> <span class="n">y3</span>
+<span class="n">x</span> <span class="o">%x+%</span> <span class="n">y3</span>
 <span class="c1">##      a    b      </span>
 <span class="c1">## [1,] &quot;11&quot; &quot;1003&quot; </span>
 <span class="c1">## [2,] NA   &quot;10004&quot;</span>
@@ -340,14 +355,14 @@
 <span class="c1">## [1] &quot;#&quot;</span>
 <span class="c1">## attr(,&quot;F&quot;)</span>
 <span class="c1">## [1] &quot;*&quot;</span>
-<span class="n">y2</span> <span class="o">%+%</span> <span class="n">x</span>
+<span class="n">y2</span> <span class="o">%x+%</span> <span class="n">x</span>
 <span class="c1">##       a       b       c       d </span>
 <span class="c1">##    &quot;11&quot;      NA  &quot;3100&quot; &quot;41000&quot; </span>
 <span class="c1">## attr(,&quot;F&quot;)</span>
 <span class="c1">## [1] &quot;@&quot;</span>
 <span class="c1">## attr(,&quot;G&quot;)</span>
 <span class="c1">## [1] &quot;#&quot;</span>
-<span class="n">x</span> <span class="o">%+%</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">%x+%</span> <span class="nf">character</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
 <span class="c1">## character(0)</span>
 <span class="nf">strcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">collapse</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
 <span class="c1">## [1] NA</span>
@@ -364,8 +379,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../news.html" class="btn btn-neutral float-right" title="What Is New in stringx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="strrep.html" class="btn btn-neutral float-right" title="strrep: Duplicate Strings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="constants.html" class="btn btn-neutral float-left" title="constants: Character Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -374,7 +389,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-05-11 17:58:50.
+        Last updated on 2021-05-12 13:53:54.
       </span>
 
     </p>

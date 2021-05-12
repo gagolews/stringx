@@ -16,6 +16,9 @@ e1 \%x+\% e2
 strcat(x, collapse = "", na.rm = FALSE)
 }
 \arguments{
+\item{...}{character vectors (or objects coercible to)
+whose corresponding/consecutive elements are to be concatenated}
+
 \item{sep}{a single string; separates terms}
 
 \item{collapse}{a single string or \code{NULL}; an optional
@@ -24,8 +27,8 @@ separator if tokens are to be merged into a single string}
 \item{recycle0}{a single logical value; if \code{FALSE}, then empty
 vectors provided via \code{...} are silently ignored}
 
-\item{e1, e2, ...}{character vectors (or objects coercible to
-character vectors) whose corresponding elements are to be concatenated}
+\item{e1, e2}{character vectors (or objects coercible to)
+whose corresponding elements are to be concatenated}
 
 \item{x}{character vector (or an object coercible to)
 whose consecutive elements are to be concatenated}
@@ -35,6 +38,10 @@ are silently ignored}
 }
 \value{
 A character vector (in UTF-8).
+
+\code{`\%x+\%`} preserves object attributes in a similar way as
+other \link[base]{Arithmetic} operators.
+The other functions preserve no attributes whatsoever.
 }
 \description{
 Concatenate (join) the corresponding and/or consecutive elements of
@@ -49,14 +56,16 @@ implemented with \code{\link[stringi]{stri_join}}.
 
 \code{paste} can be thought of as a string counterpart
 of both the \code{`+`} operator (actually, some languages do have a binary
-operator for string concatenation, e.g., \code{`.`} in PHP, \code{`+`}
-in Python; R should have it too, but does not)
-and the \code{\link[base]{sum}} function.
+operator for string concatenation, e.g., \code{`.`} in Perl and PHP,
+\code{`+`} (\code{str.__add__}) in Python; R should have it too,
+but does not) which is additionally vectorised ('Map') and the
+\code{\link[base]{sum}} function ('Reduce').
 Therefore, we would expect it to behave similarly with regards
 to the propagation of missing values and the preservation of object
 attributes, but it does not.
 
-Inconsistencies in base R and the way we have addressed them here:
+Inconsistencies in base R (currently; we hope they will be fixed some day)
+and the way we have addressed them here:
 
 \itemize{
 \item missing values treated as \code{"NA"} strings (it is a well-documented
@@ -66,12 +75,23 @@ Inconsistencies in base R and the way we have addressed them here:
 \item empty vectors are treated as vectors of empty strings
     \bold{[fixed here]};
 \item input objects' attributes are not preserved
-    \bold{[not fixed]};
+    \bold{[fixed only in \code{`\%x+\%`} operator]};
 \item \code{paste0} multiplies entities without necessity;
     \code{sep=""} should be the default in \code{paste} \bold{[not fixed]};
 \item \code{paste0} treats the named argument \code{sep="..."} as one
     more vector to concatenate
-    \bold{[fixed by introducing \code{sep} argument]}.
+    \bold{[fixed by introducing \code{sep} argument]};
+\item overloading \code{`+.character`} has no effect in R, because S3
+    method dispatch is done internally with hard-coded support for
+    character arguments. We could have replaced the generic \code{`+`}
+    with the one that calls \code{\link[base]{UseMethod}}, but the
+    dispatch would be done on the type of the first argument anyway
+    (not to mention it feels like a too intrusive solution).
+    Actually having a separate operator for concatenation (similar to
+    PHP's or Perl's \code{`.`}) which always coerces to character
+    frees the user from manual coercion (is it such a burden on the other
+    hand?)
+    \bold{[fixed by introducing \code{`\%x+\%`} operator]};
 }
 
 It should also be noted that \code{paste} with \code{collapse=NULL} is a
@@ -121,4 +141,8 @@ x \%x+\% character(0)
 strcat(x, collapse=",")
 strcat(x, collapse=",", na.rm=TRUE)
 
+
+}
+\seealso{
+\code{\link{strrep}}
 }

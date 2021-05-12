@@ -5,5 +5,7 @@ R Package *stringx* Reference
 :maxdepth: 1
 
 rapi/about_stringx
+rapi/constants
 rapi/paste
+rapi/strrep
 ```

@@ -1,5 +1,4 @@
-library("tinytest")
-library("stringx")
+source("common.R")
 
 # equivalent behaviour:
 
@@ -47,7 +46,10 @@ expect_equivalent(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collaps
 
 
 
-
+# can't overload `+` in base R:
+`+.character` <- stringi::`%s+%`
+expect_error("a" + 3)
+rm(`+.character`)
 
 
 
@@ -59,11 +61,6 @@ y1 <- structure(c(a=1, b=2), G="#", F="@")
 y2 <- structure(c(a=1, b=2, c=3, d=4), G="#", F="@")
 y3 <- matrix(1:4, nrow=2, dimnames=list(c("ROW1", "ROW2"), c("COL1", "COL2")))
 
-sorted_attributes <- function(x) {
-    a <- attributes(suppressWarnings(x))
-    if (is.null(a)) NULL
-    else a[order(names(a))]
-}
 
 expect_equivalent(sorted_attributes(x %x+% y1), sorted_attributes(x + y1))
 expect_equivalent(sorted_attributes(x %x+% y2), sorted_attributes(x + y2))
