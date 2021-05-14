@@ -40,6 +40,8 @@ Also, a few (very few) new operations are introduced.
     * regex - Unicode-correct, portable
     * speed
 
+    TODO: mention https://unicode-org.github.io/icu/userguide/icu/posix.html
+
 
 **stringx** is a set of wrappers around
 `stringi <https://stringi.gagolewski.com/>`_ — a mature

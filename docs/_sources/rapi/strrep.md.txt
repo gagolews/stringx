@@ -43,9 +43,15 @@ A character vector (in UTF-8).
 
 `` `%x*%` `` and `strrep` preserve object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html) operators.
 
+## Author(s)
+
+[Marek Gagolewski](https://www.gagolewski.com/)
+
 ## See Also
 
-[`paste`](paste.md)
+The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
+
+Related function(s): [`paste`](paste.md)
 
 ## Examples
 

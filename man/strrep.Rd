@@ -69,5 +69,10 @@ base::strrep(y, 1:2)
 
 }
 \seealso{
-\code{\link{paste}}
+The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
+
+Related function(s): \code{\link{paste}}
+}
+\author{
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
 }

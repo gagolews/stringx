@@ -35,7 +35,6 @@
 #' @aliases about_stringx stringx stringx-package
 #'
 #' @docType package
-#' @author Marek Gagolewski
 #'
 #' @references
 #' \emph{\pkg{stringi} Package homepage}, \url{https://stringi.gagolewski.com/}

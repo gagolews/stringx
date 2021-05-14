@@ -88,3 +88,9 @@ digits_hex
 
 }
 \keyword{datasets}
+\author{
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
+}
+\seealso{
+The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
+}

@@ -44,6 +44,14 @@ A character vector (in UTF-8).
 
 These functions preserve most attributes of `x`. Their base R counterparts drop all the attributes if not fed with character vectors.
 
+## Author(s)
+
+[Marek Gagolewski](https://www.gagolewski.com/)
+
+## See Also
+
+The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
+
 ## Examples
 
 

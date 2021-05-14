@@ -78,7 +78,8 @@
 #' stringx::strrep(y, 1:2)
 #' base::strrep(y, 1:2)
 #'
-#' @seealso \code{\link{paste}}
+#' @seealso
+#' Related function(s): \code{\link{paste}}
 #'
 #' @export
 #' @rdname strrep

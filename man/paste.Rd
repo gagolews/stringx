@@ -144,5 +144,10 @@ strcat(x, collapse=",", na.rm=TRUE)
 
 }
 \seealso{
-\code{\link{strrep}}
+The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
+
+Related function(s): \code{\link{strrep}}
+}
+\author{
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
 }

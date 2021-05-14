@@ -26,5 +26,8 @@ internationalisation, localisation, ICU, ICU4C, i18n, l10n, Unicode.
 \emph{The Unicode Consortium}, \url{https://home.unicode.org/}
 }
 \author{
-Marek Gagolewski
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
+}
+\seealso{
+The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 }

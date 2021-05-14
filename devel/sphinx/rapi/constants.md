@@ -60,6 +60,14 @@ Bold English letters (lower case)
 
 Bold English letters (upper case)
 
+## Author(s)
+
+[Marek Gagolewski](https://www.gagolewski.com/)
+
+## See Also
+
+The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
+
 ## Examples
 
 

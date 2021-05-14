@@ -8,7 +8,11 @@ PKGNAME="stringx"
 all: r
 
 autoconf:
-	Rscript -e 'roxygen2::roxygenise(roclets=c("rd", "collate", "namespace", "vignette"))'
+	Rscript -e "\
+	    source('devel/roxygen2-patch.R');\
+	    roxygenise(\
+	        roclets=c('rd', 'collate', 'namespace', 'vignette')\
+	    )"
 
 r: autoconf
 	R CMD INSTALL . --html
@@ -18,13 +22,19 @@ tinytest:
 
 test: r tinytest
 
+stop-on-utf8:
+	# Stop if some files are not in ASCII:
+	[ -z "`file -i DESCRIPTION configure configure.win \
+	        NAMESPACE cleanup R/* src/* man/* inst/* tools/* | \
+	    grep 'text/' | grep -v 'us-ascii' | tee /dev/stderr`" ]
+
 build:
 	cd .. && R CMD build ${PKGNAME}
 
-check: build
+check: stop-on-utf8 build
 	cd .. && R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --no-manual
 
-check-cran: build
+check-cran: stop-on-utf8 build
 	cd .. && R_DEFAULT_INTERNET_TIMEOUT=240 _R_CHECK_CRAN_INCOMING_REMOTE_=FALSE R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran
 
 

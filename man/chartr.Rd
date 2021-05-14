@@ -81,3 +81,9 @@ base::chartr("\u00DF\U0001D554aba", "SCXBA", x)
 stringx::chartr("\u00DF\U0001D554aba", "SCXBA", x)
 
 }
+\author{
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
+}
+\seealso{
+The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
+}

@@ -10,7 +10,7 @@
 
 ## Author(s)
 
-Marek Gagolewski
+[Marek Gagolewski](https://www.gagolewski.com/)
 
 ## References
 
@@ -19,3 +19,7 @@ Marek Gagolewski
 *ICU -- International Components for Unicode*, <http://site.icu-project.org/>
 
 *The Unicode Consortium*, <https://home.unicode.org/>
+
+## See Also
+
+The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>

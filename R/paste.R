@@ -147,7 +147,8 @@
 #' strcat(x, collapse=",", na.rm=TRUE)
 #'
 #'
-#' @seealso \code{\link{strrep}}
+#' @seealso
+#' Related function(s): \code{\link{strrep}}
 #'
 #' @export
 #' @rdname paste

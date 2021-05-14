@@ -68,9 +68,15 @@ A character vector (in UTF-8).
 
 `` `%x+%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html) operators. The other functions preserve no attributes whatsoever.
 
+## Author(s)
+
+[Marek Gagolewski](https://www.gagolewski.com/)
+
 ## See Also
 
-[`strrep`](strrep.md)
+The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
+
+Related function(s): [`strrep`](strrep.md)
 
 ## Examples
 
