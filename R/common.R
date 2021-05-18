@@ -41,7 +41,7 @@
 
 # R-ints: Binary operations normally call copyMostAttrib to copy most
 # attributes from the longer argument (and if they are of the same length
-# from both, preferring the values on the first). Here ‘most’ means all
+# from both, preferring the values on the first). Here 'most' means all
 # except the names, dim and dimnames which are set appropriately by the
 # code for the operator.
 
