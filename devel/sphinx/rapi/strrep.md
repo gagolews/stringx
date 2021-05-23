@@ -51,7 +51,7 @@ A character vector (in UTF-8).
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`paste`](paste.md)
+Related function(s): `paste`
 
 ## Examples
 

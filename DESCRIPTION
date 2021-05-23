@@ -2,7 +2,7 @@ Package: stringx
 Type: Package
 Title: Drop-in replacements for base R string functions powered by stringi
 Version: 0.1.0
-Date: 2021-05-18
+Date: 2021-05-23
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),
@@ -13,8 +13,8 @@ Description: English is the native language for only 5% of the World population.
     Also, only 17% of us can understand this text. Moreover, the Latin alphabet
     is the main one for merely 36% of the total.
     The early computer era, now a very long time ago, was dominated by the US.
-    Due to the proliferation of the internet, smartphones, social media,
-    and other technologies and media, this is no longer the case.
+    Due to the proliferation of the internet, smartphones, social media, and
+    other technologies and communication platforms, this is no longer the case.
     This package replaces all base R string functions (such as 'gregexpr',
     'tolower' and 'paste') with ones that fully
     support the Unicode standards related to natural language processing
