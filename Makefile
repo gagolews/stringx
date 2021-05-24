@@ -35,7 +35,9 @@ check: stop-on-utf8 build
 	cd .. && R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --no-manual
 
 check-cran: stop-on-utf8 build
-	cd .. && R_DEFAULT_INTERNET_TIMEOUT=240 _R_CHECK_CRAN_INCOMING_REMOTE_=FALSE R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran
+	cd .. && R_DEFAULT_INTERNET_TIMEOUT=240 \
+	    _R_CHECK_CRAN_INCOMING_REMOTE_=FALSE \
+	    R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran
 
 
 ############## Rd2rst: https://github.com/gagolews/Rd2rst ######################
@@ -50,7 +52,15 @@ weave-examples:
 	cd devel/sphinx/rapi && Rscript -e "Rd2rst::weave_examples('${PKGNAME}', '.')"
 	devel/sphinx/fix-code-blocks.sh devel/sphinx/rapi
 
-sphinx: r rd2myst news weave-examples
+sphinx: stop-on-utf8 r rd2myst news weave-examples
+	rm -rf devel/sphinx/_build/
+	cd devel/sphinx && make html
+	echo "*** Browse the generated documentation at"\
+	    "file://`pwd`/devel/sphinx/_build/html/index.html"
+
+docs: sphinx
+	# this is recommended only when publishing an official release
+	# -> updates the package homepage
 	rm -rf devel/sphinx/_build/
 	cd devel/sphinx && make html
 	rm -rf docs/
@@ -64,8 +74,9 @@ sphinx: r rd2myst news weave-examples
 
 clean:
 	rm -rf devel/sphinx/_build/
+	rm -rf devel/sphinx/rapi/
+	rm -rf revdep/
 
 purge: clean
-	rm -f man/*.Rd
-	rm -rf devel/sphinx/rapi/
-	rm -rf docs/
+# 	rm -f man/*.Rd
+# 	rm -rf docs/
