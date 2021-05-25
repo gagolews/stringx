@@ -15,7 +15,7 @@
 ## a copy of the GNU General Public License along with this program.
 
 
-#' @title Drop-in replacements for base R string functions powered by stringi
+#' @title Drop-in Replacements for Base String Functions Powered by Stringi
 #'
 #' @description
 #' \pkg{stringx} reimplements the built-in R functions for string processing

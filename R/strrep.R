@@ -79,7 +79,7 @@
 #' base::strrep(y, 1:2)
 #'
 #' @seealso
-#' Related function(s): \code{\link{paste}}
+#' Related function(s): \code{\link{paste}}, \code{\link{sprintf}}
 #'
 #' @export
 #' @rdname strrep

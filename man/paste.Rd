@@ -146,7 +146,7 @@ strcat(x, collapse=",", na.rm=TRUE)
 \seealso{
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
-Related function(s): \code{\link{strrep}}
+Related function(s): \code{\link{strrep}}, \code{\link{sprintf}}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

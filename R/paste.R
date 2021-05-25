@@ -148,7 +148,7 @@
 #'
 #'
 #' @seealso
-#' Related function(s): \code{\link{strrep}}
+#' Related function(s): \code{\link{strrep}}, \code{\link{sprintf}}
 #'
 #' @export
 #' @rdname paste

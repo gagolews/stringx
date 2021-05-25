@@ -17,6 +17,12 @@ autoconf:
 r: autoconf
 	R CMD INSTALL . --html
 
+reload: r
+	# https://github.com/gagolews/home_bin
+	if [ `whoami` = "gagolews" ]; then \
+		jupyter-qtconsole-sender --silent "reload('${PKGNAME}')"; \
+	fi
+
 tinytest:
 	Rscript -e 'source("devel/tinytest.R")'
 

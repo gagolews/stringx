@@ -5,7 +5,7 @@
 \alias{about_stringx}
 \alias{stringx}
 \alias{stringx-package}
-\title{Drop-in replacements for base R string functions powered by stringi}
+\title{Drop-in Replacements for Base String Functions Powered by Stringi}
 \description{
 \pkg{stringx} reimplements the built-in R functions for string processing
 based on \pkg{stringi} -- a mature R package for fast, correct, consistent,
