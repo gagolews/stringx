@@ -16,10 +16,8 @@
 > they are fast, reliable, and portable across different platforms.
 
 
-
-
-*stringx* replaces base R functions such as `paste`, `gregexpr`, `tolower`,
-etc., with ones that:
+*stringx* replaces base [R](https://www.r-project.org/) functions such as
+`paste`, `gregexpr`, `tolower`, etc., with ones that:
 
 * work in the same way on every platform,
 * support a wide range of languages and scripts,

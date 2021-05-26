@@ -24,6 +24,6 @@ Description: English is the native language for only 5% of the World population.
 BugReports: https://github.com/gagolews/stringx/issues
 License: GPL (>= 2)
 Imports:
-    stringi
+    stringi (>= 1.6.2.9002)
 Encoding: UTF-8
 RoxygenNote: 7.1.1

@@ -19,8 +19,8 @@ stringx: Drop-in replacements for base R string functions powered by stringi
 
 
 
-*stringx* replaces base R functions such as `paste`, `gregexpr`, `tolower`,
-etc., with ones that:
+*stringx* replaces base `R <https://www.r-project.org/>`_ functions such
+as `paste`, `gregexpr`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
 
 * work in the same way on every platform,
 * support a wide range of languages and scripts,

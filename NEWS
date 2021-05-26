@@ -9,6 +9,12 @@
 * [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`, `strtrans`.
 * [NEW FEATURE] `sprintf`, `printf`.
 * [NEW FEATURE] ...strptime, strftime
+* [NEW FEATURE] ..ISOdate, ISOdatetime
+* [NEW FEATURE] ..nchar, nzchar
+* [NEW FEATURE] ..substr, substring
+* [NEW FEATURE] ..trimws
+* [NEW FEATURE] ..strtrim
+* [NEW FEATURE] ..strcmp/strcoll
 
 
 ## 0.0.0 (2021-05-07)
