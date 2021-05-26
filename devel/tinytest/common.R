@@ -6,10 +6,12 @@
 library("tinytest")
 library("stringx")
 
-toascii <- function(x)
+toascii <- function(x, substitute="\u001a")
 {
-    #stringi::stri_trans_general(x, "Any-NFKD; Any-ASCII")
-    stringx::strtrans(x, "Any-NFKD; Any-ASCII")
+    stringi::stri_replace_all_charclass(
+        stringi::stri_trans_general(x, "Any-NFKD; Any-Latin; Latin-ASCII"),
+        "[^\\u0001-\\u007f]", substitute
+    )
 }
 
 sorted_attributes <- function(x)

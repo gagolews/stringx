@@ -1,6 +1,5 @@
 source("common.R")
 
-
 expect_equal(digits_dec, as.character(0:9))
 expect_equal(digits_hex, c(as.character(0:9), LETTERS[1:6]))
 
@@ -17,8 +16,7 @@ expect_equal(toascii(LETTERS_FRAK), LETTERS)
 expect_equal(stringx::toupper(letters_greek), LETTERS_GREEK)
 expect_equal(stringx::tolower(LETTERS_GREEK), letters_greek)
 
-
-# does not give expected results:
+# does not give expected results:  (via ICU)
 # stringi::stri_trans_toupper(letters_bf)
 # stringi::stri_trans_tolower(LETTERS_BF)
 # expect_equal(stringi::stri_trans_toupper(letters_bb), LETTERS_BB)

@@ -58,7 +58,7 @@ Taking into account the above, `paste` and `paste0` seem redundant. Here are our
 
 -   the most frequent use case - concatenating corresponding strings from two character vectors with no separator - is covered by a new operator `` `%x+%` `` which propagates NAs correctly and handles object attributes the same way as the built-in arithmetic operators;
 
--   for fancy elementwise (like \'Map\') concatenation, use our version of [`sprintf`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/sprintf.html);
+-   for fancy elementwise (like \'Map\') concatenation, use our version of `sprintf`;
 
 -   for the \'flattening\' of consecutive strings in a character vector (like \'Reduce\'), use the new function `strcat`.
 
@@ -76,7 +76,7 @@ A character vector (in UTF-8).
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): `strrep`
+Related function(s): `strrep`, `sprintf`
 
 ## Examples
 

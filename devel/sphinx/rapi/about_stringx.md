@@ -1,4 +1,4 @@
-# about\_stringx: Drop-in replacements for base R string functions powered by stringi
+# about\_stringx: Drop-in Replacements for Base String Functions Powered by Stringi
 
 ## Description
 

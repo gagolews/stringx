@@ -8,5 +8,6 @@ rapi/about_stringx
 rapi/chartr
 rapi/constants
 rapi/paste
+rapi/sprintf
 rapi/strrep
 ```

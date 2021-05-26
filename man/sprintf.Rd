@@ -12,7 +12,8 @@ printf(fmt, ..., file = "", sep = "\\n", append = FALSE, na_string = "NA")
 \arguments{
 \item{fmt}{character vector of format strings}
 
-\item{...}{vectors (coercible to integer, real, or character)}
+\item{...}{vectors with data to format
+(coercible to integer, real, or character)}
 
 \item{na_string}{single string to represent missing values;
 if \code{NA}, missing values in \code{...}
@@ -25,8 +26,7 @@ result in the corresponding outputs be missing too}
 \item{append}{see \code{\link[base]{cat}}}
 }
 \value{
-A character vector (in UTF-8).
-
+\code{sprintf} returns a character vector (in UTF-8).
 No attributes are preserved.
 }
 \description{
@@ -39,43 +39,45 @@ Replacement for base \code{\link[base]{sprintf}}
 implemented with \code{\link[stringi]{stri_sprintf}}.
 
 Note that the purpose of \code{printf} is to display a string, not
-to create new ones for use elsewhere, therefore this function,
+to create a new one for use elsewhere, therefore this function,
 as an exception, treats missing values as \code{"NA"} strings.
 
 
 Inconsistencies/limitations in base R and the way we have addressed them:
 
 \itemize{
-\item missing values treated as \code{"NA"} strings
-    \bold{[fixed in \code{sprintf}, left in \code{printf}, see the
+\item missing values in \code{...} are treated as \code{"NA"} strings
+    \bold{[fixed in \code{sprintf}, left in \code{printf}, but see the
     \code{na_string} argument]};
 \item partial recycling results in an error
     \bold{[fixed here - warning given]};
 \item input objects' attributes are not preserved
     \bold{[not fixed]};
-\item field widths and precisions of string conversions are interpreted as
+\item in to-string conversions, field widths and precisions are interpreted as
     bytes which is of course problematic for text in UTF-8
-   \bold{[fixed by interpreting these as Unicode code point width]};
+   \bold{[fixed by interpreting these as Unicode code point widths]};
 \item \code{fmt} is limited to 8192 bytes and the number of arguments
     passed via \code{...} to 99 (note that we can easily
     exceed this limit by using \code{\link[base]{do.call}})
     \bold{[rewritten from scratch, there is no limit anymore]};
-\item Unused values in {...} are evaluated anyway (technically, what about
-    lazy evaluation?), but at least a warning is given if this is the case
+\item unused values in {...} are evaluated anyway (should not evaluation be
+    lazy?)
     \bold{[not fixed here because this is somewhat questionable;
+    in both base R and our case, a warning is given if this is the case;
     moreover, the length of the longest argument always
     determines the length of the output]};
-...
-\item The format string is passed down the OS's 'sprintf' function, and
-    incorrect formats can cause the latter to crash the R process .  R
-    does perform sanity checks on the format, but not all possible
-    user errors on all platforms have been tested, and some might be
-    terminal.
-    The coercion is done only once, so if 'length(fmt) > 1' then all
-    elements must expect the same types of arguments.
- \item either width or precision from \code{...} - 2 asterisks
- \item coercion done only once
- \item NA/NaNs are not prefixed by signs even if requested to do so
+\item coercion of each argument can only be done once
+    \bold{[fixed here - can coerce to integer, real, and character]}
+\item either width or precision can be fetched from \code{...},
+    but not both
+    \bold{[fixed here - two asterisks are allowed in format specifiers]}
+\item \code{NA}/\code{NaNs} are not prefixed by a sign/space even if
+    we explicitly request this
+    \bold{[fixed here - prefixed by a space]}
+\item the outputs are implementation-dependent; the format strings
+    are passed down to the system (\code{libc}) \code{sprintf} function
+    \bold{[not fixed here (yet), but the format specifiers
+    are normalised more eagerly]}
 }
 }
 \examples{
@@ -85,7 +87,9 @@ r <- c(exp(1), exp(2), pi, pi^2, NaN)
 cat(base::sprintf("\%8s=\%+.3f", l, r), sep="\n")
 cat(stringx::sprintf("\%8s=\%+.3f", l, r), sep="\n")
 
-# TODO: ...
+# coercion of the same argument to different types:
+stringx::printf(c("UNIX time \%1$f is \%1$s.", "\%1$s is \%1$f UNIX time."),
+    Sys.time())
 
 }
 \seealso{

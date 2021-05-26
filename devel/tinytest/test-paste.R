@@ -37,8 +37,11 @@ expect_equal(stringx::paste(1, character(0), "a", sep=",", recycle0=FALSE), "1,a
 expect_equal(base::paste0(1, 2, sep=","), "12,")
 expect_equal(stringx::paste0(1, 2, sep=","), "1,2")
 
-# TODO: paste should preserve attributes
-
+# TODO: paste should preserve attributes?
+x <- structure(c(u="x"), class="foo", attrib1="val1")
+y <- structure(c(a="1", b="2"), class="bar", attrib2="val2")
+expect_null(attributes(base::paste(x, y)))
+expect_null(attributes(stringx::paste(x, y)))  # TODO ??
 
 
 expect_equal(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collapse=","), NA_character_)

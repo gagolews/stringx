@@ -19,11 +19,14 @@ internationalisation, localisation, ICU, ICU4C, i18n, l10n, Unicode.
 \bold{License}: GNU General Public License version 2 or later.
 }
 \references{
-\emph{\pkg{stringi} Package homepage}, \url{https://stringi.gagolewski.com/}
+\emph{\pkg{stringi} Package homepage},
+\url{https://stringi.gagolewski.com/}
 
-\emph{ICU -- International Components for Unicode}, \url{http://site.icu-project.org/}
+\emph{ICU -- International Components for Unicode},
+\url{http://site.icu-project.org/}
 
-\emph{The Unicode Consortium}, \url{https://home.unicode.org/}
+\emph{The Unicode Consortium},
+\url{https://home.unicode.org/}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

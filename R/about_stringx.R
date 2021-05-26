@@ -29,17 +29,19 @@
 #'
 #' \bold{License}: GNU General Public License version 2 or later.
 #'
+#' @references
+#' \emph{\pkg{stringi} Package homepage},
+#' \url{https://stringi.gagolewski.com/}
+#'
+#' \emph{ICU -- International Components for Unicode},
+#' \url{http://site.icu-project.org/}
+#'
+#' \emph{The Unicode Consortium},
+#' \url{https://home.unicode.org/}
+#'
 #'
 #' @name about_stringx
 #' @rdname about_stringx
 #' @aliases about_stringx stringx stringx-package
-#'
 #' @docType package
-#'
-#' @references
-#' \emph{\pkg{stringi} Package homepage}, \url{https://stringi.gagolewski.com/}
-#'
-#' \emph{ICU -- International Components for Unicode}, \url{http://site.icu-project.org/}
-#'
-#' \emph{The Unicode Consortium}, \url{https://home.unicode.org/}
 invisible(NULL)
