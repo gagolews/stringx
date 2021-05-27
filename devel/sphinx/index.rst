@@ -27,7 +27,21 @@ as `paste`, `gregexpr`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
 * fix some annoying inconsistencies in the base R functions (they are
   thoroughly documented in this online manual, happy reading!).
 
-Also, a few (very few) new operations are introduced.
+Also, a few new operations are introduced.
+
+.. code-block:: r
+
+    stringx::toupper("gro\u00DF")
+    ## [1] "GROSS"
+
+    l <- c("e", "e\u00b2", "\u03c0", "\u03c0\u00b2", "\U0001f602\U0001f603")
+    r <- c(exp(1), exp(2), pi, pi^2, NaN)
+    cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
+    ##        e=+2.718
+    ##       e²=+7.389
+    ##        π=+3.142
+    ##       π²=+9.870
+    ##     😂😃= NaN
 
 ..  COMMENT
     but we do not aim to fix the whole nam.ING_meSS
