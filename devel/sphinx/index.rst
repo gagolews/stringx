@@ -7,7 +7,7 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     now a very long time ago, was dominated by the US. Due to the proliferation
     of the internet, smartphones, social media, and other technologies
     and communication platforms, this is no longer the case.
-    This package replaces all base R string functions with ones that fully
+    This package replaces base R string functions with ones that fully
     support the Unicode standards related to natural language processing.
     Thanks to `ICU <http://site.icu-project.org/>`_
     (International Components for Unicode) and
@@ -15,8 +15,6 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     they are fast, reliable, and portable across different platforms.
 
     -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
-
-
 
 
 *stringx* replaces base `R <https://www.r-project.org/>`_ functions such
@@ -73,8 +71,6 @@ either Version 2 or Version 3, see
 `license <https://raw.githubusercontent.com/gagolews/stringx/master/LICENSE>`_.
 
 
-
-
 .. toctree::
     :maxdepth: 2
     :caption: stringx
@@ -98,9 +94,7 @@ either Version 2 or Version 3, see
     Author's Homepage <https://www.gagolewski.com/>
     news.md
 
-.. CRAN Entry <https://cran.r-project.org/web/packages/stringx/>
-
-
-.. |downloads1| image:: https://cranlogs.r-pkg.org/badges/grand-total/stringi
-
-.. |downloads2| image:: https://cranlogs.r-pkg.org/badges/last-month/stringi
+..  COMMENT
+    CRAN Entry <https://cran.r-project.org/web/packages/stringx/>
+    .. |downloads1| image:: https://cranlogs.r-pkg.org/badges/grand-total/stringx
+    .. |downloads2| image:: https://cranlogs.r-pkg.org/badges/last-month/stringx

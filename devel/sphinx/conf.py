@@ -1,11 +1,7 @@
-# Configuration file for the Sphinx documentation builder.
+# This file is part of the 'stringx' project.
+# Copyright (c) 2021, Marek Gagolewski <https://www.gagolewski.com>
+# All rights reserved.
 
-
-#import sys
-#import os
-#import sphinx
-#import matplotlib.sphinxext
-#import IPython.sphinxext
 import sphinx_rtd_theme
 import re
 

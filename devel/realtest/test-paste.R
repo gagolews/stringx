@@ -48,14 +48,6 @@ expect_equal(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collapse=","
 expect_equal(stringx::strcat(structure(c(x=1, y=NA, z=100), F="*"), collapse=",", na.rm=TRUE), "1,100")
 
 
-
-# can't overload `+` in base R:
-`+.character` <- stringi::`%s+%`
-expect_error("a" + 3)
-rm(`+.character`)
-
-
-
 expect_equal(1:10 %x+% character(0), character(0))
 
 

@@ -10,13 +10,14 @@
 > The early computer era, now a very long time ago, was dominated by the US.
 > Due to the proliferation of the internet, smartphones, social media,
 > and other technologies and media, this is no longer the case.
-> This package replaces all base R string functions with ones that fully
+> This package replaces base R string functions with ones that fully
 > support the Unicode standards related to natural language processing.
 > Thanks to ICU (International Components for Unicode) and stringi,
 > they are fast, reliable, and portable across different platforms.
 
 
-*stringx* replaces base [R](https://www.r-project.org/) functions such as
+[*stringx*](https://stringx.gagolewski.com/) replaces base
+[R](https://www.r-project.org/) functions such as
 `paste`, `gregexpr`, `tolower`, etc., with ones that:
 
 * work in the same way on every platform,
@@ -25,8 +26,8 @@
 (which are pointed out in the package [manual](https://stringx.gagolewski.com)).
 
 
-**stringx** is a set of wrappers around
-*[stringi](https://stringi.gagolewski.com/)* — a mature
+[**stringx**](https://stringx.gagolewski.com/) is a set of wrappers around
+[*stringi*](https://stringi.gagolewski.com/) — a mature
 [R](https://www.r-project.org/) package for
 fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
