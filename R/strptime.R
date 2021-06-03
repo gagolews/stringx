@@ -91,7 +91,7 @@
 #'
 #' @examples
 #' f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
-#' stringx::strftime(Sys.time(), f))  # current default locale
+#' stringx::strftime(Sys.time(), f)  # current default locale
 #' stringx::strftime(Sys.time(), f, locale="de_DE")
 #' stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 #'

@@ -21,7 +21,7 @@ e1 %x*% e2
 
 ## Details
 
-Replacement for base [`strrep`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/strrep.html) implemented with [`stri_dup`](https://stringi.gagolewski.com/rapi/stri_dup.html).
+Replacement for base [`strrep`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strrep.html) implemented with [`stri_dup`](https://stringi.gagolewski.com/rapi/stri_dup.html).
 
 Arguments are recycled if necessary.
 
@@ -29,19 +29,19 @@ The `` `%x*%` `` mimics a vectorised version of Python\'s `` `*` `` for strings 
 
 Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
 
--   missing values are (luckily) not treated as `"NA"` strings (as in base [`paste`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/paste.html)) **\[nothing to do\]**;
+-   missing values are (luckily) not treated as `"NA"` strings (as in base [`paste`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/paste.html)) **\[nothing to do\]**;
 
 -   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**;
 
 -   base `strrep` seems to preserve only the `names` attribute, and only if the input is of type character (whilst `paste` preserves nothing) **\[fixed\]**;
 
--   overloading `` `*.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `*` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x+%` `` operator\]**;
+-   overloading `` `*.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `*` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x+%` `` operator\]**;
 
 ## Value
 
 A character vector (in UTF-8).
 
-`` `%x*%` `` and `strrep` preserve object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html) operators.
+`` `%x*%` `` and `strrep` preserve object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators.
 
 ## Author(s)
 
@@ -51,7 +51,7 @@ A character vector (in UTF-8).
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): `paste`, `sprintf`
+Related function(s): [`paste`](paste.md), [`sprintf`](sprintf.md)
 
 ## Examples
 

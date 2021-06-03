@@ -9,5 +9,6 @@ rapi/chartr
 rapi/constants
 rapi/paste
 rapi/sprintf
+rapi/strptime
 rapi/strrep
 ```

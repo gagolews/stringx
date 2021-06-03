@@ -19,13 +19,13 @@ printf(fmt, ..., file = "", sep = "\n", append = FALSE, na_string = "NA")
 | `fmt`       | character vector of format strings                                                                                             |
 | `...`       | vectors with data to format (coercible to integer, real, or character)                                                         |
 | `na_string` | single string to represent missing values; if `NA`, missing values in `...` result in the corresponding outputs be missing too |
-| `file`      | see [`cat`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/cat.html)                                                |
-| `sep`       | see [`cat`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/cat.html)                                                |
-| `append`    | see [`cat`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/cat.html)                                                |
+| `file`      | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
+| `sep`       | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
+| `append`    | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
 
 ## Details
 
-Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/sprintf.html) implemented with [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
+Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sprintf.html) implemented with [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
 
 Note that the purpose of `printf` is to display a string, not to create a new one for use elsewhere, therefore this function, as an exception, treats missing values as `"NA"` strings.
 
@@ -39,7 +39,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 -   in to-string conversions, field widths and precisions are interpreted as bytes which is of course problematic for text in UTF-8 **\[fixed by interpreting these as Unicode code point widths\]**;
 
--   `fmt` is limited to 8192 bytes and the number of arguments passed via `...` to 99 (note that we can easily exceed this limit by using `do.call`) **\[rewritten from scratch, there is no limit anymore\]**;
+-   `fmt` is limited to 8192 bytes and the number of arguments passed via `...` to 99 (note that we can easily exceed this limit by using [`do.call`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/do.call.html)) **\[rewritten from scratch, there is no limit anymore\]**;
 
 -   unused values in \... are evaluated anyway (should not evaluation be lazy?) **\[not fixed here because this is somewhat questionable; in both base R and our case, a warning is given if this is the case; moreover, the length of the longest argument always determines the length of the output\]**;
 
@@ -63,7 +63,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): `paste`, `strrep`
+Related function(s): [`paste`](paste.md), [`strrep`](strrep.md)
 
 ## Examples
 
@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1621994869.919765 is 2021-05-26 12:07:49.
-## 2021-05-26 12:07:49 is 1621994869.919765 UNIX time.
+## UNIX time 1622690514.791923 is 2021-06-03 13:21:54.
+## 2021-06-03 13:21:54 is 1622690514.791923 UNIX time.
 ```
