@@ -10,7 +10,7 @@ cat(stringi::stri_info(short=TRUE), "\n")
 
 
 # tests of base R functions
-cat("# base R\n")
+cat("\n# base R\n")
 results_base <- test_dir("devel/realtest", "-all\\.R$")
 stopifnot(!isNamespaceLoaded("stringx"))  # assure string has not been loaded
 s <- summary(results_base)
@@ -18,19 +18,21 @@ print(s)
 stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
 
 # tests of stringx
-cat("# stringx\n")
+cat("\n# stringx\n")
 suppressPackageStartupMessages(library("stringx"))
 results_stringx <- test_dir("devel/realtest", "-all\\.R$")
 stopifnot(isNamespaceLoaded("stringx"))
 s <- summary(results_stringx)
 print(s)
 stopifnot(sum(s[["match"]]=="fail") == 0)  # halt if there are failed tests
+stopifnot(length(results_base) == length(results_stringx))
+
 
 # TODO - merge, compare side-by-side
 
 
 # additional tests (features unavailable in base R)
-cat("# stringx — extras\n")
+cat("\n# stringx — extras\n")
 results_stringx_extra <- test_dir("devel/realtest", "-stringx\\.R$")
 s <- summary(results_stringx_extra)
 print(s)
