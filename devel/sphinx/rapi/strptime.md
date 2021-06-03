@@ -74,12 +74,12 @@ stringx::strftime(Sys.time(), f)  # current default locale
 ## [1] "Thursday, 3 June 2021"                                               
 ## [2] "2021-06-03"                                                          
 ## [3] "today"                                                               
-## [4] "Thursday, 3 June 2021 at 1:21:54 pm Australian Eastern Standard Time"
+## [4] "Thursday, 3 June 2021 at 2:44:45 pm Australian Eastern Standard Time"
 stringx::strftime(Sys.time(), f, locale="de_DE")
 ## [1] "Donnerstag, 3. Juni 2021"                                       
 ## [2] "2021-06-03"                                                     
 ## [3] "heute"                                                          
-## [4] "Donnerstag, 3. Juni 2021 um 13:21:54 Ostaustralische Normalzeit"
+## [4] "Donnerstag, 3. Juni 2021 um 14:44:45 Ostaustralische Normalzeit"
 stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 ## Warning in as.POSIXlt.POSIXct(x, tz): NAs introduced by coercion
 ## [1] NA

@@ -45,14 +45,14 @@ script to script conversion, and Unicode normalisation.
 \details{
 Unlike their base R counterparts, the new \code{tolower} and
 \code{toupper} are locale-sensitive;
-see \code{stri_trans_tolower}.
+see \code{\link[stringi]{stri_trans_tolower}}.
 
-The base \code{casefold} simply dispatches to
+The base \code{\link[base]{casefold}} simply dispatches to
 \code{tolower} or \code{toupper}
 'for compatibility with S-PLUS' (that was only crucial long time ago).
 The version implemented here, by default, performs the true case folding,
 whose purpose is to make two pieces of text that differ only in case
-identical, see \code{stri_trans_casefold}.
+identical, see \code{\link[stringi]{stri_trans_casefold}}.
 
 The new \code{chartr} is a wrapper for
 \code{\link[stringi]{stri_trans_char}}.
