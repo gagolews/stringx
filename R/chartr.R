@@ -45,23 +45,26 @@
 #'
 #' @param x character vector (or an object coercible to)
 #'
-#' @param old a single string
+#' @param old single string
 #'
-#' @param new a single string, preferably of the same length as \code{old}
+#' @param new single string, preferably of the same length as \code{old}
 #'
 #' @param upper single logical value; switches between case folding
-#'    (the default, \code{NA}), lower-, and upper-case.
+#'    (the default, \code{NA}), lower-, and upper-case
 #'
-#' @param transform a single string with ICU general transform
-#'     specifier, see \code{\link[stringi]{stri_trans_list}}.
+#' @param transform single string with ICU general transform
+#'     specifier, see \code{\link[stringi]{stri_trans_list}}
 #'
+#' @locale \code{NULL} or \code{''} for the default locale
+#'    (see \code{\link[stringi]{stri_locale_get}})
+#'    or a single string with a locale identifier,
+#'    see \code{\link[stringi]{stri_locale_list}}
 #'
 #' @return
-#' A character vector (in UTF-8).
-#'
-#' These functions preserve most attributes of \code{x}.
-#' Their base R counterparts drop all the attributes if not fed with character
-#' vectors.
+#' These functions return a character vector (in UTF-8).
+#' They preserve most attributes of \code{x}.
+#' Note that their base R counterparts drop all the attributes
+#' if not fed with character vectors.
 #'
 #'
 #' @examples
@@ -80,6 +83,9 @@
 #' x <- as.matrix(c(a="\u00DFpam ba\U0001D554on spam", b=NA))
 #' base::chartr("\u00DF\U0001D554aba", "SCXBA", x)
 #' stringx::chartr("\u00DF\U0001D554aba", "SCXBA", x)
+#'
+#' stringx::toupper('i', locale='en_US')
+#' stringx::toupper('i', locale='tr_TR')
 #'
 #' @export
 #' @rdname chartr
@@ -101,18 +107,18 @@ chartr <- function(old, new, x)
 
 #' @export
 #' @rdname chartr
-tolower <- function(x)
+tolower <- function(x, locale=NULL)
 {
-    ret <- stringi::stri_trans_tolower(x, locale=NULL)
+    ret <- stringi::stri_trans_tolower(x, locale=locale)
     .attribs_propagate_unary(ret, x)
 }
 
 
 #' @export
 #' @rdname chartr
-toupper <- function(x)
+toupper <- function(x, locale=NULL)
 {
-    ret <- stringi::stri_trans_toupper(x, locale=NULL)
+    ret <- stringi::stri_trans_toupper(x, locale=locale)
     .attribs_propagate_unary(ret, x)
 }
 

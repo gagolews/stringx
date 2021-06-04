@@ -100,15 +100,15 @@
 #' @param ... character vectors (or objects coercible to)
 #'     whose corresponding/consecutive elements are to be concatenated
 #'
-#' @param sep a single string; separates terms
+#' @param sep single string; separates terms
 #'
-#' @param collapse a single string or \code{NULL}; an optional
+#' @param collapse single string or \code{NULL}; an optional
 #'     separator if tokens are to be merged into a single string
 #'
-#' @param recycle0 a single logical value; if \code{FALSE}, then empty
+#' @param recycle0 single logical value; if \code{FALSE}, then empty
 #'     vectors provided via \code{...} are silently ignored
 #'
-#' @param na.rm a single logical value; if \code{TRUE}, missing values
+#' @param na.rm single logical value; if \code{TRUE}, missing values
 #'     are silently ignored
 #'
 #'

@@ -41,7 +41,10 @@ Also, a few new operations are introduced.
     ##       π²=+9.870
     ##     😂😃= NaN
 
+    # TODO: regex unicode example
+
 ..  COMMENT
+
     but we do not aim to fix the whole nam.ING_meSS
 
     99% compatible (cannot be 100% as they use a different regex engine,

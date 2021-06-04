@@ -16,16 +16,16 @@ Description: English is the native language for only 5% of the World population.
     Due to the proliferation of the internet, smartphones, social media, and
     other technologies and communication platforms, this is no longer the case.
     This package replaces base R string functions (such as 'gregexpr',
-    'tolower' and 'paste') with ones that fully
+    'tolower' and 'sprintf') with ones that fully
     support the Unicode standards related to natural language processing
-    and fix some inconsistencies.
+    and fix some long-standing inconsistencies.
     Thanks to ICU (International Components for Unicode) and stringi,
     they are fast, reliable, and portable across different platforms.
 BugReports: https://github.com/gagolews/stringx/issues
 URL: https://stringx.gagolewski.com/
 License: GPL (>= 2)
 Imports:
-    stringi (>= 1.6.2.9002)
+    stringi (>= 1.6.2.9004)
 Suggests:
     realtest
 Encoding: UTF-8

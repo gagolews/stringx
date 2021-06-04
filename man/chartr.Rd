@@ -12,31 +12,30 @@ strtrans(x, transform)
 
 chartr(old, new, x)
 
-tolower(x)
+tolower(x, locale = NULL)
 
-toupper(x)
+toupper(x, locale = NULL)
 
 casefold(x, upper = NA)
 }
 \arguments{
 \item{x}{character vector (or an object coercible to)}
 
-\item{transform}{a single string with ICU general transform
-specifier, see \code{\link[stringi]{stri_trans_list}}.}
+\item{transform}{single string with ICU general transform
+specifier, see \code{\link[stringi]{stri_trans_list}}}
 
-\item{old}{a single string}
+\item{old}{single string}
 
-\item{new}{a single string, preferably of the same length as \code{old}}
+\item{new}{single string, preferably of the same length as \code{old}}
 
 \item{upper}{single logical value; switches between case folding
-(the default, \code{NA}), lower-, and upper-case.}
+(the default, \code{NA}), lower-, and upper-case}
 }
 \value{
-A character vector (in UTF-8).
-
-These functions preserve most attributes of \code{x}.
-Their base R counterparts drop all the attributes if not fed with character
-vectors.
+These functions return a character vector (in UTF-8).
+They preserve most attributes of \code{x}.
+Note that their base R counterparts drop all the attributes
+if not fed with character vectors.
 }
 \description{
 Translate characters, including case mapping and folding,
@@ -79,6 +78,9 @@ casefold("gro\u00DF")
 x <- as.matrix(c(a="\u00DFpam ba\U0001D554on spam", b=NA))
 base::chartr("\u00DF\U0001D554aba", "SCXBA", x)
 stringx::chartr("\u00DF\U0001D554aba", "SCXBA", x)
+
+stringx::toupper('i', locale='en_US')
+stringx::toupper('i', locale='tr_TR')
 
 }
 \author{

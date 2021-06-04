@@ -15,6 +15,48 @@
 ## a copy of the GNU General Public License along with this program.
 
 
+# we are outputting character vectors,
+# hence, some assumptions are made below.
+
+
+
+.as.character_without_some_attributes <- function(e, omit_attributes)
+{
+    `attributes<-`(
+        as.character(e),  # *should* drop all attributes, but there are exceptions..
+        `[<-`(attributes(e), omit_attributes, NULL)
+    )
+}
+
+
+.as.character.dangerous_objects <- function(e)
+{
+    # ts has not yet been tested
+    # s4 has not yet been tested
+
+    # matrices/arrays are fine - dim, dimnames - let them stay
+
+    if (is.factor(e)) {
+        # treat factors as character vectors,
+        # recover all attributes except class and levels
+        .as.character_without_some_attributes(e, c("class", "levels"))
+    }
+    else if (inherits(e, "POSIXt") || inherits(e, "Date")) {
+        # e.g., Sys.Date() %x+% "aaa" will try to coerce back to Date, with an error
+        .as.character_without_some_attributes(e, c("class", "tzone"))
+    }
+    else if (is.data.frame(e))  {
+        # why are we even allowing this? LOL
+        .as.character_without_some_attributes(e, c("class", "row.names"))  # let names stay
+    }
+    else {
+        # otherwise, do nothing
+        e
+    }
+}
+
+
+
 
 # R-ints: Scalar functions (those which operate element-by-element
 # on a vector and whose output is similar to the input) should preserve
@@ -22,16 +64,14 @@
 # to preserve the OBJECT and S4 bits).
 
 
-
 .attribs_propagate_unary <- function(ret, e)
 {
+    stopifnot(is.character(ret))
+
     # TODO: rewrite in C
 
-    # treat factors as character vectors:
-    if (is.factor(e)) e <- as.character(e)
-
-    # ts has not yet been tested
-    # s4 has not yet been tested
+    # it's all about lengths and attributes, fret not
+    e <- .as.character.dangerous_objects(e)
 
     mostattributes(ret) <- attributes(e)
 
@@ -49,18 +89,13 @@
 
 .attribs_propagate_binary <- function(ret, e1, e2)
 {
+    stopifnot(is.character(ret))
+
     # TODO: rewrite in C
 
-    # treat factors as character vectors:
-    if (is.factor(e1)) e1 <- as.character(e1)
-    if (is.factor(e2)) e2 <- as.character(e2)
-
-    # ts has not yet been tested
-    # s4 has not yet been tested
-
-    # This is of course imperfect, as is the world we live in.
-    # e.g., Sys.Date() %x+% "aaa" will try to coerce back to Date, with an error
-    # use explicit coercion: as.character(Sys.Date()) %x+% "aaa"
+    # it's all about lengths and attributes, fret not
+    e1 <- .as.character.dangerous_objects(e1)
+    e2 <- .as.character.dangerous_objects(e2)
 
     if (length(ret) == 0) {
         ;  # do nothing

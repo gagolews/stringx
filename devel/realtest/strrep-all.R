@@ -14,10 +14,13 @@ E(strrep(NA, 3), NA_character_)
 E(strrep(1:3, 1:3), c("1", "22", "333"))
 E(strrep(c(TRUE, FALSE, NA), 2), c("TRUETRUE", "FALSEFALSE", NA))
 
+
 E(
     strrep(1:3, 1:2),
+    P(c("1", "22", "3"), warning="longer object length is not a multiple of shorter object length"),
     P(c("1", "22", "3"), warning=TRUE),
-    bad=c("1", "22", "3")
+    bad=c("1", "22", "3"),
+    .comment="recycling rule warning"
 )
 
 # preservation of attributes:
@@ -44,7 +47,8 @@ E(
     `attributes<-`(x0, c(attributes(y), attributes(x))),
     bad=`attributes<-`(x0, attributes(x)),
     bad=structure(x0, names=names(x)),
-    bad=x0
+    bad=x0,
+    .comment="attribute preservation"
 )
 
 x0 <- "a"  # attribs from y
@@ -54,7 +58,8 @@ E(
     `attributes<-`(rep(x0, length(y)), attributes(y)),
     bad=structure(rep(x0, length(y)), names=names(y)),
     bad=structure(rep(x0, length(y)), names=rep(names(x), length(y))),
-    bad=rep(x0, length(y))
+    bad=rep(x0, length(y)),
+    .comment="attribute preservation"
 )
 
 x0 <- c(1, NA, 3)  # coercion needed
@@ -64,5 +69,6 @@ E(
     `attributes<-`(as.character(x0), c(attributes(y), attributes(x))),
     bad=`attributes<-`(as.character(x0), attributes(x)),
     bad=structure(as.character(x0), names=names(x)),
-    bad=as.character(x0)
+    bad=as.character(x0),
+    .comment="attribute preservation"
 )

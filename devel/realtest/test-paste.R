@@ -70,3 +70,6 @@ expect_equal(sorted_attributes(as.vector(y1) %x+% x), sorted_attributes(as.vecto
 expect_equal(sorted_attributes(as.vector(y2) %x+% x), sorted_attributes(as.vector(y2) + x))
 expect_equal(sorted_attributes(as.vector(y3) %x+% x), sorted_attributes(as.vector(y3) + x))
 expect_equal(sorted_attributes(x %x+% character(0)), NULL)
+
+
+# ISOdate(2021, 6, 4) %x+% 1

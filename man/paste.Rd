@@ -19,12 +19,12 @@ strcat(x, collapse = "", na.rm = FALSE)
 \item{...}{character vectors (or objects coercible to)
 whose corresponding/consecutive elements are to be concatenated}
 
-\item{sep}{a single string; separates terms}
+\item{sep}{single string; separates terms}
 
-\item{collapse}{a single string or \code{NULL}; an optional
+\item{collapse}{single string or \code{NULL}; an optional
 separator if tokens are to be merged into a single string}
 
-\item{recycle0}{a single logical value; if \code{FALSE}, then empty
+\item{recycle0}{single logical value; if \code{FALSE}, then empty
 vectors provided via \code{...} are silently ignored}
 
 \item{e1, e2}{character vectors (or objects coercible to)
@@ -33,7 +33,7 @@ whose corresponding elements are to be concatenated}
 \item{x}{character vector (or an object coercible to)
 whose consecutive elements are to be concatenated}
 
-\item{na.rm}{a single logical value; if \code{TRUE}, missing values
+\item{na.rm}{single logical value; if \code{TRUE}, missing values
 are silently ignored}
 }
 \value{

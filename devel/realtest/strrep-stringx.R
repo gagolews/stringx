@@ -3,13 +3,25 @@ E(NULL %x*% 1:3, character(0))
 E(1:2 %x*% NULL, character(0))
 
 x <- structure(c(A="a", B=NA, C="b"), attrib1="value1")
-E(x %x*% 1, x)
+E(
+    x %x*% 1,
+    x,
+    .comment="attribute preservation"
+)
 
 x <- matrix(letters[1:6], nrow=2, dimnames=list(c("A", "B"), NULL))
-E(x %x*% 1, x)
+E(
+    x %x*% 1,
+    x,
+    .comment="attribute preservation"
+)
 
 x <- matrix(1:6, nrow=2, dimnames=list(c("A", "B"), NULL))
-E(x %x*% 1, `attributes<-`(as.character(x), attributes(x)))
+E(
+    x %x*% 1,
+    `attributes<-`(as.character(x), attributes(x)),
+    .comment="attribute preservation"
+)
 
 x0 <- c("a", NA, "c")  # attribs from x and y (x preferred)
 x <- structure(x0, names=c("A", "B", "C"), attrib1="value1")
@@ -19,7 +31,8 @@ E(
     `attributes<-`(x0, c(attributes(y), attributes(x))),
     bad=`attributes<-`(x0, attributes(x)),
     bad=structure(x0, names=names(x)),
-    bad=x0
+    bad=x0,
+    .comment="attribute preservation"
 )
 
 x0 <- "a"  # attribs from y
@@ -29,7 +42,8 @@ E(
     `attributes<-`(rep(x0, length(y)), attributes(y)),
     bad=structure(rep(x0, length(y)), names=names(y)),
     bad=structure(rep(x0, length(y)), names=rep(names(x), length(y))),
-    bad=rep(x0, length(y))
+    bad=rep(x0, length(y)),
+    .comment="attribute preservation"
 )
 
 x0 <- c(1, NA, 3)  # coercion needed
@@ -39,5 +53,6 @@ E(
     `attributes<-`(as.character(x0), c(attributes(y), attributes(x))),
     bad=`attributes<-`(as.character(x0), attributes(x)),
     bad=structure(as.character(x0), names=names(x)),
-    bad=as.character(x0)
+    bad=as.character(x0),
+    .comment="attribute preservation"
 )
