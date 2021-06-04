@@ -1,10 +1,12 @@
+if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
+library("realtest")
+
 # TODO.... strptime........
 
 
 # recycling rule, NA handling:
 E(strftime(character(0)), character(0))
 E(strftime(NA_character_), NA_character_)
-E(strftime(NA_character_), base::strftime(NA_character_))
 E(strftime(c("1970-01-01", NA), "%Y"), c("1970", NA))
 E(strftime(factor(c("1970-01-01", NA)), "%Y"), c("1970", NA))
 E(strftime(c("1970-01-01", NA), c("%Y-%m-%d", "%Y")), c("1970-01-01", NA))

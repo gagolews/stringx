@@ -23,18 +23,18 @@ strcat(x, collapse = "", na.rm = FALSE)
 |            |                                                                                                             |
 |------------|-------------------------------------------------------------------------------------------------------------|
 | `...`      | character vectors (or objects coercible to) whose corresponding/consecutive elements are to be concatenated |
-| `sep`      | a single string; separates terms                                                                            |
-| `collapse` | a single string or `NULL`; an optional separator if tokens are to be merged into a single string            |
-| `recycle0` | a single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored              |
+| `sep`      | single string; separates terms                                                                              |
+| `collapse` | single string or `NULL`; an optional separator if tokens are to be merged into a single string              |
+| `recycle0` | single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored                |
 | `e1, e2`   | character vectors (or objects coercible to) whose corresponding elements are to be concatenated             |
 | `x`        | character vector (or an object coercible to) whose consecutive elements are to be concatenated              |
-| `na.rm`    | a single logical value; if `TRUE`, missing values are silently ignored                                      |
+| `na.rm`    | single logical value; if `TRUE`, missing values are silently ignored                                        |
 
 ## Details
 
-Replacement for base [`paste`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/paste.html) implemented with [`stri_join`](https://stringi.gagolewski.com/rapi/stri_join.html).
+Replacement for base [`paste`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/paste.html) implemented with [`stri_join`](https://stringi.gagolewski.com/rapi/stri_join.html).
 
-`paste` can be thought of as a string counterpart of both the `` `+` `` operator (actually, some languages do have a binary operator for string concatenation, e.g., `` `.` `` in Perl and PHP, `` `+` `` (`str.__add__`) in Python; R should have it too, but does not) which is additionally vectorised (\'Map\') and the [`sum`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/sum.html) function (\'Reduce\'). Therefore, we would expect it to behave similarly with regards to the propagation of missing values and the preservation of object attributes, but it does not.
+`paste` can be thought of as a string counterpart of both the `` `+` `` operator (actually, some languages do have a binary operator for string concatenation, e.g., `` `.` `` in Perl and PHP, `` `+` `` (`str.__add__`) in Python; R should have it too, but does not) which is additionally vectorised (\'Map\') and the [`sum`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sum.html) function (\'Reduce\'). Therefore, we would expect it to behave similarly with regards to the propagation of missing values and the preservation of object attributes, but it does not.
 
 Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
 
@@ -50,7 +50,7 @@ Inconsistencies in base R (currently; we hope they will be fixed some day) and t
 
 -   `paste0` treats the named argument `sep="..."` as one more vector to concatenate **\[fixed by introducing `sep` argument\]**;
 
--   overloading `` `+.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `+` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/UseMethod.html), but the dispatch would be done on the type of the first argument anyway (not to mention it feels like a too intrusive solution). Actually having a separate operator for concatenation (similar to PHP\'s or Perl\'s `` `.` ``) which always coerces to character frees the user from manual coercion (is it such a burden on the other hand?) **\[fixed by introducing `` `%x+%` `` operator\]**;
+-   overloading `` `+.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `+` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but the dispatch would be done on the type of the first argument anyway (not to mention it feels like a too intrusive solution). Actually having a separate operator for concatenation (similar to PHP\'s or Perl\'s `` `.` ``) which always coerces to character frees the user from manual coercion (is it such a burden on the other hand?) **\[fixed by introducing `` `%x+%` `` operator\]**;
 
 It should also be noted that `paste` with `collapse=NULL` is a special case of `sprintf` (which is featured in many programming languages; R\'s version is of course vectorised). For instance, `paste(x, y, sep=",")` is equivalent to `sprintf("%s,%s", x, y)`.
 
@@ -58,7 +58,7 @@ Taking into account the above, `paste` and `paste0` seem redundant. Here are our
 
 -   the most frequent use case - concatenating corresponding strings from two character vectors with no separator - is covered by a new operator `` `%x+%` `` which propagates NAs correctly and handles object attributes the same way as the built-in arithmetic operators;
 
--   for fancy elementwise (like \'Map\') concatenation, use our version of [`sprintf`](https://stat.ethz.ch/R-manual/R-patched/library/base/html/sprintf.html);
+-   for fancy elementwise (like \'Map\') concatenation, use our version of [`sprintf`](sprintf.md);
 
 -   for the \'flattening\' of consecutive strings in a character vector (like \'Reduce\'), use the new function `strcat`.
 
@@ -66,7 +66,7 @@ Taking into account the above, `paste` and `paste0` seem redundant. Here are our
 
 A character vector (in UTF-8).
 
-`` `%x+%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-patched/library/base/html/Arithmetic.html) operators. The other functions preserve no attributes whatsoever.
+`` `%x+%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators. The other functions preserve no attributes whatsoever.
 
 ## Author(s)
 
@@ -76,7 +76,7 @@ A character vector (in UTF-8).
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): `strrep`
+Related function(s): [`strrep`](strrep.md), [`sprintf`](sprintf.md)
 
 ## Examples
 

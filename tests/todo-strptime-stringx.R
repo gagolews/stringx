@@ -1,3 +1,6 @@
+if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
+library("realtest")
+
 t <- ISOdate(2021, 05, 27)
 
 # different calendar/locale - easy with stringx:

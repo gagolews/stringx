@@ -8,7 +8,7 @@
 * [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
 * [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`, `strtrans`.
 * [NEW FEATURE] `sprintf`, `printf`.
-* [NEW FEATURE] ...strptime, strftime
+* [NEW FEATURE] `strftime`,     TODO: ...strptime
 * [NEW FEATURE] ..ISOdate, ISOdatetime
 * [NEW FEATURE] ..nchar, nzchar
 * [NEW FEATURE] ..substr, substring

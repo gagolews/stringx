@@ -20,10 +20,10 @@ stringx: Drop-in replacements for base R string functions powered by stringi
 *stringx* replaces base `R <https://www.r-project.org/>`_ functions such
 as `paste`, `gregexpr`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
 
-* work in the same way on every platform,
-* support a wide range of languages and scripts,
-* fix some annoying inconsistencies in the base R functions (they are
-  thoroughly documented in this online manual, happy reading!).
+*   work in the same way on every platform,
+*   support a wide range of languages and scripts,
+*   fix some annoying and long-standing inconsistencies in the base R functions
+    (they are thoroughly documented in this online manual, happy reading!).
 
 Also, a few new operations are introduced.
 
@@ -78,7 +78,7 @@ either Version 2 or Version 3, see
     :maxdepth: 2
     :caption: stringx
 
-    About  <https://stringx.gagolewski.com/>
+    About <https://stringx.gagolewski.com/>
 
 
 .. toctree::

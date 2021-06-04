@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="constants: Character Constants" href="constants.html" />
-    <link rel="prev" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" href="about_stringx.html" /> 
+    <link rel="prev" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" href="about_stringx.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,7 +97,7 @@
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../rapi.html">R Package <em>stringx</em> Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in replacements for base R string functions powered by stringi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">chartr: Transliteration and Other Text Transforms</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
@@ -111,6 +111,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strptime.html">strptime: Date-time Parsing and Formatting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strrep.html">strrep: Duplicate Strings</a></li>
 </ul>
 </li>
@@ -188,7 +190,7 @@
         <a href="constants.html" class="btn btn-neutral float-right" title="constants: Character Constants" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -209,9 +211,9 @@
 
 <span class="nf">chartr</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
-<span class="nf">tolower</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">tolower</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
 
-<span class="nf">toupper</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">toupper</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
 
 <span class="nf">casefold</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
 </pre></div>
@@ -230,31 +232,33 @@
 <td><p>character vector (or an object coercible to)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">transform</span></code></p></td>
-<td><p>a single string with ICU general transform specifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_list.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_list</span></code></a>.</p></td>
+<td><p>single string with ICU general transform specifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_list.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_list</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">old</span></code></p></td>
-<td><p>a single string</p></td>
+<td><p>single string</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">new</span></code></p></td>
-<td><p>a single string, preferably of the same length as <code class="docutils literal notranslate"><span class="pre">old</span></code></p></td>
+<td><p>single string, preferably of the same length as <code class="docutils literal notranslate"><span class="pre">old</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">upper</span></code></p></td>
-<td><p>single logical value; switches between case folding (the default, <code class="docutils literal notranslate"><span class="pre">NA</span></code>), lower-, and upper-case.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">locale</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default locale (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_set.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_get</span></code></a>) or a single string with a locale identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_list.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_list</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upper</span></code></p></td>
+<td><p>single logical value; switches between case folding (the default, <code class="docutils literal notranslate"><span class="pre">NA</span></code>), lower-, and upper-case</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
-<p>Unlike their base R counterparts, the new <code class="docutils literal notranslate"><span class="pre">tolower</span></code> and <code class="docutils literal notranslate"><span class="pre">toupper</span></code> are locale-sensitive; see <code class="docutils literal notranslate"><span class="pre">stri_trans_tolower</span></code>.</p>
-<p>The base <code class="docutils literal notranslate"><span class="pre">casefold</span></code> simply dispatches to <code class="docutils literal notranslate"><span class="pre">tolower</span></code> or <code class="docutils literal notranslate"><span class="pre">toupper</span></code> ‘for compatibility with S-PLUS’ (that was only crucial long time ago). The version implemented here, by default, performs the true case folding, whose purpose is to make two pieces of text that differ only in case identical, see <code class="docutils literal notranslate"><span class="pre">stri_trans_casefold</span></code>.</p>
-<p>The new <code class="docutils literal notranslate"><span class="pre">chartr</span></code> is a wrapper for <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_char.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_char</span></code></a>. Contrary to the base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/chartr.html"><code class="docutils literal notranslate"><span class="pre">chartr</span></code></a>, it always generates a warning when <code class="docutils literal notranslate"><span class="pre">old</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> are of different lengths.</p>
+<p>Unlike their base R counterparts, the new <code class="docutils literal notranslate"><span class="pre">tolower</span></code> and <code class="docutils literal notranslate"><span class="pre">toupper</span></code> are locale-sensitive; see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_casemap.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_tolower</span></code></a>.</p>
+<p>The base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/casefold.html"><code class="docutils literal notranslate"><span class="pre">casefold</span></code></a> simply dispatches to <code class="docutils literal notranslate"><span class="pre">tolower</span></code> or <code class="docutils literal notranslate"><span class="pre">toupper</span></code> ‘for compatibility with S-PLUS’ (that was only crucial long time ago). The version implemented here, by default, performs the true case folding, whose purpose is to make two pieces of text that differ only in case identical, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_casemap.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_casefold</span></code></a>.</p>
+<p>The new <code class="docutils literal notranslate"><span class="pre">chartr</span></code> is a wrapper for <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_char.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_char</span></code></a>. Contrary to the base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/chartr.html"><code class="docutils literal notranslate"><span class="pre">chartr</span></code></a>, it always generates a warning when <code class="docutils literal notranslate"><span class="pre">old</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> are of different lengths.</p>
 <p>A new function <code class="docutils literal notranslate"><span class="pre">strtrans</span></code> applies ICU general transforms, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_general.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_general</span></code></a>.</p>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
-<p>A character vector (in UTF-8).</p>
-<p>These functions preserve most attributes of <code class="docutils literal notranslate"><span class="pre">x</span></code>. Their base R counterparts drop all the attributes if not fed with character vectors.</p>
+<p>These functions return a character vector (in UTF-8). They preserve most attributes of <code class="docutils literal notranslate"><span class="pre">x</span></code>. Note that their base R counterparts drop all the attributes if not fed with character vectors.</p>
 </div>
 <div class="section" id="author-s">
 <h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
@@ -293,6 +297,10 @@
 <span class="c1">##   [,1]             </span>
 <span class="c1">## a &quot;SpAm BACon spAm&quot;</span>
 <span class="c1">## b NA</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">toupper</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;I&quot;</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">toupper</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&#39;tr_TR&#39;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;İ&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -305,7 +313,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="constants.html" class="btn btn-neutral float-right" title="constants: Character Constants" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in replacements for base R string functions powered by stringi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="about_stringx.html" class="btn btn-neutral float-left" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -314,7 +322,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-05-24 11:17:50.
+        Last updated on 2021-06-04T17:05:28+1000.
       </span>
 
     </p>

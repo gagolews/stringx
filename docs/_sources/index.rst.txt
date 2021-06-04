@@ -7,7 +7,7 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     now a very long time ago, was dominated by the US. Due to the proliferation
     of the internet, smartphones, social media, and other technologies
     and communication platforms, this is no longer the case.
-    This package replaces all base R string functions with ones that fully
+    This package replaces base R string functions with ones that fully
     support the Unicode standards related to natural language processing.
     Thanks to `ICU <http://site.icu-project.org/>`_
     (International Components for Unicode) and
@@ -17,19 +17,34 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
 
 
+*stringx* replaces base `R <https://www.r-project.org/>`_ functions such
+as `paste`, `gregexpr`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
 
+*   work in the same way on every platform,
+*   support a wide range of languages and scripts,
+*   fix some annoying and long-standing inconsistencies in the base R functions
+    (they are thoroughly documented in this online manual, happy reading!).
 
-*stringx* replaces base R functions such as `paste`, `gregexpr`, `tolower`,
-etc., with ones that:
+Also, a few new operations are introduced.
 
-* work in the same way on every platform,
-* support a wide range of languages and scripts,
-* fix some annoying inconsistencies in the base R functions (they are
-  thoroughly documented in this online manual, happy reading!).
+.. code-block:: r
 
-Also, a few (very few) new operations are introduced.
+    stringx::toupper("gro\u00DF")
+    ## [1] "GROSS"
+
+    l <- c("e", "e\u00b2", "\u03c0", "\u03c0\u00b2", "\U0001f602\U0001f603")
+    r <- c(exp(1), exp(2), pi, pi^2, NaN)
+    cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
+    ##        e=+2.718
+    ##       e²=+7.389
+    ##        π=+3.142
+    ##       π²=+9.870
+    ##     😂😃= NaN
+
+    # TODO: regex unicode example
 
 ..  COMMENT
+
     but we do not aim to fix the whole nam.ING_meSS
 
     99% compatible (cannot be 100% as they use a different regex engine,
@@ -59,13 +74,11 @@ either Version 2 or Version 3, see
 `license <https://raw.githubusercontent.com/gagolews/stringx/master/LICENSE>`_.
 
 
-
-
 .. toctree::
     :maxdepth: 2
     :caption: stringx
 
-    About  <https://stringx.gagolewski.com/>
+    About <https://stringx.gagolewski.com/>
 
 
 .. toctree::
@@ -76,7 +89,7 @@ either Version 2 or Version 3, see
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Other
 
     Source Code (GitHub) <https://github.com/gagolews/stringx>
@@ -84,9 +97,7 @@ either Version 2 or Version 3, see
     Author's Homepage <https://www.gagolewski.com/>
     news.md
 
-.. CRAN Entry <https://cran.r-project.org/web/packages/stringx/>
-
-
-.. |downloads1| image:: https://cranlogs.r-pkg.org/badges/grand-total/stringi
-
-.. |downloads2| image:: https://cranlogs.r-pkg.org/badges/last-month/stringi
+..  COMMENT
+    CRAN Entry <https://cran.r-project.org/web/packages/stringx/>
+    .. |downloads1| image:: https://cranlogs.r-pkg.org/badges/grand-total/stringx
+    .. |downloads2| image:: https://cranlogs.r-pkg.org/badges/last-month/stringx

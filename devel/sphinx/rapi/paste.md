@@ -23,12 +23,12 @@ strcat(x, collapse = "", na.rm = FALSE)
 |            |                                                                                                             |
 |------------|-------------------------------------------------------------------------------------------------------------|
 | `...`      | character vectors (or objects coercible to) whose corresponding/consecutive elements are to be concatenated |
-| `sep`      | a single string; separates terms                                                                            |
-| `collapse` | a single string or `NULL`; an optional separator if tokens are to be merged into a single string            |
-| `recycle0` | a single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored              |
+| `sep`      | single string; separates terms                                                                              |
+| `collapse` | single string or `NULL`; an optional separator if tokens are to be merged into a single string              |
+| `recycle0` | single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored                |
 | `e1, e2`   | character vectors (or objects coercible to) whose corresponding elements are to be concatenated             |
 | `x`        | character vector (or an object coercible to) whose consecutive elements are to be concatenated              |
-| `na.rm`    | a single logical value; if `TRUE`, missing values are silently ignored                                      |
+| `na.rm`    | single logical value; if `TRUE`, missing values are silently ignored                                        |
 
 ## Details
 

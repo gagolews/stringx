@@ -1,3 +1,6 @@
+if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
+library("realtest")
+
 x <- structure(
     c(a="gross", b=NA, c="abcdefghi", d="ABCDEFGHI"),
     attrib1="value1"

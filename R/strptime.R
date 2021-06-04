@@ -67,6 +67,8 @@
 #'    or a single string with a timezone identifier,
 #'    see \code{\link[stringi]{stri_timezone_list}}
 #'
+#' @param usetz ....
+#'
 #' @param ... not used
 #'
 #' @param format character vector of date-time format specifiers,
@@ -75,7 +77,7 @@
 #'    the default conforms to the ISO 8601 guideline,
 #'    e.g., '2015-12-31T23:59:59+0100'
 #'
-#' @locale \code{NULL} or \code{''} for the default locale
+#' @param locale \code{NULL} or \code{''} for the default locale
 #'    (see \code{\link[stringi]{stri_locale_get}})
 #'    or a single string with a locale identifier,
 #'    see \code{\link[stringi]{stri_locale_list}}
@@ -122,6 +124,8 @@ strptime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", lenient=FALSE, loca
 #' @rdname strptime
 strftime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", usetz=FALSE, ..., locale=NULL)
 {
+    # TODO: usetz??
+
     format_icu <- stringi::stri_datetime_fstr(format, ignore_special=FALSE)
 
     ret <- stringi::stri_datetime_format(

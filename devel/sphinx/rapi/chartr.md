@@ -11,22 +11,23 @@ strtrans(x, transform)
 
 chartr(old, new, x)
 
-tolower(x)
+tolower(x, locale = NULL)
 
-toupper(x)
+toupper(x, locale = NULL)
 
 casefold(x, upper = NA)
 ```
 
 ## Arguments
 
-|             |                                                                                                                                          |
-|-------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`         | character vector (or an object coercible to)                                                                                             |
-| `transform` | a single string with ICU general transform specifier, see [`stri_trans_list`](https://stringi.gagolewski.com/rapi/stri_trans_list.html). |
-| `old`       | a single string                                                                                                                          |
-| `new`       | a single string, preferably of the same length as `old`                                                                                  |
-| `upper`     | single logical value; switches between case folding (the default, `NA`), lower-, and upper-case.                                         |
+|             |                                                                                                                                                                                                                                                            |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`         | character vector (or an object coercible to)                                                                                                                                                                                                               |
+| `transform` | single string with ICU general transform specifier, see [`stri_trans_list`](https://stringi.gagolewski.com/rapi/stri_trans_list.html)                                                                                                                      |
+| `old`       | single string                                                                                                                                                                                                                                              |
+| `new`       | single string, preferably of the same length as `old`                                                                                                                                                                                                      |
+| `locale`    | `NULL` or `''` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+| `upper`     | single logical value; switches between case folding (the default, `NA`), lower-, and upper-case                                                                                                                                                            |
 
 ## Details
 
@@ -40,9 +41,7 @@ A new function `strtrans` applies ICU general transforms, see [`stri_trans_gener
 
 ## Value
 
-A character vector (in UTF-8).
-
-These functions preserve most attributes of `x`. Their base R counterparts drop all the attributes if not fed with character vectors.
+These functions return a character vector (in UTF-8). They preserve most attributes of `x`. Note that their base R counterparts drop all the attributes if not fed with character vectors.
 
 ## Author(s)
 
@@ -85,4 +84,8 @@ stringx::chartr("\u00DF\U0001D554aba", "SCXBA", x)
 ##   [,1]             
 ## a "SpAm BACon spAm"
 ## b NA
+stringx::toupper('i', locale='en_US')
+## [1] "I"
+stringx::toupper('i', locale='tr_TR')
+## [1] "İ"
 ```

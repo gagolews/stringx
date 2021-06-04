@@ -28,6 +28,11 @@ specifier, see \code{\link[stringi]{stri_trans_list}}}
 
 \item{new}{single string, preferably of the same length as \code{old}}
 
+\item{locale}{\code{NULL} or \code{''} for the default locale
+(see \code{\link[stringi]{stri_locale_get}})
+or a single string with a locale identifier,
+see \code{\link[stringi]{stri_locale_list}}}
+
 \item{upper}{single logical value; switches between case folding
 (the default, \code{NA}), lower-, and upper-case}
 }

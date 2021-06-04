@@ -184,7 +184,7 @@ is the main one for merely 36% of the total. The early computer era,
 now a very long time ago, was dominated by the US. Due to the proliferation
 of the internet, smartphones, social media, and other technologies
 and communication platforms, this is no longer the case.
-This package replaces all base R string functions with ones that fully
+This package replaces base R string functions with ones that fully
 support the Unicode standards related to natural language processing.
 Thanks to <a class="reference external" href="http://site.icu-project.org/">ICU</a>
 (International Components for Unicode) and
@@ -192,15 +192,30 @@ Thanks to <a class="reference external" href="http://site.icu-project.org/">ICU<
 they are fast, reliable, and portable across different platforms.</p>
 <p class="attribution">—by <a class="reference external" href="https://www.gagolewski.com/">Marek Gagolewski</a></p>
 </div></blockquote>
-<p><em>stringx</em> replaces base R functions such as <cite>paste</cite>, <cite>gregexpr</cite>, <cite>tolower</cite>,
-etc., with ones that:</p>
+<p><em>stringx</em> replaces base <a class="reference external" href="https://www.r-project.org/">R</a> functions such
+as <cite>paste</cite>, <cite>gregexpr</cite>, <cite>tolower</cite>, <cite>strftime</cite>, <cite>sprintf</cite>, etc., with ones that:</p>
 <ul class="simple">
 <li><p>work in the same way on every platform,</p></li>
 <li><p>support a wide range of languages and scripts,</p></li>
-<li><p>fix some annoying inconsistencies in the base R functions (they are
-thoroughly documented in this online manual, happy reading!).</p></li>
+<li><p>fix some annoying and long-standing inconsistencies in the base R functions
+(they are thoroughly documented in this online manual, happy reading!).</p></li>
 </ul>
-<p>Also, a few (very few) new operations are introduced.</p>
+<p>Also, a few new operations are introduced.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stringx</span><span class="o">::</span><span class="nf">toupper</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;GROSS&quot;</span>
+
+<span class="n">l</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;e\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\U0001f602\U0001f603&quot;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> <span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">),</span> <span class="kc">pi</span><span class="p">,</span> <span class="kc">pi</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="n">stringx</span><span class="o">::</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;%8s=%+.3f&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+<span class="c1">##        e=+2.718</span>
+<span class="c1">##       e²=+7.389</span>
+<span class="c1">##        π=+3.142</span>
+<span class="c1">##       π²=+9.870</span>
+<span class="c1">##     😂😃= NaN</span>
+
+<span class="c1"># TODO: regex unicode example</span>
+</pre></div>
+</div>
 <p><strong>stringx</strong> is a set of wrappers around
 <a class="reference external" href="https://stringi.gagolewski.com/">stringi</a> — a mature
 <a class="reference external" href="https://www.r-project.org/">R</a> package for
@@ -222,10 +237,12 @@ either Version 2 or Version 3, see
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="rapi.html">R Package <em>stringx</em> Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in replacements for base R string functions powered by stringi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rapi/chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rapi/constants.html">constants: Character Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rapi/paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rapi/strptime.html">strptime: Date-time Parsing and Formatting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rapi/strrep.html">strrep: Duplicate Strings</a></li>
 </ul>
 </li>
@@ -237,11 +254,7 @@ either Version 2 or Version 3, see
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx">Source Code (GitHub)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx/issues">Bug Tracker and Feature Suggestions</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="news.html">What Is New in <em>stringx</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="news.html#xxx-to-be-0-1-1-2021-xx-yy">0.1.0.9xxx (to-be &gt;=0.1.1) (2021-xx-yy)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="news.html#id1">0.0.0 (2021-05-07)</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">What Is New in <em>stringx</em></a></li>
 </ul>
 </div>
 </div>
@@ -261,7 +274,7 @@ either Version 2 or Version 3, see
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-05-24 11:17:50.
+        Last updated on 2021-06-04T17:05:28+1000.
       </span>
 
     </p>

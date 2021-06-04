@@ -38,6 +38,13 @@ see \code{\link[stringi]{stri_timezone_list}}}
 
 \item{lenient}{single logical value; should date/time parsing be lenient?}
 
+\item{locale}{\code{NULL} or \code{''} for the default locale
+(see \code{\link[stringi]{stri_locale_get}})
+or a single string with a locale identifier,
+see \code{\link[stringi]{stri_locale_list}}}
+
+\item{usetz}{....}
+
 \item{...}{not used}
 }
 \value{
