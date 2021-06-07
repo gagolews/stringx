@@ -41,6 +41,16 @@
         # recover all attributes except class and levels
         .as.character_without_some_attributes(e, c("class", "levels"))
     }
+    else if (inherits(e, "POSIXlt")) {
+        # POSIXlt is a named list, but elem names are in the year field
+        structure(
+            .as.character_without_some_attributes(
+                e,
+                c("class", "tzone", "names")
+            ),
+            names=names(unclass(e)[["year"]])  # see names.POSIXlt, [[.POSIXlt
+        )
+    }
     else if (inherits(e, "POSIXt") || inherits(e, "Date")) {
         # e.g., Sys.Date() %x+% "aaa" will try to coerce back to Date, with an error
         .as.character_without_some_attributes(e, c("class", "tzone"))

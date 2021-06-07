@@ -1,21 +1,31 @@
 if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
 library("realtest")
 
-t <- ISOdate(2021, 05, 27)
+t <- structure(ISOdate(2021, 05, 27), names="t")
 
 # different calendar/locale - easy with stringx:
 
 E(
     strftime(t, "%Y", locale="@calendar=hebrew"),
-    "5781"
+    c(t="5781")
 )
 
 E(
     strftime(t, "%A", locale="pl-PL"),
-    "czwartek"
+    c(t="czwartek")
 )
 
 E(
     strftime(t, "%A", locale="de-DE"),
-    "Donnerstag"
+    c(t="Donnerstag")
+)
+
+E(
+    strftime(t, "%H:%M:%S", tz="UTC", usetz=TRUE),
+    P(c(t="12:00:00"), warning=TRUE)
+)
+
+E(
+    strftime(t, "%H:%M:%S", tz="Europe/Berlin"),
+    c(t="14:00:00")
 )

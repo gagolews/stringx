@@ -5,13 +5,7 @@
 \alias{strftime}
 \title{Date-time Parsing and Formatting}
 \usage{
-strptime(
-  x,
-  format = "\%Y-\%m-\%dT\%H:\%M:\%S\%z",
-  tz = "",
-  lenient = FALSE,
-  locale = NULL
-)
+strptime(x, format, tz = "", lenient = FALSE, locale = NULL)
 
 strftime(
   x,
@@ -34,7 +28,9 @@ e.g., '2015-12-31T23:59:59+0100'}
 \item{tz}{\code{NULL} or \code{''} for the default time zone
 (see \code{\link[stringi]{stri_timezone_get}})
 or a single string with a timezone identifier,
-see \code{\link[stringi]{stri_timezone_list}}}
+see \code{\link[stringi]{stri_timezone_list}};
+note that even if \code{x} is equipped with \code{tzone} attribute,
+it is not used}
 
 \item{lenient}{single logical value; should date/time parsing be lenient?}
 
@@ -43,14 +39,17 @@ see \code{\link[stringi]{stri_timezone_list}}}
 or a single string with a locale identifier,
 see \code{\link[stringi]{stri_locale_list}}}
 
-\item{usetz}{....}
+\item{usetz}{not used}
 
 \item{...}{not used}
 }
 \value{
 \code{strftime} returns a character vector (in UTF-8).
 
-\code{strptime} returns an object of class \code{\link{POSIXlt}}.
+\code{strptime} returns an object of class \code{\link[base]{POSIXlt}},
+see also \link[base]{DateTimeClasses}.
+If a string cannot be recognised as valid date/time specified
+(as per the given format string), the corresponding output will be \code{NA}.
 }
 \description{
 \code{strptime} parses strings representing date-time data
@@ -75,14 +74,19 @@ Inconsistencies/limitations in base R and the way we have addressed them:
     \bold{[fixed here]};
 \item partial recycling with no warning
     \bold{[fixed here]};
-... format 2nd arg (but sprintf has as 1st); undocumented default arg
+\item \code{strftime} does not honour the \code{tzone} attribute,
+    which is used whilst displaying time (via \code{\link[base]{format}})
+    \bold{[not fixed here]};
 }
 }
 \examples{
+stringx::strftime(Sys.time())  # default format - ISO 8601
 f <- c("date_full", "\%Y-\%m-\%d", "date_relative_short", "datetime_full")
 stringx::strftime(Sys.time(), f)  # current default locale
 stringx::strftime(Sys.time(), f, locale="de_DE")
 stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
+stringx::strptime("1970-01-01 00:00:00", "\%Y-\%m-\%d \%H:\%M:\%S", tz="GMT")
+stringx::strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
 
 
 }

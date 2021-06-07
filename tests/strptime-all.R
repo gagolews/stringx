@@ -1,7 +1,19 @@
 if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
 library("realtest")
 
-# TODO.... strptime........
+E(strptime(character(0), "%Y-%m-%d"), as.POSIXlt(c()))
+E(strftime(strptime(NA_character_, "%Y-%m-%d")), NA_character_)
+
+E(strptime("2020-01-01 12:23:54"), P(error=TRUE))
+E(
+    as.integer(as.POSIXct(strptime(
+        "1970-01-01 00:00:00",
+        c("%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%b"),
+        tz="UTC"
+    ))),
+    c(0L, 0L, NA_integer_)
+)
+
 
 
 # recycling rule, NA handling:
@@ -28,7 +40,7 @@ E(
 
 E(
     strftime(2021),
-    bad=P(error="'origin' must be supplied"),
+    bad=P(error="'origin' must be supplied"),  # more specific - list first
     P(error=TRUE),
     .comment="uninformative error message"
 )

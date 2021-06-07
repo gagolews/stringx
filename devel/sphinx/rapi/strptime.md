@@ -7,13 +7,7 @@
 ## Usage
 
 ```r
-strptime(
-  x,
-  format = "%Y-%m-%dT%H:%M:%S%z",
-  tz = "",
-  lenient = FALSE,
-  locale = NULL
-)
+strptime(x, format, tz = "", lenient = FALSE, locale = NULL)
 
 strftime(
   x,
@@ -27,15 +21,15 @@ strftime(
 
 ## Arguments
 
-|           |                                                                                                                                                                                                                                                                         |
-|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`       | object to be converted                                                                                                                                                                                                                                                  |
-| `format`  | character vector of date-time format specifiers, see [`stri_datetime_fstr`](https://stringi.gagolewski.com/rapi/stri_datetime_fstr.html); e.g., `"%Y-%m-%d"` or `"datetime_full"`; the default conforms to the ISO 8601 guideline, e.g., \'2015-12-31T23:59:59+0100\'   |
-| `tz`      | `NULL` or `''` for the default time zone (see [`stri_timezone_get`](https://stringi.gagolewski.com/rapi/stri_timezone_set.html)) or a single string with a timezone identifier, see [`stri_timezone_list`](https://stringi.gagolewski.com/rapi/stri_timezone_list.html) |
-| `lenient` | single logical value; should date/time parsing be lenient?                                                                                                                                                                                                              |
-| `locale`  | `NULL` or `''` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html)              |
-| `usetz`   | \....                                                                                                                                                                                                                                                                   |
-| `...`     | not used                                                                                                                                                                                                                                                                |
+|           |                                                                                                                                                                                                                                                                                                                                                   |
+|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`       | object to be converted                                                                                                                                                                                                                                                                                                                            |
+| `format`  | character vector of date-time format specifiers, see [`stri_datetime_fstr`](https://stringi.gagolewski.com/rapi/stri_datetime_fstr.html); e.g., `"%Y-%m-%d"` or `"datetime_full"`; the default conforms to the ISO 8601 guideline, e.g., \'2015-12-31T23:59:59+0100\'                                                                             |
+| `tz`      | `NULL` or `''` for the default time zone (see [`stri_timezone_get`](https://stringi.gagolewski.com/rapi/stri_timezone_set.html)) or a single string with a timezone identifier, see [`stri_timezone_list`](https://stringi.gagolewski.com/rapi/stri_timezone_list.html); note that even if `x` is equipped with `tzone` attribute, it is not used |
+| `lenient` | single logical value; should date/time parsing be lenient?                                                                                                                                                                                                                                                                                        |
+| `locale`  | `NULL` or `''` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html)                                                                                        |
+| `usetz`   | not used                                                                                                                                                                                                                                                                                                                                          |
+| `...`     | not used                                                                                                                                                                                                                                                                                                                                          |
 
 ## Details
 
@@ -47,13 +41,15 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 -   default format not conforming to ISO 8601, in particular not displaying the current time zone **\[fixed here\]**;
 
--   partial recycling with no warning **\[fixed here\]**; \... format 2nd arg (but sprintf has as 1st); undocumented default arg
+-   partial recycling with no warning **\[fixed here\]**;
+
+-   `strftime` does not honour the `tzone` attribute, which is used whilst displaying time (via [`format`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/format.html)) **\[not fixed here\]**;
 
 ## Value
 
 `strftime` returns a character vector (in UTF-8).
 
-`strptime` returns an object of class [`POSIXlt`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/DateTimeClasses.html).
+`strptime` returns an object of class [`POSIXlt`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXlt.html), see also [DateTimeClasses](https://stat.ethz.ch/R-manual/R-devel/library/base/help/DateTimeClasses.html). If a string cannot be recognised as valid date/time specified (as per the given format string), the corresponding output will be `NA`.
 
 ## Author(s)
 
@@ -71,17 +67,23 @@ Related function(s): [`sprintf`](sprintf.md)
 
 
 ```r
+stringx::strftime(Sys.time())  # default format - ISO 8601
+## [1] "2021-06-07T17:41:04+1000"
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 stringx::strftime(Sys.time(), f)  # current default locale
-## [1] "Friday, 4 June 2021"                                               
-## [2] "2021-06-04"                                                        
+## [1] "Monday, 7 June 2021"                                               
+## [2] "2021-06-07"                                                        
 ## [3] "today"                                                             
-## [4] "Friday, 4 June 2021 at 5:05:26 pm Australian Eastern Standard Time"
+## [4] "Monday, 7 June 2021 at 5:41:04 pm Australian Eastern Standard Time"
 stringx::strftime(Sys.time(), f, locale="de_DE")
-## [1] "Freitag, 4. Juni 2021"                                       
-## [2] "2021-06-04"                                                  
-## [3] "heute"                                                       
-## [4] "Freitag, 4. Juni 2021 um 17:05:26 Ostaustralische Normalzeit"
+## [1] "Montag, 7. Juni 2021"                                       
+## [2] "2021-06-07"                                                 
+## [3] "heute"                                                      
+## [4] "Montag, 7. Juni 2021 um 17:41:04 Ostaustralische Normalzeit"
 stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "24 Sivan 5781"
+## [1] "27 Sivan 5781"
+stringx::strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
+## [1] "1970-01-01 00:00:00 GMT"
+stringx::strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
+## [1] "1943-04-19 17:41:04 AEST"
 ```
