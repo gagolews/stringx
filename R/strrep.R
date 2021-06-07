@@ -92,7 +92,8 @@ strrep <- function(x, times)
 
 #' @export
 #' @rdname strrep
-`%x*%` <- function(e1, e2) {
+`%x*%` <- function(e1, e2)
+{
     ret <- stringi::stri_dup(e1, e2)
     .attribs_propagate_binary(ret, e1, e2)
 }

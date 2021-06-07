@@ -54,7 +54,13 @@
 #' \item default format not conforming to ISO 8601, in particular not
 #'     displaying the current time zone
 #'     \bold{[fixed here]};
+#' \item only the names attribute in \code{x} is propagated
+#'     \bold{[fixed here]};
 #' \item partial recycling with no warning
+#'     \bold{[fixed here]};
+#' \item \code{strptime} returns an object of class \code{POSIXlt},
+#'     which is not the most convenient to work with, e.g., when
+#'     including in data frames
 #'     \bold{[fixed here]};
 #' \item \code{strftime} does not honour the \code{tzone} attribute,
 #'     which is used whilst displaying time (via \code{\link[base]{format}})
@@ -71,7 +77,7 @@
 #'    note that even if \code{x} is equipped with \code{tzone} attribute,
 #'    this datum is not used
 #'
-#' @param usetz not used
+#' @param usetz not used (with a warning if attempting to do so)
 #'
 #' @param ... not used
 #'
@@ -92,7 +98,7 @@
 #' @return
 #' \code{strftime} returns a character vector (in UTF-8).
 #'
-#' \code{strptime} returns an object of class \code{\link[base]{POSIXlt}},
+#' \code{strptime} returns an object of class \code{\link[base]{POSIXct}},
 #' see also \link[base]{DateTimeClasses}.
 #' If a string cannot be recognised as valid date/time specified
 #' (as per the given format string), the corresponding output will be \code{NA}.
@@ -115,18 +121,22 @@
 #' @rdname strptime
 strptime <- function(x, format, tz="", lenient=FALSE, locale=NULL)
 {
-    format <- stringi::stri_datetime_fstr(format, ignore_special=FALSE)
+    format_icu <- stringi::stri_datetime_fstr(format, ignore_special=FALSE)
 
-    y <- stringi::stri_datetime_parse(
+    ret <- stringi::stri_datetime_parse(
         x,
-        format=format,
+        format=format_icu,
         lenient=lenient,
         tz=tz,
         locale=locale
     )
-    y <- as.POSIXlt(y)
-    names(y$year) <- names(x)  # base::strptime has it
-    y
+    # ret <- as.POSIXlt(ret)  # we don't want this
+
+    ret_attribs <- attributes(ret)
+    ret <- .attribs_propagate_binary(ret, x, format)  # `format_icu` as no attribs
+    for (ret_attrib in names(ret_attribs))
+        attr(ret, ret_attrib) <- ret_attribs[[ret_attrib]]
+    ret
 }
 
 
@@ -134,7 +144,7 @@ strptime <- function(x, format, tz="", lenient=FALSE, locale=NULL)
 #' @rdname strptime
 strftime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", usetz=FALSE, ..., locale=NULL)
 {
-    if (isTRUE(usetz)) warning("argument `usetz` has no effect in stringx")
+    if (!isFALSE(usetz)) warning("argument `usetz` has no effect in stringx")
 
     format_icu <- stringi::stri_datetime_fstr(format, ignore_special=FALSE)
 
@@ -145,5 +155,5 @@ strftime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", usetz=FALSE, ..., l
         locale=locale
     )
 
-    .attribs_propagate_binary(ret, x, format)  # format_icu as no attribs
+    .attribs_propagate_binary(ret, x, format)  # `format_icu` as no attribs
 }

@@ -76,7 +76,7 @@
 
 .attribs_propagate_unary <- function(ret, e)
 {
-    stopifnot(is.character(ret))
+#     stopifnot(is.character(ret))
 
     # TODO: rewrite in C
 
@@ -99,7 +99,7 @@
 
 .attribs_propagate_binary <- function(ret, e1, e2)
 {
-    stopifnot(is.character(ret))
+    # stopifnot(is.character(ret))  -- we act on POSIX.ct too
 
     # TODO: rewrite in C
 

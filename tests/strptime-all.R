@@ -1,8 +1,21 @@
 if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
 library("realtest")
 
-E(strptime(character(0), "%Y-%m-%d"), as.POSIXlt(c()))
+E(strptime(character(0), "%Y-%m-%d"),
+    as.POSIXct(c()),
+    as.POSIXlt(c())
+)
+
 E(strftime(strptime(NA_character_, "%Y-%m-%d")), NA_character_)
+
+E(
+    strptime("1970-01-01", character(0)),
+    as.POSIXct(c()),
+    as.POSIXlt(c()),
+    bad=P(error=TRUE)
+)
+
+E(strftime(strptime("1970-01-01", NA_character_)), NA_character_)
 
 E(strptime("2020-01-01 12:23:54"), P(error=TRUE))
 E(
@@ -14,6 +27,33 @@ E(
     c(0L, 0L, NA_integer_)
 )
 
+E(
+    class(strptime("1970-01-01", "%Y-%m-%d")),
+    better=c("POSIXct", "POSIXt"),
+    c("POSIXlt", "POSIXt")
+)
+
+E(
+    strftime(strptime(c("1905-1806", "1704-1603", "1502-1401"), c("%Y-%d%m", "%d%m-%Y")), "%Y-%m-%d"),
+    P(c("1905-06-18", "1603-04-17", "1502-01-14"), warning="longer object length is not a multiple of shorter object length"),
+    bad=c("1905-06-18", "1603-04-17", "1502-01-14"),
+    .comment="recycling rule warning"
+)
+
+f <- structure(c(x="%Y-%d%m", y="%d%m-%Y"), class="format", attrib1="val1")
+x <- structure(c(a="1603-1502"), attrib2="val2")
+E(
+    names(strptime(x, f)),
+    names(f),
+    bad=c("a", NA)
+)
+
+
+x <- structure(c(a="1603-1502", b="1603-1502"), attrib2="val2")
+E(
+    names(strptime(x, "%Y-%d%m")),
+    names(x)
+)
 
 
 # recycling rule, NA handling:

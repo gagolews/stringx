@@ -29,3 +29,22 @@ E(
     strftime(t, "%H:%M:%S", tz="Europe/Berlin"),
     c(t="14:00:00")
 )
+
+f <- structure(c(x="%Y-%d%m", y="%d%m-%Y"), attrib1="val1")
+x <- structure(c(a="1603-1502"), attrib2="val2")
+E(
+    attr(strptime(x, f, tz="UTC"), "tzone"),
+    "UTC"
+)
+
+E(
+    strftime(strptime(x, f, tz="UTC"), "%Y"),
+    `attributes<-`(c("1603", "1502"), attributes(f))
+)
+
+
+x <- structure(c(a="1603-1502", b="1602-1502"), attrib2="val2")
+E(
+    strftime(strptime(x, "%Y-%d%m", tz="UTC"), "%Y"),
+    `attributes<-`(c("1603", "1602"), attributes(x))
+)

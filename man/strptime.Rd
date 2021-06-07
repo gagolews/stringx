@@ -30,7 +30,7 @@ e.g., '2015-12-31T23:59:59+0100'}
 or a single string with a timezone identifier,
 see \code{\link[stringi]{stri_timezone_list}};
 note that even if \code{x} is equipped with \code{tzone} attribute,
-it is not used}
+this datum is not used}
 
 \item{lenient}{single logical value; should date/time parsing be lenient?}
 
@@ -39,14 +39,14 @@ it is not used}
 or a single string with a locale identifier,
 see \code{\link[stringi]{stri_locale_list}}}
 
-\item{usetz}{not used}
+\item{usetz}{not used (with a warning if attempting to do so)}
 
 \item{...}{not used}
 }
 \value{
 \code{strftime} returns a character vector (in UTF-8).
 
-\code{strptime} returns an object of class \code{\link[base]{POSIXlt}},
+\code{strptime} returns an object of class \code{\link[base]{POSIXct}},
 see also \link[base]{DateTimeClasses}.
 If a string cannot be recognised as valid date/time specified
 (as per the given format string), the corresponding output will be \code{NA}.
@@ -72,7 +72,13 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 \item default format not conforming to ISO 8601, in particular not
     displaying the current time zone
     \bold{[fixed here]};
+\item only the names attribute in \code{x} is propagated
+    \bold{[fixed here]};
 \item partial recycling with no warning
+    \bold{[fixed here]};
+\item \code{strptime} returns an object of class \code{POSIXlt},
+    which is not the most convenient to work with, e.g., when
+    including in data frames
     \bold{[fixed here]};
 \item \code{strftime} does not honour the \code{tzone} attribute,
     which is used whilst displaying time (via \code{\link[base]{format}})

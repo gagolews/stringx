@@ -3,13 +3,13 @@
 
 ## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
 
+* [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
 * [NEW FEATURE] `paste`, `paste0`, `strcat`, `%x+%`.
 * [NEW FEATURE] `strrep`, `%x*%`.
-* [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
 * [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`, `strtrans`.
 * [NEW FEATURE] `sprintf`, `printf`.
 * [NEW FEATURE] `strftime`, `strptime`.
-* [NEW FEATURE] ..nchar, nzchar
+* [NEW FEATURE] `nchar`, `nzchar`.
 * [NEW FEATURE] ..substr, substring
 * [NEW FEATURE] ..trimws
 * [NEW FEATURE] ..strtrim
