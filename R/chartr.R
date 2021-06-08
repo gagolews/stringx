@@ -29,7 +29,7 @@
 #'
 #' The base \code{\link[base]{casefold}} simply dispatches to
 #' \code{tolower} or \code{toupper}
-#' 'for compatibility with S-PLUS' (that was only crucial long time ago).
+#' 'for compatibility with S-PLUS' (which was only crucial long time ago).
 #' The version implemented here, by default, performs the true case folding,
 #' whose purpose is to make two pieces of text that differ only in case
 #' identical, see \code{\link[stringi]{stri_trans_casefold}}.
@@ -91,6 +91,7 @@
 #' @rdname chartr
 strtrans <- function(x, transform)
 {
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
     ret <- stringi::stri_trans_general(x, transform)
     .attribs_propagate_unary(ret, x)
 }
@@ -100,6 +101,7 @@ strtrans <- function(x, transform)
 #' @rdname chartr
 chartr <- function(old, new, x)
 {
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
     ret <- stringi::stri_trans_char(x, pattern=old, replacement=new)
     .attribs_propagate_unary(ret, x)
 }
@@ -109,6 +111,7 @@ chartr <- function(old, new, x)
 #' @rdname chartr
 tolower <- function(x, locale=NULL)
 {
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
     ret <- stringi::stri_trans_tolower(x, locale=locale)
     .attribs_propagate_unary(ret, x)
 }
@@ -118,6 +121,7 @@ tolower <- function(x, locale=NULL)
 #' @rdname chartr
 toupper <- function(x, locale=NULL)
 {
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
     ret <- stringi::stri_trans_toupper(x, locale=locale)
     .attribs_propagate_unary(ret, x)
 }
@@ -127,6 +131,7 @@ toupper <- function(x, locale=NULL)
 #' @rdname chartr
 casefold <- function(x, upper=NA)
 {
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
     ret <- {
         if (isTRUE(upper)) stringx::toupper(x)
         else if (isFALSE(upper)) stringx::tolower(x)

@@ -45,7 +45,7 @@
 #' \item partial recycling results in an error
 #'     \bold{[fixed here - warning given]};
 #' \item input objects' attributes are not preserved
-#'     \bold{[not fixed]};
+#'     \bold{[not fixed, somewhat tricky]};
 #' \item in to-string conversions, field widths and precisions are interpreted as
 #'     bytes which is of course problematic for text in UTF-8
 #'    \bold{[fixed by interpreting these as Unicode code point widths]};
@@ -93,7 +93,7 @@
 #' @return
 #' \code{sprintf} returns a character vector (in UTF-8).
 #' No attributes are preserved.
-#'
+#' \code{printf} returns 'nothing'.
 #'
 #' @examples
 #' # UTF-8 number of bytes vs. Unicode code point width:
@@ -113,11 +113,21 @@
 #' @rdname sprintf
 sprintf <- function(fmt, ..., na_string=NA_character_)
 {
+    if (!is.character(fmt)) fmt <- as.character(fmt)  # S3 generics, you do you
+
+    # args in `...` will be converted to integer, real, character depending on fmt
+    # we don't do the 'if (is.xxx(x)) as.xxx(x)' thing here;
+    # currently, stringi looks rather at typeof(x)=="xxx" though, so be careful
+
     stringi::stri_sprintf(
-        fmt, ...,
-        na_string=na_string, nan_string="NaN", inf_string="Inf",
+        fmt,
+        ...,
+        na_string=na_string,
+        nan_string="NaN",
+        inf_string="Inf",
         use_length=FALSE
     )
+    # TODO: attributes?
 }
 
 
@@ -125,9 +135,16 @@ sprintf <- function(fmt, ..., na_string=NA_character_)
 #' @rdname sprintf
 printf <- function(fmt, ..., file="", sep="\n", append=FALSE, na_string="NA")
 {
+    if (!is.character(fmt)) fmt <- as.character(fmt)  # S3 generics, you do you
+
     stringi::stri_printf(
-        fmt, ..., file=file, sep=sep, append=append,
-        na_string=na_string, nan_string="NaN", inf_string="Inf",
+        fmt,
+        ...,
+        na_string=na_string,
+        nan_string="NaN",
+        inf_string="Inf",
         use_length=FALSE
     )
+
+    invisible(NULL)
 }

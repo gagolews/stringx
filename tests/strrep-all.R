@@ -64,14 +64,3 @@ E(
     bad=rep(x0, length(y)),
     .comment="attribute preservation"
 )
-
-x0 <- c(1, NA, 3)  # coercion needed
-x <- structure(x0, names=c("A", "B", "C"), attrib1="value1")
-E(
-    strrep(x, y),
-    `attributes<-`(as.character(x0), c(attributes(y), attributes(x))),
-    bad=`attributes<-`(as.character(x0), attributes(x)),
-    bad=structure(as.character(x0), names=names(x)),
-    bad=as.character(x0),
-    .comment="attribute preservation"
-)

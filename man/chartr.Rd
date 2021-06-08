@@ -53,7 +53,7 @@ see \code{\link[stringi]{stri_trans_tolower}}.
 
 The base \code{\link[base]{casefold}} simply dispatches to
 \code{tolower} or \code{toupper}
-'for compatibility with S-PLUS' (that was only crucial long time ago).
+'for compatibility with S-PLUS' (which was only crucial long time ago).
 The version implemented here, by default, performs the true case folding,
 whose purpose is to make two pieces of text that differ only in case
 identical, see \code{\link[stringi]{stri_trans_casefold}}.

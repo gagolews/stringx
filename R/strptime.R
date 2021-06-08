@@ -68,7 +68,9 @@
 #' }
 #'
 #'
-#' @param x object to be converted
+#' @param x object to be converted: a character vector for \code{strptime}
+#'    and an object of class \code{POSIXct} for \code{strftime},
+#'    or objects coercible to
 #'
 #' @param tz \code{NULL} or \code{''} for the default time zone
 #'    (see \code{\link[stringi]{stri_timezone_get}})
@@ -121,6 +123,9 @@
 #' @rdname strptime
 strptime <- function(x, format, tz="", lenient=FALSE, locale=NULL)
 {
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(format)) format <- as.character(format)
+
     format_icu <- stringi::stri_datetime_fstr(format, ignore_special=FALSE)
 
     ret <- stringi::stri_datetime_parse(
@@ -132,10 +137,10 @@ strptime <- function(x, format, tz="", lenient=FALSE, locale=NULL)
     )
     # ret <- as.POSIXlt(ret)  # we don't want this
 
-    ret_attribs <- attributes(ret)
-    ret <- .attribs_propagate_binary(ret, x, format)  # `format_icu` as no attribs
-    for (ret_attrib in names(ret_attribs))
-        attr(ret, ret_attrib) <- ret_attribs[[ret_attrib]]
+    # the following is not bullet proof:
+    ret_attribs_before <- attributes(ret)
+    ret <- .attribs_propagate_binary(ret, x, format)  # `format_icu` has no attribs
+    attributes(ret) <- c(attributes(ret), ret_attribs_before)
     ret
 }
 
@@ -144,6 +149,9 @@ strptime <- function(x, format, tz="", lenient=FALSE, locale=NULL)
 #' @rdname strptime
 strftime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", usetz=FALSE, ..., locale=NULL)
 {
+    if (!inherits(x, "POSIXct")) x <- as.POSIXct(x)  # where is is.POSIXct?
+    if (!is.character(format)) format <- as.character(format)
+
     if (!isFALSE(usetz)) warning("argument `usetz` has no effect in stringx")
 
     format_icu <- stringi::stri_datetime_fstr(format, ignore_special=FALSE)
@@ -155,5 +163,9 @@ strftime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", usetz=FALSE, ..., l
         locale=locale
     )
 
-    .attribs_propagate_binary(ret, x, format)  # `format_icu` as no attribs
+    # let as.character.POSIXct will determine which attributes
+    # are to be considered for preservation
+    x <- as.character(x)
+
+    .attribs_propagate_binary(ret, x, format)  # `format_icu` has no attribs
 }

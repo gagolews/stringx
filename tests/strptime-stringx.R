@@ -39,12 +39,13 @@ E(
 
 E(
     strftime(strptime(x, f, tz="UTC"), "%Y"),
-    `attributes<-`(c("1603", "1502"), attributes(f))
+    better=`attributes<-`(c("1603", "1502"), attributes(f)),
+    `attributes<-`(c("1603", "1502"), list(names=names(f)))
 )
-
 
 x <- structure(c(a="1603-1502", b="1602-1502"), attrib2="val2")
 E(
     strftime(strptime(x, "%Y-%d%m", tz="UTC"), "%Y"),
-    `attributes<-`(c("1603", "1602"), attributes(x))
+    better=`attributes<-`(c("1603", "1602"), attributes(x)),
+    `attributes<-`(c("1603", "1602"), list(names=names(x)))
 )

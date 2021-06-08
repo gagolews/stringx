@@ -116,9 +116,11 @@
 #' A character vector (in UTF-8).
 #'
 #' \code{`\%x+\%`} preserves object attributes in a similar way as
-#' other \link[base]{Arithmetic} operators.
-#' The other functions preserve no attributes whatsoever.
-#'
+#' other \link[base]{Arithmetic} operators (however, they may be lost
+#' during \code{as.character(...)} conversion, which is an S3 generic).
+#' \code{strcat} is an aggregation function, therefore it
+#' preserves no attributes whatsoever.
+#' Currently, \code{paste} and \code{paste0} preserve no attributes too.
 #'
 #' @examples
 #' # behaviour of `+` vs. base::paste vs. stringx::paste
@@ -154,12 +156,16 @@
 #' @rdname paste
 paste <- function(..., sep=" ", collapse=NULL, recycle0=FALSE)
 {
-    stringi::stri_join(
-        ...,
-        sep=sep,
-        collapse=collapse,
-        ignore_null=!isTRUE(recycle0)
+    args <- lapply(list(...), function(x) {
+        if (!is.character(x)) as.character(x)  # S3 generics, you do you
+        else x
+    })
+
+    do.call(
+        stringi::stri_join,
+        c(args, list(sep=sep, collapse=collapse, ignore_null=!isTRUE(recycle0)))
     )
+    # TODO: attributes?
 }
 
 
@@ -174,7 +180,10 @@ paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 
 #' @export
 #' @rdname paste
-`%x+%` <- function(e1, e2) {
+`%x+%` <- function(e1, e2)
+{
+    if (!is.character(e1)) e1 <- as.character(e1)  # S3 generics, you do you
+    if (!is.character(e2)) e2 <- as.character(e2)  # S3 generics, you do you
     ret <- stringi::`%s+%`(e1, e2)
     .attribs_propagate_binary(ret, e1, e2)
 }
@@ -183,6 +192,7 @@ paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 #' @export
 #' @rdname paste
 strcat <- function(x, collapse="", na.rm=FALSE) {
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
     stringi::stri_flatten(
         x,
         collapse=collapse,

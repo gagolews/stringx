@@ -28,6 +28,7 @@ result in the corresponding outputs be missing too}
 \value{
 \code{sprintf} returns a character vector (in UTF-8).
 No attributes are preserved.
+\code{printf} returns 'nothing'.
 }
 \description{
 \code{sprintf} creates strings from a given template and the arguments
@@ -52,7 +53,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 \item partial recycling results in an error
     \bold{[fixed here - warning given]};
 \item input objects' attributes are not preserved
-    \bold{[not fixed]};
+    \bold{[not fixed, somewhat tricky]};
 \item in to-string conversions, field widths and precisions are interpreted as
     bytes which is of course problematic for text in UTF-8
    \bold{[fixed by interpreting these as Unicode code point widths]};

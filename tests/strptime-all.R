@@ -96,6 +96,26 @@ E(
     .comment="default format should conform to ISO 8601, in particular display the current time zone"
 )
 
+E(
+    strftime(as.POSIXlt(t), "%Y-%m-%d"),
+    strftime(t, "%Y-%m-%d")
+)
+
+E(
+    strftime(as.POSIXct(t), "%Y-%m-%d"),
+    strftime(t, "%Y-%m-%d")
+)
+
+E(
+    strftime(as.Date(t), "%Y-%m-%d"),
+    strftime(t, "%Y-%m-%d")
+)
+
+E(
+    strftime(as.character(t), "%Y-%m-%d"),
+    strftime(t, "%Y-%m-%d")
+)
+
 
 # only names of x are preserved
 f <- structure(c(x="%Y", y="%Y-%m-%d"), class="format", attrib1="val1")

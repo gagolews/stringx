@@ -17,7 +17,9 @@ strftime(
 )
 }
 \arguments{
-\item{x}{object to be converted}
+\item{x}{object to be converted: a character vector for \code{strptime}
+and an object of class \code{POSIXct} for \code{strftime},
+or objects coercible to}
 
 \item{format}{character vector of date-time format specifiers,
 see \code{\link[stringi]{stri_datetime_fstr}};

@@ -15,55 +15,93 @@
 ## a copy of the GNU General Public License along with this program.
 
 
-# we are outputting character vectors,
+# we are often outputting character vectors,
 # hence, some assumptions are made below.
 
+# if a function is vectorised wrt 2 arguments, it should
+# preserve the attributes of both inputs (if of the same length)
 
 
-.as.character_without_some_attributes <- function(e, omit_attributes)
-{
-    `attributes<-`(
-        as.character(e),  # *should* drop all attributes, but there are exceptions..
-        `[<-`(attributes(e), omit_attributes, NULL)
-    )
-}
+# string functions: character vectors in, character vector out
+# in non-character on input, then converted with...
+# as.character()? but this drops all attributes
+
+# the type designers themselves should define the semantics
+# which attributes they would like to preserve?
+
+# character vectors in, logical/numeric out -- a different story
+# names, dim, dimnames - yes
+# tsp - ?
 
 
-.as.character.dangerous_objects <- function(e)
-{
-    # ts has not yet been tested
-    # s4 has not yet been tested
+# x <- list(
+#     c(a="a", b="b"),
+#     matrix(LETTERS[1:4], nrow=2, dimnames=list(c("a", "b"), c("x", "y"))),
+#     ts(c(a="a", b="b")),
+#     factor(c(a="a", b="b")),
+#     c(a=1, b=2),
+#     `names<-`(c(Sys.time(), Sys.time()+1), c("a", "b")),
+#     as.POSIXlt(`names<-`(c(Sys.time(), Sys.time()+1), c("a", "b"))),
+#     list(a="a", b=1:4),
+#     data.frame(a=LETTERS, b=letters)
+# )
+# x <- lapply(x, function(e) `attr<-`(e, "attrib1", "value1"))
+#
+# sapply(x, is.character)
+# lapply(x, function(e) as.character(e))
+# lapply(x, function(e) attributes(as.character(e)))
+# lapply(x, function(e) if (!is.character(e)) as.character(e) else e)
+#
+# if (!is.character(x))
+#     x <- as.character(x)
 
-    # matrices/arrays are fine - dim, dimnames - let them stay
 
-    if (is.factor(e)) {
-        # treat factors as character vectors,
-        # recover all attributes except class and levels
-        .as.character_without_some_attributes(e, c("class", "levels"))
-    }
-    else if (inherits(e, "POSIXlt")) {
-        # POSIXlt is a named list, but elem names are in the year field
-        structure(
-            .as.character_without_some_attributes(
-                e,
-                c("class", "tzone", "names")
-            ),
-            names=names(unclass(e)[["year"]])  # see names.POSIXlt, [[.POSIXlt
-        )
-    }
-    else if (inherits(e, "POSIXt") || inherits(e, "Date")) {
-        # e.g., Sys.Date() %x+% "aaa" will try to coerce back to Date, with an error
-        .as.character_without_some_attributes(e, c("class", "tzone"))
-    }
-    else if (is.data.frame(e))  {
-        # why are we even allowing this? LOL
-        .as.character_without_some_attributes(e, c("class", "row.names"))  # let names stay
-    }
-    else {
-        # otherwise, do nothing
-        e
-    }
-}
+
+
+# .as.character_without_some_attributes <- function(e, omit_attributes)
+# {
+#     `attributes<-`(
+#         as.character(e),  # *should* drop all attributes, but there are exceptions..
+#         `[<-`(attributes(e), omit_attributes, NULL)
+#     )
+# }
+
+
+# .as.character.dangerous_objects <- function(e)
+# {
+#     # ts has not yet been tested
+#     # s4 has not yet been tested
+#
+#     # matrices/arrays are fine - dim, dimnames - let them stay
+#
+#     if (is.factor(e)) {
+#         # treat factors as character vectors,
+#         # recover all attributes except class and levels
+#         .as.character_without_some_attributes(e, c("class", "levels"))
+#     }
+#     else if (inherits(e, "POSIXlt")) {
+#         # POSIXlt is a named list, but elem names are in the year field
+#         structure(
+#             .as.character_without_some_attributes(
+#                 e,
+#                 c("class", "tzone", "names")
+#             ),
+#             names=names(unclass(e)[["year"]])  # see names.POSIXlt, [[.POSIXlt
+#         )
+#     }
+#     else if (inherits(e, "POSIXt") || inherits(e, "Date")) {
+#         # e.g., Sys.Date() %x+% "aaa" will try to coerce back to Date, with an error
+#         .as.character_without_some_attributes(e, c("class", "tzone"))
+#     }
+#     else if (is.data.frame(e))  {
+#         # why are we even allowing this? LOL
+#         .as.character_without_some_attributes(e, c("class", "row.names"))  # let names stay
+#     }
+#     else {
+#         # otherwise, do nothing
+#         e
+#     }
+# }
 
 
 
@@ -76,12 +114,10 @@
 
 .attribs_propagate_unary <- function(ret, e)
 {
-#     stopifnot(is.character(ret))
-
     # TODO: rewrite in C
 
-    # it's all about lengths and attributes, fret not
-    e <- .as.character.dangerous_objects(e)
+#    # it's all about lengths and attributes, fret not
+#     e <- .as.character.dangerous_objects(e)
 
     mostattributes(ret) <- attributes(e)
 
@@ -99,13 +135,11 @@
 
 .attribs_propagate_binary <- function(ret, e1, e2)
 {
-    # stopifnot(is.character(ret))  -- we act on POSIX.ct too
-
     # TODO: rewrite in C
 
-    # it's all about lengths and attributes, fret not
-    e1 <- .as.character.dangerous_objects(e1)
-    e2 <- .as.character.dangerous_objects(e2)
+#     # it's all about lengths and attributes, fret not
+#     e1 <- .as.character.dangerous_objects(e1)
+#     e2 <- .as.character.dangerous_objects(e2)
 
     if (length(ret) == 0) {
         ;  # do nothing

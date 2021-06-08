@@ -40,8 +40,11 @@ are silently ignored}
 A character vector (in UTF-8).
 
 \code{`\%x+\%`} preserves object attributes in a similar way as
-other \link[base]{Arithmetic} operators.
-The other functions preserve no attributes whatsoever.
+other \link[base]{Arithmetic} operators (however, they may be lost
+during \code{as.character(...)} conversion, which is an S3 generic).
+\code{strcat} is an aggregation function, therefore it
+preserves no attributes whatsoever.
+Currently, \code{paste} and \code{paste0} preserve no attributes too.
 }
 \description{
 Concatenate (join) the corresponding and/or consecutive elements of

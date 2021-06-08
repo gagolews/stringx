@@ -22,7 +22,8 @@ E(
 x <- matrix(1:6, nrow=2, dimnames=list(c("A", "B"), NULL))
 E(
     x %x*% 1,
-    `attributes<-`(as.character(x), attributes(x)),
+    better=`attributes<-`(as.character(x), attributes(x)),
+    `attributes<-`(as.character(x), NULL),  # as.character.numeric drops all attribs
     .comment="attribute preservation"
 )
 
@@ -53,7 +54,8 @@ x0 <- c(1, NA, 3)  # coercion needed
 x <- structure(x0, names=c("A", "B", "C"), attrib1="value1")
 E(
     x %x*% y,
-    `attributes<-`(as.character(x0), c(attributes(y), attributes(x))),
+    better=`attributes<-`(as.character(x0), c(attributes(y), attributes(x))),
+    `attributes<-`(as.character(x0), c(attributes(y))),  # as.character.numeric drops all attribs
     bad=`attributes<-`(as.character(x0), attributes(x)),
     bad=structure(as.character(x0), names=names(x)),
     bad=as.character(x0),
