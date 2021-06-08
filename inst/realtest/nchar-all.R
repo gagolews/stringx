@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 E(nzchar(c()), logical(0))
 E(nchar(c()), integer(0))
 E(nchar(c(), "width"), integer(0))

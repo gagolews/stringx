@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 E(strptime(character(0), "%Y-%m-%d"),
     as.POSIXct(c()),
     as.POSIXlt(c())

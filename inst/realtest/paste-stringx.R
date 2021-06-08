@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 E(strcat(structure(c(x=1, y=NA, z=100), attrib1="value1"), collapse=","), NA_character_)
 E(strcat(structure(c(x=1, y=NA, z=100), attrib1="value1"), collapse=",", na.rm=TRUE), "1,100")
 

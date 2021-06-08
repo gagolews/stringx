@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 E(paste(c("a", "b"), c("X", "Y"), sep="-"), c("a-X", "b-Y"))
 E(paste(c("a", "b"), c("X", "Y")), c("a X", "b Y"))
 E(paste0(c("a", "b"), c("X", "Y")), c("aX", "bY"))

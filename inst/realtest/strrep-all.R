@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 # sanity checks, empty vectors, NA propagation, recycling rule, coercion:
 
 E(strrep("a", 5), c("aaaaa"))

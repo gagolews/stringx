@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 E(1:2 %x*% 1:3, P(c("1", "22", "111"), warning=TRUE))
 E(NULL %x*% 1:3, character(0))
 E(1:2 %x*% NULL, character(0))

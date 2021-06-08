@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 t <- structure(ISOdate(2021, 05, 27), names="t")
 
 # different calendar/locale - easy with stringx:

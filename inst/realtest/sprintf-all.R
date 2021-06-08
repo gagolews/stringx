@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 # OK: zero-length arguments result in empty vectors:
 E(sprintf("%s", character(0)), character(0))
 E(sprintf(character(0)), character(0))

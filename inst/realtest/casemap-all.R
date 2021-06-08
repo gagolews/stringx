@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 E(tolower(character(0)), character(0))
 E(tolower(c("a", NA_character_, "c")), c("a", NA_character_, "c"))
 E(toupper(character(0)), character(0))

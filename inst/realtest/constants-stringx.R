@@ -1,6 +1,3 @@
-if (Sys.getenv("STRINGX_DO_NOT_LOAD") != "1") library("stringx")
-library("realtest")
-
 toascii <- function(x, substitute="\u001a")
 {
     stringi::stri_replace_all_charclass(
