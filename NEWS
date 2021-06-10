@@ -36,10 +36,21 @@ like `attributes<-`(as.character(x), attributes(x))
 * [NEW FEATURE] `sprintf`, `printf`.
 * [NEW FEATURE] `strftime`, `strptime`.
 * [NEW FEATURE] `nchar`, `nzchar`.
-* [NEW FEATURE] ..substr, substring
+* [NEW FEATURE] `strtrim`.
+* [NEW FEATURE] ..substr, substring + replacement
+* [NEW FEATURE] ..gregexpr
+* [NEW FEATURE] ..grepl
+* [NEW FEATURE] ..regexpr, gregexpr
+* [NEW FEATURE] ..regexec, gregexec
+* [NEW FEATURE] ..sub, gsub
+startsWith, endsWith
+* [NEW FEATURE] ..strsplit
+* [NEW FEATURE] ..strwrap
 * [NEW FEATURE] ..trimws
-* [NEW FEATURE] ..strtrim
 * [NEW FEATURE] ..strcmp/strcoll
+xtfrm
+iconv, iconvlist
+readLines, writeLines, ??
 
 
 ## 0.0.0 (2021-05-07)

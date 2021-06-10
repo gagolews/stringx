@@ -34,9 +34,6 @@
 #' and the way we have addressed them here:
 #'
 #' \itemize{
-#' \item missing values are (luckily) not treated as \code{"NA"} strings
-#'     (as in base \code{\link[base]{paste}})
-#'     \bold{[nothing to do]};
 #' \item partial recycling with no warning "longer object length is not
 #'     a multiple of shorter object length" \bold{[fixed here]};
 #' \item base \code{strrep} seems to preserve only the \code{names} attribute,

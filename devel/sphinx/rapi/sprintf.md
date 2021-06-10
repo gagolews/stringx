@@ -35,7 +35,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 -   partial recycling results in an error **\[fixed here - warning given\]**;
 
--   input objects\' attributes are not preserved **\[not fixed\]**;
+-   input objects\' attributes are not preserved **\[not fixed, somewhat tricky\]**;
 
 -   in to-string conversions, field widths and precisions are interpreted as bytes which is of course problematic for text in UTF-8 **\[fixed by interpreting these as Unicode code point widths\]**;
 
@@ -53,7 +53,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 ## Value
 
-`sprintf` returns a character vector (in UTF-8). No attributes are preserved.
+`sprintf` returns a character vector (in UTF-8). No attributes are preserved. `printf` returns \'nothing\'.
 
 ## Author(s)
 
@@ -63,7 +63,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`paste`](paste.md), [`strrep`](strrep.md)
+Related function(s): [`paste`](paste.md), [`strrep`](strrep.md), [`strtrim`](strtrim.md), [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/substr.html), [`nchar`](nchar.md)
 
 ## Examples
 
@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1623051664.596620 is 2021-06-07 17:41:04.
-## 2021-06-07 17:41:04 is 1623051664.596620 UNIX time.
+## UNIX time 1623298171.437726 is 2021-06-10 14:09:31.
+## 2021-06-10 14:09:31 is 1623298171.437726 UNIX time.
 ```

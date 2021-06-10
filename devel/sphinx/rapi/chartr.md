@@ -33,7 +33,7 @@ casefold(x, upper = NA)
 
 Unlike their base R counterparts, the new `tolower` and `toupper` are locale-sensitive; see [`stri_trans_tolower`](https://stringi.gagolewski.com/rapi/stri_trans_casemap.html).
 
-The base [`casefold`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/casefold.html) simply dispatches to `tolower` or `toupper` \'for compatibility with S-PLUS\' (that was only crucial long time ago). The version implemented here, by default, performs the true case folding, whose purpose is to make two pieces of text that differ only in case identical, see [`stri_trans_casefold`](https://stringi.gagolewski.com/rapi/stri_trans_casemap.html).
+The base [`casefold`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/casefold.html) simply dispatches to `tolower` or `toupper` \'for compatibility with S-PLUS\' (which was only crucial long time ago). The version implemented here, by default, performs the true case folding, whose purpose is to make two pieces of text that differ only in case identical, see [`stri_trans_casefold`](https://stringi.gagolewski.com/rapi/stri_trans_casemap.html).
 
 The new `chartr` is a wrapper for [`stri_trans_char`](https://stringi.gagolewski.com/rapi/stri_trans_char.html). Contrary to the base [`chartr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/chartr.html), it always generates a warning when `old` and `new` are of different lengths.
 

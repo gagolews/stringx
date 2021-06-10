@@ -66,7 +66,7 @@ Taking into account the above, `paste` and `paste0` seem redundant. Here are our
 
 A character vector (in UTF-8).
 
-`` `%x+%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators. The other functions preserve no attributes whatsoever.
+`` `%x+%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators (however, they may be lost during `as.character(...)` conversion, which is an S3 generic). `strcat` is an aggregation function, therefore it preserves no attributes whatsoever. Currently, `paste` and `paste0` preserve no attributes too.
 
 ## Author(s)
 
@@ -125,9 +125,8 @@ base::paste(x, y2)
 base::paste(x, y3)
 ## [1] "1 1"    "NA 2"   "100 3"  "1000 4"
 stringx::paste(x, y1)
-## Warning in stringi::stri_join(..., sep = sep, collapse = collapse, ignore_null
-## = !isTRUE(recycle0)): longer object length is not a multiple of shorter object
-## length
+## Warning in (function (..., sep = "", collapse = NULL, ignore_null = FALSE) :
+## longer object length is not a multiple of shorter object length
 ## [1] "1 1"    NA       "100 3"  "1000 1"
 stringx::paste(x, y2)
 ## [1] "1 1"    NA       "100 3"  "1000 4"
@@ -140,32 +139,13 @@ stringx::paste(x, character(0), y2, sep=",")
 x %x+% y1
 ## Warning in stringi::`%s+%`(e1, e2): longer object length is not a multiple of
 ## shorter object length
-##       x       y       z       w 
-##    "11"      NA  "1003" "10001" 
-## attr(,"F")
-## [1] "*"
+## [1] "11"    NA      "1003"  "10001"
 x %x+% y2
-##       x       y       z       w 
-##    "11"      NA  "1003" "10004" 
-## attr(,"G")
-## [1] "#"
-## attr(,"F")
-## [1] "*"
+## [1] "11"    NA      "1003"  "10004"
 x %x+% y3
-##      a    b      
-## [1,] "11" "1003" 
-## [2,] NA   "10004"
-## attr(,"G")
-## [1] "#"
-## attr(,"F")
-## [1] "*"
+## [1] "11"    NA      "1003"  "10004"
 y2 %x+% x
-##       a       b       c       d 
-##    "11"      NA  "3100" "41000" 
-## attr(,"F")
-## [1] "@"
-## attr(,"G")
-## [1] "#"
+## [1] "11"    NA      "3100"  "41000"
 x %x+% character(0)
 ## character(0)
 strcat(x, collapse=",")

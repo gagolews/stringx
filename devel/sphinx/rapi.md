@@ -7,8 +7,10 @@ R Package *stringx* Reference
 rapi/about_stringx
 rapi/chartr
 rapi/constants
+rapi/nchar
 rapi/paste
 rapi/sprintf
 rapi/strptime
 rapi/strrep
+rapi/strtrim
 ```

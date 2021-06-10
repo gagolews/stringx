@@ -201,5 +201,25 @@ E(
     sprintf(f, x),
     better=x,
     as.character(x),
-    .commit="attribute preservation"
+    .comment="attribute preservation"
+)
+
+
+E(
+    sprintf("%*s", NA_integer_, "abcdef"),
+    NA_character_,
+    bad="abcdef",
+    bad="NA",
+    bad=P(error=TRUE),
+    .comment="missing value propagation"
+)
+
+
+E(
+    sprintf("%.*s", NA_integer_, "abcdef"),
+    NA_character_,
+    bad="abcdef",
+    bad="NA",
+    bad=P(error=TRUE),
+    .comment="missing value propagation"
 )

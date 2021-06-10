@@ -96,7 +96,8 @@ stringx::printf(c("UNIX time \%1$f is \%1$s.", "\%1$s is \%1$f UNIX time."),
 \seealso{
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
-Related function(s): \code{\link{paste}}, \code{\link{strrep}}
+Related function(s): \code{\link{paste}}, \code{\link{strrep}},
+\code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

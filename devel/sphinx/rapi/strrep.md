@@ -29,8 +29,6 @@ The `` `%x*%` `` mimics a vectorised version of Python\'s `` `*` `` for strings 
 
 Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
 
--   missing values are (luckily) not treated as `"NA"` strings (as in base [`paste`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/paste.html)) **\[nothing to do\]**;
-
 -   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**;
 
 -   base `strrep` seems to preserve only the `names` attribute, and only if the input is of type character (whilst `paste` preserves nothing) **\[fixed\]**;
@@ -82,13 +80,9 @@ base::strrep(x, 3)
 ## "aaa"    NA "ccc"
 y <- matrix(1:6, nrow=2, dimnames=list(c("A", "B"), NULL))
 y %x*% 1:2
-##   [,1] [,2] [,3]
-## A "1"  "3"  "5" 
-## B "22" "44" "66"
+## [1] "1"  "22" "3"  "44" "5"  "66"
 stringx::strrep(y, 1:2)
-##   [,1] [,2] [,3]
-## A "1"  "3"  "5" 
-## B "22" "44" "66"
+## [1] "1"  "22" "3"  "44" "5"  "66"
 base::strrep(y, 1:2)
 ## [1] "1"  "22" "3"  "44" "5"  "66"
 ```

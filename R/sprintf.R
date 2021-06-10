@@ -107,7 +107,8 @@
 #'     Sys.time())
 #'
 #' @seealso
-#' Related function(s): \code{\link{paste}}, \code{\link{strrep}}
+#' Related function(s): \code{\link{paste}}, \code{\link{strrep}},
+#' \code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}}
 #'
 #' @export
 #' @rdname sprintf

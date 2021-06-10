@@ -47,21 +47,33 @@ and the way we have addressed them here:
 \item \code{keepNA} does not default to \code{TRUE}, and hence
     missing values are treated as \code{"NA"} strings
     \bold{[fixed here]};
-\item TODO: width... emoji of width 2, combining characters and modifiers (e.g., skin tones)
-   recognised properly \bold{[fixed here]};
-\item TODO: attributes?
+\item some emojis, combining characters and modifiers (e.g., skin tones)
+   are not recognised properly
+    \bold{[fixed here]};
+\item only the \code{names} attribute is propagated
+    \bold{[fixed here]};
 }
 }
 \examples{
-# dark skin tone flexed biceps:
-base::nchar("\U0001F4AA\U0001F3FF", "width")
-stringx::nchar("\U0001F4AA\U0001F3FF", "width")
+x <- c(
+    "\U0001F4A9",
+    "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
+    "\U0001F64D\U0001F3FB\U0000200D\U00002642",
+    "\U000026F9\U0001F3FF\U0000200D\U00002640\U0000FE0F",
+    "\U0001F3F4\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F"
+)
+print(x)
+base::nchar(x, "width")
+stringx::nchar(x, "width")
 
 
-}
-\author{
-\href{https://www.gagolewski.com/}{Marek Gagolewski}
 }
 \seealso{
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
+
+Related function(s): \code{\link{sprintf}}, \code{\link{substring}},
+    \code{\link{strtrim}}
+}
+\author{
+\href{https://www.gagolewski.com/}{Marek Gagolewski}
 }
