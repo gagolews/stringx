@@ -14,18 +14,19 @@ whose elements are to be trimmed}
 strings are to be trimmed}
 }
 \value{
-A character vector (in UTF-8).
-The functions preserves object attributes
+Returns a character vector (in UTF-8).
+Preserves object attributes
 in a similar way as \link[base]{Arithmetic} operators.
 }
 \description{
-Right-trims strings so that they do not exceed a given width,
-as specified by \code{\link[stringi]{stri_width}}. Might be useful
+Right-trims strings so that they do not exceed a given width
+(as determined by \code{\link[stringi]{stri_width}}). Might be useful
 when displaying strings using a monospaced font.
 }
 \details{
 Replacement for base \code{\link[base]{strtrim}}
 implemented with (special case of) \code{\link[stringi]{stri_sprintf}}.
+Not to be confused with \code{\link{trimws}}.
 
 Both arguments are recycled if necessary.
 
@@ -39,7 +40,7 @@ and the way we have addressed them here:
     \bold{[fixed here]};
 \item some emojis, combining characters and modifiers (e.g., skin tones)
    are not recognised properly \bold{[fixed here]};
-\item attributes are only propagated from the 1st attribute
+\item attributes are only propagated from the 1st argument
     \bold{[fixed]};
 }
 }

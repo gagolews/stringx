@@ -26,6 +26,7 @@
 #' @details
 #' Replacement for base \code{\link[base]{strtrim}}
 #' implemented with (special case of) \code{\link[stringi]{stri_sprintf}}.
+#' Not to be confused with \code{\link{trimws}}.
 #'
 #' Both arguments are recycled if necessary.
 #'
@@ -52,8 +53,8 @@
 #'
 #'
 #' @return
-#' A character vector (in UTF-8).
-#' The functions preserves object attributes
+#' Returns a character vector (in UTF-8).
+#' Preserves object attributes
 #' in a similar way as \link[base]{Arithmetic} operators.
 #'
 #'

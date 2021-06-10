@@ -82,5 +82,5 @@ E(
     best=structure(cbind(x=c(1L, 2L), y=c(3L, 4L)), attrib1="val1"),
     better=cbind(x=c(1L, 2L), y=c(3L, 4L)),
     cbind(c(1L, 2L), c(3L, 4L)),
-    bad=1:4
+    1:4  # as.character drops attribs...
 )

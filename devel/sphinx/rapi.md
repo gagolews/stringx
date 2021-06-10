@@ -13,4 +13,5 @@ rapi/sprintf
 rapi/strptime
 rapi/strrep
 rapi/strtrim
+rapi/trimws
 ```

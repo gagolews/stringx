@@ -25,7 +25,7 @@ BugReports: https://github.com/gagolews/stringx/issues
 URL: https://stringx.gagolewski.com/
 License: GPL (>= 2)
 Imports:
-    stringi (>= 1.6.2.9006)
+    stringi (>= 1.6.2.9007)
 Suggests:
     realtest
 Encoding: UTF-8

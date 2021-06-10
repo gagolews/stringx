@@ -37,6 +37,7 @@ like `attributes<-`(as.character(x), attributes(x))
 * [NEW FEATURE] `strftime`, `strptime`.
 * [NEW FEATURE] `nchar`, `nzchar`.
 * [NEW FEATURE] `strtrim`.
+* [NEW FEATURE] `trimws`.
 * [NEW FEATURE] ..substr, substring + replacement
 * [NEW FEATURE] ..gregexpr
 * [NEW FEATURE] ..grepl
@@ -46,7 +47,6 @@ like `attributes<-`(as.character(x), attributes(x))
 startsWith, endsWith
 * [NEW FEATURE] ..strsplit
 * [NEW FEATURE] ..strwrap
-* [NEW FEATURE] ..trimws
 * [NEW FEATURE] ..strcmp/strcoll
 xtfrm
 iconv, iconvlist
