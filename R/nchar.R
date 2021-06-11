@@ -36,12 +36,12 @@
 #' \itemize{
 #' \item \code{keepNA} does not default to \code{TRUE}, and hence
 #'     missing values are treated as \code{"NA"} strings
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item some emojis, combining characters and modifiers (e.g., skin tones)
 #'    are not recognised properly
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item only the \code{names} attribute is propagated
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' }
 #'
 #'

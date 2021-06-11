@@ -36,10 +36,10 @@
 #' \item the default \code{whitespace} argument does not reflect the
 #'     'contemporary' definition of whitespaces
 #'     (e.g., does not include zero-width spaces)
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item base R implementation is not portable as it is based on
 #'     the system PCRE library (e.g., some Unicode classes may not be available)
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item no sanity checks are performed on \code{whitespace}
 #'     \bold{[fixed here]}
 #' }

@@ -44,18 +44,18 @@
 #'
 #' \itemize{
 #' \item missing values treated as \code{"NA"} strings (it is a well-documented
-#'     feature though) \bold{[fixed here]};
+#'     feature though) \bold{[fixed here]}
 #' \item partial recycling with no warning "longer object length is not
-#'     a multiple of shorter object length" \bold{[fixed here]};
+#'     a multiple of shorter object length" \bold{[fixed here]}
 #' \item empty vectors are treated as vectors of empty strings
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item input objects' attributes are not preserved
-#'     \bold{[fixed only in \code{`\%x+\%`} operator]};
+#'     \bold{[fixed only in \code{`\%x+\%`} operator]}
 #' \item \code{paste0} multiplies entities without necessity;
-#'     \code{sep=""} should be the default in \code{paste} \bold{[not fixed]};
+#'     \code{sep=""} should be the default in \code{paste} \bold{[not fixed]}
 #' \item \code{paste0} treats the named argument \code{sep="..."} as one
 #'     more vector to concatenate
-#'     \bold{[fixed by introducing \code{sep} argument]};
+#'     \bold{[fixed by introducing \code{sep} argument]}
 #' \item overloading \code{`+.character`} has no effect in R, because S3
 #'     method dispatch is done internally with hard-coded support for
 #'     character arguments. We could have replaced the generic \code{`+`}
@@ -66,7 +66,7 @@
 #'     PHP's or Perl's \code{`.`}) which always coerces to character
 #'     frees the user from manual coercion (is it such a burden on the other
 #'     hand?)
-#'     \bold{[fixed by introducing \code{`\%x+\%`} operator]};
+#'     \bold{[fixed by introducing \code{`\%x+\%`} operator]}
 #' }
 #'
 #' It should also be noted that \code{paste} with \code{collapse=NULL} is a

@@ -39,17 +39,17 @@ and the way we have addressed them here:
 
 \itemize{
 \item partial recycling with no warning "longer object length is not
-    a multiple of shorter object length" \bold{[fixed here]};
+    a multiple of shorter object length" \bold{[fixed here]}
 \item base \code{strrep} seems to preserve only the \code{names} attribute,
     and only if the input is of type character
     (whilst \code{paste} preserves nothing)
-    \bold{[fixed]};
+    \bold{[fixed]}
 \item overloading \code{`*.character`} has no effect in R, because S3
     method dispatch is done internally with hard-coded support for
     character arguments. We could have replaced the generic \code{`*`}
     with the one that calls \code{\link[base]{UseMethod}}, but
     it feels like a too intrusive solution
-    \bold{[fixed by introducing \code{`\%x+\%`} operator]};
+    \bold{[fixed by introducing \code{`\%x+\%`} operator]}
 }
 }
 \examples{

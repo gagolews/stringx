@@ -50,21 +50,21 @@
 #' \itemize{
 #' \item formatting/parsing date-time in different locales and calendars
 #'     is difficult and non-portable across platforms
-#'     \bold{[fixed here - using services provided by ICU]};
+#'     \bold{[fixed here -- using services provided by ICU]}
 #' \item default format not conforming to ISO 8601, in particular not
 #'     displaying the current time zone
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item only the names attribute in \code{x} is propagated
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item partial recycling with no warning
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item \code{strptime} returns an object of class \code{POSIXlt},
 #'     which is not the most convenient to work with, e.g., when
 #'     including in data frames
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item \code{strftime} does not honour the \code{tzone} attribute,
 #'     which is used whilst displaying time (via \code{\link[base]{format}})
-#'     \bold{[not fixed here]};
+#'     \bold{[not fixed here]}
 #' }
 #'
 #'

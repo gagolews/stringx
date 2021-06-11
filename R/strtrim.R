@@ -35,13 +35,13 @@
 #'
 #' \itemize{
 #' \item both arguments are not recycled in an usual manner
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item missing values are not allowed in \code{width}
-#'     \bold{[fixed here]};
+#'     \bold{[fixed here]}
 #' \item some emojis, combining characters and modifiers (e.g., skin tones)
-#'    are not recognised properly \bold{[fixed here]};
+#'    are not recognised properly \bold{[fixed here]}
 #' \item attributes are only propagated from the 1st argument
-#'     \bold{[fixed]};
+#'     \bold{[fixed]}
 #' }
 #'
 #'

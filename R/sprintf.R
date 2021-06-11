@@ -41,24 +41,24 @@
 #' \itemize{
 #' \item missing values in \code{...} are treated as \code{"NA"} strings
 #'     \bold{[fixed in \code{sprintf}, left in \code{printf}, but see the
-#'     \code{na_string} argument]};
+#'     \code{na_string} argument]}
 #' \item partial recycling results in an error
-#'     \bold{[fixed here - warning given]};
+#'     \bold{[fixed here -- warning given]}
 #' \item input objects' attributes are not preserved
-#'     \bold{[not fixed, somewhat tricky]};
-#' \item in to-string conversions, field widths and precisions are interpreted as
-#'     bytes which is of course problematic for text in UTF-8
-#'    \bold{[fixed by interpreting these as Unicode code point widths]};
+#'     \bold{[not fixed, somewhat tricky]}
+#' \item in to-string conversions, field widths and precisions are
+#'     interpreted as bytes which is of course problematic for text in UTF-8
+#'    \bold{[fixed by interpreting these as Unicode code point widths]}
 #' \item \code{fmt} is limited to 8192 bytes and the number of arguments
 #'     passed via \code{...} to 99 (note that we can easily
 #'     exceed this limit by using \code{\link[base]{do.call}})
-#'     \bold{[rewritten from scratch, there is no limit anymore]};
+#'     \bold{[rewritten from scratch, there is no limit anymore]}
 #' \item unused values in {...} are evaluated anyway (should not evaluation be
 #'     lazy?)
 #'     \bold{[not fixed here because this is somewhat questionable;
 #'     in both base R and our case, a warning is given if this is the case;
 #'     moreover, the length of the longest argument always
-#'     determines the length of the output]};
+#'     determines the length of the output]}
 #' \item coercion of each argument can only be done once
 #'     \bold{[fixed here - can coerce to integer, real, and character]}
 #' \item either width or precision can be fetched from \code{...},
