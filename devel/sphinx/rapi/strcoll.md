@@ -79,9 +79,15 @@ Related function(s): [`xtfrm`](sort.md)
 
 ## Examples
 
+
+
+
 ```r
 # lexicographic vs. numeric sort
 strcoll("100", c("1", "10", "11", "99", "100", "101", "1000"))
+## [1]  1  1 -1 -1  0 -1 -1
 strcoll("100", c("1", "10", "11", "99", "100", "101", "1000"), numeric=TRUE)
+## [1]  1  1  1  1  0 -1 -1
 strcoll("hladn\u00FD", "chladn\u00FD", locale="sk_SK")
+## [1] -1
 ```

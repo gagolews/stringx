@@ -2,11 +2,27 @@
 % Please edit documentation in R/sort.R
 \name{xtfrm}
 \alias{xtfrm}
-\alias{sort.character}
+\alias{xtfrm.default}
 \alias{xtfrm.character}
-\title{Compare Strings...............}
+\alias{sort.character}
+\title{Sort Strings}
 \usage{
 xtfrm(x, ...)
+
+\method{xtfrm}{default}(x, ...)
+
+\method{xtfrm}{character}(
+  x,
+  locale = NULL,
+  strength = 3L,
+  alternate_shifted = FALSE,
+  french = FALSE,
+  uppercase_first = NA,
+  case_level = FALSE,
+  normalisation = FALSE,
+  numeric = FALSE,
+  ...
+)
 
 \method{sort}{character}(
   x,
@@ -19,30 +35,14 @@ xtfrm(x, ...)
   uppercase_first = NA,
   case_level = FALSE,
   normalisation = FALSE,
-  numeric = FALSE
-)
-
-\method{xtfrm}{character}(
-  x,
-  locale = NULL,
-  strength = 3L,
-  alternate_shifted = FALSE,
-  french = FALSE,
-  uppercase_first = NA,
-  case_level = FALSE,
-  normalisation = FALSE,
-  numeric = FALSE
+  numeric = FALSE,
+  ...
 )
 }
 \arguments{
 \item{x}{character vector whose elements are to be sorted}
 
-\item{decreasing}{single logical value; if \code{FALSE}, the ordering
-is nondecreasing (weakly increasing)}
-
-\item{na.last}{single logical value; if \code{TRUE}, then missing values
-are placed at the end; if \code{FALSE}, they are put at the beginning;
-if \code{NA}, then they are removed from the output whatsoever.}
+\item{...}{further arguments passed to other methods}
 
 \item{locale}{see \code{\link[stringi]{stri_opts_collator}}}
 
@@ -59,49 +59,84 @@ if \code{NA}, then they are removed from the output whatsoever.}
 \item{normalisation}{see \code{\link[stringi]{stri_opts_collator}}}
 
 \item{numeric}{see \code{\link[stringi]{stri_opts_collator}}}
+
+\item{decreasing}{single logical value; if \code{FALSE}, the ordering
+is nondecreasing (weakly increasing)}
+
+\item{na.last}{single logical value; if \code{TRUE}, then missing values
+are placed at the end; if \code{FALSE}, they are put at the beginning;
+if \code{NA}, then they are removed from the output whatsoever.}
 }
 \value{
-...
+\code{sort.character} returns a character vector, with only
+the \code{names} attribute preserved. Note that the output vector
+may be shorter than the input one.
+
+\code{xtfrm.character} returns an integer vector;
+most attributes are preserved.
 }
 \description{
-...
+The \code{sort} method for objects of class \code{character}
+(\code{sort.character}) uses the locale-sensitive Unicode collation
+algorithm to arrange strings in a vector in a lexicographic order.
+\code{xtfrm} (TODO: does anyone know what does this name stand for?)
+generates an integer vector that sorts in the same way
+as its input, and hence can be used in conjunction with
+\code{\link[base]{order}} or \code{\link[base]{rank}}.
 }
 \details{
-.....Replacements for base \link[base]{Comparison} operators
-implemented with \code{\link[stringi]{stri_rank}}.
-\code{\link[stringi]{stri_sort}}
-
-order, rank - no - show example what to use....
-
-we need to overload the built-in C-level dispatcher
-because it only supports 1 argument and does not recognise
-the method overloaded for objects of class 'character'.....
+Replacements for the default S3 methods \code{\link[base]{sort}}
+and \code{\link[base]{xtfrm}} for character vectors
+implemented with \code{\link[stringi]{stri_sort}}
+and \code{\link[stringi]{stri_rank}}.
 
 Inconsistencies in base R and the way we have addressed them here:
 
 \itemize{
-\item collation in different locales is difficult and non-portable across
+\item Collation in different locales is difficult and non-portable across
     platforms
     \bold{[fixed here -- using services provided by ICU]}
-\item overloading \code{`xtfrm.character`} has no effect in R, because S3
+\item Overloading \code{xtfrm.character} has no effect in R, because S3
     method dispatch is done internally with hard-coded support for
     character arguments. Thus, we needed to replace the generic
-    \code{`xtfrm`} with the one that calls \code{\link[base]{UseMethod}}
+    \code{xtfrm} with the one that calls \code{\link[base]{UseMethod}}
     \bold{[fixed here]}
-\item order has na.last=TRUE, sort removes NA.....
-\item \code{`xtfrm`} does not support customisation of the linear ordering
+\item \code{xtfrm} does not support customisation of the linear ordering
     relation it is based upon
     \bold{[fixed by introducing \code{...} argument to the generic]}
+\item Neither \code{\link[base]{order}}, \code{\link[base]{rank}}, nor
+    \code{\link[base]{sort.list}} is a generic, therefore
+    they should have to be rewritten from scratch to allow the inclusion of
+    our patches; interestingly, \code{order} even calls \code{xtfrm},
+    but only for classed objects
+    \bold{[not fixed here -- see Examples for a workaround]}
+\item \code{xtfrm} for objects of type \code{character}
+    does not preserve the names attribute (but does so for \code{numeric})
+    \bold{[fixed here]}
+\item \code{sort} seems to preserve only the names attribute
+    which makes sense if \code{na.last} is \code{NA}, because the resulting
+    vector might be shorter
+    \bold{[not fixed here as it would break compatibility with other
+    sorting methods]}
+\item Note that \code{sort} by default removes missing values whatsoever,
+    whereas \code{\link[base]{order}} has \code{na.last=TRUE}
+    \bold{[not fixed here as it would break compatibility with other
+    sorting methods]}
 }
 }
 \examples{
-# ...
-# order, rank examples too also with dfs...
-library("stringx")
-x <- c("1", "10", "11", "99", "100", "101", "1000")
-base::sort.default(x)
-sort(x, numeric=TRUE)  # calls stringx::sort.character
-xtfrm(x, numeric=TRUE)
+x <- c("a1", "a100", "a101", "a1000", "a10", "a10", "a11", "a99", "a10", "a1")
+base::sort.default(x)   # lexicographic sort
+sort(x, numeric=TRUE)   # calls stringx:::sort.character
+xtfrm(x, numeric=TRUE)  # calls stringx:::xtfrm.character
+
+rank(xtfrm(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
+order(xtfrm(x, numeric=TRUE))    # ordering permutation
+x[order(xtfrm(x, numeric=TRUE))] # equivalent to sort()
+
+# order a data frame w.r.t. decreasing ids and increasing vals
+d <- data.frame(vals=round(runif(length(x)), 1), ids=x)
+d[order(-xtfrm(d[["ids"]], numeric=TRUE), d[["vals"]]), ]
 
 
 }

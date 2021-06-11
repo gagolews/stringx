@@ -13,6 +13,10 @@ problems at a design/API level:
 * argument/function naming
 * some functions are redundant (e.g., paste0 vs paste, substring vs substr,
 casefold) - some for "compatibility with S" which might have been important two decades ago
+* some functions are advertised as s3 generics, but method dispatch and
+methods for class character are hard-coded at C-level and therefore
+cannot be overloaded (unless a generic is replaced with the one calling
+UseMethod - e.g., operators like <, xtfrm
 
 typical problems:
 * recycling rule (full with warning, full no warning, only one argument etc.)
@@ -82,6 +86,7 @@ like `attributes<-`(as.character(x), attributes(x))
 * [NEW FEATURE] `trimws`.
 * [NEW FEATURE] `startsWith`, `endsWith`.
 * [NEW FEATURE] `strcoll`, `%x==%`, `%x!=%`, `%x<%`, `%x<=%`, `%x>%`, `%x>=%`.
+* [NEW FEATURE] `xtfrm`, `sort`.
 * [NEW FEATURE] ..substr, substring + replacement
 * [NEW FEATURE] ..gregexpr
 * [NEW FEATURE] ..grepl
@@ -89,7 +94,6 @@ like `attributes<-`(as.character(x), attributes(x))
 * [NEW FEATURE] ..regexec, gregexec
 * [NEW FEATURE] ..sub, gsub
 * [NEW FEATURE] ..strsplit
-xtfrm
 iconv, iconvlist
 readLines, writeLines, ??
 strwrap

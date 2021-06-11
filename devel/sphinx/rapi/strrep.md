@@ -53,15 +53,36 @@ Related function(s): [`paste`](paste.md), [`sprintf`](sprintf.md)
 
 ## Examples
 
+
+
+
 ```r
 x <- structure(c(A="a", B=NA, C="c"), attrib1="value1")
 x %x*% 3
+##     A     B     C 
+## "aaa"    NA "ccc" 
+## attr(,"attrib1")
+## [1] "value1"
 x %x*% 1:3
+##     A     B     C 
+##   "a"    NA "ccc" 
+## attr(,"attrib1")
+## [1] "value1"
 "a" %x*% 1:3
+## [1] "a"   "aa"  "aaa"
 stringx::strrep(x, 3)
+##     A     B     C 
+## "aaa"    NA "ccc" 
+## attr(,"attrib1")
+## [1] "value1"
 base::strrep(x, 3)
+##     A     B     C 
+## "aaa"    NA "ccc"
 y <- matrix(1:6, nrow=2, dimnames=list(c("A", "B"), NULL))
 y %x*% 1:2
+## [1] "1"  "22" "3"  "44" "5"  "66"
 stringx::strrep(y, 1:2)
+## [1] "1"  "22" "3"  "44" "5"  "66"
 base::strrep(y, 1:2)
+## [1] "1"  "22" "3"  "44" "5"  "66"
 ```

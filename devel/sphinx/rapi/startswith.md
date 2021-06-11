@@ -54,12 +54,22 @@ Related function(s): [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/bas
 
 ## Examples
 
+
+
+
 ```r
 stringx::startsWith("ababa", c("a", "ab", "aba", "baba", NA))
+## [1]  TRUE  TRUE  TRUE FALSE    NA
 outer(
     c("aba", "abb", "abc", "baba", "bac"),
     c("A", "B", "C"),
     stringx::endsWith,
     ignore.case=TRUE
 )
+##       [,1]  [,2]  [,3]
+## [1,]  TRUE FALSE FALSE
+## [2,] FALSE  TRUE FALSE
+## [3,] FALSE FALSE  TRUE
+## [4,]  TRUE FALSE FALSE
+## [5,] FALSE FALSE  TRUE
 ```
