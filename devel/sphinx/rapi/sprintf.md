@@ -67,28 +67,14 @@ Related function(s): [`paste`](paste.md), [`strrep`](strrep.md), [`strtrim`](str
 
 ## Examples
 
-
-
-
 ```r
 # UTF-8 number of bytes vs. Unicode code point width:
 l <- c("e", "e\u00b2", "\u03c0", "\u03c0\u00b2", "\U0001f602\U0001f603")
 r <- c(exp(1), exp(2), pi, pi^2, NaN)
 cat(base::sprintf("%8s=%+.3f", l, r), sep="\n")
-##        e=+2.718
-##      e²=+7.389
-##       π=+3.142
-##     π²=+9.870
-## 😂😃=NaN
 cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
-##        e=+2.718
-##       e²=+7.389
-##        π=+3.142
-##       π²=+9.870
-##     😂😃= NaN
+
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1623379312.384305 is 2021-06-11 12:41:52.
-## 2021-06-11 12:41:52 is 1623379312.384305 UNIX time.
 ```

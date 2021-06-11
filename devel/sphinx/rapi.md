@@ -9,6 +9,7 @@ rapi/chartr
 rapi/constants
 rapi/nchar
 rapi/paste
+rapi/sort
 rapi/sprintf
 rapi/startswith
 rapi/strcoll

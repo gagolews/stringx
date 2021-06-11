@@ -1,0 +1,105 @@
+# sort: Compare Strings\...\...\...\...\...
+
+## Description
+
+\...
+
+## Usage
+
+```r
+xtfrm(x, ...)
+
+## S3 method for class 'character'
+sort(
+  x,
+  decreasing = FALSE,
+  na.last = NA,
+  locale = NULL,
+  strength = 3L,
+  alternate_shifted = FALSE,
+  french = FALSE,
+  uppercase_first = NA,
+  case_level = FALSE,
+  normalisation = FALSE,
+  numeric = FALSE
+)
+
+## S3 method for class 'character'
+xtfrm(
+  x,
+  locale = NULL,
+  strength = 3L,
+  alternate_shifted = FALSE,
+  french = FALSE,
+  uppercase_first = NA,
+  case_level = FALSE,
+  normalisation = FALSE,
+  numeric = FALSE
+)
+```
+
+## Arguments
+
+|                     |                                                                                                                                                                                   |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`                 | character vector whose elements are to be sorted                                                                                                                                  |
+| `decreasing`        | single logical value; if `FALSE`, the ordering is nondecreasing (weakly increasing)                                                                                               |
+| `na.last`           | single logical value; if `TRUE`, then missing values are placed at the end; if `FALSE`, they are put at the beginning; if `NA`, then they are removed from the output whatsoever. |
+| `locale`            | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+| `strength`          | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+| `alternate_shifted` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+| `french`            | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+| `uppercase_first`   | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+| `case_level`        | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+| `normalisation`     | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+| `numeric`           | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
+
+## Details
+
+\.....Replacements for base [Comparison](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Comparison.html) operators implemented with [`stri_rank`](https://stringi.gagolewski.com/rapi/stri_rank.html). [`stri_sort`](https://stringi.gagolewski.com/rapi/stri_sort.html)
+
+order, rank - no - show example what to use\....
+
+we need to overload the built-in C-level dispatcher because it only supports 1 argument and does not recognise the method overloaded for objects of class \'character\'\.....
+
+Inconsistencies in base R and the way we have addressed them here:
+
+-   collation in different locales is difficult and non-portable across platforms **\[fixed here -- using services provided by ICU\]**
+
+-   overloading `` `xtfrm.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. Thus, we needed to replace the generic `` `xtfrm` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html) **\[fixed here\]**
+
+-   order has na.last=TRUE, sort removes NA\.....
+
+-   `` `xtfrm` `` does not support customisation of the linear ordering relation it is based upon **\[fixed by introducing `...` argument to the generic\]**
+
+## Value
+
+\...
+
+## Author(s)
+
+[Marek Gagolewski](https://www.gagolewski.com/)
+
+## See Also
+
+The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
+
+Related function(s): [`strcoll`](strcoll.md)
+
+## Examples
+
+```{r echo=FALSE,warning=FALSE,message=FALSE,results='hide'}
+set.seed(123)
+library('stringx')
+```
+
+```{r sort,error=FALSE}
+# ...
+# order, rank examples too also with dfs...
+library("stringx")
+x <- c("1", "10", "11", "99", "100", "101", "1000")
+base::sort.default(x)
+sort(x, numeric=TRUE)  # calls stringx::sort.character
+xtfrm(x, numeric=TRUE)
+
+```

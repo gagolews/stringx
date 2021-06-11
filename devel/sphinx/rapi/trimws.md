@@ -48,15 +48,9 @@ Related function(s): [`sub`](https://stat.ethz.ch/R-manual/R-devel/library/base/
 
 ## Examples
 
-
-
-
 ```r
 base::trimws("NAAAAANA!!!NANAAAAA", whitespace=NA)  # stringx raises an error
-## [1] "NA!!!NA"
 x <- "   :)\v\u00a0 \n\r\t"
 base::trimws(x)
-## [1] ":)\v "
 stringx::trimws(x)
-## [1] ":)"
 ```

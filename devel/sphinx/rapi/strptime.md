@@ -67,27 +67,13 @@ Related function(s): [`sprintf`](sprintf.md)
 
 ## Examples
 
-
-
-
 ```r
 stringx::strftime(Sys.time())  # default format - ISO 8601
-## [1] "2021-06-11T12:41:52+1000"
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 stringx::strftime(Sys.time(), f)  # current default locale
-## [1] "Friday, 11 June 2021"                                                
-## [2] "2021-06-11"                                                          
-## [3] "today"                                                               
-## [4] "Friday, 11 June 2021 at 12:41:52 pm Australian Eastern Standard Time"
 stringx::strftime(Sys.time(), f, locale="de_DE")
-## [1] "Freitag, 11. Juni 2021"                                       
-## [2] "2021-06-11"                                                   
-## [3] "heute"                                                        
-## [4] "Freitag, 11. Juni 2021 um 12:41:52 Ostaustralische Normalzeit"
 stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1 Tamuz 5781"
 stringx::strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
-## [1] "1970-01-01 00:00:00 GMT"
 stringx::strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1943-04-19 12:41:52 AEST"
+
 ```

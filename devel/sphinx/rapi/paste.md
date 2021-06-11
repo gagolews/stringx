@@ -90,20 +90,38 @@ y1 <- structure(c(a=1, b=2, c=3), G="#", F="@")
 y2 <- structure(c(a=1, b=2, c=3, d=4), G="#", F="@")
 y3 <- structure(1:4, G="#", F="@", dim=c(2, 2), dimnames=list(NULL, c("a", "b")))
 x + y1
+```
+
+```
 ## Warning in x + y1: longer object length is not a multiple of shorter object
 ## length
+```
+
+```
 ##    x    y    z    w 
 ##    2   NA  103 1001 
 ## attr(,"F")
 ## [1] "*"
+```
+
+```r
 x + y2
+```
+
+```
 ##    x    y    z    w 
 ##    2   NA  103 1004 
 ## attr(,"G")
 ## [1] "#"
 ## attr(,"F")
 ## [1] "*"
+```
+
+```r
 x + y3
+```
+
+```
 ##       a    b
 ## [1,]  2  103
 ## [2,] NA 1004
@@ -111,45 +129,147 @@ x + y3
 ## [1] "#"
 ## attr(,"F")
 ## [1] "*"
+```
+
+```r
 y2 + x
+```
+
+```
 ##    a    b    c    d 
 ##    2   NA  103 1004 
 ## attr(,"F")
 ## [1] "@"
 ## attr(,"G")
 ## [1] "#"
+```
+
+```r
 base::paste(x, y1)
+```
+
+```
 ## [1] "1 1"    "NA 2"   "100 3"  "1000 1"
+```
+
+```r
 base::paste(x, y2)
+```
+
+```
 ## [1] "1 1"    "NA 2"   "100 3"  "1000 4"
+```
+
+```r
 base::paste(x, y3)
+```
+
+```
 ## [1] "1 1"    "NA 2"   "100 3"  "1000 4"
+```
+
+```r
 stringx::paste(x, y1)
+```
+
+```
 ## Warning in (function (..., sep = "", collapse = NULL, ignore_null = FALSE) :
 ## longer object length is not a multiple of shorter object length
+```
+
+```
 ## [1] "1 1"    NA       "100 3"  "1000 1"
+```
+
+```r
 stringx::paste(x, y2)
+```
+
+```
 ## [1] "1 1"    NA       "100 3"  "1000 4"
+```
+
+```r
 stringx::paste(x, y3)
+```
+
+```
 ## [1] "1 1"    NA       "100 3"  "1000 4"
+```
+
+```r
 base::paste(x, character(0), y2, sep=",")
+```
+
+```
 ## [1] "1,,1"    "NA,,2"   "100,,3"  "1000,,4"
+```
+
+```r
 stringx::paste(x, character(0), y2, sep=",")
+```
+
+```
 ## [1] "1,1"    NA       "100,3"  "1000,4"
+```
+
+```r
 x %x+% y1
+```
+
+```
 ## Warning in stringi::`%s+%`(e1, e2): longer object length is not a multiple of
 ## shorter object length
+```
+
+```
 ## [1] "11"    NA      "1003"  "10001"
+```
+
+```r
 x %x+% y2
+```
+
+```
 ## [1] "11"    NA      "1003"  "10004"
+```
+
+```r
 x %x+% y3
+```
+
+```
 ## [1] "11"    NA      "1003"  "10004"
+```
+
+```r
 y2 %x+% x
+```
+
+```
 ## [1] "11"    NA      "3100"  "41000"
+```
+
+```r
 x %x+% character(0)
+```
+
+```
 ## character(0)
+```
+
+```r
 strcat(x, collapse=",")
+```
+
+```
 ## [1] NA
+```
+
+```r
 strcat(x, collapse=",", na.rm=TRUE)
+```
+
+```
 ## [1] "1,100,1000"
 ```
