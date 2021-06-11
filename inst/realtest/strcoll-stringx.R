@@ -1,0 +1,22 @@
+E(strcoll('G\u00e4rtner', 'Gaertner', locale='de_DE@collation=phonebook', strength=1L), 0L)
+
+x0 <- c("a", NA, "c")  # attribs from x and y (x preferred)
+x <- structure(x0, names=c("A", "B", "C"), attrib1="value1")
+y <- structure(c(x="c", y="b", z="a"), attrib2="value2")
+E(x %x<%  y, x <  y)
+E(x %x<=% y, x <= y)
+E(x %x==% y, x == y)
+E(x %x!=% y, x != y)
+E(x %x>%  y, x >  y)
+E(x %x<=% y, x <= y)
+
+x0 <- c("a")  # attribs from x and y (x preferred)
+x <- structure(x0, names=c("A"), attrib1="value1")
+y <- structure(c(x="c", y="b", z="a"), attrib2="value2")
+E(x %x<%  y, x <  y)
+E(x %x<=% y, x <= y)
+E(x %x==% y, x == y)
+E(x %x!=% y, x != y)
+E(x %x>%  y, x >  y)
+E(x %x<=% y, x <= y)
+

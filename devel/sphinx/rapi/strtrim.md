@@ -25,13 +25,13 @@ Both arguments are recycled if necessary.
 
 Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
 
--   both arguments are not recycled in an usual manner **\[fixed here\]**;
+-   both arguments are not recycled in an usual manner **\[fixed here\]**
 
--   missing values are not allowed in `width` **\[fixed here\]**;
+-   missing values are not allowed in `width` **\[fixed here\]**
 
--   some emojis, combining characters and modifiers (e.g., skin tones) are not recognised properly **\[fixed here\]**;
+-   some emojis, combining characters and modifiers (e.g., skin tones) are not recognised properly **\[fixed here\]**
 
--   attributes are only propagated from the 1st argument **\[fixed\]**;
+-   attributes are only propagated from the 1st argument **\[fixed\]**
 
 ## Value
 

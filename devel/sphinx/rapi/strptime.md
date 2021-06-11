@@ -37,17 +37,17 @@ Replacements for base [`strptime`](https://stat.ethz.ch/R-manual/R-devel/library
 
 Inconsistencies/limitations in base R and the way we have addressed them:
 
--   formatting/parsing date-time in different locales and calendars is difficult and non-portable across platforms **\[fixed here - using services provided by ICU\]**;
+-   formatting/parsing date-time in different locales and calendars is difficult and non-portable across platforms **\[fixed here -- using services provided by ICU\]**
 
--   default format not conforming to ISO 8601, in particular not displaying the current time zone **\[fixed here\]**;
+-   default format not conforming to ISO 8601, in particular not displaying the current time zone **\[fixed here\]**
 
--   only the names attribute in `x` is propagated **\[fixed here\]**;
+-   only the names attribute in `x` is propagated **\[fixed here\]**
 
--   partial recycling with no warning **\[fixed here\]**;
+-   partial recycling with no warning **\[fixed here\]**
 
--   `strptime` returns an object of class `POSIXlt`, which is not the most convenient to work with, e.g., when including in data frames **\[fixed here\]**;
+-   `strptime` returns an object of class `POSIXlt`, which is not the most convenient to work with, e.g., when including in data frames **\[fixed here\]**
 
--   `strftime` does not honour the `tzone` attribute, which is used whilst displaying time (via [`format`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/format.html)) **\[not fixed here\]**;
+-   `strftime` does not honour the `tzone` attribute, which is used whilst displaying time (via [`format`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/format.html)) **\[not fixed here\]**
 
 ## Value
 
@@ -72,22 +72,22 @@ Related function(s): [`sprintf`](sprintf.md)
 
 ```r
 stringx::strftime(Sys.time())  # default format - ISO 8601
-## [1] "2021-06-10T16:48:52+1000"
+## [1] "2021-06-11T12:41:52+1000"
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 stringx::strftime(Sys.time(), f)  # current default locale
-## [1] "Thursday, 10 June 2021"                                               
-## [2] "2021-06-10"                                                           
-## [3] "today"                                                                
-## [4] "Thursday, 10 June 2021 at 4:48:52 pm Australian Eastern Standard Time"
+## [1] "Friday, 11 June 2021"                                                
+## [2] "2021-06-11"                                                          
+## [3] "today"                                                               
+## [4] "Friday, 11 June 2021 at 12:41:52 pm Australian Eastern Standard Time"
 stringx::strftime(Sys.time(), f, locale="de_DE")
-## [1] "Donnerstag, 10. Juni 2021"                                       
-## [2] "2021-06-10"                                                      
-## [3] "heute"                                                           
-## [4] "Donnerstag, 10. Juni 2021 um 16:48:52 Ostaustralische Normalzeit"
+## [1] "Freitag, 11. Juni 2021"                                       
+## [2] "2021-06-11"                                                   
+## [3] "heute"                                                        
+## [4] "Freitag, 11. Juni 2021 um 12:41:52 Ostaustralische Normalzeit"
 stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "30 Sivan 5781"
+## [1] "1 Tamuz 5781"
 stringx::strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
 ## [1] "1970-01-01 00:00:00 GMT"
 stringx::strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1943-04-19 16:48:52 AEST"
+## [1] "1943-04-19 12:41:52 AEST"
 ```

@@ -31,17 +31,17 @@ Note that the purpose of `printf` is to display a string, not to create a new on
 
 Inconsistencies/limitations in base R and the way we have addressed them:
 
--   missing values in `...` are treated as `"NA"` strings **\[fixed in `sprintf`, left in `printf`, but see the `na_string` argument\]**;
+-   missing values in `...` are treated as `"NA"` strings **\[fixed in `sprintf`, left in `printf`, but see the `na_string` argument\]**
 
--   partial recycling results in an error **\[fixed here - warning given\]**;
+-   partial recycling results in an error **\[fixed here -- warning given\]**
 
--   input objects\' attributes are not preserved **\[not fixed, somewhat tricky\]**;
+-   input objects\' attributes are not preserved **\[not fixed, somewhat tricky\]**
 
--   in to-string conversions, field widths and precisions are interpreted as bytes which is of course problematic for text in UTF-8 **\[fixed by interpreting these as Unicode code point widths\]**;
+-   in to-string conversions, field widths and precisions are interpreted as bytes which is of course problematic for text in UTF-8 **\[fixed by interpreting these as Unicode code point widths\]**
 
--   `fmt` is limited to 8192 bytes and the number of arguments passed via `...` to 99 (note that we can easily exceed this limit by using [`do.call`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/do.call.html)) **\[rewritten from scratch, there is no limit anymore\]**;
+-   `fmt` is limited to 8192 bytes and the number of arguments passed via `...` to 99 (note that we can easily exceed this limit by using [`do.call`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/do.call.html)) **\[rewritten from scratch, there is no limit anymore\]**
 
--   unused values in \... are evaluated anyway (should not evaluation be lazy?) **\[not fixed here because this is somewhat questionable; in both base R and our case, a warning is given if this is the case; moreover, the length of the longest argument always determines the length of the output\]**;
+-   unused values in \... are evaluated anyway (should not evaluation be lazy?) **\[not fixed here because this is somewhat questionable; in both base R and our case, a warning is given if this is the case; moreover, the length of the longest argument always determines the length of the output\]**
 
 -   coercion of each argument can only be done once **\[fixed here - can coerce to integer, real, and character\]**
 
@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1623307732.246761 is 2021-06-10 16:48:52.
-## 2021-06-10 16:48:52 is 1623307732.246761 UNIX time.
+## UNIX time 1623379312.384305 is 2021-06-11 12:41:52.
+## 2021-06-11 12:41:52 is 1623379312.384305 UNIX time.
 ```

@@ -38,19 +38,19 @@ Replacement for base [`paste`](https://stat.ethz.ch/R-manual/R-devel/library/bas
 
 Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
 
--   missing values treated as `"NA"` strings (it is a well-documented feature though) **\[fixed here\]**;
+-   missing values treated as `"NA"` strings (it is a well-documented feature though) **\[fixed here\]**
 
--   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**;
+-   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**
 
--   empty vectors are treated as vectors of empty strings **\[fixed here\]**;
+-   empty vectors are treated as vectors of empty strings **\[fixed here\]**
 
--   input objects\' attributes are not preserved **\[fixed only in `` `%x+%` `` operator\]**;
+-   input objects\' attributes are not preserved **\[fixed only in `` `%x+%` `` operator\]**
 
--   `paste0` multiplies entities without necessity; `sep=""` should be the default in `paste` **\[not fixed\]**;
+-   `paste0` multiplies entities without necessity; `sep=""` should be the default in `paste` **\[not fixed\]**
 
--   `paste0` treats the named argument `sep="..."` as one more vector to concatenate **\[fixed by introducing `sep` argument\]**;
+-   `paste0` treats the named argument `sep="..."` as one more vector to concatenate **\[fixed by introducing `sep` argument\]**
 
--   overloading `` `+.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `+` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but the dispatch would be done on the type of the first argument anyway (not to mention it feels like a too intrusive solution). Actually having a separate operator for concatenation (similar to PHP\'s or Perl\'s `` `.` ``) which always coerces to character frees the user from manual coercion (is it such a burden on the other hand?) **\[fixed by introducing `` `%x+%` `` operator\]**;
+-   overloading `` `+.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `+` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but the dispatch would be done on the type of the first argument anyway (not to mention it feels like a too intrusive solution). Actually having a separate operator for concatenation (similar to PHP\'s or Perl\'s `` `.` ``) which always coerces to character frees the user from manual coercion (is it such a burden on the other hand?) **\[fixed by introducing `` `%x+%` `` operator\]**
 
 It should also be noted that `paste` with `collapse=NULL` is a special case of `sprintf` (which is featured in many programming languages; R\'s version is of course vectorised). For instance, `paste(x, y, sep=",")` is equivalent to `sprintf("%s,%s", x, y)`.
 

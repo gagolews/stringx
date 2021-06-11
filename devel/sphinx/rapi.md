@@ -10,6 +10,8 @@ rapi/constants
 rapi/nchar
 rapi/paste
 rapi/sprintf
+rapi/startswith
+rapi/strcoll
 rapi/strptime
 rapi/strrep
 rapi/strtrim

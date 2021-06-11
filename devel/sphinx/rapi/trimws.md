@@ -26,9 +26,9 @@ Not to be confused with [`strtrim`](strtrim.md).
 
 Inconsistencies in/differences from base R:
 
--   the default `whitespace` argument does not reflect the \'contemporary\' definition of whitespaces (e.g., does not include zero-width spaces) **\[fixed here\]**;
+-   the default `whitespace` argument does not reflect the \'contemporary\' definition of whitespaces (e.g., does not include zero-width spaces) **\[fixed here\]**
 
--   base R implementation is not portable as it is based on the system PCRE library (e.g., some Unicode classes may not be available) **\[fixed here\]**;
+-   base R implementation is not portable as it is based on the system PCRE library (e.g., some Unicode classes may not be available) **\[fixed here\]**
 
 -   no sanity checks are performed on `whitespace` **\[fixed here\]**
 

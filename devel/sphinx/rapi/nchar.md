@@ -27,11 +27,11 @@ Replacement for base [`nchar`](https://stat.ethz.ch/R-manual/R-devel/library/bas
 
 Inconsistencies in base R and the way we have addressed them here:
 
--   `keepNA` does not default to `TRUE`, and hence missing values are treated as `"NA"` strings **\[fixed here\]**;
+-   `keepNA` does not default to `TRUE`, and hence missing values are treated as `"NA"` strings **\[fixed here\]**
 
--   some emojis, combining characters and modifiers (e.g., skin tones) are not recognised properly **\[fixed here\]**;
+-   some emojis, combining characters and modifiers (e.g., skin tones) are not recognised properly **\[fixed here\]**
 
--   only the `names` attribute is propagated **\[fixed here\]**;
+-   only the `names` attribute is propagated **\[fixed here\]**
 
 ## Value
 

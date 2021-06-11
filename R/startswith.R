@@ -39,7 +39,7 @@
 #' \item note that other pattern matching functions have a different argument
 #'     order, where the needle precedes the haystack
 #'     \bold{[not fixed here]}
-#' \item \code{\link[base]{grepl}} also has the \code{ignore.case} argument
+#' \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
 #'     \bold{[added here]}
 #' \item partial recycling without the usual warning
 #'     \bold{[fixed here]}
@@ -63,6 +63,12 @@
 #'
 #' @examples
 #' stringx::startsWith("ababa", c("a", "ab", "aba", "baba", NA))
+#' outer(
+#'     c("aba", "abb", "abc", "baba", "bac"),
+#'     c("A", "B", "C"),
+#'     stringx::endsWith,
+#'     ignore.case=TRUE
+#' )
 #'
 #' @seealso
 #' Related function(s): \code{\link{grepl}}, \code{\link{substring}}

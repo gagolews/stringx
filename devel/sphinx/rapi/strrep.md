@@ -29,11 +29,11 @@ The `` `%x*%` `` mimics a vectorised version of Python\'s `` `*` `` for strings 
 
 Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
 
--   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**;
+-   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**
 
--   base `strrep` seems to preserve only the `names` attribute, and only if the input is of type character (whilst `paste` preserves nothing) **\[fixed\]**;
+-   base `strrep` seems to preserve only the `names` attribute, and only if the input is of type character (whilst `paste` preserves nothing) **\[fixed\]**
 
--   overloading `` `*.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `*` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x+%` `` operator\]**;
+-   overloading `` `*.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `*` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x+%` `` operator\]**
 
 ## Value
 
