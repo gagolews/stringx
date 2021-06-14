@@ -70,7 +70,6 @@
 #' @seealso
 #' Related function(s): \code{\link{sub}}
 #'
-#' @export
 #' @rdname trimws
 trimws <- function(x, which="both", whitespace="\\p{Wspace}")
 {

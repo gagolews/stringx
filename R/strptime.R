@@ -119,7 +119,6 @@
 #' @seealso
 #' Related function(s): \code{\link{sprintf}}
 #'
-#' @export
 #' @rdname strptime
 strptime <- function(x, format, tz="", lenient=FALSE, locale=NULL)
 {
@@ -145,7 +144,6 @@ strptime <- function(x, format, tz="", lenient=FALSE, locale=NULL)
 }
 
 
-#' @export
 #' @rdname strptime
 strftime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", usetz=FALSE, ..., locale=NULL)
 {

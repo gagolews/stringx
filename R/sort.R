@@ -116,18 +116,17 @@
 #' @seealso
 #' Related function(s): \code{\link{strcoll}}
 #'
-#' @export
 #' @rdname sort
 xtfrm <- function(x, ...) UseMethod("xtfrm")
 # we need to overload the built-in C-level dispatcher
 # because it only supports 1 argument and does not recognise
 # the method overloaded for objects of class 'character'
 
-#' @export
+
 #' @rdname sort
 xtfrm.default <- function(x, ...) base::xtfrm.default(x)
 
-#' @export
+
 #' @rdname sort
 xtfrm.character <- function(
     x,
@@ -157,7 +156,6 @@ xtfrm.character <- function(
 }
 
 
-#' @export
 #' @rdname sort
 sort.character <- function(
     x,

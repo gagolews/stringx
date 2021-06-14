@@ -152,7 +152,6 @@
 #' @seealso
 #' Related function(s): \code{\link{strrep}}, \code{\link{sprintf}}
 #'
-#' @export
 #' @rdname paste
 paste <- function(..., sep=" ", collapse=NULL, recycle0=FALSE)
 {
@@ -169,7 +168,6 @@ paste <- function(..., sep=" ", collapse=NULL, recycle0=FALSE)
 }
 
 
-#' @export
 #' @rdname paste
 paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 {
@@ -178,7 +176,6 @@ paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 }
 
 
-#' @export
 #' @rdname paste
 `%x+%` <- function(e1, e2)
 {
@@ -189,7 +186,6 @@ paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 }
 
 
-#' @export
 #' @rdname paste
 strcat <- function(x, collapse="", na.rm=FALSE) {
     if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you

@@ -83,7 +83,6 @@
 #' Related function(s): \code{\link{sprintf}}, \code{\link{substring}},
 #'     \code{\link{strtrim}}
 #'
-#' @export
 #' @rdname nchar
 nchar <- function(x, type="chars", allowNA=FALSE, keepNA=TRUE)
 {
@@ -107,7 +106,6 @@ nchar <- function(x, type="chars", allowNA=FALSE, keepNA=TRUE)
 }
 
 
-#' @export
 #' @rdname nchar
 nzchar <- function(x, keepNA=TRUE)
 {

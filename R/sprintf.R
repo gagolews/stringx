@@ -110,7 +110,6 @@
 #' Related function(s): \code{\link{paste}}, \code{\link{strrep}},
 #' \code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}}
 #'
-#' @export
 #' @rdname sprintf
 sprintf <- function(fmt, ..., na_string=NA_character_)
 {
@@ -132,7 +131,6 @@ sprintf <- function(fmt, ..., na_string=NA_character_)
 }
 
 
-#' @export
 #' @rdname sprintf
 printf <- function(fmt, ..., file="", sep="\n", append=FALSE, na_string="NA")
 {

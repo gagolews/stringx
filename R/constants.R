@@ -53,7 +53,6 @@
 #' does not yield \code{letters_frak}.
 #'
 #' @format Decimal digits
-#' @export
 #' @rdname constants
 digits_dec <- c(
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
@@ -61,7 +60,6 @@ digits_dec <- c(
 
 
 #' @format Hexadecimal digits
-#' @export
 #' @rdname constants
 digits_hex <- c(
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
@@ -70,7 +68,6 @@ digits_hex <- c(
 
 
 #' @format Greek letters (lower case)
-#' @export
 #' @rdname constants
 letters_greek <- c(
     "\u03B1", "\u03B2", "\u03B3", "\u03B4", "\u03B5", "\u03B6",
@@ -81,7 +78,6 @@ letters_greek <- c(
 
 
 #' @format Greek letters (upper case)
-#' @export
 #' @rdname constants
 LETTERS_GREEK <- c(
     "\u0391", "\u0392", "\u0393", "\u0394", "\u0395", "\u0396",
@@ -92,7 +88,6 @@ LETTERS_GREEK <- c(
 
 
 #' @format Blackboard bold English letters (lower case)
-#' @export
 #' @rdname constants
 letters_bb <- c(
     "\U0001D552", "\U0001D553", "\U0001D554", "\U0001D555",
@@ -106,7 +101,6 @@ letters_bb <- c(
 
 
 #' @format Blackboard bold English letters (upper case)
-#' @export
 #' @rdname constants
 LETTERS_BB <- c(
     "\U0001D538", "\U0001D539", "\U00002102", "\U0001D53B",
@@ -120,7 +114,6 @@ LETTERS_BB <- c(
 
 
 #' @format Calligraphy (script) English letters (lower case)
-#' @export
 #' @rdname constants
 letters_cal <- c(
     "\U0001D4EA", "\U0001D4EB", "\U0001D4EC", "\U0001D4ED",
@@ -134,7 +127,6 @@ letters_cal <- c(
 
 
 #' @format Calligraphy (script) English letters (upper case)
-#' @export
 #' @rdname constants
 LETTERS_CAL <- c(
     "\U0001D4D0", "\U0001D4D1", "\U0001D4D2", "\U0001D4D3",
@@ -148,7 +140,6 @@ LETTERS_CAL <- c(
 
 
 #' @format Fraktur English letters (lower case)
-#' @export
 #' @rdname constants
 letters_frak <- c(
     "\U0001D586", "\U0001D587", "\U0001D588", "\U0001D589",
@@ -162,7 +153,6 @@ letters_frak <- c(
 
 
 #' @format Fraktur English letters (upper case)
-#' @export
 #' @rdname constants
 LETTERS_FRAK <- c(
     "\U0001D56C", "\U0001D56D", "\U0001D56E", "\U0001D56F",
@@ -176,7 +166,6 @@ LETTERS_FRAK <- c(
 
 
 #' @format Bold English letters (lower case)
-#' @export
 #' @rdname constants
 letters_bf <- c(
     "\U0001D41A", "\U0001D41B", "\U0001D41C", "\U0001D41D",
@@ -190,7 +179,6 @@ letters_bf <- c(
 
 
 #' @format Bold English letters (upper case)
-#' @export
 #' @rdname constants
 LETTERS_BF <- c(
     "\U0001D400", "\U0001D401", "\U0001D402", "\U0001D403",

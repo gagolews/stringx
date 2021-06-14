@@ -78,7 +78,6 @@
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{sprintf}}
 #'
-#' @export
 #' @rdname strrep
 strrep <- function(x, times)
 {
@@ -89,7 +88,6 @@ strrep <- function(x, times)
 }
 
 
-#' @export
 #' @rdname strrep
 `%x*%` <- function(e1, e2)
 {

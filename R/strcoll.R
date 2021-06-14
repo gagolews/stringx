@@ -82,7 +82,6 @@
 #' @seealso
 #' Related function(s): \code{\link{xtfrm}}
 #'
-#' @export
 #' @rdname strcoll
 strcoll <- function(
     e1,
@@ -114,7 +113,6 @@ strcoll <- function(
 }
 
 
-#' @export
 #' @rdname strcoll
 `%x<%` <- function(e1, e2)
 {
@@ -122,7 +120,6 @@ strcoll <- function(
 }
 
 
-#' @export
 #' @rdname strcoll
 `%x<=%` <- function(e1, e2)
 {
@@ -130,7 +127,6 @@ strcoll <- function(
 }
 
 
-#' @export
 #' @rdname strcoll
 `%x==%` <- function(e1, e2)
 {
@@ -138,7 +134,6 @@ strcoll <- function(
 }
 
 
-#' @export
 #' @rdname strcoll
 `%x!=%` <- function(e1, e2)
 {
@@ -146,7 +141,6 @@ strcoll <- function(
 }
 
 
-#' @export
 #' @rdname strcoll
 `%x>%` <- function(e1, e2)
 {
@@ -154,7 +148,6 @@ strcoll <- function(
 }
 
 
-#' @export
 #' @rdname strcoll
 `%x>=%` <- function(e1, e2)
 {

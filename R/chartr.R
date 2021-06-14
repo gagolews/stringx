@@ -87,7 +87,6 @@
 #' stringx::toupper('i', locale='en_US')
 #' stringx::toupper('i', locale='tr_TR')
 #'
-#' @export
 #' @rdname chartr
 strtrans <- function(x, transform)
 {
@@ -97,7 +96,6 @@ strtrans <- function(x, transform)
 }
 
 
-#' @export
 #' @rdname chartr
 chartr <- function(old, new, x)
 {
@@ -107,7 +105,6 @@ chartr <- function(old, new, x)
 }
 
 
-#' @export
 #' @rdname chartr
 tolower <- function(x, locale=NULL)
 {
@@ -117,7 +114,6 @@ tolower <- function(x, locale=NULL)
 }
 
 
-#' @export
 #' @rdname chartr
 toupper <- function(x, locale=NULL)
 {
@@ -127,7 +123,6 @@ toupper <- function(x, locale=NULL)
 }
 
 
-#' @export
 #' @rdname chartr
 casefold <- function(x, upper=NA)
 {

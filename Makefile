@@ -11,7 +11,7 @@ autoconf:
 	Rscript -e "\
 	    source('devel/roxygen2-patch.R');\
 	    roxygenise(\
-	        roclets=c('rd', 'collate', 'namespace', 'vignette')\
+	        roclets=c('rd', 'collate')\
 	    )"
 
 r: autoconf

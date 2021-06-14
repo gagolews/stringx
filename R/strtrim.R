@@ -76,7 +76,6 @@
 #' Related function(s): \code{\link{sprintf}}, \code{\link{substring}},
 #'     \code{\link{nchar}}
 #'
-#' @export
 #' @rdname strtrim
 strtrim <- function(x, width)
 {

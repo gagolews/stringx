@@ -73,7 +73,6 @@
 #' @seealso
 #' Related function(s): \code{\link{grepl}}, \code{\link{substring}}
 #'
-#' @export
 #' @rdname startswith
 startsWith <- function(x, prefix, ignore.case=FALSE)
 {
@@ -90,7 +89,6 @@ startsWith <- function(x, prefix, ignore.case=FALSE)
 }
 
 
-#' @export
 #' @rdname startswith
 endsWith <- function(x, suffix, ignore.case=FALSE)
 {
