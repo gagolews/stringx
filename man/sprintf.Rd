@@ -44,7 +44,7 @@ to create a new one for use elsewhere, therefore this function,
 as an exception, treats missing values as \code{"NA"} strings.
 
 
-Inconsistencies/limitations in base R and the way we have addressed them:
+Inconsistencies/limitations in/differences from base R:
 
 \itemize{
 \item missing values in \code{...} are treated as \code{"NA"} strings
@@ -97,7 +97,8 @@ stringx::printf(c("UNIX time \%1$f is \%1$s.", "\%1$s is \%1$f UNIX time."),
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{strrep}},
-\code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}}
+\code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}},
+\code{\link{strwrap}}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

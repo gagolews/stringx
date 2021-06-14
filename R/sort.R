@@ -79,7 +79,11 @@
 #'
 #' @param ... further arguments passed to other methods
 #'
-#' @param locale see \code{\link[stringi]{stri_opts_collator}}
+#' @param locale \code{NULL} or \code{""} for the default locale
+#'    (see \code{\link[stringi]{stri_locale_get}})
+#'    or a single string with a locale identifier,
+#'    see \code{\link[stringi]{stri_locale_list}}
+#'
 #' @param strength see \code{\link[stringi]{stri_opts_collator}}
 #' @param alternate_shifted see \code{\link[stringi]{stri_opts_collator}}
 #' @param french see \code{\link[stringi]{stri_opts_collator}}

@@ -44,7 +44,10 @@ xtfrm(x, ...)
 
 \item{...}{further arguments passed to other methods}
 
-\item{locale}{see \code{\link[stringi]{stri_opts_collator}}}
+\item{locale}{\code{NULL} or \code{""} for the default locale
+(see \code{\link[stringi]{stri_locale_get}})
+or a single string with a locale identifier,
+see \code{\link[stringi]{stri_locale_list}}}
 
 \item{strength}{see \code{\link[stringi]{stri_opts_collator}}}
 

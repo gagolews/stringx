@@ -55,7 +55,7 @@
 #' @param transform single string with ICU general transform
 #'     specifier, see \code{\link[stringi]{stri_trans_list}}
 #'
-#' @param locale \code{NULL} or \code{''} for the default locale
+#' @param locale \code{NULL} or \code{""} for the default locale
 #'    (see \code{\link[stringi]{stri_locale_get}})
 #'    or a single string with a locale identifier,
 #'    see \code{\link[stringi]{stri_locale_list}}

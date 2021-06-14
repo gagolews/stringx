@@ -45,20 +45,20 @@ sort(
 
 ## Arguments
 
-|                     |                                                                                                                                                                                   |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                 | character vector whose elements are to be sorted                                                                                                                                  |
-| `...`               | further arguments passed to other methods                                                                                                                                         |
-| `locale`            | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `strength`          | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `alternate_shifted` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `french`            | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `uppercase_first`   | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `case_level`        | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `normalisation`     | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `numeric`           | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                           |
-| `decreasing`        | single logical value; if `FALSE`, the ordering is nondecreasing (weakly increasing)                                                                                               |
-| `na.last`           | single logical value; if `TRUE`, then missing values are placed at the end; if `FALSE`, they are put at the beginning; if `NA`, then they are removed from the output whatsoever. |
+|                     |                                                                                                                                                                                                                                                            |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`                 | character vector whose elements are to be sorted                                                                                                                                                                                                           |
+| `...`               | further arguments passed to other methods                                                                                                                                                                                                                  |
+| `locale`            | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+| `strength`          | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+| `alternate_shifted` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+| `french`            | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+| `uppercase_first`   | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+| `case_level`        | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+| `normalisation`     | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+| `numeric`           | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+| `decreasing`        | single logical value; if `FALSE`, the ordering is nondecreasing (weakly increasing)                                                                                                                                                                        |
+| `na.last`           | single logical value; if `TRUE`, then missing values are placed at the end; if `FALSE`, they are put at the beginning; if `NA`, then they are removed from the output whatsoever.                                                                          |
 
 ## Details
 

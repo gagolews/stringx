@@ -36,7 +36,7 @@
 #' as an exception, treats missing values as \code{"NA"} strings.
 #'
 #'
-#' Inconsistencies/limitations in base R and the way we have addressed them:
+#' Inconsistencies/limitations in/differences from base R:
 #'
 #' \itemize{
 #' \item missing values in \code{...} are treated as \code{"NA"} strings
@@ -108,7 +108,8 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{strrep}},
-#' \code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}}
+#' \code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}},
+#' \code{\link{strwrap}}
 #'
 #' @rdname sprintf
 sprintf <- function(fmt, ..., na_string=NA_character_)

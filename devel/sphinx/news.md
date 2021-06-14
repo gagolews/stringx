@@ -87,16 +87,15 @@ like `attributes<-`(as.character(x), attributes(x))
 * [NEW FEATURE] `startsWith`, `endsWith`.
 * [NEW FEATURE] `strcoll`, `%x==%`, `%x!=%`, `%x<%`, `%x<=%`, `%x>%`, `%x>=%`.
 * [NEW FEATURE] `xtfrm`, `sort`.
+* [NEW FEATURE] `strwrap`.
+* [NEW FEATURE] ..strsplit
 * [NEW FEATURE] ..substr, substring + replacement
-* [NEW FEATURE] ..gregexpr
-* [NEW FEATURE] ..grepl
+* [NEW FEATURE] ..grep, grepl + grep2 etc.
+* [NEW FEATURE] ..sub, gsub
 * [NEW FEATURE] ..regexpr, gregexpr
 * [NEW FEATURE] ..regexec, gregexec
-* [NEW FEATURE] ..sub, gsub
-* [NEW FEATURE] ..strsplit
-iconv, iconvlist
-readLines, writeLines, ??
-strwrap
+* [NEW FEATURE] ..utils:::strcapture
+
 
 ## 0.0.0 (2021-05-07)
 

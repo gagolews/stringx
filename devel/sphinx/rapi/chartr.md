@@ -26,7 +26,7 @@ casefold(x, upper = NA)
 | `transform` | single string with ICU general transform specifier, see [`stri_trans_list`](https://stringi.gagolewski.com/rapi/stri_trans_list.html)                                                                                                                      |
 | `old`       | single string                                                                                                                                                                                                                                              |
 | `new`       | single string, preferably of the same length as `old`                                                                                                                                                                                                      |
-| `locale`    | `NULL` or `''` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+| `locale`    | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
 | `upper`     | single logical value; switches between case folding (the default, `NA`), lower-, and upper-case                                                                                                                                                            |
 
 ## Details

@@ -29,7 +29,7 @@ Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-devel/library/b
 
 Note that the purpose of `printf` is to display a string, not to create a new one for use elsewhere, therefore this function, as an exception, treats missing values as `"NA"` strings.
 
-Inconsistencies/limitations in base R and the way we have addressed them:
+Inconsistencies/limitations in/differences from base R:
 
 -   missing values in `...` are treated as `"NA"` strings **\[fixed in `sprintf`, left in `printf`, but see the `na_string` argument\]**
 
@@ -63,7 +63,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`paste`](paste.md), [`strrep`](strrep.md), [`strtrim`](strtrim.md), [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/substr.html), [`nchar`](nchar.md)
+Related function(s): [`paste`](paste.md), [`strrep`](strrep.md), [`strtrim`](strtrim.md), [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/substr.html), [`nchar`](nchar.md), [`strwrap`](strwrap.md)
 
 ## Examples
 
@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1623633642.893486 is 2021-06-14 11:20:42.
-## 2021-06-14 11:20:42 is 1623633642.893486 UNIX time.
+## UNIX time 1623664056.168297 is 2021-06-14 19:47:36.
+## 2021-06-14 19:47:36 is 1623664056.168297 UNIX time.
 ```
