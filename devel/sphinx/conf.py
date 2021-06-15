@@ -1,6 +1,5 @@
 # This file is part of the 'stringx' project.
-# Copyright (c) 2021, Marek Gagolewski <https://www.gagolewski.com>
-# All rights reserved.
+# Copyleft (C) 2021, Marek Gagolewski <https://www.gagolewski.com>
 
 import sphinx_rtd_theme
 import re

@@ -71,7 +71,7 @@ stringx::nchar(x, "width")
 \seealso{
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
-Related function(s): \code{\link{sprintf}}, \code{\link{substring}},
+Related function(s): \code{\link{sprintf}}, \code{\link{substr}},
     \code{\link{strtrim}}
 }
 \author{

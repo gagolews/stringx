@@ -44,7 +44,7 @@
 #'     character arguments. We could have replaced the generic \code{`<`}
 #'     with the one that calls \code{\link[base]{UseMethod}}, but
 #'     it feels like a too intrusive solution
-#'     \bold{[fixed by introducing \code{`\%x<\%`} operator]}
+#'     \bold{[fixed by introducing the \code{`\%x<\%`} operator]}
 #' }
 #'
 #'

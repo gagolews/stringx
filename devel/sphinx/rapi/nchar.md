@@ -47,7 +47,7 @@ Inconsistencies in base R and the way we have addressed them here:
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`sprintf`](sprintf.md), [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/substr.html), [`strtrim`](strtrim.md)
+Related function(s): [`sprintf`](sprintf.md), [`substr`](substr.md), [`strtrim`](strtrim.md)
 
 ## Examples
 

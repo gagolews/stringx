@@ -81,14 +81,15 @@ strwrap(paste0(
     strrep("az ", 20),
     strrep("\u0105\u20AC ", 20),
     strrep("\U0001F643 ", 20),
-    strrep("\U0001F3F3\U0000FE0F\U0000200D\U0001F308 ", 20)
+    strrep("\U0001F926\U0000200D\U00002642\U0000FE0F ", 20)
 ), width=60)
 
 
 }
 \references{
 D.E. Knuth, M.F. Plass,
-Breaking paragraphs into lines, \emph{Software: Practice and Experience} 11(11),
+Breaking paragraphs into lines,
+\emph{Software: Practice and Experience} 11(11),
 1981, pp. 1119--1184.
 }
 \seealso{

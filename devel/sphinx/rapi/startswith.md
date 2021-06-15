@@ -50,7 +50,7 @@ Each function returns a logical vector, indicating whether a pattern match has b
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html), [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/substr.html)
+Related function(s): [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html), [`substr`](substr.md)
 
 ## Examples
 

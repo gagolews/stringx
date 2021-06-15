@@ -22,7 +22,7 @@ as `paste`, `gregexpr`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
 
 *   work in the same way on every platform,
 *   support a wide range of languages and scripts,
-*   fix some annoying and long-standing inconsistencies in the base R functions
+*   fix some long-standing inconsistencies in the base R functions
     (they are thoroughly documented in this online manual, happy reading!).
 
 Also, a few new operations are introduced.

@@ -22,7 +22,7 @@
 
 * work in the same way on every platform,
 * support a wide range of languages and scripts,
-* fix some annoying inconsistencies in the base R functions
+* fix some long-standing inconsistencies in the base R functions
   (which are pointed out in the package
   [manual](https://stringx.gagolewski.com)).
 

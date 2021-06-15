@@ -17,5 +17,6 @@ rapi/strptime
 rapi/strrep
 rapi/strtrim
 rapi/strwrap
+rapi/substr
 rapi/trimws
 ```

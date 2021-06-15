@@ -88,8 +88,8 @@ like `attributes<-`(as.character(x), attributes(x))
 * [NEW FEATURE] `strcoll`, `%x==%`, `%x!=%`, `%x<%`, `%x<=%`, `%x>%`, `%x>=%`.
 * [NEW FEATURE] `xtfrm`, `sort`.
 * [NEW FEATURE] `strwrap`.
+* [NEW FEATURE] `substr`, `substring`, `substr<-`, `substring<-`.
 * [NEW FEATURE] ..strsplit
-* [NEW FEATURE] ..substr, substring + replacement
 * [NEW FEATURE] ..grep, grepl + grep2 etc.
 * [NEW FEATURE] ..sub, gsub
 * [NEW FEATURE] ..regexpr, gregexpr

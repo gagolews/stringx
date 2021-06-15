@@ -45,7 +45,7 @@ Returns a character vector (in UTF-8). Preserves object attributes in a similar 
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`sprintf`](sprintf.md), [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/substr.html), [`nchar`](nchar.md)
+Related function(s): [`sprintf`](sprintf.md), [`substr`](substr.md), [`nchar`](nchar.md)
 
 ## Examples
 

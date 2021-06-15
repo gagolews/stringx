@@ -1,0 +1,5 @@
+x <- c("spam, spam, bacon, and spam", "eggs and spam")
+E(substr(x, -4), c("spam", "spam"))
+E(substr(x, -4, -4), c("s", "s"))
+E(substr(x, -4, -5), c("", ""))
+E(`substr<-`(x, -4, -5, value="spammity "), c("spam, spam, bacon, and spammity spam", "eggs and spammity spam"))

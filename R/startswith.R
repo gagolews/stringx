@@ -71,7 +71,7 @@
 #' )
 #'
 #' @seealso
-#' Related function(s): \code{\link{grepl}}, \code{\link{substring}}
+#' Related function(s): \code{\link{grepl}}, \code{\link{substr}}
 #'
 #' @rdname startswith
 startsWith <- function(x, prefix, ignore.case=FALSE)

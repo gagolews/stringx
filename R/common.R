@@ -160,3 +160,22 @@
     ret
 }
 
+
+.attribs_propagate_nary <- function(ret, ...)
+{
+    # TODO: rewrite in C
+
+    if (length(ret) == 0) return(ret)
+
+    aret <- list()
+    for (e in rev(list(...))) {  # from right to left
+        if (length(e) == length(ret)) {
+            ae <- attributes(e)
+            for (n in names(ae))
+                aret[[n]] <- ae[[n]]  # left-most overwrite right-most ones
+        }
+    }
+    mostattributes(ret) <- aret
+
+    ret
+}

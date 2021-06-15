@@ -108,7 +108,7 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{strrep}},
-#' \code{\link{strtrim}}, \code{\link{substring}}, \code{\link{nchar}},
+#' \code{\link{strtrim}}, \code{\link{substr}}, \code{\link{nchar}},
 #' \code{\link{strwrap}}
 #'
 #' @rdname sprintf

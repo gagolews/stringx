@@ -59,7 +59,7 @@ Inconsistencies in base R and the way we have addressed them here:
 
 -   collation in different locales is difficult and non-portable across platforms **\[fixed here -- using services provided by ICU\]**
 
--   overloading `` `<.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `<` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x<%` `` operator\]**
+-   overloading `` `<.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `<` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing the `` `%x<%` `` operator\]**
 
 ## Value
 
