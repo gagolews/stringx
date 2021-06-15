@@ -14,30 +14,32 @@ nzchar(x, keepNA = TRUE)
 
 ## Arguments
 
-|           |                                                                                                                            |
-|-----------|----------------------------------------------------------------------------------------------------------------------------|
-| `x`       | character vector or an object coercible to                                                                                 |
-| `type`    | `"chars"` gives the number of code points, `"width"` estimates the string width, `"bytes"` computes the number of bytes    |
-| `allowNA` | not used                                                                                                                   |
-| `keepNA`  | if `FALSE`, missing values will be treated as `"NA"` strings; otherwise, the corresponding outputs will be missing as well |
+|           |                                                                                                                                           |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`       | character vector or an object coercible to                                                                                                |
+| `type`    | `"chars"` gives the number of code points, `"width"` estimates the string width, `"bytes"` computes the number of bytes                   |
+| `allowNA` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                           |
+| `keepNA`  | if `FALSE`, missing values will be treated as `"NA"` strings; otherwise, the corresponding outputs will be missing as well \[DEPRECATED\] |
 
 ## Details
 
-Replacement for base [`nchar`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/nchar.html) and [`nzchar`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/nzchar.html) implemented with [`stri_length`](https://stringi.gagolewski.com/rapi/stri_length.html), [`stri_width`](https://stringi.gagolewski.com/rapi/stri_width.html), [`stri_numbytes`](https://stringi.gagolewski.com/rapi/stri_numbytes.html), and [`stri_isempty`](https://stringi.gagolewski.com/rapi/stri_isempty.html)
-
-Inconsistencies in base R and the way we have addressed them here:
-
--   `keepNA` does not default to `TRUE`, and hence missing values are treated as `"NA"` strings **\[fixed here\]**
-
--   some emojis, combining characters and modifiers (e.g., skin tones) are not recognised properly **\[fixed here\]**
-
--   only the `names` attribute is propagated **\[fixed here\]**
+String width might be useful when displaying text using a monospaced font.
 
 ## Value
 
 `nchar` returns an integer vector.
 
 `nzchar` returns a logical vector, where `TRUE` indicates that the corresponding string is of non-zero length (i.e., non-empty).
+
+## Differences from base R
+
+Replacement for base [`nchar`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/nchar.html) and [`nzchar`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/nzchar.html) implemented with [`stri_length`](https://stringi.gagolewski.com/rapi/stri_length.html), [`stri_width`](https://stringi.gagolewski.com/rapi/stri_width.html), [`stri_numbytes`](https://stringi.gagolewski.com/rapi/stri_numbytes.html), and [`stri_isempty`](https://stringi.gagolewski.com/rapi/stri_isempty.html).
+
+-   `keepNA` does not default to `TRUE`, and hence missing values are treated as `"NA"` strings **\[fixed here\]**
+
+-   some emojis, combining characters and modifiers (e.g., skin tones) are not recognised properly **\[fixed here\]**
+
+-   only the `names` attribute is propagated **\[fixed here\]**
 
 ## Author(s)
 

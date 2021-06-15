@@ -2,7 +2,7 @@
 
 ## Description
 
-Splits each string into words which are then arranged to form text lines of no more of a given width. Might be useful when displaying strings using a monospaced font.
+Splits each string into words which are then arranged to form text lines of no more of a given width.
 
 ## Usage
 
@@ -34,9 +34,19 @@ strwrap(
 
 ## Details
 
-Replacement for base [`strwrap`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strwrap.html) implemented with [`stri_wrap`](https://stringi.gagolewski.com/rapi/stri_wrap.html).
+Might be useful when displaying strings using a monospaced font.
 
-Inconsistencies/limitations in/differences from base R:
+## Value
+
+If `simplify` is `FALSE`, a list of `length(x)` numeric vectors is returned.
+
+Otherwise, the function yields a character vector (in UTF-8). Note that the length of the output may be different than that of the input.
+
+Due to this, no attributes are preserved.
+
+## Differences from base R
+
+Replacement for base [`strwrap`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strwrap.html) implemented with [`stri_wrap`](https://stringi.gagolewski.com/rapi/stri_wrap.html).
 
 -   missing values not propagated **\[fixed here\]**
 
@@ -47,14 +57,6 @@ Inconsistencies/limitations in/differences from base R:
 -   multiple whitespaces between words are not preserved except after a dot, question mark, or exclamation mark, which leads to two spaces inserted **\[changed here -- any sequence of whitespaces considered word boundaries is converted to a single space\]**
 
 -   a greedy word wrap algorithm is used, which may lead to high raggedness **\[fixed here -- using the Knuth-Plass method\]**
-
-## Value
-
-If `simplify` is `FALSE`, a list of `length(x)` numeric vectors is returned.
-
-Otherwise, the function yields a character vector (in UTF-8). Note that the length of the output may be different than that of the input.
-
-Due to this, no attributes are preserved.
 
 ## Author(s)
 

@@ -2,7 +2,9 @@
 
 ## Description
 
-The `sort` method for objects of class `character` (`sort.character`) uses the locale-sensitive Unicode collation algorithm to arrange strings in a vector in a lexicographic order. `xtfrm` (TODO: does anyone know what does this name stand for?) generates an integer vector that sorts in the same way as its input, and hence can be used in conjunction with [`order`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html) or [`rank`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html).
+The `sort` method for objects of class `character` (`sort.character`) uses the locale-sensitive Unicode collation algorithm to arrange strings in a vector with regards to a chosen lexicographic order.
+
+`xtfrm` generates an integer vector that sorts in the same way as its input, and hence can be used in conjunction with [`order`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html) or [`rank`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html).
 
 ## Usage
 
@@ -62,9 +64,17 @@ sort(
 
 ## Details
 
-Replacements for the default S3 methods [`sort`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sort.html) and [`xtfrm`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/xtfrm.html) for character vectors implemented with [`stri_sort`](https://stringi.gagolewski.com/rapi/stri_sort.html) and [`stri_rank`](https://stringi.gagolewski.com/rapi/stri_rank.html).
+What \'xtfrm\' stands for, the current author knows not, but would appreciate someone\'s enlightening him.
 
-Inconsistencies in base R and the way we have addressed them here:
+## Value
+
+`sort.character` returns a character vector, with only the `names` attribute preserved. Note that the output vector may be shorter than the input one.
+
+`xtfrm.character` returns an integer vector; most attributes are preserved.
+
+## Differences from base R
+
+Replacements for the default S3 methods [`sort`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sort.html) and [`xtfrm`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/xtfrm.html) for character vectors implemented with [`stri_sort`](https://stringi.gagolewski.com/rapi/stri_sort.html) and [`stri_rank`](https://stringi.gagolewski.com/rapi/stri_rank.html).
 
 -   Collation in different locales is difficult and non-portable across platforms **\[fixed here -- using services provided by ICU\]**
 
@@ -79,12 +89,6 @@ Inconsistencies in base R and the way we have addressed them here:
 -   `sort` seems to preserve only the names attribute which makes sense if `na.last` is `NA`, because the resulting vector might be shorter **\[not fixed here as it would break compatibility with other sorting methods\]**
 
 -   Note that `sort` by default removes missing values whatsoever, whereas [`order`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html) has `na.last=TRUE` **\[not fixed here as it would break compatibility with other sorting methods\]**
-
-## Value
-
-`sort.character` returns a character vector, with only the `names` attribute preserved. Note that the output vector may be shorter than the input one.
-
-`xtfrm.character` returns an integer vector; most attributes are preserved.
 
 ## Author(s)
 

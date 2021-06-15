@@ -40,12 +40,17 @@
 #'
 #'
 #' @details
+#' Note that the ISO 8601 guideline suggests a year-month-day
+#' date format and a 24-hour time format always indicating the effective
+#' time zone, e.g., \code{2015-12-31T23:59:59+0100}. This is so as to avoid
+#' ambiguity.
+#'
+#'
+#' @section Differences from base R:
 #' Replacements for base \code{\link[base]{strptime}}
 #' and \code{\link[base]{strftime}} implemented with
 #' \code{\link[stringi]{stri_datetime_parse}} and
 #' \code{\link[stringi]{stri_datetime_format}}.
-#'
-#' Inconsistencies/limitations in base R and the way we have addressed them:
 #'
 #' \itemize{
 #' \item formatting/parsing date-time in different locales and calendars
@@ -76,18 +81,17 @@
 #'    (see \code{\link[stringi]{stri_timezone_get}})
 #'    or a single string with a timezone identifier,
 #'    see \code{\link[stringi]{stri_timezone_list}};
-#'    note that even if \code{x} is equipped with \code{tzone} attribute,
+#'    note that even when \code{x} is equipped with \code{tzone} attribute,
 #'    this datum is not used
 #'
-#' @param usetz not used (with a warning if attempting to do so)
+#' @param usetz not used (with a warning if attempting to do so) [DEPRECATED]
 #'
 #' @param ... not used
 #'
 #' @param format character vector of date-time format specifiers,
 #'    see \code{\link[stringi]{stri_datetime_fstr}};
 #'    e.g., \code{"\%Y-\%m-\%d"} or \code{"datetime_full"};
-#'    the default conforms to the ISO 8601 guideline,
-#'    e.g., '2015-12-31T23:59:59+0100'
+#'    the default conforms to the ISO 8601 guideline
 #'
 #' @param locale \code{NULL} or \code{''} for the default locale
 #'    (see \code{\link[stringi]{stri_locale_get}})

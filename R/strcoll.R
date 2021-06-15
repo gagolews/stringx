@@ -23,17 +23,17 @@
 #' using the Unicode collation algorithm.
 #'
 #' @details
-#' Replacements for base \link[base]{Comparison} operators
-#' implemented with \code{\link[stringi]{stri_cmp}}.
-#'
-#' Arguments are recycled if necessary.
+#' These functions are fully vectorised with respect to both arguments.
 #'
 #' For a locale-insensitive behaviour like that of
 #' \code{strcmp} from the standard C library, call
 #' \code{strcoll(e1, e2, locale="C", strength=4L, normalisation=FALSE)}.
-#' However, still some normalisation will be performed.
+#' However, some normalisation will still be performed.
 #'
-#' Inconsistencies in base R and the way we have addressed them here:
+#'
+#' @section Differences from base R:
+#' Replacements for base \link[base]{Comparison} operators
+#' implemented with \code{\link[stringi]{stri_cmp}}.
 #'
 #' \itemize{
 #' \item collation in different locales is difficult and non-portable across

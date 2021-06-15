@@ -15,6 +15,7 @@ rapi/startswith
 rapi/strcoll
 rapi/strptime
 rapi/strrep
+rapi/strsplit
 rapi/strtrim
 rapi/strwrap
 rapi/substr

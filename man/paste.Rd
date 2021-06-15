@@ -42,22 +42,37 @@ A character vector (in UTF-8).
 \code{`\%x+\%`} preserves object attributes in a similar way as
 other \link[base]{Arithmetic} operators (however, they may be lost
 during \code{as.character(...)} conversion, which is an S3 generic).
+
 \code{strcat} is an aggregation function, therefore it
 preserves no attributes whatsoever.
+
 Currently, \code{paste} and \code{paste0} preserve no attributes too.
 }
 \description{
 Concatenate (join) the corresponding and/or consecutive elements of
 given vectors, after converting them to strings.
-
-Instead of \code{paste} and \code{paste0}, we recommend using
-\code{`\%x+\%`}, \code{sprintf}, and \code{strcat}.
 }
 \details{
+\code{`\%x+\%`} is an operator that concatenates corresponding
+strings from two character vectors (and which behaves just like
+the arithmetic \code{`+`} operator).
+
+\code{strcat} joins (aggregates based on string concatenation)
+consecutive strings in a character vector, possibly with
+a specified separator in place, into a single string.
+
+\code{paste} and \code{paste0}, concatenate a number
+of vectors using the same separator and then possibly join them into
+a single string. We recommend using
+\code{`\%x+\%`}, \code{\link{sprintf}}, and \code{strcat} instead
+(see below for discussion).
+}
+\section{Differences from base R}{
+
 Replacement for base \code{\link[base]{paste}}
 implemented with \code{\link[stringi]{stri_join}}.
 
-\code{paste} can be thought of as a string counterpart
+Note that \code{paste} can be thought of as a string counterpart
 of both the \code{`+`} operator (actually, some languages do have a binary
 operator for string concatenation, e.g., \code{`.`} in Perl and PHP,
 \code{`+`} (\code{str.__add__}) in Python; R should have it too,
@@ -66,9 +81,6 @@ but does not) which is additionally vectorised ('Map') and the
 Therefore, we would expect it to behave similarly with regards
 to the propagation of missing values and the preservation of object
 attributes, but it does not.
-
-Inconsistencies in base R (currently; we hope they will be fixed some day)
-and the way we have addressed them here:
 
 \itemize{
 \item missing values treated as \code{"NA"} strings (it is a well-documented
@@ -104,7 +116,8 @@ For instance, \code{paste(x, y, sep=",")}
 is equivalent to \code{sprintf("\%s,\%s", x, y)}.
 
 Taking into account the above, \code{paste} and \code{paste0} seem
-redundant. Here are our recommendations:
+redundant and hence we mark them as [DEPRECATED].
+Here are our recommendations:
 
 \itemize{
 \item the most frequent use case - concatenating corresponding
@@ -118,6 +131,7 @@ redundant. Here are our recommendations:
     (like 'Reduce'), use the new function \code{strcat}.
 }
 }
+
 \examples{
 # behaviour of `+` vs. base::paste vs. stringx::paste
 x <- structure(c(x=1, y=NA, z=100, w=1000), F="*")

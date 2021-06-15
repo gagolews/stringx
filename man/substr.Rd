@@ -35,23 +35,24 @@ Its replacement version modifies \code{x} in-place (see Examples).
 
 The attributes are copied from the longest arguments (similarly
 as in the case of binary operators).
+}
+\description{
+\code{substr} extracts
+contiguous parts of given character strings.
+Its replacement version allows for substituting them with new content.
+}
+\details{
+\code{substring} is a [DEPRECATED] synonym for \code{substr}.
 
 Note that these functions can break some meaningful Unicode code point
 sequences, e.g., when inputs are not normalised. For extracting
 initial parts of strings based on character width, see \code{\link{strtrim}}.
 }
-\description{
-\code{substr} (deprecated synonym: \code{substring}) extracts
-contiguous parts of given character strings.
-Its replacement version allows for substituting them with new content.
-}
-\details{
+\section{Differences from base R}{
+
 Replacement for base \code{\link[base]{substr}}
 and \code{\link[base]{substring}}
 implemented with \code{\link[stringi]{stri_sub}}.
-
-
-Inconsistencies in/differences from base R:
 
 \itemize{
 \item \code{substring} is "for compatibility with S", but this should
@@ -76,6 +77,7 @@ Inconsistencies in/differences from base R:
     length of extracted plus length of replacement]}
 }
 }
+
 \examples{
 x <- "spam, spam, bacon, and spam"
 base::substr(x, c(1, 13), c(4, 17))

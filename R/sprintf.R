@@ -28,15 +28,14 @@
 #'
 #'
 #' @details
-#' Replacement for base \code{\link[base]{sprintf}}
-#' implemented with \code{\link[stringi]{stri_sprintf}}.
-#'
 #' Note that the purpose of \code{printf} is to display a string, not
 #' to create a new one for use elsewhere, therefore this function,
 #' as an exception, treats missing values as \code{"NA"} strings.
 #'
 #'
-#' Inconsistencies/limitations in/differences from base R:
+#' @section Differences from base R:
+#' Replacement for base \code{\link[base]{sprintf}}
+#' implemented with \code{\link[stringi]{stri_sprintf}}.
 #'
 #' \itemize{
 #' \item missing values in \code{...} are treated as \code{"NA"} strings

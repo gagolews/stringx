@@ -4,8 +4,6 @@
 
 Concatenate (join) the corresponding and/or consecutive elements of given vectors, after converting them to strings.
 
-Instead of `paste` and `paste0`, we recommend using `` `%x+%` ``, `sprintf`, and `strcat`.
-
 ## Usage
 
 ```r
@@ -32,11 +30,27 @@ strcat(x, collapse = "", na.rm = FALSE)
 
 ## Details
 
+`` `%x+%` `` is an operator that concatenates corresponding strings from two character vectors (and which behaves just like the arithmetic `` `+` `` operator).
+
+`strcat` joins (aggregates based on string concatenation) consecutive strings in a character vector, possibly with a specified separator in place, into a single string.
+
+`paste` and `paste0`, concatenate a number of vectors using the same separator and then possibly join them into a single string. We recommend using `` `%x+%` ``, [`sprintf`](sprintf.md), and `strcat` instead (see below for discussion).
+
+## Value
+
+A character vector (in UTF-8).
+
+`` `%x+%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators (however, they may be lost during `as.character(...)` conversion, which is an S3 generic).
+
+`strcat` is an aggregation function, therefore it preserves no attributes whatsoever.
+
+Currently, `paste` and `paste0` preserve no attributes too.
+
+## Differences from base R
+
 Replacement for base [`paste`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/paste.html) implemented with [`stri_join`](https://stringi.gagolewski.com/rapi/stri_join.html).
 
-`paste` can be thought of as a string counterpart of both the `` `+` `` operator (actually, some languages do have a binary operator for string concatenation, e.g., `` `.` `` in Perl and PHP, `` `+` `` (`str.__add__`) in Python; R should have it too, but does not) which is additionally vectorised (\'Map\') and the [`sum`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sum.html) function (\'Reduce\'). Therefore, we would expect it to behave similarly with regards to the propagation of missing values and the preservation of object attributes, but it does not.
-
-Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
+Note that `paste` can be thought of as a string counterpart of both the `` `+` `` operator (actually, some languages do have a binary operator for string concatenation, e.g., `` `.` `` in Perl and PHP, `` `+` `` (`str.__add__`) in Python; R should have it too, but does not) which is additionally vectorised (\'Map\') and the [`sum`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sum.html) function (\'Reduce\'). Therefore, we would expect it to behave similarly with regards to the propagation of missing values and the preservation of object attributes, but it does not.
 
 -   missing values treated as `"NA"` strings (it is a well-documented feature though) **\[fixed here\]**
 
@@ -54,19 +68,13 @@ Inconsistencies in base R (currently; we hope they will be fixed some day) and t
 
 It should also be noted that `paste` with `collapse=NULL` is a special case of `sprintf` (which is featured in many programming languages; R\'s version is of course vectorised). For instance, `paste(x, y, sep=",")` is equivalent to `sprintf("%s,%s", x, y)`.
 
-Taking into account the above, `paste` and `paste0` seem redundant. Here are our recommendations:
+Taking into account the above, `paste` and `paste0` seem redundant and hence we mark them as \[DEPRECATED\]. Here are our recommendations:
 
 -   the most frequent use case - concatenating corresponding strings from two character vectors with no separator - is covered by a new operator `` `%x+%` `` which propagates NAs correctly and handles object attributes the same way as the built-in arithmetic operators;
 
 -   for fancy elementwise (like \'Map\') concatenation, use our version of [`sprintf`](sprintf.md);
 
 -   for the \'flattening\' of consecutive strings in a character vector (like \'Reduce\'), use the new function `strcat`.
-
-## Value
-
-A character vector (in UTF-8).
-
-`` `%x+%` `` preserves object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators (however, they may be lost during `as.character(...)` conversion, which is an S3 generic). `strcat` is an aggregation function, therefore it preserves no attributes whatsoever. Currently, `paste` and `paste0` preserve no attributes too.
 
 ## Author(s)
 

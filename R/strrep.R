@@ -22,16 +22,16 @@
 #' Concatenate a number of copies of each string.
 #'
 #' @details
-#' Replacement for base \code{\link[base]{strrep}}
-#' implemented with \code{\link[stringi]{stri_dup}}.
 #'
-#' Arguments are recycled if necessary.
+#' Both arguments are recycled if necessary.
 #'
 #' The \code{`\%x*\%`} mimics a vectorised version of Python's
 #' \code{`*`} for strings (\code{str.__mul__}).
 #'
-#' Inconsistencies in base R (currently; we hope they will be fixed some day)
-#' and the way we have addressed them here:
+#'
+#' @section Differences from base R:
+#' Replacement for base \code{\link[base]{strrep}}
+#' implemented with \code{\link[stringi]{stri_dup}}.
 #'
 #' \itemize{
 #' \item partial recycling with no warning "longer object length is not

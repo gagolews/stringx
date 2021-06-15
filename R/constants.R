@@ -49,8 +49,8 @@
 #' digits_hex
 #'
 #' @description
-#' Beware: calling, e.g., \code{\link{tolower}} on \code{LETTERS_FRAK}
-#' does not yield \code{letters_frak}.
+#' Note: calling, e.g., \code{\link{tolower}} on \code{LETTERS_FRAK}
+#' does not currently yield \code{letters_frak}.
 #'
 #' @format Decimal digits
 #' @rdname constants

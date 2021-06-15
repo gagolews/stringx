@@ -2,7 +2,7 @@
 
 ## Description
 
-Right-trims strings so that they do not exceed a given width (as determined by [`stri_width`](https://stringi.gagolewski.com/rapi/stri_width.html)). Might be useful when displaying strings using a monospaced font.
+Right-trims strings so that they do not exceed a given width (as determined by [`stri_width`](https://stringi.gagolewski.com/rapi/stri_width.html)).
 
 ## Usage
 
@@ -19,11 +19,19 @@ strtrim(x, width)
 
 ## Details
 
-Replacement for base [`strtrim`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strtrim.html) implemented with (special case of) [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html). Not to be confused with [`trimws`](trimws.md).
-
 Both arguments are recycled if necessary.
 
-Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
+Not to be confused with [`trimws`](trimws.md).
+
+Might be useful when displaying strings using a monospaced font.
+
+## Value
+
+Returns a character vector (in UTF-8). Preserves object attributes in a similar way as [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators.
+
+## Differences from base R
+
+Replacement for base [`strtrim`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strtrim.html) implemented with (special case of) [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
 
 -   both arguments are not recycled in an usual manner **\[fixed here\]**
 
@@ -32,10 +40,6 @@ Inconsistencies in base R (currently; we hope they will be fixed some day) and t
 -   some emojis, combining characters and modifiers (e.g., skin tones) are not recognised properly **\[fixed here\]**
 
 -   attributes are only propagated from the 1st argument **\[fixed\]**
-
-## Value
-
-Returns a character vector (in UTF-8). Preserves object attributes in a similar way as [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators.
 
 ## Author(s)
 

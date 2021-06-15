@@ -21,19 +21,23 @@
 #' @description
 #' The \code{sort} method for objects of class \code{character}
 #' (\code{sort.character}) uses the locale-sensitive Unicode collation
-#' algorithm to arrange strings in a vector in a lexicographic order.
-#' \code{xtfrm} (TODO: does anyone know what does this name stand for?)
-#' generates an integer vector that sorts in the same way
+#' algorithm to arrange strings in a vector with regards to a
+#' chosen lexicographic order.
+#'
+#' \code{xtfrm} generates an integer vector that sorts in the same way
 #' as its input, and hence can be used in conjunction with
 #' \code{\link[base]{order}} or \code{\link[base]{rank}}.
 #'
 #' @details
+#' What 'xtfrm' stands for, the current author knows not,
+#' but would appreciate someone's enlightening him.
+#'
+#'
+#' @section Differences from base R:
 #' Replacements for the default S3 methods \code{\link[base]{sort}}
 #' and \code{\link[base]{xtfrm}} for character vectors
 #' implemented with \code{\link[stringi]{stri_sort}}
 #' and \code{\link[stringi]{stri_rank}}.
-#'
-#' Inconsistencies in base R and the way we have addressed them here:
 #'
 #' \itemize{
 #' \item Collation in different locales is difficult and non-portable across

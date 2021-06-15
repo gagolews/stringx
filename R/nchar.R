@@ -24,14 +24,15 @@
 #' \code{nzchar} indicates which strings are empty.
 #'
 #' @details
+#' String width might be useful when displaying text using a monospaced font.
+#'
+#'
+#' @section Differences from base R:
 #' Replacement for base \code{\link[base]{nchar}} and \code{\link[base]{nzchar}}
 #' implemented with \code{\link[stringi]{stri_length}},
 #' \code{\link[stringi]{stri_width}},
 #' \code{\link[stringi]{stri_numbytes}},
-#' and \code{\link[stringi]{stri_isempty}}
-#'
-#' Inconsistencies in base R
-#' and the way we have addressed them here:
+#' and \code{\link[stringi]{stri_isempty}}.
 #'
 #' \itemize{
 #' \item \code{keepNA} does not default to \code{TRUE}, and hence
@@ -51,11 +52,11 @@
 #'     \code{"width"} estimates the string width,
 #'     \code{"bytes"} computes the number of bytes
 #'
-#' @param allowNA not used
+#' @param allowNA not used (with a warning if attempting to do so) [DEPRECATED]
 #'
 #' @param keepNA if \code{FALSE}, missing values will
 #'     be treated as \code{"NA"} strings; otherwise, the corresponding outputs
-#'     will be missing as well
+#'     will be missing as well [DEPRECATED]
 #'
 #'
 #'

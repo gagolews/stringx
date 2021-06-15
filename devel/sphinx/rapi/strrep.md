@@ -21,25 +21,25 @@ e1 %x*% e2
 
 ## Details
 
-Replacement for base [`strrep`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strrep.html) implemented with [`stri_dup`](https://stringi.gagolewski.com/rapi/stri_dup.html).
-
-Arguments are recycled if necessary.
+Both arguments are recycled if necessary.
 
 The `` `%x*%` `` mimics a vectorised version of Python\'s `` `*` `` for strings (`str.__mul__`).
-
-Inconsistencies in base R (currently; we hope they will be fixed some day) and the way we have addressed them here:
-
--   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**
-
--   base `strrep` seems to preserve only the `names` attribute, and only if the input is of type character (whilst `paste` preserves nothing) **\[fixed\]**
-
--   overloading `` `*.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `*` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x+%` `` operator\]**
 
 ## Value
 
 A character vector (in UTF-8).
 
 `` `%x*%` `` and `strrep` preserve object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators.
+
+## Differences from base R
+
+Replacement for base [`strrep`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strrep.html) implemented with [`stri_dup`](https://stringi.gagolewski.com/rapi/stri_dup.html).
+
+-   partial recycling with no warning \"longer object length is not a multiple of shorter object length\" **\[fixed here\]**
+
+-   base `strrep` seems to preserve only the `names` attribute, and only if the input is of type character (whilst `paste` preserves nothing) **\[fixed\]**
+
+-   overloading `` `*.character` `` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. We could have replaced the generic `` `*` `` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html), but it feels like a too intrusive solution **\[fixed by introducing `` `%x+%` `` operator\]**
 
 ## Author(s)
 

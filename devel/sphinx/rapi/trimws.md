@@ -20,21 +20,21 @@ trimws(x, which = "both", whitespace = "\\p{Wspace}")
 
 ## Details
 
-Replacement for base [`trimws`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/trimws.html) implemented with [`stri_replace_all_regex`](https://stringi.gagolewski.com/rapi/stri_replace.html) (and not [`stri_trim`](https://stringi.gagolewski.com/rapi/stri_trim.html), which uses a slightly different syntax for pattern specifiers).
-
 Not to be confused with [`strtrim`](strtrim.md).
-
-Inconsistencies in/differences from base R:
-
--   the default `whitespace` argument does not reflect the \'contemporary\' definition of whitespaces (e.g., does not include zero-width spaces) **\[fixed here\]**
-
--   base R implementation is not portable as it is based on the system PCRE library (e.g., some Unicode classes may not be available) **\[fixed here\]**
-
--   no sanity checks are performed on `whitespace` **\[fixed here\]**
 
 ## Value
 
 Returns a character vector (in UTF-8).
+
+## Differences from base R
+
+Replacement for base [`trimws`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/trimws.html) implemented with [`stri_replace_all_regex`](https://stringi.gagolewski.com/rapi/stri_replace.html) (and not [`stri_trim`](https://stringi.gagolewski.com/rapi/stri_trim.html), which uses a slightly different syntax for pattern specifiers).
+
+-   the default `whitespace` argument does not reflect the \'contemporary\' definition of whitespaces (e.g., does not include zero-width spaces) **\[fixed here\]**
+
+-   base R implementation is not portable as it is based on the system PCRE library (e.g., some Unicode classes may not be available or matching thereof can depend on the current `LC_CTYPE` category) **\[fixed here\]**
+
+-   no sanity checks are performed on `whitespace` **\[fixed here\]**
 
 ## Author(s)
 

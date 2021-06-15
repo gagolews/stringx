@@ -2,7 +2,7 @@
 
 ## Description
 
-`substr` (deprecated synonym: `substring`) extracts contiguous parts of given character strings. Its replacement version allows for substituting them with new content.
+`substr` extracts contiguous parts of given character strings. Its replacement version allows for substituting them with new content.
 
 ## Usage
 
@@ -27,9 +27,19 @@ substring(text, first = 1L, last = -1L) <- value
 
 ## Details
 
-Replacement for base [`substr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/substr.html) and [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/substring.html) implemented with [`stri_sub`](https://stringi.gagolewski.com/rapi/stri_sub.html).
+`substring` is a \[DEPRECATED\] synonym for `substr`.
 
-Inconsistencies in/differences from base R:
+Note that these functions can break some meaningful Unicode code point sequences, e.g., when inputs are not normalised. For extracting initial parts of strings based on character width, see [`strtrim`](strtrim.md).
+
+## Value
+
+`substr` returns a character vector (in UTF-8). Its replacement version modifies `x` in-place (see Examples).
+
+The attributes are copied from the longest arguments (similarly as in the case of binary operators).
+
+## Differences from base R
+
+Replacement for base [`substr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/substr.html) and [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/substring.html) implemented with [`stri_sub`](https://stringi.gagolewski.com/rapi/stri_sub.html).
 
 -   `substring` is \"for compatibility with S\", but this should no longer matter **\[here, `substring` is equivalent to `substr`; in a future version, using the former may result in a warning\]**
 
@@ -44,14 +54,6 @@ Inconsistencies in/differences from base R:
 -   negative indexes are silently treated as 1 **\[changed here -- negative indexes count from the end of the string\]**
 
 -   replacement of different length than the extracted substring never changes the length of the string **\[changed here -- output length is input length minus length of extracted plus length of replacement\]**
-
-## Value
-
-`substr` returns a character vector (in UTF-8). Its replacement version modifies `x` in-place (see Examples).
-
-The attributes are copied from the longest arguments (similarly as in the case of binary operators).
-
-Note that these functions can break some meaningful Unicode code point sequences, e.g., when inputs are not normalised. For extracting initial parts of strings based on character width, see [`strtrim`](strtrim.md).
 
 ## Author(s)
 

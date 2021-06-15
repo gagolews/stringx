@@ -1,4 +1,4 @@
-# replace "substr" with "substrin" to test the "S-compatible" version in base R
+# replace "substr" with "substring" to test the "S-compatible" version in base R
 # (not big of a difference though)
 
 

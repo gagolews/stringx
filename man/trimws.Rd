@@ -26,14 +26,14 @@ Removes whitespaces (or other code points as specified by the
 \code{whitespace} argument) from left, right, or both sides of each string.
 }
 \details{
+Not to be confused with \code{\link{strtrim}}.
+}
+\section{Differences from base R}{
+
 Replacement for base \code{\link[base]{trimws}}
 implemented with \code{\link[stringi]{stri_replace_all_regex}}
 (and not \code{\link[stringi]{stri_trim}}, which uses a slightly different
 syntax for pattern specifiers).
-
-Not to be confused with \code{\link{strtrim}}.
-
-Inconsistencies in/differences from base R:
 
 \itemize{
 \item the default \code{whitespace} argument does not reflect the
@@ -41,12 +41,15 @@ Inconsistencies in/differences from base R:
     (e.g., does not include zero-width spaces)
     \bold{[fixed here]}
 \item base R implementation is not portable as it is based on
-    the system PCRE library (e.g., some Unicode classes may not be available)
+    the system PCRE library
+    (e.g., some Unicode classes may not be available or matching thereof
+    can depend on the current \code{LC_CTYPE} category)
     \bold{[fixed here]}
 \item no sanity checks are performed on \code{whitespace}
     \bold{[fixed here]}
 }
 }
+
 \examples{
 base::trimws("NAAAAANA!!!NANAAAAA", whitespace=NA)  # stringx raises an error
 x <- "   :)\\v\u00a0 \n\r\t"

@@ -9,14 +9,14 @@
 \description{
 \pkg{stringx} reimplements the built-in R functions for string processing
 based on \pkg{stringi} -- a mature R package for fast, correct, consistent,
-and convenient text manipulation. Thanks to the ICU library, we obtain
+and convenient text manipulation. Thanks to the \pkg{ICU} library, we obtain
 predictable results on every platform, in each locale, and under any
 native character encoding.
 
 \bold{Keywords}: R, text processing, character strings,
-internationalisation, localisation, ICU, ICU4C, i18n, l10n, Unicode.
+internationalisation, localisation, ICU, ICU4C, i18n, l10n, Unicode
 
-\bold{License}: GNU General Public License version 2 or later.
+\bold{License}: GNU General Public License version 2 or later
 }
 \references{
 \emph{\pkg{stringi} Package homepage},

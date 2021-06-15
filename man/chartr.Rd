@@ -43,10 +43,18 @@ Note that their base R counterparts drop all the attributes
 if not fed with character vectors.
 }
 \description{
-Translate characters, including case mapping and folding,
-script to script conversion, and Unicode normalisation.
+These functions can be used to translate characters, including case mapping
+and folding, script to script conversion, and Unicode normalisation.
 }
 \details{
+\code{tolower} and \code{toupper} perform case mapping.
+\code{chartr} translates individual code points.
+\code{casefold} commits case folding.
+The new function \code{strtrans} applies general \pkg{ICU} transforms,
+see \code{\link[stringi]{stri_trans_general}}.
+}
+\section{Differences from base R}{
+
 Unlike their base R counterparts, the new \code{tolower} and
 \code{toupper} are locale-sensitive;
 see \code{\link[stringi]{stri_trans_tolower}}.
@@ -58,15 +66,11 @@ The version implemented here, by default, performs the true case folding,
 whose purpose is to make two pieces of text that differ only in case
 identical, see \code{\link[stringi]{stri_trans_casefold}}.
 
-The new \code{chartr} is a wrapper for
-\code{\link[stringi]{stri_trans_char}}.
+\code{chartr} is now a wrapper for \code{\link[stringi]{stri_trans_char}}.
 Contrary to the base \code{\link[base]{chartr}}, it always generates
 a warning when \code{old} and \code{new} are of different lengths.
-
-
-A new function \code{strtrans} applies ICU general transforms,
-see \code{\link[stringi]{stri_trans_general}}.
 }
+
 \examples{
 strtrans(strcat(letters_bf), "Any-NFKD; Any-Upper")
 strtrans(strcat(letters_bb[1:6]), "Any-Hex/C")

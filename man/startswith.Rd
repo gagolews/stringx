@@ -5,42 +5,52 @@
 \alias{endsWith}
 \title{Detect Pattern Occurrences at Start or End of Strings}
 \usage{
-startsWith(x, prefix, ignore.case = FALSE)
+startsWith(x, prefix, fixed = TRUE, ignore.case = FALSE, ...)
 
-endsWith(x, suffix, ignore.case = FALSE)
+endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
 }
 \arguments{
 \item{x}{character vector whose elements are to be examined}
 
-\item{prefix, suffix}{character vectors with fixed (literal) patterns
-to search for}
+\item{prefix, suffix}{character vectors with patterns to search for}
 
-\item{ignore.case}{single logical value}
+\item{fixed}{single logical value;
+\code{TRUE} for fixed pattern matching
+    (see \link[stringi]{about_search_fixed});
+\code{NA} for the Unicode collation algorithm
+    (\link[stringi]{about_search_coll});
+\code{FALSE} is not supported -- use \code{\link{grepl}} instead}
+
+\item{ignore.case}{single logical value; indicates whether matching
+should be case-insensitive}
+
+\item{...}{further arguments to \code{\link[stringi]{stri_startswith}}
+and \code{\link[stringi]{stri_endswith}}}
 }
 \value{
 Each function returns a logical vector, indicating whether a pattern
 match has been detected or not.
 }
 \description{
-Determines if a string starts or ends if with a match to a specified
+Determines if a string starts or ends with a match to a specified
 fixed pattern.
 }
 \details{
-Replacements for base \code{\link[base]{startsWith}}
-and \code{\link[base]{endsWith}}
-implemented with \code{\link[stringi]{stri_startswith_fixed}}
-and \code{\link[stringi]{stri_endswith_fixed}}
+Both functions are fully vectorised with respect to both arguments.
 
 For matching with regular expressions, see \code{\link{grepl}}
 with patterns like \code{"^prefix"} and \code{"suffix$"}.
+}
+\section{Differences from base R}{
 
-Vectorised with respect to both arguments.
-
-Inconsistencies in/differences from base R:
+Replacements for base \code{\link[base]{startsWith}}
+and \code{\link[base]{endsWith}}
+implemented with \code{\link[stringi]{stri_startswith}}
+and \code{\link[stringi]{stri_endswith}}.
 
 \itemize{
-\item note that other pattern matching functions have a different argument
-    order, where the needle precedes the haystack
+\item \code{\link[base]{grepl}} and some other pattern matching functions
+    have a different argument order, where the needle precedes the haystack
     \bold{[not fixed here]}
 \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
     \bold{[added here]}
@@ -48,8 +58,11 @@ Inconsistencies in/differences from base R:
     \bold{[fixed here]}
 \item no attributes preserved whatsoever
     \bold{[fixed here]}
+\item not suitable for natural language processing
+    \bold{[fixed here -- use \code{fixed=NA}]}
 }
 }
+
 \examples{
 stringx::startsWith("ababa", c("a", "ab", "aba", "baba", NA))
 outer(
@@ -58,6 +71,9 @@ outer(
     stringx::endsWith,
     ignore.case=TRUE
 )
+x <- c("Mario", "mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario")
+x[stringx::startsWith(x, "mario", ignore.case=TRUE)]
+x[stringx::startsWith(x, "mario", fixed=NA, strength=1L)]
 
 }
 \seealso{

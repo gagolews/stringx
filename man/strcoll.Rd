@@ -73,17 +73,17 @@ These functions provide means to compare strings in any locale
 using the Unicode collation algorithm.
 }
 \details{
-Replacements for base \link[base]{Comparison} operators
-implemented with \code{\link[stringi]{stri_cmp}}.
-
-Arguments are recycled if necessary.
+These functions are fully vectorised with respect to both arguments.
 
 For a locale-insensitive behaviour like that of
 \code{strcmp} from the standard C library, call
 \code{strcoll(e1, e2, locale="C", strength=4L, normalisation=FALSE)}.
-However, still some normalisation will be performed.
+However, some normalisation will still be performed.
+}
+\section{Differences from base R}{
 
-Inconsistencies in base R and the way we have addressed them here:
+Replacements for base \link[base]{Comparison} operators
+implemented with \code{\link[stringi]{stri_cmp}}.
 
 \itemize{
 \item collation in different locales is difficult and non-portable across
@@ -97,6 +97,7 @@ Inconsistencies in base R and the way we have addressed them here:
     \bold{[fixed by introducing the \code{`\%x<\%`} operator]}
 }
 }
+
 \examples{
 # lexicographic vs. numeric sort
 strcoll("100", c("1", "10", "11", "99", "100", "101", "1000"))

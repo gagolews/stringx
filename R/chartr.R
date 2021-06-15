@@ -19,10 +19,18 @@
 #' Transliteration and Other Text Transforms
 #'
 #' @description
-#' Translate characters, including case mapping and folding,
-#' script to script conversion, and Unicode normalisation.
+#' These functions can be used to translate characters, including case mapping
+#' and folding, script to script conversion, and Unicode normalisation.
 #'
 #' @details
+#' \code{tolower} and \code{toupper} perform case mapping.
+#' \code{chartr} translates individual code points.
+#' \code{casefold} commits case folding.
+#' The new function \code{strtrans} applies general \pkg{ICU} transforms,
+#' see \code{\link[stringi]{stri_trans_general}}.
+#'
+#'
+#' @section Differences from base R:
 #' Unlike their base R counterparts, the new \code{tolower} and
 #' \code{toupper} are locale-sensitive;
 #' see \code{\link[stringi]{stri_trans_tolower}}.
@@ -34,14 +42,11 @@
 #' whose purpose is to make two pieces of text that differ only in case
 #' identical, see \code{\link[stringi]{stri_trans_casefold}}.
 #'
-#' The new \code{chartr} is a wrapper for
-#' \code{\link[stringi]{stri_trans_char}}.
+#' \code{chartr} is now a wrapper for \code{\link[stringi]{stri_trans_char}}.
 #' Contrary to the base \code{\link[base]{chartr}}, it always generates
 #' a warning when \code{old} and \code{new} are of different lengths.
 #'
 #'
-#' A new function \code{strtrans} applies ICU general transforms,
-#' see \code{\link[stringi]{stri_trans_general}}.
 #'
 #' @param x character vector (or an object coercible to)
 #'
@@ -59,6 +64,7 @@
 #'    (see \code{\link[stringi]{stri_locale_get}})
 #'    or a single string with a locale identifier,
 #'    see \code{\link[stringi]{stri_locale_list}}
+#'
 #'
 #' @return
 #' These functions return a character vector (in UTF-8).

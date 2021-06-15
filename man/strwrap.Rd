@@ -49,14 +49,14 @@ Due to this, no attributes are preserved.
 \description{
 Splits each string into words which are then arranged to form text lines
 of no more of a given width.
-Might be useful when displaying strings using a monospaced font.
 }
 \details{
+Might be useful when displaying strings using a monospaced font.
+}
+\section{Differences from base R}{
+
 Replacement for base \code{\link[base]{strwrap}}
 implemented with \code{\link[stringi]{stri_wrap}}.
-
-
-Inconsistencies/limitations in/differences from base R:
 
 \itemize{
 \item missing values not propagated
@@ -76,6 +76,7 @@ Inconsistencies/limitations in/differences from base R:
     \bold{[fixed here -- using the Knuth-Plass method]}
 }
 }
+
 \examples{
 strwrap(paste0(
     strrep("az ", 20),

@@ -25,11 +25,15 @@ printf(fmt, ..., file = "", sep = "\n", append = FALSE, na_string = "NA")
 
 ## Details
 
-Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sprintf.html) implemented with [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
-
 Note that the purpose of `printf` is to display a string, not to create a new one for use elsewhere, therefore this function, as an exception, treats missing values as `"NA"` strings.
 
-Inconsistencies/limitations in/differences from base R:
+## Value
+
+`sprintf` returns a character vector (in UTF-8). No attributes are preserved. `printf` returns \'nothing\'.
+
+## Differences from base R
+
+Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sprintf.html) implemented with [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
 
 -   missing values in `...` are treated as `"NA"` strings **\[fixed in `sprintf`, left in `printf`, but see the `na_string` argument\]**
 
@@ -50,10 +54,6 @@ Inconsistencies/limitations in/differences from base R:
 -   `NA`/`NaNs` are not prefixed by a sign/space even if we explicitly request this **\[fixed here - prefixed by a space\]**
 
 -   the outputs are implementation-dependent; the format strings are passed down to the system (`libc`) `sprintf` function **\[not fixed here (yet), but the format specifiers are normalised more eagerly\]**
-
-## Value
-
-`sprintf` returns a character vector (in UTF-8). No attributes are preserved. `printf` returns \'nothing\'.
 
 ## Author(s)
 
@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1623726650.024728 is 2021-06-15 13:10:50.
-## 2021-06-15 13:10:50 is 1623726650.024728 UNIX time.
+## UNIX time 1623751426.920528 is 2021-06-15 20:03:46.
+## 2021-06-15 20:03:46 is 1623751426.920528 UNIX time.
 ```

@@ -24,14 +24,13 @@ or objects coercible to}
 \item{format}{character vector of date-time format specifiers,
 see \code{\link[stringi]{stri_datetime_fstr}};
 e.g., \code{"\%Y-\%m-\%d"} or \code{"datetime_full"};
-the default conforms to the ISO 8601 guideline,
-e.g., '2015-12-31T23:59:59+0100'}
+the default conforms to the ISO 8601 guideline}
 
 \item{tz}{\code{NULL} or \code{''} for the default time zone
 (see \code{\link[stringi]{stri_timezone_get}})
 or a single string with a timezone identifier,
 see \code{\link[stringi]{stri_timezone_list}};
-note that even if \code{x} is equipped with \code{tzone} attribute,
+note that even when \code{x} is equipped with \code{tzone} attribute,
 this datum is not used}
 
 \item{lenient}{single logical value; should date/time parsing be lenient?}
@@ -41,7 +40,7 @@ this datum is not used}
 or a single string with a locale identifier,
 see \code{\link[stringi]{stri_locale_list}}}
 
-\item{usetz}{not used (with a warning if attempting to do so)}
+\item{usetz}{not used (with a warning if attempting to do so) [DEPRECATED]}
 
 \item{...}{not used}
 }
@@ -60,12 +59,17 @@ and converts it to a date-time object.
 character vector.
 }
 \details{
+Note that the ISO 8601 guideline suggests a year-month-day
+date format and a 24-hour time format always indicating the effective
+time zone, e.g., \code{2015-12-31T23:59:59+0100}. This is so as to avoid
+ambiguity.
+}
+\section{Differences from base R}{
+
 Replacements for base \code{\link[base]{strptime}}
 and \code{\link[base]{strftime}} implemented with
 \code{\link[stringi]{stri_datetime_parse}} and
 \code{\link[stringi]{stri_datetime_format}}.
-
-Inconsistencies/limitations in base R and the way we have addressed them:
 
 \itemize{
 \item formatting/parsing date-time in different locales and calendars
@@ -87,6 +91,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
     \bold{[not fixed here]}
 }
 }
+
 \examples{
 stringx::strftime(Sys.time())  # default format - ISO 8601
 f <- c("date_full", "\%Y-\%m-\%d", "date_relative_short", "datetime_full")

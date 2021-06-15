@@ -36,15 +36,14 @@ provided. A new function (present in C and many other languages),
 \code{printf}, displays formatted strings.
 }
 \details{
-Replacement for base \code{\link[base]{sprintf}}
-implemented with \code{\link[stringi]{stri_sprintf}}.
-
 Note that the purpose of \code{printf} is to display a string, not
 to create a new one for use elsewhere, therefore this function,
 as an exception, treats missing values as \code{"NA"} strings.
+}
+\section{Differences from base R}{
 
-
-Inconsistencies/limitations in/differences from base R:
+Replacement for base \code{\link[base]{sprintf}}
+implemented with \code{\link[stringi]{stri_sprintf}}.
 
 \itemize{
 \item missing values in \code{...} are treated as \code{"NA"} strings
@@ -81,6 +80,7 @@ Inconsistencies/limitations in/differences from base R:
     are normalised more eagerly]}
 }
 }
+
 \examples{
 # UTF-8 number of bytes vs. Unicode code point width:
 l <- c("e", "e\u00b2", "\u03c0", "\u03c0\u00b2", "\U0001f602\U0001f603")

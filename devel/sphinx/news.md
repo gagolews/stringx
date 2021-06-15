@@ -17,6 +17,7 @@ casefold) - some for "compatibility with S" which might have been important two 
 methods for class character are hard-coded at C-level and therefore
 cannot be overloaded (unless a generic is replaced with the one calling
 UseMethod - e.g., operators like <, xtfrm
+* there is not "the linear ordering of strings" - a user should be able to customise it easily
 
 typical problems:
 * recycling rule (full with warning, full no warning, only one argument etc.)
@@ -35,6 +36,10 @@ R string handling still rooted in the "POSIX" world https://unicode-org.github.i
 like width of certain new emojis (Unicode 13.x)
 `sprintf("%.1s", "\u0105")` being not at all UTF-8 aware
 * support for and accessibility of locales
+
+Unicode is the future (UTF-8, UTF-16 etc.) no useBytes etc.
+Python switched to UTF-8 in v3  Perl=? other=?
+
 
 built on top of stringi which has proven reliable for the last 8 years
 which in turn relies on ICU being widely adopted by the industry
@@ -73,6 +78,24 @@ hence if you want them to be preserved, you do it manually
 like `attributes<-`(as.character(x), attributes(x))
 
 
+startsWith(x, prefix)
+endsWith(x, suffix)
+strsplit(x, split)
+sub(pattern, replacement, x)
+regexpr(pattern, text)
+regexec(pattern, text)
+grep(pattern, x)
+
+
+
+current limitations/main differences from base R:
+* long vectors are not supported (see \link[base]{LongVectors})
+* regex matching is based on ICU (Java-like)
+* no bytes encoding supported
+* different char widths
+* portable locales
+
+
 ## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
 
 * [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
@@ -89,12 +112,18 @@ like `attributes<-`(as.character(x), attributes(x))
 * [NEW FEATURE] `xtfrm`, `sort`.
 * [NEW FEATURE] `strwrap`.
 * [NEW FEATURE] `substr`, `substring`, `substr<-`, `substring<-`.
-* [NEW FEATURE] ..strsplit
-* [NEW FEATURE] ..grep, grepl + grep2 etc.
+* [NEW FEATURE] `strsplit`.
+* [NEW FEATURE] ..grep, grepl
 * [NEW FEATURE] ..sub, gsub
 * [NEW FEATURE] ..regexpr, gregexpr
 * [NEW FEATURE] ..regexec, gregexec
-* [NEW FEATURE] ..utils:::strcapture
+* [NEW FEATURE] ..utils::strcapture
+
+grep2 etc?
+regexpr == what does that even mean? /positions/
+regexec == ? /positions+capture groups/
+
+regexec  - POSIX has it
 
 
 ## 0.0.0 (2021-05-07)

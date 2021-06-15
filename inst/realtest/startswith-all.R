@@ -32,6 +32,21 @@ E(startsWith(1, 1), TRUE, bad=P(error=TRUE))
 E(endsWith(1, 1), TRUE, bad=P(error=TRUE))
 
 
+E(
+    startsWith("ABABA", c("a", "ab", "aba", "baba", NA), ignore.case=TRUE),
+    c(TRUE, TRUE, TRUE, FALSE, NA),
+    bad=P(error="unused argument (ignore.case = TRUE)"),
+    .comment="`grep` has `ignore.case` argument"
+)
+
+E(
+    endsWith("ABABA", c("a", "ab", "aba", "baba", NA), ignore.case=TRUE),
+    c(TRUE, FALSE, TRUE, TRUE, NA),
+    bad=P(error="unused argument (ignore.case = TRUE)"),
+    .comment="`grep` has `ignore.case` argument"
+)
+
+
 x0 <- c("a", "b", "c")  # attribs from x and y (x preferred)
 x <- structure(x0, names=c("A", "B", "C"), attrib1="value1")
 y <- structure(c(x="a", y="b", z="a"), attrib2="value2")

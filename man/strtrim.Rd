@@ -20,18 +20,19 @@ in a similar way as \link[base]{Arithmetic} operators.
 }
 \description{
 Right-trims strings so that they do not exceed a given width
-(as determined by \code{\link[stringi]{stri_width}}). Might be useful
-when displaying strings using a monospaced font.
+(as determined by \code{\link[stringi]{stri_width}}).
 }
 \details{
-Replacement for base \code{\link[base]{strtrim}}
-implemented with (special case of) \code{\link[stringi]{stri_sprintf}}.
-Not to be confused with \code{\link{trimws}}.
-
 Both arguments are recycled if necessary.
 
-Inconsistencies in base R (currently; we hope they will be fixed some day)
-and the way we have addressed them here:
+Not to be confused with \code{\link{trimws}}.
+
+Might be useful when displaying strings using a monospaced font.
+}
+\section{Differences from base R}{
+
+Replacement for base \code{\link[base]{strtrim}}
+implemented with (special case of) \code{\link[stringi]{stri_sprintf}}.
 
 \itemize{
 \item both arguments are not recycled in an usual manner
@@ -44,6 +45,7 @@ and the way we have addressed them here:
     \bold{[fixed]}
 }
 }
+
 \examples{
 base::strtrim("aaaaa", 1:3)
 stringx::strtrim("aaaaa", 1:3)

@@ -2,35 +2,41 @@
 
 ## Description
 
-Determines if a string starts or ends if with a match to a specified fixed pattern.
+Determines if a string starts or ends with a match to a specified fixed pattern.
 
 ## Usage
 
 ```r
-startsWith(x, prefix, ignore.case = FALSE)
+startsWith(x, prefix, fixed = TRUE, ignore.case = FALSE, ...)
 
-endsWith(x, suffix, ignore.case = FALSE)
+endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
 ```
 
 ## Arguments
 
-|                  |                                                               |
-|------------------|---------------------------------------------------------------|
-| `x`              | character vector whose elements are to be examined            |
-| `prefix, suffix` | character vectors with fixed (literal) patterns to search for |
-| `ignore.case`    | single logical value                                          |
+|                  |                                                                                                                                                                                                                                                                                                                                                                                                       |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                                                                                    |
+| `prefix, suffix` | character vectors with patterns to search for                                                                                                                                                                                                                                                                                                                                                         |
+| `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html) instead |
+| `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                           |
+| `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html)                                                                                                                                                                                                            |
 
 ## Details
 
-Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) and [`endsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/endsWith.html) implemented with [`stri_startswith_fixed`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith_fixed`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html)
+Both functions are fully vectorised with respect to both arguments.
 
 For matching with regular expressions, see [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html) with patterns like `"^prefix"` and `"suffix$"`.
 
-Vectorised with respect to both arguments.
+## Value
 
-Inconsistencies in/differences from base R:
+Each function returns a logical vector, indicating whether a pattern match has been detected or not.
 
--   note that other pattern matching functions have a different argument order, where the needle precedes the haystack **\[not fixed here\]**
+## Differences from base R
+
+Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) and [`endsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/endsWith.html) implemented with [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html).
+
+-   [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html) and some other pattern matching functions have a different argument order, where the needle precedes the haystack **\[not fixed here\]**
 
 -   [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html) also features the `ignore.case` argument **\[added here\]**
 
@@ -38,9 +44,7 @@ Inconsistencies in/differences from base R:
 
 -   no attributes preserved whatsoever **\[fixed here\]**
 
-## Value
-
-Each function returns a logical vector, indicating whether a pattern match has been detected or not.
+-   not suitable for natural language processing **\[fixed here -- use `fixed=NA`\]**
 
 ## Author(s)
 
@@ -72,4 +76,9 @@ outer(
 ## [3,] FALSE FALSE  TRUE
 ## [4,]  TRUE FALSE FALSE
 ## [5,] FALSE FALSE  TRUE
+x <- c("Mario", "mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario")
+x[stringx::startsWith(x, "mario", ignore.case=TRUE)]
+## [1] "Mario" "mario"
+x[stringx::startsWith(x, "mario", fixed=NA, strength=1L)]
+## [1] "Mario" "mario" "Mário" "MÁRIO"
 ```
