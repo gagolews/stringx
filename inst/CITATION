@@ -1,0 +1,8 @@
+bibentry(
+    bibtype = "manual",
+    title = "stringx: Drop-in replacements for base R string functions powered by stringi",
+    author = personList(as.person("Marek Gagolewski")),
+    year = sub("-.*", "", meta$Date),
+    note = sprintf("R package version %s", meta$Version),
+    url = "https://stringx.gagolewski.com/"
+)

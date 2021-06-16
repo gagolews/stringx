@@ -43,11 +43,12 @@
 #'     (and historically, ERE was used in place of TRE)
 #'     \bold{[here, \pkg{ICU} Java-like regular expression engine
 #'     is only available, hence the \code{perl} argument has no meaning]}
-#' \item \code{\link[base]{grepl}} and some other pattern matching functions
-#'     have a different argument
-#'     order, where the needle precedes the haystack and \code{ignore.case}
-#'     is listed before \code{perl} and then \code{fixed} etc.
-#'     \bold{[not fixed here]}
+#' \item there are inconsistencies between the argument order and naming
+#'     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
+#'     and \code{\link[base]{startsWith}} (amongst others); e.g.,
+#'     where the needle can precede the haystack, the use of the forward
+#'     pipe operator \code{|>} is less convenient
+#'     \bold{[fixed here]}
 #' \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
 #'     \bold{[added here]}
 #' \item if \code{split} is a zero-length vector, it is treated as \code{""},
@@ -69,8 +70,8 @@
 #'
 #' @param x character vector whose elements are to be examined
 #'
-#' @param split character vector of nonempty search patterns,
-#'      \link[stringi]{about_search_regex}
+#' @param pattern character vector of nonempty search patterns
+#'
 #'
 #' @param fixed single logical value;
 #'     \code{FALSE} for matching with regular expressions
@@ -86,6 +87,7 @@
 #' @param ... further arguments to \code{\link[stringi]{stri_split}},
 #'     e.g., \code{omit_empty}, \code{locale}, \code{dotall}
 #'
+#' @param split alias to the \code{pattern} argument [DEPRECATED]
 #' @param perl,useBytes not used (with a warning if
 #'     attempting to do so) [DEPRECATED]
 #'
@@ -109,31 +111,34 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{grep}}, \code{\link{substr}}
+#'     \code{\link{grep}}, \code{\link{gsub}}, \code{\link{substr}}
 #'
 #' @rdname strsplit
-strsplit <- function(x, split, fixed=FALSE, perl=FALSE, useBytes=FALSE, ignore.case=FALSE, ...)
+strsplit <- function(x, pattern=split, ..., ignore.case=FALSE, fixed=FALSE, perl=FALSE, useBytes=FALSE, split)
 {
+    if (!missing(split) && !missing(pattern)) stop("do not use `split` if `pattern` is given as well")
+    if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
+    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
+    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(split)) split <- as.character(split)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
 
-    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
-    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
 
     ret <- {
         if (is.na(fixed)) {
             if (!ignore.case)
-                stringi::stri_split_coll(x, pattern=split, ...)
+                stringi::stri_split_coll(x, pattern, ...)
             else
-                stringi::stri_split_coll(x, pattern=split, strength=2L, ...)
+                stringi::stri_split_coll(x, pattern, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_split_fixed(x, pattern=split, case_insensitive=ignore.case, ...)
+            stringi::stri_split_fixed(x, pattern, case_insensitive=ignore.case, ...)
         } else {
-            stringi::stri_split_regex(x, pattern=split, case_insensitive=ignore.case, ...)
+            stringi::stri_split_regex(x, pattern, case_insensitive=ignore.case, ...)
         }
     }
 
-    .attribs_propagate_binary(ret, x, split)
+    .attribs_propagate_binary(ret, x, pattern)
 }

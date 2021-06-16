@@ -2,6 +2,7 @@
 % Please edit documentation in R/chartr.R
 \name{strtrans}
 \alias{strtrans}
+\alias{chartr2}
 \alias{chartr}
 \alias{tolower}
 \alias{toupper}
@@ -9,6 +10,8 @@
 \title{Transliteration and Other Text Transforms}
 \usage{
 strtrans(x, transform)
+
+chartr2(x, pattern, replacement)
 
 chartr(old, new, x)
 
@@ -24,9 +27,9 @@ casefold(x, upper = NA)
 \item{transform}{single string with ICU general transform
 specifier, see \code{\link[stringi]{stri_trans_list}}}
 
-\item{old}{single string}
+\item{pattern, old}{single string}
 
-\item{new}{single string, preferably of the same length as \code{old}}
+\item{replacement, new}{single string, preferably of the same length as \code{old}}
 
 \item{locale}{\code{NULL} or \code{""} for the default locale
 (see \code{\link[stringi]{stri_locale_get}})
@@ -48,7 +51,7 @@ and folding, script to script conversion, and Unicode normalisation.
 }
 \details{
 \code{tolower} and \code{toupper} perform case mapping.
-\code{chartr} translates individual code points.
+\code{chartr2} (and [DEPRECATED] \code{chartr}) translates individual code points.
 \code{casefold} commits case folding.
 The new function \code{strtrans} applies general \pkg{ICU} transforms,
 see \code{\link[stringi]{stri_trans_general}}.
@@ -66,9 +69,12 @@ The version implemented here, by default, performs the true case folding,
 whose purpose is to make two pieces of text that differ only in case
 identical, see \code{\link[stringi]{stri_trans_casefold}}.
 
-\code{chartr} is now a wrapper for \code{\link[stringi]{stri_trans_char}}.
-Contrary to the base \code{\link[base]{chartr}}, it always generates
+\code{chartr2} and [DEPRECATED] \code{chartr} are
+wrappers for \code{\link[stringi]{stri_trans_char}}.
+Contrary to the base \code{\link[base]{chartr}}, they always generate
 a warning when \code{old} and \code{new} are of different lengths.
+\code{chartr2} has argument order and naming consistent with
+\code{\link{gsub}}.
 }
 
 \examples{

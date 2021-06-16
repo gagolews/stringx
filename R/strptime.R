@@ -165,7 +165,7 @@ strftime <- function(x, format="%Y-%m-%dT%H:%M:%S%z", tz="", usetz=FALSE, ..., l
         locale=locale
     )
 
-    # let as.character.POSIXct will determine which attributes
+    # let as.character.POSIXct determine which attributes
     # are to be considered for preservation
     x <- as.character(x)
 

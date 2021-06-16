@@ -1,4 +1,4 @@
-# strsplit: Split Strings into Tokens
+# gsub: Replace Pattern Occurrences
 
 ## Description
 
@@ -7,14 +7,24 @@ Splits each string into chunks delimited by occurrences of a given pattern.
 ## Usage
 
 ```r
-strsplit(
+sub(
+  pattern,
+  replacement,
   x,
-  split,
-  fixed = FALSE,
-  perl = FALSE,
-  useBytes = FALSE,
   ignore.case = FALSE,
-  ...
+  perl = FALSE,
+  fixed = FALSE,
+  useBytes = FALSE
+)
+
+gsub(
+  pattern,
+  replacement,
+  x,
+  ignore.case = FALSE,
+  perl = FALSE,
+  fixed = FALSE,
+  useBytes = FALSE
 )
 ```
 
@@ -23,21 +33,21 @@ strsplit(
 |                  |                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                                                                                                   |
-| `split`          | character vector of nonempty search patterns, [about\_search\_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)                                                                                                                                                                                                                                                                                    |
-| `fixed`          | single logical value; `FALSE` for matching with regular expressions (see [about\_search\_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
-| `perl, useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                      |
 | `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                          |
+| `perl, useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                      |
+| `fixed`          | single logical value; `FALSE` for matching with regular expressions (see [about\_search\_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
+| `split`          | character vector of nonempty search patterns, [about\_search\_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)                                                                                                                                                                                                                                                                                    |
 | `...`            | further arguments to [`stri_split`](https://stringi.gagolewski.com/rapi/stri_split.html), e.g., `omit_empty`, `locale`, `dotall`                                                                                                                                                                                                                                                                                     |
 
 ## Details
 
-This function is fully vectorised with respect to both arguments.
+These functions are fully vectorised with respect to `pattern`, `replacement`, and `x`.
 
 For splitting text into \'characters\' (grapheme clusters), words, or sentences, use [`stri_split_boundaries`](https://stringi.gagolewski.com/rapi/stri_split_boundaries.html) instead.
 
 ## Value
 
-Returns a list of character vectors representing the identified tokens.
+Both functions return a character vector. Attributes are copied from the longest inputs.
 
 ## Differences from Base R
 
@@ -71,7 +81,7 @@ Replacements for base [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](grep.md), [`gsub`](gsub.md), [`substr`](substr.md)
+Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](grep.md), [`strsplit`](strsplit.md), [`substr`](substr.md)
 
 ## Examples
 
@@ -79,29 +89,5 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](grep.md)
 
 
 ```r
-stringx::strsplit(c(x="a, b", y="c,d,  e"), ",\\s*")
-## $x
-## [1] "a" "b"
-## 
-## $y
-## [1] "c" "d" "e"
-x <- strcat(c(
-    "abc", "123", ",!.", "\U0001F4A9",
-    "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
-    "\U000026F9\U0001F3FF\U0000200D\U00002640\U0000FE0F",
-    "\U0001F3F4\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F"
-))
-# be careful when splitting into individual code points:
-base::strsplit(x, "")  # stringx does not support this
-## [[1]]
-##  [1] "a"  "b"  "c"  "1"  "2"  "3"  ","  "!"  "."  "💩" "🙍" "🏼" "‍"   "♂"  "️"  
-## [16] "⛹"  "🏿" "‍"   "♀"  "️"   "🏴" "󠁧"   "󠁢"   "󠁳"   "󠁣"   "󠁴"   "󠁿"
-stringx::strsplit(x, "(?s)(?=.)", omit_empty=TRUE)  # look-ahead for any char with dot-all
-## [[1]]
-##  [1] "a"  "b"  "c"  "1"  "2"  "3"  ","  "!"  "."  "💩" "🙍" "🏼" "‍"   "♂"  "️"  
-## [16] "⛹"  "🏿" "‍"   "♀"  "️"   "🏴" "󠁧"   "󠁢"   "󠁳"   "󠁣"   "󠁴"   "󠁿"
-stringi::stri_split_boundaries(x, type="character")  # grapheme clusters
-## [[1]]
-##  [1] "a"     "b"     "c"     "1"     "2"     "3"     ","     "!"     "."    
-## [10] "💩"    "🙍🏼‍♂️" "⛹🏿‍♀️"  "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
+# ...
 ```

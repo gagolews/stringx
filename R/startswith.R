@@ -36,9 +36,12 @@
 #' and \code{\link[stringi]{stri_endswith}}.
 #'
 #' \itemize{
-#' \item \code{\link[base]{grepl}} and some other pattern matching functions
-#'     have a different argument order, where the needle precedes the haystack
-#'     \bold{[not fixed here]}
+#' \item there are inconsistencies between the argument order and naming
+#'     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
+#'     and \code{\link[base]{startsWith}} (amongst others); e.g.,
+#'     where the needle can precede the haystack, the use of the forward
+#'     pipe operator \code{|>} is less convenient
+#'     \bold{[fixed here]}
 #' \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
 #'     \bold{[added here]}
 #' \item partial recycling without the usual warning
@@ -52,7 +55,7 @@
 #'
 #' @param x character vector whose elements are to be examined
 #'
-#' @param prefix,suffix character vectors with patterns to search for
+#' @param pattern character vector with patterns to search for
 #'
 #' @param fixed single logical value;
 #'     \code{TRUE} for fixed pattern matching
@@ -64,6 +67,7 @@
 #' @param ignore.case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
+#' @param prefix,suffix aliases to the \code{pattern} argument [DEPRECATED]
 #' @param ... further arguments to \code{\link[stringi]{stri_startswith}}
 #'     and \code{\link[stringi]{stri_endswith}}, e.g., \code{locale}
 #'
@@ -89,50 +93,56 @@
 #' Related function(s): \code{\link{grepl}}, \code{\link{substr}}
 #'
 #' @rdname startswith
-startsWith <- function(x, prefix, fixed=TRUE, ignore.case=FALSE, ...)
+startsWith <- function(x, pattern=prefix, ..., ignore.case=FALSE, fixed=TRUE, prefix)
 {
+    if (!missing(prefix) && !missing(pattern)) stop("do not use `prefix` if `pattern` is given as well")
+    if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
+
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(prefix)) prefix <- as.character(prefix)  # S3 generics, you do you
+    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
 
     ret <- {
         if (is.na(fixed)) {
             if (!ignore.case)
-                stringi::stri_startswith_coll(x, pattern=prefix, ...)
+                stringi::stri_startswith_coll(x, pattern, ...)
             else
-                stringi::stri_startswith_coll(x, pattern=prefix, strength=2L, ...)
+                stringi::stri_startswith_coll(x, pattern, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_startswith_fixed(x, pattern=prefix, case_insensitive=ignore.case, ...)
+            stringi::stri_startswith_fixed(x, pattern, case_insensitive=ignore.case, ...)
         } else {
             stop("use `grepl` instead")
         }
     }
 
-    .attribs_propagate_binary(ret, x, prefix)
+    .attribs_propagate_binary(ret, x, pattern)
 }
 
 
 #' @rdname startswith
-endsWith <- function(x, suffix, fixed=TRUE, ignore.case=FALSE, ...)
+endsWith <- function(x, pattern=suffix, ..., ignore.case=FALSE, fixed=TRUE, suffix)
 {
+    if (!missing(suffix) && !missing(pattern)) stop("do not use `suffix` if `pattern` is given as well")
+    if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
+
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(suffix)) suffix <- as.character(suffix)  # S3 generics, you do you
+    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
 
     ret <- {
         if (is.na(fixed)) {
             if (!ignore.case)
-                stringi::stri_endswith_coll(x, pattern=suffix, ...)
+                stringi::stri_endswith_coll(x, pattern, ...)
             else
-                stringi::stri_endswith_coll(x, pattern=suffix, strength=2L, ...)
+                stringi::stri_endswith_coll(x, pattern, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_endswith_fixed(x, pattern=suffix, case_insensitive=ignore.case, ...)
+            stringi::stri_endswith_fixed(x, pattern, case_insensitive=ignore.case, ...)
         } else {
             stop("use `grepl` instead")
         }
     }
 
-    .attribs_propagate_binary(ret, x, suffix)
+    .attribs_propagate_binary(ret, x, pattern)
 }

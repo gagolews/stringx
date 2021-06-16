@@ -14,19 +14,19 @@ endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
 
 ## Arguments
 
-|                  |                                                                                                                                                                                                                                                                                                                                                                                                       |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                                                                                    |
-| `prefix, suffix` | character vectors with patterns to search for                                                                                                                                                                                                                                                                                                                                                         |
-| `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html) instead |
-| `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                           |
-| `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale`                                                                                                                                                                                            |
+|                  |                                                                                                                                                                                                                                                                                                                                             |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                          |
+| `prefix, suffix` | character vectors with patterns to search for                                                                                                                                                                                                                                                                                               |
+| `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](grep.md) instead |
+| `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                 |
+| `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale`                                                                                                                                  |
 
 ## Details
 
 Both functions are fully vectorised with respect to both arguments.
 
-For matching with regular expressions, see [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html) with patterns like `"^prefix"` and `"suffix$"`.
+For matching with regular expressions, see [`grepl`](grep.md) with patterns like `"^prefix"` and `"suffix$"`.
 
 ## Value
 
@@ -54,7 +54,7 @@ Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/libra
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html), [`substr`](substr.md)
+Related function(s): [`grepl`](grep.md), [`substr`](substr.md)
 
 ## Examples
 

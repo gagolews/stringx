@@ -77,15 +77,18 @@ either Version 2 or Version 3, see
 .. toctree::
     :maxdepth: 2
     :caption: stringx
+    :hidden:
 
-    About <https://stringx.gagolewski.com/>
+    About <self>
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Reference Manual
+    :glob:
 
-    rapi.md
+    rapi/*
+.. rapi.md
 
 
 .. toctree::

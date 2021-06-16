@@ -44,7 +44,7 @@ Replacement for base [`trimws`](https://stat.ethz.ch/R-manual/R-devel/library/ba
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`sub`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html)
+Related function(s): [`sub`](gsub.md)
 
 ## Examples
 

@@ -24,7 +24,7 @@
 #'
 #' @details
 #' \code{tolower} and \code{toupper} perform case mapping.
-#' \code{chartr} translates individual code points.
+#' \code{chartr2} (and [DEPRECATED] \code{chartr}) translates individual code points.
 #' \code{casefold} commits case folding.
 #' The new function \code{strtrans} applies general \pkg{ICU} transforms,
 #' see \code{\link[stringi]{stri_trans_general}}.
@@ -42,17 +42,19 @@
 #' whose purpose is to make two pieces of text that differ only in case
 #' identical, see \code{\link[stringi]{stri_trans_casefold}}.
 #'
-#' \code{chartr} is now a wrapper for \code{\link[stringi]{stri_trans_char}}.
-#' Contrary to the base \code{\link[base]{chartr}}, it always generates
+#' \code{chartr2} and [DEPRECATED] \code{chartr} are
+#' wrappers for \code{\link[stringi]{stri_trans_char}}.
+#' Contrary to the base \code{\link[base]{chartr}}, they always generate
 #' a warning when \code{old} and \code{new} are of different lengths.
-#'
+#' \code{chartr2} has argument order and naming consistent with
+#' \code{\link{gsub}}.
 #'
 #'
 #' @param x character vector (or an object coercible to)
 #'
-#' @param old single string
+#' @param pattern,old single string
 #'
-#' @param new single string, preferably of the same length as \code{old}
+#' @param replacement,new single string, preferably of the same length as \code{old}
 #'
 #' @param upper single logical value; switches between case folding
 #'    (the default, \code{NA}), lower-, and upper-case
@@ -102,12 +104,20 @@ strtrans <- function(x, transform)
 }
 
 
+
+#' @rdname chartr
+chartr2 <- function(x, pattern, replacement)
+{
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    ret <- stringi::stri_trans_char(x, pattern, replacement)
+    .attribs_propagate_unary(ret, x)
+}
+
+
 #' @rdname chartr
 chartr <- function(old, new, x)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
-    ret <- stringi::stri_trans_char(x, pattern=old, replacement=new)
-    .attribs_propagate_unary(ret, x)
+    chartr2(x, pattern=old, replacement=new)
 }
 
 

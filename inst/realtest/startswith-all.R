@@ -5,8 +5,8 @@ E(endsWith(character(0), "a"), logical(0))
 E(startsWith("a", character(0)), logical(0))
 E(endsWith("a", character(0)), logical(0))
 
-E(startsWith("ababa", c("a", "ab", "aba", "baba", NA)), c(TRUE, TRUE, TRUE, FALSE, NA))
-E(endsWith("ababa", c("a", "ab", "aba", "baba", NA)), c(TRUE, FALSE, TRUE, TRUE, NA))
+E(startsWith("ababa", prefix=c("a", "ab", "aba", "baba", NA)), c(TRUE, TRUE, TRUE, FALSE, NA))
+E(endsWith("ababa", suffix=c("a", "ab", "aba", "baba", NA)), c(TRUE, FALSE, TRUE, TRUE, NA))
 
 E(startsWith(c("a", "ab", "aba", "baba", NA, "a"), c("a", NA)), c(TRUE, NA, TRUE, NA, NA, NA))
 E(endsWith(c("a", "ab", "aba", "baba", NA, "a"), c("a", NA)), c(TRUE, NA, TRUE, NA, NA, NA))

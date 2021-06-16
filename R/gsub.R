@@ -16,13 +16,14 @@
 
 
 #' @title
-#' Detect Pattern Occurrences
+#' Replace Pattern Occurrences
 #'
 #' @description
-#' ...
+#' Splits each string into chunks delimited by occurrences of a given pattern.
 #'
 #' @details
-#' This function is fully vectorised with respect to both arguments.
+#' These functions are fully vectorised with respect to \code{pattern},
+#' \code{replacement}, and \code{x}.
 #'
 #' For splitting text into 'characters' (grapheme clusters), words,
 #' or sentences, use \code{\link[stringi]{stri_split_boundaries}} instead.
@@ -48,7 +49,7 @@
 #'     and \code{\link[base]{startsWith}} (amongst others); e.g.,
 #'     where the needle can precede the haystack, the use of the forward
 #'     pipe operator \code{|>} is less convenient
-#'     \bold{[............fixed here]}
+#'     \bold{[...........fixed here]}
 #' \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
 #'     \bold{[added here]}
 #' \item if \code{split} is a zero-length vector, it is treated as \code{""},
@@ -65,12 +66,16 @@
 #'     \bold{[fixed here]}
 #' \item only the \code{names} attribute of \code{x} is preserved
 #'     \bold{[fixed here]}
+#' \item ...different syntax....
 #' }
 #'
 #'
-#' @param x character vector whose elements are to be examined
+#' @param x character vector with strings whose chunks are to be modified
 #'
 #' @param pattern character vector of nonempty search patterns
+#'
+#' @param replacement character vector with the corresponding replacement
+#'     strings
 #'
 #' @param fixed single logical value;
 #'     \code{FALSE} for matching with regular expressions
@@ -83,15 +88,17 @@
 #' @param ignore.case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
-#' @param ... further arguments to \code{\link[stringi]{stri_split}},
+#' @param ... further arguments to \code{\link[stringi]{stri_replace}},
 #'     e.g., \code{omit_empty}, \code{locale}, \code{dotall}
 #'
+#' @param text alias to the \code{x} argument [DEPRECATED]
 #' @param perl,useBytes not used (with a warning if
 #'     attempting to do so) [DEPRECATED]
 #'
 #'
 #' @return
-#' Returns a list of character vectors representing the identified tokens.
+#' Both functions return a character vector.
+#' Attributes are copied from the longest inputs.
 #'
 #'
 #' @examples
@@ -99,63 +106,21 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substr}}
+#'     \code{\link{grep}}, \code{\link{strsplit}}, \code{\link{substr}}
 #'
-#' @rdname grep
-grep <- function(
-    pattern, x, ...,
-    ignore.case=FALSE, fixed=FALSE, value=FALSE, invert=FALSE,
-    perl=FALSE, useBytes=FALSE
+#' @rdname gsub
+sub <- function(
+    pattern, replacement, x, ...,
+    ignore.case=FALSE, fixed=FALSE, perl=FALSE, useBytes=FALSE
 ) {
 
 }
 
 
-#' @rdname grep
-grepl <- function(
-    pattern, x, ...,
-    ignore.case=FALSE, fixed=FALSE,
-    perl=FALSE, useBytes=FALSE
-) {
-
-}
-
-
-#' @rdname grep
-regexpr <- function(
-    pattern, x=text, ...,
-    ignore.case=FALSE, fixed=FALSE,
-    perl=FALSE, useBytes=FALSE, text
-) {
-
-}
-
-
-#' @rdname grep
-gregexpr <- function(
-    pattern, x=text, ...,
-    ignore.case=FALSE, fixed=FALSE,
-    perl=FALSE, useBytes=FALSE, text
-) {
-
-}
-
-
-#' @rdname grep
-regexec <- function(
-    pattern, x=text, ...,
-    ignore.case=FALSE, fixed=FALSE,
-    perl=FALSE, useBytes=FALSE, text
-) {
-
-}
-
-
-#' @rdname grep
-gregexec <- function(
-    pattern, x=text, ...,
-    ignore.case=FALSE, fixed=FALSE,
-    perl=FALSE, useBytes=FALSE, text
+#' @rdname gsub
+gsub <- function(
+    pattern, replacement, x, ...,
+    ignore.case=FALSE, fixed=FALSE, perl=FALSE, useBytes=FALSE
 ) {
 
 }

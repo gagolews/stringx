@@ -13,6 +13,7 @@ xtfrm(x, ...)
 
 \method{xtfrm}{character}(
   x,
+  ...,
   locale = NULL,
   strength = 3L,
   alternate_shifted = FALSE,
@@ -20,12 +21,12 @@ xtfrm(x, ...)
   uppercase_first = NA,
   case_level = FALSE,
   normalisation = FALSE,
-  numeric = FALSE,
-  ...
+  numeric = FALSE
 )
 
 \method{sort}{character}(
   x,
+  ...,
   decreasing = FALSE,
   na.last = NA,
   locale = NULL,
@@ -35,8 +36,7 @@ xtfrm(x, ...)
   uppercase_first = NA,
   case_level = FALSE,
   normalisation = FALSE,
-  numeric = FALSE,
-  ...
+  numeric = FALSE
 )
 }
 \arguments{

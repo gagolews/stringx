@@ -138,6 +138,7 @@ xtfrm.default <- function(x, ...) base::xtfrm.default(x)
 #' @rdname sort
 xtfrm.character <- function(
     x,
+    ...,
     locale=NULL,
     strength=3L,
     alternate_shifted=FALSE,
@@ -145,8 +146,7 @@ xtfrm.character <- function(
     uppercase_first=NA,
     case_level=FALSE,
     normalisation=FALSE,
-    numeric=FALSE,
-    ...
+    numeric=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
     ret <- stringi::stri_rank(
@@ -167,6 +167,7 @@ xtfrm.character <- function(
 #' @rdname sort
 sort.character <- function(
     x,
+    ...,
     decreasing=FALSE,
     na.last=NA,
     locale=NULL,
@@ -176,8 +177,7 @@ sort.character <- function(
     uppercase_first=NA,
     case_level=FALSE,
     normalisation=FALSE,
-    numeric=FALSE,
-    ...
+    numeric=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
 

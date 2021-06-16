@@ -18,8 +18,8 @@ E(
     list(c("a", "\U0001F4A9", "a"))  # well, it's a feature...
 )
 
-E(strsplit("123a456", "a", fixed=FALSE), list(c("123", "456")))
-E(strsplit("123a456", "a", fixed=TRUE), list(c("123", "456")))
+E(strsplit("123a456", split="a", fixed=FALSE), list(c("123", "456")))
+E(strsplit("123a456", split="a", fixed=TRUE), list(c("123", "456")))
 E(strsplit("123a456", "A", fixed=FALSE), list("123a456"))
 E(strsplit("123a456", "A", fixed=TRUE),  list("123a456"))
 E(strsplit("123aaa456", "a+", fixed=TRUE),  list("123aaa456"))

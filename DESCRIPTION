@@ -15,8 +15,8 @@ Description: English is the native language for only 5% of the World population.
     The early computer era, now a very long time ago, was dominated by the US.
     Due to the proliferation of the internet, smartphones, social media, and
     other technologies and communication platforms, this is no longer the case.
-    This package replaces base R string functions (such as 'gregexpr',
-    'tolower' and 'sprintf') with ones that fully
+    This package replaces base R string functions (such as 'grep',
+    'tolower', and 'sprintf') with ones that fully
     support the Unicode standards related to natural language processing
     and fix some long-standing inconsistencies.
     Thanks to ICU (International Components for Unicode) and stringi,
@@ -24,6 +24,8 @@ Description: English is the native language for only 5% of the World population.
 BugReports: https://github.com/gagolews/stringx/issues
 URL: https://stringx.gagolewski.com/
 License: GPL (>= 2)
+Depends:
+    R (>= 4.1.0)
 Imports:
     stringi (>= 1.6.2.9007)
 Suggests:

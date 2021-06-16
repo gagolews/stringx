@@ -5,14 +5,20 @@
 \alias{endsWith}
 \title{Detect Pattern Occurrences at Start or End of Strings}
 \usage{
-startsWith(x, prefix, fixed = TRUE, ignore.case = FALSE, ...)
+startsWith(x, pattern = prefix, ..., ignore.case = FALSE, fixed = TRUE, prefix)
 
-endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
+endsWith(x, pattern = suffix, ..., ignore.case = FALSE, fixed = TRUE, suffix)
 }
 \arguments{
 \item{x}{character vector whose elements are to be examined}
 
-\item{prefix, suffix}{character vectors with patterns to search for}
+\item{pattern}{character vector with patterns to search for}
+
+\item{...}{further arguments to \code{\link[stringi]{stri_startswith}}
+and \code{\link[stringi]{stri_endswith}}, e.g., \code{locale}}
+
+\item{ignore.case}{single logical value; indicates whether matching
+should be case-insensitive}
 
 \item{fixed}{single logical value;
 \code{TRUE} for fixed pattern matching
@@ -21,11 +27,7 @@ endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
     (\link[stringi]{about_search_coll});
 \code{FALSE} is not supported -- use \code{\link{grepl}} instead}
 
-\item{ignore.case}{single logical value; indicates whether matching
-should be case-insensitive}
-
-\item{...}{further arguments to \code{\link[stringi]{stri_startswith}}
-and \code{\link[stringi]{stri_endswith}}, e.g., \code{locale}}
+\item{prefix, suffix}{aliases to the \code{pattern} argument [DEPRECATED]}
 }
 \value{
 Each function returns a logical vector, indicating whether a pattern
@@ -49,9 +51,12 @@ implemented with \code{\link[stringi]{stri_startswith}}
 and \code{\link[stringi]{stri_endswith}}.
 
 \itemize{
-\item \code{\link[base]{grepl}} and some other pattern matching functions
-    have a different argument order, where the needle precedes the haystack
-    \bold{[not fixed here]}
+\item there are inconsistencies between the argument order and naming
+    in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
+    and \code{\link[base]{startsWith}} (amongst others); e.g.,
+    where the needle can precede the haystack, the use of the forward
+    pipe operator \code{|>} is less convenient
+    \bold{[fixed here]}
 \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
     \bold{[added here]}
 \item partial recycling without the usual warning
