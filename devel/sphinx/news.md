@@ -52,6 +52,8 @@ inconsistencies in base R thoroughly documented
 working on stringx resulted in quite a new features in stringi implemented
 (e.g., the sprintf function)
 
+the new forward pipe operator
+
 TODO: describe coercion
 
 TODO: describe attributes
@@ -78,22 +80,39 @@ hence if you want them to be preserved, you do it manually
 like `attributes<-`(as.character(x), attributes(x))
 
 
-startsWith(x, prefix)
-endsWith(x, suffix)
-strsplit(x, split)
-sub(pattern, replacement, x)
-regexpr(pattern, text)
-regexec(pattern, text)
-grep(pattern, x)
+startsWith(x, prefix)                          startsWith(x, pattern=prefix, ..., ignore.case=FALSE, fixed=TRUE, prefix)
+endsWith(x, suffix)                            endsWith(x, pattern=suffix, ..., ignore.case=FALSE, fixed=TRUE, suffix)
+strsplit(x, split, fixed, perl, useBytes)      strsplit(x, pattern=split, ..., ignore.case=FALSE, fixed=FALSE, perl=FALSE, useBytes=FALSE, split)
+
+sub(pattern, replacement, x, ignore.case, perl, fixed, useBytes)
+gsub(pattern, replacement, x, ignore.case, perl, fixed, useBytes)
+
+grep(pattern, x, ignore.case, perl, value, fixed, useBytes, invert)
+
+grepl(pattern, x, ignore.case, perl, fixed, useBytes)
+
+
+
+regexpr(pattern, text, ignore.case, perl, fixed, useBytes)
+
+gregexpr(pattern, text, ignore.case, perl, fixed, useBytes)
+
+regexec(pattern, text, ignore.case, perl, fixed, useBytes)
+
+gregexec(pattern, text, ignore.case, perl, fixed, useBytes)
 
 
 
 current limitations/main differences from base R:
 * long vectors are not supported (see \link[base]{LongVectors})
+* border cases (empty vectors, empty strings) and missing values handled consistently
 * regex matching is based on ICU (Java-like)
 * no bytes encoding supported
 * different char widths
 * portable locales
+* some arguments can only be passed as keywords (this increases consistency
+and code readability)
+* names of capture groups cannot currently be extracted
 
 
 ## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
@@ -101,7 +120,8 @@ current limitations/main differences from base R:
 * [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
 * [NEW FEATURE] `paste`, `paste0`, `strcat`, `%x+%`.
 * [NEW FEATURE] `strrep`, `%x*%`.
-* [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`, `strtrans`.
+* [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`.
+* [NEW FEATURE] `chartr2`, `strtrans`.
 * [NEW FEATURE] `sprintf`, `printf`.
 * [NEW FEATURE] `strftime`, `strptime`.
 * [NEW FEATURE] `nchar`, `nzchar`.
@@ -113,13 +133,13 @@ current limitations/main differences from base R:
 * [NEW FEATURE] `strwrap`.
 * [NEW FEATURE] `substr`, `substring`, `substr<-`, `substring<-`.
 * [NEW FEATURE] `strsplit`.
-* [NEW FEATURE] ..grep, grepl
-* [NEW FEATURE] ..sub, gsub
-* [NEW FEATURE] ..regexpr, gregexpr
-* [NEW FEATURE] ..regexec, gregexec
-* [NEW FEATURE] ..utils::strcapture
+* [NEW FEATURE] `sub`, `gsub`, `sub2`, `gsub2`.
+* [NEW FEATURE] ..`grep`, `grepl`, `grep2`, `grepl2`.
+* [NEW FEATURE] ..`regexpr`, `gregexpr`, `regexpr2`, `gregexpr2`.
+* [NEW FEATURE] ..`regexec`, `gregexec`, `regexec2`, `gregexec2`.
+* [NEW FEATURE] ..utils::strcapture ???
 
-grep2 etc?
+
 regexpr == what does that even mean? /positions/
 regexec == ? /positions+capture groups/
 

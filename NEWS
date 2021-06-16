@@ -52,6 +52,8 @@ inconsistencies in base R thoroughly documented
 working on stringx resulted in quite a new features in stringi implemented
 (e.g., the sprintf function)
 
+the new forward pipe operator
+
 TODO: describe coercion
 
 TODO: describe attributes
@@ -110,6 +112,7 @@ current limitations/main differences from base R:
 * portable locales
 * some arguments can only be passed as keywords (this increases consistency
 and code readability)
+* names of capture groups cannot currently be extracted
 
 
 ## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
@@ -117,7 +120,8 @@ and code readability)
 * [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
 * [NEW FEATURE] `paste`, `paste0`, `strcat`, `%x+%`.
 * [NEW FEATURE] `strrep`, `%x*%`.
-* [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`, `strtrans`.
+* [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`.
+* [NEW FEATURE] `chartr2`, `strtrans`.
 * [NEW FEATURE] `sprintf`, `printf`.
 * [NEW FEATURE] `strftime`, `strptime`.
 * [NEW FEATURE] `nchar`, `nzchar`.
@@ -129,13 +133,13 @@ and code readability)
 * [NEW FEATURE] `strwrap`.
 * [NEW FEATURE] `substr`, `substring`, `substr<-`, `substring<-`.
 * [NEW FEATURE] `strsplit`.
-* [NEW FEATURE] ..grep, grepl
-* [NEW FEATURE] ..sub, gsub
-* [NEW FEATURE] ..regexpr, gregexpr
-* [NEW FEATURE] ..regexec, gregexec
-* [NEW FEATURE] ..utils::strcapture
+* [NEW FEATURE] `sub`, `gsub`, `sub2`, `gsub2`.
+* [NEW FEATURE] ..`grep`, `grepl`, `grep2`, `grepl2`.
+* [NEW FEATURE] ..`regexpr`, `gregexpr`, `regexpr2`, `gregexpr2`.
+* [NEW FEATURE] ..`regexec`, `gregexec`, `regexec2`, `gregexec2`.
+* [NEW FEATURE] ..utils::strcapture ???
 
-grep2 etc?
+
 regexpr == what does that even mean? /positions/
 regexec == ? /positions+capture groups/
 

@@ -23,7 +23,7 @@
 #' fixed pattern.
 #'
 #' @details
-#' Both functions are fully vectorised with respect to both arguments.
+#' These functions are fully vectorised with respect to both arguments.
 #'
 #' For matching with regular expressions, see \code{\link{grepl}}
 #' with patterns like \code{"^prefix"} and \code{"suffix$"}.

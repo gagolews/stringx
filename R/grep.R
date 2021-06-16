@@ -19,7 +19,7 @@
 #' Detect Pattern Occurrences
 #'
 #' @description
-#' ...
+#' ... g stands for 'global'=all
 #'
 #' @details
 #' This function is fully vectorised with respect to both arguments.
@@ -32,6 +32,12 @@
 #' implemented with \code{\link[stringi]{stri_split}}.
 #'
 #' \itemize{
+#' \item there are inconsistencies between the argument order and naming
+#'     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
+#'     and \code{\link[base]{startsWith}} (amongst others); e.g.,
+#'     where the needle can precede the haystack, the use of the forward
+#'     pipe operator \code{|>} is less convenient
+#'     \bold{[fixed here]}
 #' \item base R implementation is not portable as it is based on
 #'     the system PCRE or TRE library
 #'     (e.g., some Unicode classes may not be available or matching thereof
@@ -43,28 +49,9 @@
 #'     (and historically, ERE was used in place of TRE)
 #'     \bold{[here, \pkg{ICU} Java-like regular expression engine
 #'     is only available, hence the \code{perl} argument has no meaning]}
-#' \item there are inconsistencies between the argument order and naming
-#'     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
-#'     and \code{\link[base]{startsWith}} (amongst others); e.g.,
-#'     where the needle can precede the haystack, the use of the forward
-#'     pipe operator \code{|>} is less convenient
-#'     \bold{[............fixed here]}
-#' \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
-#'     \bold{[added here]}
-#' \item if \code{split} is a zero-length vector, it is treated as \code{""},
-#'     which extracts individual code points (which is not the best idea
-#'     for natural language processing tasks)
-#'     \bold{[empty search patterns are not supported here, zero-length vectors
-#'     are propagated correctly]}
-#' \item last empty token is removed from the output, but first is not
-#'     \bold{[fixed here -- see also the \code{omit_empty} argument]}
-#' \item missing values in \code{split} are not propagated correctly
+#' \item not vectorised w.r.t. \code{pattern}
 #'     \bold{[fixed here]}
-#' \item partial recycling without the usual warning, not fully vectorised
-#'     w.r.t. the \code{split} argument
-#'     \bold{[fixed here]}
-#' \item only the \code{names} attribute of \code{x} is preserved
-#'     \bold{[fixed here]}
+#' \item ...
 #' }
 #'
 #'
@@ -102,12 +89,70 @@
 #'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substr}}
 #'
 #' @rdname grep
+grep2 <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE, value=FALSE, invert=FALSE
+) {
+    # TODO
+}
+
+
+#' @rdname grep
+grepl2 <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE
+) {
+    # TODO
+}
+
+
+#' @rdname grep
+regexpr2 <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE
+) {
+    # TODO
+}
+
+
+#' @rdname grep
+gregexpr2 <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE
+) {
+    # TODO
+}
+
+
+#' @rdname grep
+regexec2 <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE
+) {
+    # TODO
+}
+
+
+#' @rdname grep
+gregexec2 <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE
+) {
+    # TODO
+}
+
+
+
+#' @rdname grep
 grep <- function(
     pattern, x, ...,
     ignore.case=FALSE, fixed=FALSE, value=FALSE, invert=FALSE,
     perl=FALSE, useBytes=FALSE
 ) {
-
+    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
+    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
+    grep2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, value=value, invert=invert)
 }
 
 
@@ -117,7 +162,10 @@ grepl <- function(
     ignore.case=FALSE, fixed=FALSE,
     perl=FALSE, useBytes=FALSE
 ) {
-
+    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
+    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
+    grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
 }
 
 
@@ -127,7 +175,10 @@ regexpr <- function(
     ignore.case=FALSE, fixed=FALSE,
     perl=FALSE, useBytes=FALSE, text
 ) {
-
+    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
+    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
+    regexpr2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
 }
 
 
@@ -137,7 +188,10 @@ gregexpr <- function(
     ignore.case=FALSE, fixed=FALSE,
     perl=FALSE, useBytes=FALSE, text
 ) {
-
+    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
+    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
+    gregexpr2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
 }
 
 
@@ -147,7 +201,10 @@ regexec <- function(
     ignore.case=FALSE, fixed=FALSE,
     perl=FALSE, useBytes=FALSE, text
 ) {
-
+    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
+    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
+    regexec2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
 }
 
 
@@ -157,5 +214,8 @@ gregexec <- function(
     ignore.case=FALSE, fixed=FALSE,
     perl=FALSE, useBytes=FALSE, text
 ) {
-
+    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
+    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
+    gregexec2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
 }

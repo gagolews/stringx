@@ -9,6 +9,8 @@ These functions can be used to translate characters, including case mapping and 
 ```r
 strtrans(x, transform)
 
+chartr2(x, pattern, replacement)
+
 chartr(old, new, x)
 
 tolower(x, locale = NULL)
@@ -20,18 +22,18 @@ casefold(x, upper = NA)
 
 ## Arguments
 
-|             |                                                                                                                                                                                                                                                            |
-|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`         | character vector (or an object coercible to)                                                                                                                                                                                                               |
-| `transform` | single string with ICU general transform specifier, see [`stri_trans_list`](https://stringi.gagolewski.com/rapi/stri_trans_list.html)                                                                                                                      |
-| `old`       | single string                                                                                                                                                                                                                                              |
-| `new`       | single string, preferably of the same length as `old`                                                                                                                                                                                                      |
-| `locale`    | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
-| `upper`     | single logical value; switches between case folding (the default, `NA`), lower-, and upper-case                                                                                                                                                            |
+|                    |                                                                                                                                                                                                                                                            |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`                | character vector (or an object coercible to)                                                                                                                                                                                                               |
+| `transform`        | single string with ICU general transform specifier, see [`stri_trans_list`](https://stringi.gagolewski.com/rapi/stri_trans_list.html)                                                                                                                      |
+| `pattern, old`     | single string                                                                                                                                                                                                                                              |
+| `replacement, new` | single string, preferably of the same length as `old`                                                                                                                                                                                                      |
+| `locale`           | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+| `upper`            | single logical value; switches between case folding (the default, `NA`), lower-, and upper-case                                                                                                                                                            |
 
 ## Details
 
-`tolower` and `toupper` perform case mapping. `chartr` translates individual code points. `casefold` commits case folding. The new function `strtrans` applies general <span class="pkg">ICU</span> transforms, see [`stri_trans_general`](https://stringi.gagolewski.com/rapi/stri_trans_general.html).
+`tolower` and `toupper` perform case mapping. `chartr2` (and \[DEPRECATED\] `chartr`) translate individual code points. `casefold` commits case folding. The new function `strtrans` applies general <span class="pkg">ICU</span> transforms, see [`stri_trans_general`](https://stringi.gagolewski.com/rapi/stri_trans_general.html).
 
 ## Value
 
@@ -43,7 +45,7 @@ Unlike their base R counterparts, the new `tolower` and `toupper` are locale-sen
 
 The base [`casefold`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/casefold.html) simply dispatches to `tolower` or `toupper` \'for compatibility with S-PLUS\' (which was only crucial long time ago). The version implemented here, by default, performs the true case folding, whose purpose is to make two pieces of text that differ only in case identical, see [`stri_trans_casefold`](https://stringi.gagolewski.com/rapi/stri_trans_casemap.html).
 
-`chartr` is now a wrapper for [`stri_trans_char`](https://stringi.gagolewski.com/rapi/stri_trans_char.html). Contrary to the base [`chartr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/chartr.html), it always generates a warning when `old` and `new` are of different lengths.
+`chartr2` and \[DEPRECATED\] `chartr` are wrappers for [`stri_trans_char`](https://stringi.gagolewski.com/rapi/stri_trans_char.html). Contrary to the base [`chartr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/chartr.html), they always generate a warning when `old` and `new` are of different lengths. `chartr2` has argument order and naming consistent with [`gsub`](gsub.md).
 
 ## Author(s)
 

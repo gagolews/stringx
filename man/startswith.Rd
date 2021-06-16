@@ -38,7 +38,7 @@ Determines if a string starts or ends with a match to a specified
 fixed pattern.
 }
 \details{
-Both functions are fully vectorised with respect to both arguments.
+These functions are fully vectorised with respect to both arguments.
 
 For matching with regular expressions, see \code{\link{grepl}}
 with patterns like \code{"^prefix"} and \code{"suffix$"}.

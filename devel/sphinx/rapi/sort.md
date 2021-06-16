@@ -17,6 +17,7 @@ xtfrm(x, ...)
 ## S3 method for class 'character'
 xtfrm(
   x,
+  ...,
   locale = NULL,
   strength = 3L,
   alternate_shifted = FALSE,
@@ -24,13 +25,13 @@ xtfrm(
   uppercase_first = NA,
   case_level = FALSE,
   normalisation = FALSE,
-  numeric = FALSE,
-  ...
+  numeric = FALSE
 )
 
 ## S3 method for class 'character'
 sort(
   x,
+  ...,
   decreasing = FALSE,
   na.last = NA,
   locale = NULL,
@@ -40,8 +41,7 @@ sort(
   uppercase_first = NA,
   case_level = FALSE,
   normalisation = FALSE,
-  numeric = FALSE,
-  ...
+  numeric = FALSE
 )
 ```
 

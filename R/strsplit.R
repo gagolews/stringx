@@ -117,9 +117,9 @@
 strsplit <- function(x, pattern=split, ..., ignore.case=FALSE, fixed=FALSE, perl=FALSE, useBytes=FALSE, split)
 {
     if (!missing(split) && !missing(pattern)) stop("do not use `split` if `pattern` is given as well")
-    if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
+    if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
 
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)

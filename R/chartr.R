@@ -24,7 +24,7 @@
 #'
 #' @details
 #' \code{tolower} and \code{toupper} perform case mapping.
-#' \code{chartr2} (and [DEPRECATED] \code{chartr}) translates individual code points.
+#' \code{chartr2} (and [DEPRECATED] \code{chartr}) translate individual code points.
 #' \code{casefold} commits case folding.
 #' The new function \code{strtrans} applies general \pkg{ICU} transforms,
 #' see \code{\link[stringi]{stri_trans_general}}.

@@ -7,9 +7,9 @@ Determines if a string starts or ends with a match to a specified fixed pattern.
 ## Usage
 
 ```r
-startsWith(x, prefix, fixed = TRUE, ignore.case = FALSE, ...)
+startsWith(x, pattern = prefix, ..., ignore.case = FALSE, fixed = TRUE, prefix)
 
-endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
+endsWith(x, pattern = suffix, ..., ignore.case = FALSE, fixed = TRUE, suffix)
 ```
 
 ## Arguments
@@ -17,14 +17,15 @@ endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
 |                  |                                                                                                                                                                                                                                                                                                                                             |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                          |
-| `prefix, suffix` | character vectors with patterns to search for                                                                                                                                                                                                                                                                                               |
-| `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](grep.md) instead |
-| `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                 |
+| `pattern`        | character vector with patterns to search for                                                                                                                                                                                                                                                                                                |
 | `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale`                                                                                                                                  |
+| `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                 |
+| `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](grep.md) instead |
+| `prefix, suffix` | aliases to the `pattern` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                            |
 
 ## Details
 
-Both functions are fully vectorised with respect to both arguments.
+These functions are fully vectorised with respect to both arguments.
 
 For matching with regular expressions, see [`grepl`](grep.md) with patterns like `"^prefix"` and `"suffix$"`.
 
@@ -36,7 +37,7 @@ Each function returns a logical vector, indicating whether a pattern match has b
 
 Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) and [`endsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/endsWith.html) implemented with [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html).
 
--   [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html) and some other pattern matching functions have a different argument order, where the needle precedes the haystack **\[not fixed here\]**
+-   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator `|>` is less convenient **\[fixed here\]**
 
 -   [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html) also features the `ignore.case` argument **\[added here\]**
 
