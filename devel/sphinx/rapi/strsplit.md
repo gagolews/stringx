@@ -27,7 +27,7 @@ strsplit(
 | `fixed`          | single logical value; `FALSE` for matching with regular expressions (see [about\_search\_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
 | `perl, useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                      |
 | `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                          |
-| `...`            | further arguments to [`stri_split`](https://stringi.gagolewski.com/rapi/stri_split.html)                                                                                                                                                                                                                                                                                                                             |
+| `...`            | further arguments to [`stri_split`](https://stringi.gagolewski.com/rapi/stri_split.html), e.g., `omit_empty`, `locale`, `dotall`                                                                                                                                                                                                                                                                                     |
 
 ## Details
 
@@ -39,9 +39,9 @@ For splitting text into \'characters\' (grapheme clusters), words, or sentences,
 
 Returns a list of character vectors representing the identified tokens.
 
-## Differences from base R
+## Differences from Base R
 
-Replacements for base [`strplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strplit.html) implemented with [`stri_split`](https://stringi.gagolewski.com/rapi/stri_split.html).
+Replacements for base [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html) implemented with [`stri_split`](https://stringi.gagolewski.com/rapi/stri_split.html).
 
 -   base R implementation is not portable as it is based on the system PCRE or TRE library (e.g., some Unicode classes may not be available or matching thereof can depend on the current `LC_CTYPE` category **\[fixed here\]**
 
@@ -55,11 +55,13 @@ Replacements for base [`strplit`](https://stat.ethz.ch/R-manual/R-devel/library/
 
 -   if `split` is a zero-length vector, it is treated as `""`, which extracts individual code points (which is not the best idea for natural language processing tasks) **\[empty search patterns are not supported here, zero-length vectors are propagated correctly\]**
 
+-   last empty token is removed from the output, but first is not **\[fixed here -- see also the `omit_empty` argument\]**
+
 -   missing values in `split` are not propagated correctly **\[fixed here\]**
 
--   \...partial recycling without the usual warning ????????? is there recycling??? **\[fixed here\]**
+-   partial recycling without the usual warning, not fully vectorised w.r.t. the `split` argument **\[fixed here\]**
 
--   \...no attributes preserved whatsoever **\[fixed here\]**
+-   only the `names` attribute of `x` is preserved **\[fixed here\]**
 
 ## Author(s)
 
@@ -77,12 +79,19 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](https://
 
 
 ```r
+stringx::strsplit(c(x="a, b", y="c,d,  e"), ",\\s*")
+## $x
+## [1] "a" "b"
+## 
+## $y
+## [1] "c" "d" "e"
 x <- strcat(c(
     "abc", "123", ",!.", "\U0001F4A9",
     "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
     "\U000026F9\U0001F3FF\U0000200D\U00002640\U0000FE0F",
     "\U0001F3F4\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F"
 ))
+# be careful when splitting into individual code points:
 base::strsplit(x, "")  # stringx does not support this
 ## [[1]]
 ##  [1] "a"  "b"  "c"  "1"  "2"  "3"  ","  "!"  "."  "💩" "🙍" "🏼" "‍"   "♂"  "️"  

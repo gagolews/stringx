@@ -31,7 +31,7 @@ String width might be useful when displaying text using a monospaced font.
 
 `nzchar` returns a logical vector, where `TRUE` indicates that the corresponding string is of non-zero length (i.e., non-empty).
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`nchar`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/nchar.html) and [`nzchar`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/nzchar.html) implemented with [`stri_length`](https://stringi.gagolewski.com/rapi/stri_length.html), [`stri_width`](https://stringi.gagolewski.com/rapi/stri_width.html), [`stri_numbytes`](https://stringi.gagolewski.com/rapi/stri_numbytes.html), and [`stri_isempty`](https://stringi.gagolewski.com/rapi/stri_isempty.html).
 

@@ -28,7 +28,7 @@ Removes whitespaces (or other code points as specified by the
 \details{
 Not to be confused with \code{\link{strtrim}}.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacement for base \code{\link[base]{trimws}}
 implemented with \code{\link[stringi]{stri_replace_all_regex}}

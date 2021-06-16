@@ -31,7 +31,7 @@ Note that the purpose of `printf` is to display a string, not to create a new on
 
 `sprintf` returns a character vector (in UTF-8). No attributes are preserved. `printf` returns \'nothing\'.
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sprintf.html) implemented with [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
 
@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1623751426.920528 is 2021-06-15 20:03:46.
-## 2021-06-15 20:03:46 is 1623751426.920528 UNIX time.
+## UNIX time 1623806192.545229 is 2021-06-16 11:16:32.
+## 2021-06-16 11:16:32 is 1623806192.545229 UNIX time.
 ```

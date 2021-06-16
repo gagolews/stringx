@@ -59,7 +59,7 @@ For a locale-insensitive behaviour like that of `strcmp` from the standard C lib
 
 The binary operators call `strcoll` with default arguments and return logical vectors.
 
-## Differences from base R
+## Differences from Base R
 
 Replacements for base [Comparison](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Comparison.html) operators implemented with [`stri_cmp`](https://stringi.gagolewski.com/rapi/stri_compare.html).
 

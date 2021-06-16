@@ -31,7 +31,7 @@ A character vector (in UTF-8).
 
 `` `%x*%` `` and `strrep` preserve object attributes in a similar way as other [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators.
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`strrep`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strrep.html) implemented with [`stri_dup`](https://stringi.gagolewski.com/rapi/stri_dup.html).
 

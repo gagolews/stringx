@@ -41,7 +41,7 @@ Note that the ISO 8601 guideline suggests a year-month-day date format and a 24-
 
 `strptime` returns an object of class [`POSIXct`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXct.html), see also [DateTimeClasses](https://stat.ethz.ch/R-manual/R-devel/library/base/help/DateTimeClasses.html). If a string cannot be recognised as valid date/time specified (as per the given format string), the corresponding output will be `NA`.
 
-## Differences from base R
+## Differences from Base R
 
 Replacements for base [`strptime`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strptime.html) and [`strftime`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strftime.html) implemented with [`stri_datetime_parse`](https://stringi.gagolewski.com/rapi/stri_datetime_format.html) and [`stri_datetime_format`](https://stringi.gagolewski.com/rapi/stri_datetime_format.html).
 
@@ -74,22 +74,22 @@ Related function(s): [`sprintf`](sprintf.md)
 
 ```r
 stringx::strftime(Sys.time())  # default format - ISO 8601
-## [1] "2021-06-15T20:03:47+1000"
+## [1] "2021-06-16T11:16:33+1000"
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 stringx::strftime(Sys.time(), f)  # current default locale
-## [1] "Tuesday, 15 June 2021"                                               
-## [2] "2021-06-15"                                                          
-## [3] "today"                                                               
-## [4] "Tuesday, 15 June 2021 at 8:03:47 pm Australian Eastern Standard Time"
+## [1] "Wednesday, 16 June 2021"                                                
+## [2] "2021-06-16"                                                             
+## [3] "today"                                                                  
+## [4] "Wednesday, 16 June 2021 at 11:16:33 am Australian Eastern Standard Time"
 stringx::strftime(Sys.time(), f, locale="de_DE")
-## [1] "Dienstag, 15. Juni 2021"                                       
-## [2] "2021-06-15"                                                    
+## [1] "Mittwoch, 16. Juni 2021"                                       
+## [2] "2021-06-16"                                                    
 ## [3] "heute"                                                         
-## [4] "Dienstag, 15. Juni 2021 um 20:03:47 Ostaustralische Normalzeit"
+## [4] "Mittwoch, 16. Juni 2021 um 11:16:33 Ostaustralische Normalzeit"
 stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "5 Tamuz 5781"
+## [1] "6 Tamuz 5781"
 stringx::strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
 ## [1] "1970-01-01 00:00:00 GMT"
 stringx::strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1943-04-19 20:03:47 AEST"
+## [1] "1943-04-19 11:16:33 AEST"
 ```

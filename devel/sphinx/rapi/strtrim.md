@@ -29,7 +29,7 @@ Might be useful when displaying strings using a monospaced font.
 
 Returns a character vector (in UTF-8). Preserves object attributes in a similar way as [Arithmetic](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Arithmetic.html) operators.
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`strtrim`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strtrim.html) implemented with (special case of) [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
 

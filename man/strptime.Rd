@@ -64,7 +64,7 @@ date format and a 24-hour time format always indicating the effective
 time zone, e.g., \code{2015-12-31T23:59:59+0100}. This is so as to avoid
 ambiguity.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacements for base \code{\link[base]{strptime}}
 and \code{\link[base]{strftime}} implemented with

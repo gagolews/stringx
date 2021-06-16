@@ -72,7 +72,7 @@ What \'xtfrm\' stands for, the current author knows not, but would appreciate so
 
 `xtfrm.character` returns an integer vector; most attributes are preserved.
 
-## Differences from base R
+## Differences from Base R
 
 Replacements for the default S3 methods [`sort`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sort.html) and [`xtfrm`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/xtfrm.html) for character vectors implemented with [`stri_sort`](https://stringi.gagolewski.com/rapi/stri_sort.html) and [`stri_rank`](https://stringi.gagolewski.com/rapi/stri_rank.html).
 

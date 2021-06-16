@@ -23,8 +23,8 @@
 
 
 # string functions: character vectors in, character vector out
-# in non-character on input, then converted with...
-# as.character()? but this drops all attributes
+# in !is.character on input, then converted with...
+# as.character()? (note that the default method drops all attributes)
 
 # the type designers themselves should define the semantics
 # which attributes they would like to preserve?
@@ -32,6 +32,9 @@
 # character vectors in, logical/numeric out -- a different story
 # names, dim, dimnames - yes
 # tsp - ?
+
+# char in, list out -- are all vector-like
+# char in, classed out (e.g., POSIXct) -- special treatment, ideally, there should be some constructor
 
 
 # x <- list(

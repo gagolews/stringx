@@ -29,7 +29,7 @@ Not to be confused with \code{\link{trimws}}.
 
 Might be useful when displaying strings using a monospaced font.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacement for base \code{\link[base]{strtrim}}
 implemented with (special case of) \code{\link[stringi]{stri_sprintf}}.

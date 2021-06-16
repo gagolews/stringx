@@ -92,7 +92,7 @@ as its input, and hence can be used in conjunction with
 What 'xtfrm' stands for, the current author knows not,
 but would appreciate someone's enlightening him.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacements for the default S3 methods \code{\link[base]{sort}}
 and \code{\link[base]{xtfrm}} for character vectors

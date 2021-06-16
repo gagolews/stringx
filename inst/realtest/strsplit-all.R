@@ -39,19 +39,56 @@ E(
     .comment="`grep` has `ignore.case` argument"
 )
 
-
-# Note that this means that if there is a match at the beginning of a (non-empty) string, the first element of the output is "", but if there is a match at the end of the string, the output is the same as with the match removed.
-
-strsplit(",a,b,", ",")
-list(c("", "a", "b", ""))
-list(c("", "a", "b"))
+E(
+    strsplit(",a,b,", ","),
+    list(c("", "a", "b", "")),
+    list(c("a", "b")),
+    bad=list(c("", "a", "b"))
+)
 
 # partial recycling
-strsplit(c("a.b,c.d", "a,b.c,d"), c(",", "."), fixed=TRUE)
-strsplit(c("a.b,c.d"), c(",", "."), fixed=TRUE)
-strsplit(c("a.b,c.d", "a,b.c,d"), ",", fixed=TRUE)
-strsplit(c("a.b,c.d", "a,b.c,d", "d,e,f"), c(",", "."), fixed=TRUE)
-strsplit(c("a.b,c.d", "a,b.c,d"), c(",", ".", "."), fixed=TRUE)
+E(
+    strsplit(c("a.b,c.d", "a,b.c,d"), c(",", "."), fixed=TRUE),
+    list(c("a.b", "c.d"), c("a,b", "c,d"))
+)
 
-# attributes
+E(
+    strsplit("a.b,c.d", c(",", "."), fixed=TRUE),
+    list(c("a.b", "c.d"), c("a", "b,c", "d")),
+    bad=list(c("a.b", "c.d"))
+)
 
+E(
+    strsplit(c("a.b,c.d", "a,b.c,d"), ",", fixed=TRUE),
+    list(c("a.b", "c.d"), c("a", "b.c", "d"))
+)
+
+E(
+    strsplit(c(a="a.b,c.d", b="a,b.c,d", c="d,e,f"), c(",", "."), fixed=TRUE),
+    P(list(a=c("a.b", "c.d"), b=c("a,b", "c,d"), c=c("d", "e", "f")), warning="longer object length is not a multiple of shorter object length"),
+    bad=list(a=c("a.b", "c.d"), b=c("a,b", "c,d"), c=c("d", "e", "f"))
+)
+
+E(
+    strsplit(c("a.b,c.d", "a,b.c,d"), c(",", ".", "."), fixed=TRUE),
+    P(list(c("a.b", "c.d"), c("a,b", "c,d"), c("a", "b,c", "d")), warning="longer object length is not a multiple of shorter object length"),
+    bad=list(c("a.b", "c.d"), c("a,b", "c,d"))
+)
+
+
+x <- structure(c("a,b", "c,d,e"), attrib1="value1", dim=c(1, 2))
+y <- structure(c(u=","), attrib2="value2")
+E(
+    strsplit(x, y),
+    `attributes<-`(list(c("a", "b"), c("c", "d", "e")), attributes(x)),
+    bad=list(c("a", "b"), c("c", "d", "e"))
+)
+
+
+x <- structure(c(x="a,b", y="c,d,e"), attrib1="value1")
+y <- structure(c(u=",", v=","), attrib2="value2")
+E(
+    strsplit(x, y),
+    `attributes<-`(list(c("a", "b"), c("c", "d", "e")), c(attributes(x), attrib2="value2")),
+    bad=list(x=c("a", "b"), y=c("c", "d", "e"))
+)

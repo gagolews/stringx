@@ -29,7 +29,7 @@
 #' with patterns like \code{"^prefix"} and \code{"suffix$"}.
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Replacements for base \code{\link[base]{startsWith}}
 #' and \code{\link[base]{endsWith}}
 #' implemented with \code{\link[stringi]{stri_startswith}}
@@ -65,7 +65,8 @@
 #'     should be case-insensitive
 #'
 #' @param ... further arguments to \code{\link[stringi]{stri_startswith}}
-#'     and \code{\link[stringi]{stri_endswith}}
+#'     and \code{\link[stringi]{stri_endswith}}, e.g., \code{locale}
+#'
 #'
 #' @return
 #' Each function returns a logical vector, indicating whether a pattern

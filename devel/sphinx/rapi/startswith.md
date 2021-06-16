@@ -20,7 +20,7 @@ endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
 | `prefix, suffix` | character vectors with patterns to search for                                                                                                                                                                                                                                                                                                                                                         |
 | `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html) instead |
 | `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                           |
-| `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html)                                                                                                                                                                                                            |
+| `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale`                                                                                                                                                                                            |
 
 ## Details
 
@@ -32,7 +32,7 @@ For matching with regular expressions, see [`grepl`](https://stat.ethz.ch/R-manu
 
 Each function returns a logical vector, indicating whether a pattern match has been detected or not.
 
-## Differences from base R
+## Differences from Base R
 
 Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) and [`endsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/endsWith.html) implemented with [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html).
 

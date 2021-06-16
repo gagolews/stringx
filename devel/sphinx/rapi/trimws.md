@@ -26,7 +26,7 @@ Not to be confused with [`strtrim`](strtrim.md).
 
 Returns a character vector (in UTF-8).
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`trimws`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/trimws.html) implemented with [`stri_replace_all_regex`](https://stringi.gagolewski.com/rapi/stri_replace.html) (and not [`stri_trim`](https://stringi.gagolewski.com/rapi/stri_trim.html), which uses a slightly different syntax for pattern specifiers).
 

@@ -10,3 +10,5 @@ E(strsplit("123a456", "A", fixed=NA, ignore.case=TRUE), list(c("123", "456")))
 
 E(strsplit("123a456", "\u00E1", fixed=NA), list("123a456"))
 E(strsplit("123a456", "\u00E1", fixed=NA, strength=1L), list(c("123", "456")))
+
+E(strsplit(",,,,a,,,b,,,", ",", omit_empty=TRUE), list(c("a", "b")))

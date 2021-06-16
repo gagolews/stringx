@@ -33,7 +33,7 @@
 #' as an exception, treats missing values as \code{"NA"} strings.
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Replacement for base \code{\link[base]{sprintf}}
 #' implemented with \code{\link[stringi]{stri_sprintf}}.
 #'

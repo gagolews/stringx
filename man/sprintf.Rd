@@ -40,7 +40,7 @@ Note that the purpose of \code{printf} is to display a string, not
 to create a new one for use elsewhere, therefore this function,
 as an exception, treats missing values as \code{"NA"} strings.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacement for base \code{\link[base]{sprintf}}
 implemented with \code{\link[stringi]{stri_sprintf}}.

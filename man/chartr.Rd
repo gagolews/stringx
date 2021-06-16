@@ -53,7 +53,7 @@ and folding, script to script conversion, and Unicode normalisation.
 The new function \code{strtrans} applies general \pkg{ICU} transforms,
 see \code{\link[stringi]{stri_trans_general}}.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Unlike their base R counterparts, the new \code{tolower} and
 \code{toupper} are locale-sensitive;

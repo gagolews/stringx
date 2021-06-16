@@ -80,7 +80,7 @@ For a locale-insensitive behaviour like that of
 \code{strcoll(e1, e2, locale="C", strength=4L, normalisation=FALSE)}.
 However, some normalisation will still be performed.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacements for base \link[base]{Comparison} operators
 implemented with \code{\link[stringi]{stri_cmp}}.

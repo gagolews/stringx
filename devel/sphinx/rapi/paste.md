@@ -46,7 +46,7 @@ A character vector (in UTF-8).
 
 Currently, `paste` and `paste0` preserve no attributes too.
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`paste`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/paste.html) implemented with [`stri_join`](https://stringi.gagolewski.com/rapi/stri_join.html).
 

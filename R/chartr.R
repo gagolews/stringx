@@ -30,7 +30,7 @@
 #' see \code{\link[stringi]{stri_trans_general}}.
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Unlike their base R counterparts, the new \code{tolower} and
 #' \code{toupper} are locale-sensitive;
 #' see \code{\link[stringi]{stri_trans_tolower}}.

@@ -33,7 +33,7 @@
 #' but would appreciate someone's enlightening him.
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Replacements for the default S3 methods \code{\link[base]{sort}}
 #' and \code{\link[base]{xtfrm}} for character vectors
 #' implemented with \code{\link[stringi]{stri_sort}}

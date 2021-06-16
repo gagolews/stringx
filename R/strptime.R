@@ -46,7 +46,7 @@
 #' ambiguity.
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Replacements for base \code{\link[base]{strptime}}
 #' and \code{\link[base]{strftime}} implemented with
 #' \code{\link[stringi]{stri_datetime_parse}} and

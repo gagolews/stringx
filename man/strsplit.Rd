@@ -34,7 +34,8 @@ attempting to do so) [DEPRECATED]}
 \item{ignore.case}{single logical value; indicates whether matching
 should be case-insensitive}
 
-\item{...}{further arguments to \code{\link[stringi]{stri_split}}}
+\item{...}{further arguments to \code{\link[stringi]{stri_split}},
+e.g., \code{omit_empty}, \code{locale}, \code{dotall}}
 }
 \value{
 Returns a list of character vectors representing the identified tokens.
@@ -48,9 +49,9 @@ This function is fully vectorised with respect to both arguments.
 For splitting text into 'characters' (grapheme clusters), words,
 or sentences, use \code{\link[stringi]{stri_split_boundaries}} instead.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
-Replacements for base \code{\link[base]{strplit}}
+Replacements for base \code{\link[base]{strsplit}}
 implemented with \code{\link[stringi]{stri_split}}.
 
 \itemize{
@@ -77,22 +78,27 @@ implemented with \code{\link[stringi]{stri_split}}.
     for natural language processing tasks)
     \bold{[empty search patterns are not supported here, zero-length vectors
     are propagated correctly]}
+\item last empty token is removed from the output, but first is not
+    \bold{[fixed here -- see also the \code{omit_empty} argument]}
 \item missing values in \code{split} are not propagated correctly
     \bold{[fixed here]}
-\item ...partial recycling without the usual warning ????????? is there recycling???
+\item partial recycling without the usual warning, not fully vectorised
+    w.r.t. the \code{split} argument
     \bold{[fixed here]}
-\item ...no attributes preserved whatsoever
+\item only the \code{names} attribute of \code{x} is preserved
     \bold{[fixed here]}
 }
 }
 
 \examples{
+stringx::strsplit(c(x="a, b", y="c,d,  e"), ",\\\\s*")
 x <- strcat(c(
     "abc", "123", ",!.", "\U0001F4A9",
     "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
     "\U000026F9\U0001F3FF\U0000200D\U00002640\U0000FE0F",
     "\U0001F3F4\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F"
 ))
+# be careful when splitting into individual code points:
 base::strsplit(x, "")  # stringx does not support this
 stringx::strsplit(x, "(?s)(?=.)", omit_empty=TRUE)  # look-ahead for any char with dot-all
 stringi::stri_split_boundaries(x, type="character")  # grapheme clusters

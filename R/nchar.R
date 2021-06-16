@@ -27,7 +27,7 @@
 #' String width might be useful when displaying text using a monospaced font.
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Replacement for base \code{\link[base]{nchar}} and \code{\link[base]{nzchar}}
 #' implemented with \code{\link[stringi]{stri_length}},
 #' \code{\link[stringi]{stri_width}},

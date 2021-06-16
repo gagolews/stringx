@@ -37,7 +37,7 @@ Note that these functions can break some meaningful Unicode code point sequences
 
 The attributes are copied from the longest arguments (similarly as in the case of binary operators).
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`substr`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/substr.html) and [`substring`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/substring.html) implemented with [`stri_sub`](https://stringi.gagolewski.com/rapi/stri_sub.html).
 

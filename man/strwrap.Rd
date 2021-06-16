@@ -53,7 +53,7 @@ of no more of a given width.
 \details{
 Might be useful when displaying strings using a monospaced font.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacement for base \code{\link[base]{strwrap}}
 implemented with \code{\link[stringi]{stri_wrap}}.

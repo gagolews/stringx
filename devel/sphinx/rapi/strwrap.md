@@ -44,7 +44,7 @@ Otherwise, the function yields a character vector (in UTF-8). Note that the leng
 
 Due to this, no attributes are preserved.
 
-## Differences from base R
+## Differences from Base R
 
 Replacement for base [`strwrap`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strwrap.html) implemented with [`stri_wrap`](https://stringi.gagolewski.com/rapi/stri_wrap.html).
 

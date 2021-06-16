@@ -25,7 +25,7 @@ endsWith(x, suffix, fixed = TRUE, ignore.case = FALSE, ...)
 should be case-insensitive}
 
 \item{...}{further arguments to \code{\link[stringi]{stri_startswith}}
-and \code{\link[stringi]{stri_endswith}}}
+and \code{\link[stringi]{stri_endswith}}, e.g., \code{locale}}
 }
 \value{
 Each function returns a logical vector, indicating whether a pattern
@@ -41,7 +41,7 @@ Both functions are fully vectorised with respect to both arguments.
 For matching with regular expressions, see \code{\link{grepl}}
 with patterns like \code{"^prefix"} and \code{"suffix$"}.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacements for base \code{\link[base]{startsWith}}
 and \code{\link[base]{endsWith}}

@@ -37,7 +37,7 @@ casefold(x, upper = NA)
 
 These functions return a character vector (in UTF-8). They preserve most attributes of `x`. Note that their base R counterparts drop all the attributes if not fed with character vectors.
 
-## Differences from base R
+## Differences from Base R
 
 Unlike their base R counterparts, the new `tolower` and `toupper` are locale-sensitive; see [`stri_trans_tolower`](https://stringi.gagolewski.com/rapi/stri_trans_casemap.html).
 

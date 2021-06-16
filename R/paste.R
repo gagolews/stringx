@@ -39,7 +39,7 @@
 #' (see below for discussion).
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Replacement for base \code{\link[base]{paste}}
 #' implemented with \code{\link[stringi]{stri_join}}.
 #'

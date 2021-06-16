@@ -48,7 +48,7 @@ Note that these functions can break some meaningful Unicode code point
 sequences, e.g., when inputs are not normalised. For extracting
 initial parts of strings based on character width, see \code{\link{strtrim}}.
 }
-\section{Differences from base R}{
+\section{Differences from Base R}{
 
 Replacement for base \code{\link[base]{substr}}
 and \code{\link[base]{substring}}

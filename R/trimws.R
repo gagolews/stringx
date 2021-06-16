@@ -26,7 +26,7 @@
 #' Not to be confused with \code{\link{strtrim}}.
 #'
 #'
-#' @section Differences from base R:
+#' @section Differences from Base R:
 #' Replacement for base \code{\link[base]{trimws}}
 #' implemented with \code{\link[stringi]{stri_replace_all_regex}}
 #' (and not \code{\link[stringi]{stri_trim}}, which uses a slightly different
