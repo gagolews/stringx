@@ -85,7 +85,7 @@ Replacements for base [`sub`](https://stat.ethz.ch/R-manual/R-devel/library/base
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](grep.md), [`strsplit`](strsplit.md), [`substr`](substr.md)
+Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](grep.md), [`gregexpr`](gregexpr.md) [`strsplit`](strsplit.md), [`substr`](substr.md)
 
 [`trimws`](trimws.md) for removing whitespaces (amongst others) from the start or end of strings
 

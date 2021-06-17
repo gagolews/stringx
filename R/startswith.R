@@ -75,7 +75,8 @@
 #' @return
 #' Each function returns a logical vector, indicating whether a pattern
 #' match has been detected or not.
-#'
+#' They preserve the attributes of the longest inputs (unless they are
+#' dropped due to coercion).
 #'
 #' @examples
 #' stringx::startsWith("ababa", c("a", "ab", "aba", "baba", NA))

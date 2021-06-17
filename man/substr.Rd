@@ -102,7 +102,8 @@ print(x)
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{strtrim}}, \code{\link{nchar}},
-   \code{\link{startsWith}}, \code{\link{endsWith}}
+   \code{\link{startsWith}}, \code{\link{endsWith}},
+   \code{\link{gregexpr}}
 
 See also \code{\link[stringi]{stri_sub_all}} for replacing
 multiple substrings within individual strings.

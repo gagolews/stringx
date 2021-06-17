@@ -10,9 +10,10 @@
 > The early computer era, now a very long time ago, was dominated by the US.
 > Due to the proliferation of the internet, smartphones, social media,
 > and other technologies and media, this is no longer the case.
-> This package replaces base R string functions with ones that fully
-> support the Unicode standards related to natural language processing.
-> Thanks to ICU (International Components for Unicode) and stringi,
+> This package replaces base R string functions with ones that fully support
+> the Unicode standards related to natural language processing. Thanks to
+> [ICU (International Components for Unicode)](http://site.icu-project.org/)
+> and [*stringi*](https://stringi.gagolewski.com/),
 > they are fast, reliable, and portable across different platforms.
 
 

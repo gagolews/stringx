@@ -86,27 +86,10 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substr}}
+#'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substr}},
+#'     \code{\link{grepl}}
 #'
-#' @rdname grep
-grep2 <- function(
-    x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE, value=FALSE, invert=FALSE
-) {
-    # TODO
-}
-
-
-#' @rdname grep
-grepl2 <- function(
-    x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE
-) {
-    # TODO
-}
-
-
-#' @rdname grep
+#' @rdname gregexpr
 regexpr2 <- function(
     x, pattern, ...,
     ignore.case=FALSE, fixed=FALSE
@@ -115,7 +98,7 @@ regexpr2 <- function(
 }
 
 
-#' @rdname grep
+#' @rdname gregexpr
 gregexpr2 <- function(
     x, pattern, ...,
     ignore.case=FALSE, fixed=FALSE
@@ -124,7 +107,7 @@ gregexpr2 <- function(
 }
 
 
-#' @rdname grep
+#' @rdname gregexpr
 regexec2 <- function(
     x, pattern, ...,
     ignore.case=FALSE, fixed=FALSE
@@ -133,7 +116,7 @@ regexec2 <- function(
 }
 
 
-#' @rdname grep
+#' @rdname gregexpr
 gregexec2 <- function(
     x, pattern, ...,
     ignore.case=FALSE, fixed=FALSE
@@ -142,34 +125,7 @@ gregexec2 <- function(
 }
 
 
-
-#' @rdname grep
-grep <- function(
-    pattern, x, ...,
-    ignore.case=FALSE, fixed=FALSE, value=FALSE, invert=FALSE,
-    perl=FALSE, useBytes=FALSE
-) {
-    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
-    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
-    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
-    grep2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, value=value, invert=invert)
-}
-
-
-#' @rdname grep
-grepl <- function(
-    pattern, x, ...,
-    ignore.case=FALSE, fixed=FALSE,
-    perl=FALSE, useBytes=FALSE
-) {
-    if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
-    if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
-    if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
-    grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
-}
-
-
-#' @rdname grep
+#' @rdname gregexpr
 regexpr <- function(
     pattern, x=text, ...,
     ignore.case=FALSE, fixed=FALSE,
@@ -182,7 +138,7 @@ regexpr <- function(
 }
 
 
-#' @rdname grep
+#' @rdname gregexpr
 gregexpr <- function(
     pattern, x=text, ...,
     ignore.case=FALSE, fixed=FALSE,
@@ -195,7 +151,7 @@ gregexpr <- function(
 }
 
 
-#' @rdname grep
+#' @rdname gregexpr
 regexec <- function(
     pattern, x=text, ...,
     ignore.case=FALSE, fixed=FALSE,
@@ -208,7 +164,7 @@ regexec <- function(
 }
 
 
-#' @rdname grep
+#' @rdname gregexpr
 gregexec <- function(
     pattern, x=text, ...,
     ignore.case=FALSE, fixed=FALSE,

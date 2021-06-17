@@ -89,7 +89,7 @@ as its input, and hence can be used in conjunction with
 \code{\link[base]{order}} or \code{\link[base]{rank}}.
 }
 \details{
-What 'xtfrm' stands for, the current author knows not,
+What 'xtfrm' stands for the current author does not know,
 but would appreciate someone's enlightening him.
 }
 \section{Differences from Base R}{

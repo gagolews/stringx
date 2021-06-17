@@ -63,7 +63,7 @@ Replacement for base [`substr`](https://stat.ethz.ch/R-manual/R-devel/library/ba
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`strtrim`](strtrim.md), [`nchar`](nchar.md), [`startsWith`](startswith.md), [`endsWith`](startswith.md)
+Related function(s): [`strtrim`](strtrim.md), [`nchar`](nchar.md), [`startsWith`](startswith.md), [`endsWith`](startswith.md), [`gregexpr`](gregexpr.md)
 
 See also [`stri_sub_all`](https://stringi.gagolewski.com/rapi/stri_sub_all.html) for replacing multiple substrings within individual strings.
 

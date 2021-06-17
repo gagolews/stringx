@@ -117,27 +117,31 @@ and code readability)
 
 ## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
 
-* [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
-* [NEW FEATURE] `paste`, `paste0`, `strcat`, `%x+%`.
-* [NEW FEATURE] `strrep`, `%x*%`.
-* [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`.
-* [NEW FEATURE] `chartr2`, `strtrans`.
-* [NEW FEATURE] `sprintf`, `printf`.
-* [NEW FEATURE] `strftime`, `strptime`.
-* [NEW FEATURE] `nchar`, `nzchar`.
-* [NEW FEATURE] `strtrim`.
-* [NEW FEATURE] `trimws`.
-* [NEW FEATURE] `startsWith`, `endsWith`.
-* [NEW FEATURE] `strcoll`, `%x==%`, `%x!=%`, `%x<%`, `%x<=%`, `%x>%`, `%x>=%`.
-* [NEW FEATURE] `xtfrm`, `sort`.
-* [NEW FEATURE] `strwrap`.
-* [NEW FEATURE] `substr`, `substring`, `substr<-`, `substring<-`.
-* [NEW FEATURE] `strsplit`.
-* [NEW FEATURE] `sub`, `gsub`, `sub2`, `gsub2`.
-* [NEW FEATURE] ..`grep`, `grepl`, `grep2`, `grepl2`.
-* [NEW FEATURE] ..`regexpr`, `gregexpr`, `regexpr2`, `gregexpr2`.
-* [NEW FEATURE] ..`regexec`, `gregexec`, `regexec2`, `gregexec2`.
-* [NEW FEATURE] ..utils::strcapture ???
+* [GENERAL] On-line manual available at https://stringx.gagolewski.com.
+* [GENERAL] Using *realtest* (https://realtest.gagolewski.com)
+  for documenting base R behaviour, unit testing, and desired outcomes.
+* [NEW FEATURE] Added constants: `letters_greek`, `digits_hex`, etc.
+* [NEW FEATURE] Added functions and operators:
+  `paste`, `paste0`, `strcat`, `%x+%`,
+  `strrep`, `%x*%`,
+  `chartr`, `tolower`, `toupper`, `casefold`,
+  `chartr2`, `strtrans`,
+  `sprintf`, `printf`,
+  `strftime`, `strptime`,
+  `nchar`, `nzchar`,
+  `strtrim`,
+  `trimws`,
+  `startsWith`, `endsWith`,
+  `strcoll`, `%x==%`, `%x!=%`, `%x<%`, `%x<=%`, `%x>%`, `%x>=%`,
+  `xtfrm`, `sort`,
+  `strwrap`,
+  `substr`, `substring`, `substr<-`, `substring<-`,
+  `strsplit`,
+  `sub`, `gsub`, `sub2`, `gsub2`,
+  ..`grep`, `grepl`, `grepl2`,
+  ..`regexpr`, `gregexpr`, `regexpr2`, `gregexpr2`,
+  ..`regexec`, `gregexec`, `regexec2`, `gregexec2`,
+  ..utils::strcapture ???
 
 
 regexpr == what does that even mean? /positions/

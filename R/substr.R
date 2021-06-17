@@ -104,7 +104,8 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{strtrim}}, \code{\link{nchar}},
-#'    \code{\link{startsWith}}, \code{\link{endsWith}}
+#'    \code{\link{startsWith}}, \code{\link{endsWith}},
+#'    \code{\link{gregexpr}}
 #'
 #' See also \code{\link[stringi]{stri_sub_all}} for replacing
 #' multiple substrings within individual strings.

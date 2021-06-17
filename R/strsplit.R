@@ -111,7 +111,7 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{grep}}, \code{\link{gsub}}, \code{\link{substr}}
+#'     \code{\link{grepl}}, \code{\link{gsub}}, \code{\link{substr}}
 #'
 #' @rdname strsplit
 strsplit <- function(x, pattern=split, ..., ignore.case=FALSE, fixed=FALSE, perl=FALSE, useBytes=FALSE, split)

@@ -104,7 +104,8 @@
 #'
 #' @return
 #' Both functions return a character vector.
-#' Attributes are copied from the longest inputs.
+#' They preserve the attributes of the longest inputs (unless they are
+#' dropped due to coercion).
 #'
 #'
 #' @examples
@@ -126,7 +127,8 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{grep}}, \code{\link{strsplit}}, \code{\link{substr}}
+#'     \code{\link{grepl}}, \code{\link{gregexpr}}
+#'     \code{\link{strsplit}}, \code{\link{substr}}
 #'
 #' \code{\link{trimws}} for removing whitespaces (amongst others)
 #' from the start or end of strings

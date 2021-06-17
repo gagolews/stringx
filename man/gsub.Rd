@@ -145,7 +145,8 @@ gsub2(x, p, "$1$13")
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-    \code{\link{grep}}, \code{\link{strsplit}}, \code{\link{substr}}
+    \code{\link{grep}}, \code{\link{gregexpr}}
+    \code{\link{strsplit}}, \code{\link{substr}}
 
 \code{\link{trimws}} for removing whitespaces (amongst others)
 from the start or end of strings

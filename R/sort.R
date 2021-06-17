@@ -29,7 +29,7 @@
 #' \code{\link[base]{order}} or \code{\link[base]{rank}}.
 #'
 #' @details
-#' What 'xtfrm' stands for, the current author knows not,
+#' What 'xtfrm' stands for the current author does not know,
 #' but would appreciate someone's enlightening him.
 #'
 #'

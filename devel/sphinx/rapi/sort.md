@@ -64,7 +64,7 @@ sort(
 
 ## Details
 
-What \'xtfrm\' stands for, the current author knows not, but would appreciate someone\'s enlightening him.
+What \'xtfrm\' stands for the current author does not know, but would appreciate someone\'s enlightening him.
 
 ## Value
 

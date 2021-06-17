@@ -7,6 +7,7 @@ R Package *stringx* Reference
 rapi/about_stringx
 rapi/chartr
 rapi/constants
+rapi/gregexpr
 rapi/grep
 rapi/gsub
 rapi/nchar
