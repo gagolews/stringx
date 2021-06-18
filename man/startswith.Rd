@@ -32,6 +32,8 @@ should be case-insensitive}
 \value{
 Each function returns a logical vector, indicating whether a pattern
 match has been detected or not.
+They preserve the attributes of the longest inputs (unless they are
+dropped due to coercion).
 }
 \description{
 Determines if a string starts or ends with a match to a specified
@@ -55,7 +57,7 @@ and \code{\link[stringi]{stri_endswith}}.
     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
     and \code{\link[base]{startsWith}} (amongst others); e.g.,
     where the needle can precede the haystack, the use of the forward
-    pipe operator \code{|>} is less convenient
+    pipe operator, \code{\link[base]{|>}}, is less convenient
     \bold{[fixed here]}
 \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
     \bold{[added here]}

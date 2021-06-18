@@ -62,12 +62,11 @@ should be case-insensitive}
 
 \item{perl, useBytes}{not used (with a warning if
 attempting to do so) [DEPRECATED]}
-
-\item{text}{alias to the \code{x} argument [DEPRECATED]}
 }
 \value{
 Both functions return a character vector.
-Attributes are copied from the longest inputs.
+They preserve the attributes of the longest inputs (unless they are
+dropped due to coercion).
 }
 \description{
 \code{sub2} replaces the first pattern occurrence in each string
@@ -99,7 +98,7 @@ and \code{\link[stringi]{stri_replace_all}}, respectively.
     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
     and \code{\link[base]{startsWith}} (amongst others); e.g.,
     where the needle can precede the haystack, the use of the forward
-    pipe operator \code{|>} is less convenient
+    pipe operator, \code{\link[base]{|>}}, is less convenient
     \bold{[fixed here]}
 \item base R implementation is not portable as it is based on
     the system PCRE or TRE library
@@ -124,7 +123,7 @@ and \code{\link[stringi]{stri_replace_all}}, respectively.
 }
 
 \examples{
-"change \U0001f602 me \U0001f603" |> gsub2("\\\\p{EMOJI}", "O_O")
+"change \U0001f602 me \U0001f603" |> gsub2("\\\\p{EMOJI_PRESENTATION}", "O_O")
 
 x <- c("mario", "Mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario", NA)
 sub2(x, "mario", "M\u00E1rio", fixed=NA, strength=1L)
@@ -145,7 +144,7 @@ gsub2(x, p, "$1$13")
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-    \code{\link{grep}}, \code{\link{gregexpr}}
+    \code{\link{grepl}}, \code{\link{gregexpr}}
     \code{\link{strsplit}}, \code{\link{substr}}
 
 \code{\link{trimws}} for removing whitespaces (amongst others)

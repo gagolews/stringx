@@ -45,7 +45,6 @@ gsub(
 | `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                          |
 | `fixed`          | single logical value; `FALSE` for matching with regular expressions (see [about\_search\_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
 | `perl, useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                      |
-| `text`           | alias to the `x` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                                             |
 
 ## Details
 
@@ -57,13 +56,13 @@ The \[DEPRECATED\] `sub` and \[DEPRECATED\] `gsub` simply call `sub2` and `gsub2
 
 ## Value
 
-Both functions return a character vector. Attributes are copied from the longest inputs.
+Both functions return a character vector. They preserve the attributes of the longest inputs (unless they are dropped due to coercion).
 
 ## Differences from Base R
 
 Replacements for base [`sub`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sub.html) and [`gsub`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/gsub.html) implemented with [`stri_replace_first`](https://stringi.gagolewski.com/rapi/stri_replace.html) and [`stri_replace_all`](https://stringi.gagolewski.com/rapi/stri_replace.html), respectively.
 
--   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator `|>` is less convenient **\[fixed here\]**
+-   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/%7C%3E.html), is less convenient **\[fixed here\]**
 
 -   base R implementation is not portable as it is based on the system PCRE or TRE library (e.g., some Unicode classes may not be available or matching thereof can depend on the current `LC_CTYPE` category **\[fixed here\]**
 
@@ -85,7 +84,7 @@ Replacements for base [`sub`](https://stat.ethz.ch/R-manual/R-devel/library/base
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](grep.md), [`gregexpr`](gregexpr.md) [`strsplit`](strsplit.md), [`substr`](substr.md)
+Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grepl`](grepl.md), [`gregexpr`](gregexpr.md) [`strsplit`](strsplit.md), [`substr`](substr.md)
 
 [`trimws`](trimws.md) for removing whitespaces (amongst others) from the start or end of strings
 
@@ -95,7 +94,7 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grep`](grep.md)
 
 
 ```r
-"change \U0001f602 me \U0001f603" |> gsub2("\\p{EMOJI}", "O_O")
+"change \U0001f602 me \U0001f603" |> gsub2("\\p{EMOJI_PRESENTATION}", "O_O")
 ## [1] "change O_O me O_O"
 x <- c("mario", "Mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario", NA)
 sub2(x, "mario", "M\u00E1rio", fixed=NA, strength=1L)

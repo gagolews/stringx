@@ -72,7 +72,7 @@ implemented with \code{\link[stringi]{stri_split}}.
     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
     and \code{\link[base]{startsWith}} (amongst others); e.g.,
     where the needle can precede the haystack, the use of the forward
-    pipe operator \code{|>} is less convenient
+    pipe operator, \code{\link[base]{|>}}, is less convenient
     \bold{[fixed here]}
 \item \code{\link[base]{grepl}} also features the \code{ignore.case} argument
     \bold{[added here]}
@@ -111,7 +111,7 @@ stringi::stri_split_boundaries(x, type="character")  # grapheme clusters
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-    \code{\link{grep}}, \code{\link{gsub}}, \code{\link{substr}}
+    \code{\link{grepl}}, \code{\link{gsub}}, \code{\link{substr}}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

@@ -17,31 +17,52 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
 
 
-*stringx* replaces base `R <https://www.r-project.org/>`_ functions such
-as `paste`, `gregexpr`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
+`R <https://www.r-project.org/>`_'s ambitions go far beyond being merely the
+"free software environment for statistical computing and graphics".
+It has proven effective in programming whole data analysis pipelines:
+from information gathering through knowledge discovery to communication
+of results.
 
+Modern data science is no longer just about crunching numbers.
+Text is a rich source of new knowledge — from natural language
+processing to bioinformatics. It also gives powerful
+means to represent or transfer unstructured data.
+
+*stringx* brings `R <https://www.r-project.org/>`_ string processing
+abilities into the 21st century.
+It replaces functions such
+as `paste`, `grep`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
+
+*   support a wide range of languages and scripts and
+    fully conform to `Unicode <https://www.unicode.org/>`_ standards
+    (see also `this video <https://www.youtube.com/watch?v=-n2nlPHEMG8>`_),
 *   work in the same way on every platform,
-*   support a wide range of languages and scripts,
 *   fix some long-standing inconsistencies in the base R functions
-    (they are thoroughly documented in this online manual, happy reading!).
+    (related to vectorisation, handling of missing values,
+    preservation of attributes, order of arguments, etc.;
+    they are all thoroughly documented in this online manual,
+    happy reading! 🤓).
 
 Also, a few new operations are introduced.
 
 .. code-block:: r
 
-    stringx::toupper("gro\u00DF")
+    suppressMessages(library("stringx"))
+
+    c("ACTGCT", "42", "stringx \U0001f970") |> grepv2("\\p{EMOJI_PRESENTATION}")
+    ## [1] "stringx 🥰"
+
+    toupper("gro\u00DF")  # replaces base::toupper()
     ## [1] "GROSS"
 
     l <- c("e", "e\u00b2", "\u03c0", "\u03c0\u00b2", "\U0001f602\U0001f603")
     r <- c(exp(1), exp(2), pi, pi^2, NaN)
-    cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
+    cat(sprintf("%8s=%+.3f", l, r), sep="\n")  # replaces base::sprintf()
     ##        e=+2.718
     ##       e²=+7.389
     ##        π=+3.142
     ##       π²=+9.870
     ##     😂😃= NaN
-
-    # TODO: regex unicode example
 
 ..  COMMENT
 

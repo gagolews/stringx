@@ -14,30 +14,30 @@ endsWith(x, pattern = suffix, ..., ignore.case = FALSE, fixed = TRUE, suffix)
 
 ## Arguments
 
-|                  |                                                                                                                                                                                                                                                                                                                                             |
-|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                          |
-| `pattern`        | character vector with patterns to search for                                                                                                                                                                                                                                                                                                |
-| `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale`                                                                                                                                  |
-| `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                 |
-| `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](grep.md) instead |
-| `prefix, suffix` | aliases to the `pattern` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                            |
+|                  |                                                                                                                                                                                                                                                                                                                                              |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                           |
+| `pattern`        | character vector with patterns to search for                                                                                                                                                                                                                                                                                                 |
+| `...`            | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale`                                                                                                                                   |
+| `ignore.case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                  |
+| `fixed`          | single logical value; `TRUE` for fixed pattern matching (see [about\_search\_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about\_search\_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](grepl.md) instead |
+| `prefix, suffix` | aliases to the `pattern` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                             |
 
 ## Details
 
 These functions are fully vectorised with respect to both arguments.
 
-For matching with regular expressions, see [`grepl`](grep.md) with patterns like `"^prefix"` and `"suffix$"`.
+For matching with regular expressions, see [`grepl`](grepl.md) with patterns like `"^prefix"` and `"suffix$"`.
 
 ## Value
 
-Each function returns a logical vector, indicating whether a pattern match has been detected or not.
+Each function returns a logical vector, indicating whether a pattern match has been detected or not. They preserve the attributes of the longest inputs (unless they are dropped due to coercion).
 
 ## Differences from Base R
 
 Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) and [`endsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/endsWith.html) implemented with [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html).
 
--   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator `|>` is less convenient **\[fixed here\]**
+-   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/%7C%3E.html), is less convenient **\[fixed here\]**
 
 -   [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html) also features the `ignore.case` argument **\[added here\]**
 
@@ -55,7 +55,7 @@ Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/libra
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`grepl`](grep.md), [`substr`](substr.md)
+Related function(s): [`grepl`](grepl.md), [`substr`](substr.md)
 
 ## Examples
 

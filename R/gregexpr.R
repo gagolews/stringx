@@ -36,7 +36,7 @@
 #'     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
 #'     and \code{\link[base]{startsWith}} (amongst others); e.g.,
 #'     where the needle can precede the haystack, the use of the forward
-#'     pipe operator \code{|>} is less convenient
+#'     pipe operator, \code{\link[base]{|>}}, is less convenient
 #'     \bold{[fixed here]}
 #' \item base R implementation is not portable as it is based on
 #'     the system PCRE or TRE library
@@ -72,6 +72,8 @@
 #'
 #' @param ... further arguments to \code{\link[stringi]{stri_split}},
 #'     e.g., \code{omit_empty}, \code{locale}, \code{dotall}
+#'
+#' @param text alias to the \code{x} argument [DEPRECATED]
 #'
 #' @param perl,useBytes not used (with a warning if
 #'     attempting to do so) [DEPRECATED]

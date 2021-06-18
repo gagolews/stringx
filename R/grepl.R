@@ -22,6 +22,11 @@
 #' \code{grepl2} indicates whether a string matches the corresponding pattern
 #' or not.
 #'
+#' \code{grepv2} returns a subset of \code{x} matching the corresponding
+#' patterns. Its replacement version allows for substituting such a subset with
+#' new content.
+#'
+#'
 #' @details
 #' These functions are fully vectorised with respect to \code{x} and
 #' \code{pattern}.
@@ -29,10 +34,13 @@
 #' The [DEPRECATED] \code{grepl} simply calls
 #' \code{grepl2} which have a cleaned-up argument list.
 #'
-#' The [DEPRECATED] \code{grep} is actually redundant -- it can be
-#' trivially reproduced
-#' with \code{grepl}, subsetting (if \code{value=TRUE}),
-#' and \code{\link[base]{which}} (if \code{value=FALSE}).
+#' The [DEPRECATED] \code{grep} with \code{value=FALSE} is actually redundant --
+#' it can be trivially reproduced with \code{grepl} and
+#' \code{\link[base]{which}}.
+#'
+#' \code{grepv2} and \code{grep} with \code{value=FALSE} combine
+#' pattern matching and subsetting and some users may find it convenient
+#' in conjunction with the forward pipe operator, \code{\link[base]{|>}}.
 #'
 #'
 #' @section Differences from Base R:
@@ -45,7 +53,7 @@
 #'     in \code{\link[base]{grepl}}, \code{\link[base]{strsplit}},
 #'     and \code{\link[base]{startsWith}} (amongst others); e.g.,
 #'     where the needle can precede the haystack, the use of the forward
-#'     pipe operator \code{|>} is less convenient
+#'     pipe operator, \code{\link[base]{|>}}, is less convenient
 #'     \bold{[fixed by introducing \code{grepl2}]}
 #' \item base R implementation is not portable as it is based on
 #'     the system PCRE or TRE library
@@ -61,13 +69,19 @@
 #' \item not vectorised w.r.t. \code{pattern}
 #'     \bold{[fixed here, however, in \code{grep}, \code{pattern} cannot be
 #'     longer than \code{x}]}
-#' \item ...
+#' \item missing values in haystack will result in a no-match
+#'     \bold{[fixed in \code{grepl}; see Value]}
+#' \item \code{ignore.case=TRUE} cannot be used with \code{fixed=TRUE}
+#'     \bold{[fixed here]}
+#' \item no attributes are preserved
+#'     \bold{[fixed here; see Value]}
 #' }
 #'
 #'
 #' @param x character vector whose elements are to be examined
 #'
-#' @param pattern character vector of nonempty search patterns
+#' @param pattern character vector of nonempty search patterns;
+#'     for \code{grepv2} and \code{grep}, must not be longer than \code{x}
 #'
 #' @param ... further arguments to \code{\link[stringi]{stri_detect}},
 #'     e.g., \code{max_count}, \code{locale}, \code{dotall}
@@ -80,12 +94,13 @@
 #'     \code{NA} for the Unicode collation algorithm
 #'         (\link[stringi]{about_search_coll})
 #'
-#' @param value single logical value
+#' @param value character vector of replacement strings
+#'     or a single logical value
 #'     indicating whether indexes of strings in \code{x} matching
-#'     patterns should be returned [DEPRECATED]
+#'     patterns should be returned
 #'
 #' @param invert single logical value; indicates whether a no-match
-#'     is rather of interest [DEPRECATED]
+#'     is rather of interest
 #'
 #' @param ignore.case single logical value; indicates whether matching
 #'     should be case-insensitive
@@ -97,9 +112,10 @@
 #' @return
 #' \code{grepl2} and [DEPRECATED] \code{grep} return a logical vector.
 #' They preserve the attributes of the longest inputs (unless they are
-#' dropped due to coercion).
+#' dropped due to coercion). Missing values in the inputs are propagated
+#' consistently.
 #'
-#' [DEPRECATED] \code{grep} with \code{value=TRUE} returns
+#' \code{grepv2} and [DEPRECATED] \code{grep} with \code{value=TRUE} returns
 #' a subset of \code{x} with elements matching the corresponding patterns.
 #' [DEPRECATED] \code{grep} with \code{value=FALSE} returns the indexes
 #' in \code{x} where a match occurred.
@@ -107,9 +123,21 @@
 #' attribute is preserved, because the length of the result may be different
 #' than that of \code{x}.
 #'
+#' The replacement version of \code{grepv2} modifies \code{x} 'in-place'.
+#'
 #'
 #' @examples
-#' # ...
+#' x <- c("abc", "1237", "\U0001f602", "\U0001f603", "stringx\U0001f970", NA)
+#' grepl2(x, "\\p{EMOJI_PRESENTATION}")
+#' which(grepl2(x, "\\p{EMOJI_PRESENTATION}"))  # like grep
+#'
+#' # at least 1 letter, digit, or emoji:
+#' p <- c("\\p{L}", "\\p{N}", "\\p{EMOJI_PRESENTATION}")
+#' `dimnames<-`(outer(x, p, grepl2), list(x, p))
+#'
+#' x |> grepv2("\\p{EMOJI_PRESENTATION}")
+#' grepv2(x, "\\p{EMOJI_PRESENTATION}", invert=TRUE) <- "\U0001F496"
+#' print(x)
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
@@ -119,23 +147,24 @@
 #' @rdname grepl
 grepl2 <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE
+    ignore.case=FALSE, fixed=FALSE, invert=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(invert) && length(invert) == 1L && !is.na(invert))
 
     ret <- {
         if (is.na(fixed)) {
             if (!ignore.case)
-                stringi::stri_detect_coll(x, pattern, ...)
+                stringi::stri_detect_coll(x, pattern, negate=invert, ...)
             else
-                stringi::stri_detect_coll(x, pattern, strength=2L, ...)
+                stringi::stri_detect_coll(x, pattern, negate=invert, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_detect_fixed(x, pattern, case_insensitive=ignore.case, ...)
+            stringi::stri_detect_fixed(x, pattern, negate=invert, case_insensitive=ignore.case, ...)
         } else {
-            stringi::stri_detect_regex(x, pattern, case_insensitive=ignore.case, ...)
+            stringi::stri_detect_regex(x, pattern, negate=invert, case_insensitive=ignore.case, ...)
         }
     }
 
@@ -144,14 +173,52 @@ grepl2 <- function(
 
 
 #' @rdname grepl
+grepv2 <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE, invert=FALSE
+) {
+    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
+    # pattern will taken care of by grepl2
+
+    idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+    if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
+
+    x[!is.na(idx) & idx]
+}
+
+
+
+#' @rdname grepl
+`grepv2<-` <- function(
+    x, pattern, ...,
+    ignore.case=FALSE, fixed=FALSE, invert=FALSE,
+    value
+) {
+    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
+    # pattern will taken care of by grepl2
+
+    if (!is.character(value)) value <- as.character(value)    # S3 generics, you do you
+    value[] <- stringi::stri_enc_toutf8(value)  # to UTF-8 and preserve attributes
+
+    idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+    if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
+
+    x[!is.na(idx) & idx] <- value  # will warn if incompatible lengths etc.
+    x
+}
+
+
+#' @rdname grepl
 grepl <- function(
     pattern, x, ...,
-    ignore.case=FALSE, fixed=FALSE,
+    ignore.case=FALSE, fixed=FALSE, invert=FALSE,
     perl=FALSE, useBytes=FALSE
 ) {
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
-    grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
+    grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
 }
 
 
@@ -165,13 +232,13 @@ grep <- function(
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     stopifnot(is.logical(value) && length(value) == 1L && !is.na(value))
 
-    x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
-    idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, negate=invert)
-    if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
-
     if (value)
-        x[!is.na(idx) & idx]
-    else
+        grepv2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+    else {
+        if (!is.character(x)) x <- as.character(x)
+        # pattern will taken care of by grepl2
+        idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+        if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
         which(idx)
+    }
 }
-
