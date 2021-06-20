@@ -74,6 +74,8 @@ with a given replacement string.
 \code{gsub2} replaces all (i.e., 'globally') pattern matches.
 }
 \details{
+Not to be confused with \code{\link{substr}}.
+
 These functions are fully vectorised with respect to \code{x},
 \code{pattern}, and \code{replacement}.
 

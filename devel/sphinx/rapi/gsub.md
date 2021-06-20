@@ -48,6 +48,8 @@ gsub(
 
 ## Details
 
+Not to be confused with [`substr`](substr.md).
+
 These functions are fully vectorised with respect to `x`, `pattern`, and `replacement`.
 
 `gsub2` uses `vectorise_all=TRUE` because of the attribute preservation rules, [`stri_replace_all`](https://stringi.gagolewski.com/rapi/stri_replace.html) should be called directly if different behaviour is needed.

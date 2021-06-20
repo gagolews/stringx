@@ -19,11 +19,16 @@
 #' Extract or Replace Substrings
 #'
 #' @description
-#' \code{substr} extracts
+#' \code{substr} and \code{substrl} extract
 #' contiguous parts of given character strings.
-#' Its replacement version allows for substituting them with new content.
+#' The former operates based on start and end positions
+#' while the latter is fed with start position and substring length.
+#'
+#' Their replacement versions allows for substituting them with new content.
 #'
 #' @details
+#' Not to be confused with \code{\link{sub}}.
+#'
 #' \code{substring} is a [DEPRECATED] synonym for \code{substr}.
 #'
 #' Note that these functions can break some meaningful Unicode code point
@@ -57,6 +62,10 @@
 #'     never changes the length of the string
 #'     \bold{[changed here -- output length is input length minus
 #'     length of extracted plus length of replacement]}
+#' \item \code{\link{gregexpr}} (amongst others) return start positions
+#'     and lengths of matches, but base \code{substr} only uses
+#'     start and end
+#'     \bold{[fixed by introducing \code{substrl}]}
 #' }
 #'
 #'
@@ -64,19 +73,21 @@
 #'     whose parts are to be extracted/replaced
 #'
 #' @param start,first numeric vector giving the start indexes;
-#'     e.g., 1 points to the first code point, -1 to the last
+#'     e.g., 1 denotes the first code point, and -1 the last one
 #'
 #' @param stop,last numeric vector giving the end indexes (inclusive);
 #'     as with \code{start}, for negative indexes, counting starts at the end
 #'     of each string; note that if the start position is farther than the
 #'     end position, this indicates an empty substring therein (see Examples)
 #'
+#' @param length numeric vector giving the substring lengths
+#'
 #' @param value character vector defining the replacements strings
 #'
 #'
 #' @return
-#' \code{substr} returns a character vector (in UTF-8).
-#' Its replacement version modifies \code{x} in-place (see Examples).
+#' \code{substr} and \code{substrl} return a character vector (in UTF-8).
+#' Their replacement versions modify \code{x} 'in-place' (see Examples).
 #'
 #' The attributes are copied from the longest arguments (similarly
 #' as in the case of binary operators).
@@ -87,18 +98,19 @@
 #' x <- "spam, spam, bacon, and spam"
 #' base::substr(x, c(1, 13), c(4, 17))
 #' base::substring(x, c(1, 13), c(4, 17))
-#' stringx::substr(x, c(1, 13), c(4, 17))
+#' substr(x, c(1, 13), c(4, 17))
+#' substrl(x, c(1, 13), c(4, 5))
 #'
 #' # replacement function used as an ordinary one - return a copy of x:
 #' base::`substr<-`(x, 1, 4, value="jam")
-#' stringx::`substr<-`(x, 1, 4, value="jam")
+#' `substr<-`(x, 1, 4, value="jam")
 #' base::`substr<-`(x, 1, 4, value="porridge")
-#' stringx::`substr<-`(x, 1, 4, value="porridge")
+#' `substr<-`(x, 1, 4, value="porridge")
 #'
 #' # replacement function modifying x in-place:
-#' stringx::substr(x, 1, 4) <- "eggs"
-#' stringx::substr(x, 1, 0) <- "porridge, "        # prepend (start<stop)
-#' stringx::substr(x, nchar(x)+1) <- " every day"  # append (start<stop)
+#' substr(x, 1, 4) <- "eggs"
+#' substr(x, 1, 0) <- "porridge, "        # prepend (start<stop)
+#' substr(x, nchar(x)+1) <- " every day"  # append (start<stop)
 #' print(x)
 #'
 #'
@@ -121,6 +133,19 @@ substr <- function(x, start=1L, stop=-1L)
     .attribs_propagate_nary(ret, x, start, stop)
 }
 
+
+#' @rdname substr
+substrl <- function(x, start=1L, length)
+{
+    if (!is.character(x))    x <- as.character(x)  # S3 generics, you do you
+    if (!is.numeric(start))  start <- as.numeric(start)
+    if (!is.numeric(length)) length <- as.numeric(length)
+
+    ret <- stringi::stri_sub(x, from=start, length=length)
+    .attribs_propagate_nary(ret, x, start, length)
+}
+
+
 #' @rdname substr
 substring <- function(text, first=1L, last=-1L)
 {
@@ -138,6 +163,19 @@ substring <- function(text, first=1L, last=-1L)
 
     ret <- stringi::`stri_sub<-`(x, from=start, to=stop, omit_na=FALSE, value=value)
     .attribs_propagate_nary(ret, x, start, stop, value)
+}
+
+
+#' @rdname substr
+`substrl<-` <- function(x, start=1L, length, value)
+{
+    if (!is.character(x))     x      <- as.character(x)  # S3 generics, you do you
+    if (!is.numeric(start))   start  <- as.numeric(start)
+    if (!is.numeric(length))  length <- as.numeric(length)
+    if (!is.character(value)) value  <- as.character(value)
+
+    ret <- stringi::`stri_sub<-`(x, from=start, length=length, omit_na=FALSE, value=value)
+    .attribs_propagate_nary(ret, x, start, length, value)
 }
 
 
