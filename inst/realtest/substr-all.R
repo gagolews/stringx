@@ -32,18 +32,14 @@ E(
 )
 
 E(
-    substr(x, 1, 0),
-    c("", "")
+    substr(rep("abc", 9), c(-1, 0, 0, 1, 1, 2, NA, 1, NA), c(-1, -1, 0, -1, 0, 1, 1, NA, NA)),
+    better=c("c", "abc", "", "abc", "", "", NA, NA, NA),
+    c(rep("", 6), rep(NA_character_, 3))
 )
 
 E(
-    substr(x, nchar(x)+1, nchar(x)+1),
-    c("", "")
-)
-
-E(
-    substr(x, nchar(x), nchar(x)+1),
-    c("m", "m")
+    substr(rep("abc", 4), c(3+1, 3, 3+1, 3), c(3+1, 3+1, 3, 3)),
+    c("", "c", "", "c")
 )
 
 E(
@@ -80,20 +76,20 @@ E(
 
 
 E(
-    `substr<-`(x, 1, 4, value="jam"),
-    c("jam, spam, bacon, and spam", "jam and spam"),
-    bad=c("jamm, spam, bacon, and spam", "jams and spam")
+    `substr<-`(x, 1, 4, value="j\u0105m"),
+    c("j\u0105m, spam, bacon, and spam", "j\u0105m and spam"),
+    bad=c("j\u0105mm, spam, bacon, and spam", "j\u0105ms and spam")
 )
 
 E(
-    `substr<-`(x, 1, 4, value="pear"),
-    c("pear, spam, bacon, and spam", "pear and spam")
+    `substr<-`(x, 1, 4, value="pe\u0105r"),
+    c("pe\u0105r, spam, bacon, and spam", "pe\u0105r and spam")
 )
 
 E(
-    `substr<-`(x, 1, 4, value="porridge"),
-    c("porridge, spam, bacon, and spam", "porridge and spam"),
-    bad=c("porr, spam, bacon, and spam", "porr and spam")
+    `substr<-`(x, 1, 4, value="p\u0105rridge"),
+    c("p\u0105rridge, spam, bacon, and spam", "p\u0105rridge and spam"),
+    bad=c("p\u0105rr, spam, bacon, and spam", "p\u0105rr and spam")
 )
 
 E(
@@ -109,6 +105,17 @@ E(
     bad=c("spam, spam, bacon, and spam", "eggs and spam")
 )
 
+E(
+    `substr<-`(rep("abc", 4), c(3+1, 3, 3+1, 3), c(3+1, 3+1, 3, 3), value="x"),
+    better=c("abcx", "abx", "abcx", "abx"),
+    c("abc", "abx", "abc", "abx")
+)
+
+E(
+    `substr<-`(rep("abc", 9), c(-1, 0, 0, 1, 1, 2, NA, 1, NA), c(-1, -1, 0, -1, 0, 1, 1, NA, NA), value="x"),
+    better=c("abx", "x", "xabc", "x", "xabc", "axbc", NA, NA, NA),
+    c("xbc", "xbc", "abc", "xbc", "abc", "abc", NA, NA, NA)
+)
 
 x1 <- structure(c(a="a"), attrib1="value1")
 x2 <- structure(c(a="a", b="b"), attrib1="value1")

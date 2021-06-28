@@ -18,6 +18,8 @@
   `grepl2`, `grepv2`, `grepv2<-`,
   ..`regexpr2`, `gregexpr2`,
   .. `regexec2`, `gregexec2`,
+  .. `gsubstrl`, `gsubstrl<-`,
+  .. `gsubstr`, `gsubstr<-`,
 * [NEW FEATURE] Rewritten functions:
   `paste`, `paste0`,
   `strrep`,
@@ -37,7 +39,7 @@
   ..`regexpr`, `gregexpr`,
   ..`regexec`, `gregexec`,
   ..utils::strcapture ???
-
+  ..regmatches
 
 regexpr == what does that even mean? /positions/
 regexec == ? /positions+capture groups/

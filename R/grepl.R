@@ -179,7 +179,7 @@ grepv2 <- function(
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
-    # pattern will taken care of by grepl2
+    # pattern will be taken care of by grepl2
 
     idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
     if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
@@ -197,7 +197,7 @@ grepv2 <- function(
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
-    # pattern will taken care of by grepl2
+    # pattern will be taken care of by grepl2
 
     if (!is.character(value)) value <- as.character(value)    # S3 generics, you do you
     value[] <- stringi::stri_enc_toutf8(value)  # to UTF-8 and preserve attributes

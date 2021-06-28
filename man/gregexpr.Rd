@@ -9,7 +9,7 @@
 \alias{gregexpr}
 \alias{regexec}
 \alias{gregexec}
-\title{Detect Pattern Occurrences}
+\title{Locate Pattern Occurrences}
 \usage{
 regexpr2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE)
 
@@ -88,21 +88,25 @@ attempting to do so) [DEPRECATED]}
 \item{text}{alias to the \code{x} argument [DEPRECATED]}
 }
 \value{
-Returns a list of character vectors representing the identified tokens.
+Lack of matches are denoted with -1s.???
+
+\code{regexpr} returns an integer vector which gives the
+start positions of the matches. The \code{match.length} attribute
 }
 \description{
-... g stands for 'global'=all
+\code{regexpr} and \code{gregexpr} locate first and all
+(i.e., \textbf{g}lobally) occurrences of a pattern.
+\code{regexec} and \code{gregexec} can additionally
+pinpoint the matches to parenthesised subexpressions (regex capture groups).
 }
 \details{
-This function is fully vectorised with respect to both arguments.
-
-For splitting text into 'characters' (grapheme clusters), words,
-or sentences, use \code{\link[stringi]{stri_split_boundaries}} instead.
+These functions are fully vectorised with respect to both \code{x} and
+\code{pattern}.
 }
 \section{Differences from Base R}{
 
-Replacements for base \code{\link[base]{strsplit}}
-implemented with \code{\link[stringi]{stri_split}}.
+Replacements for base \code{\link[base]{gregexpr}} (and others)
+implemented with \code{\link[stringi]{stri_locate}}.
 
 \itemize{
 \item there are inconsistencies between the argument order and naming
@@ -136,7 +140,7 @@ implemented with \code{\link[stringi]{stri_split}}.
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-    \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substr}},
+    \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substrl}},
     \code{\link{grepl}}
 }
 \author{

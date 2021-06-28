@@ -3,9 +3,9 @@
 \name{substr}
 \alias{substr}
 \alias{substrl}
-\alias{substring}
 \alias{substr<-}
 \alias{substrl<-}
+\alias{substring}
 \alias{substring<-}
 \title{Extract or Replace Substrings}
 \usage{
@@ -13,11 +13,11 @@ substr(x, start = 1L, stop = -1L)
 
 substrl(x, start = 1L, length)
 
-substring(text, first = 1L, last = -1L)
-
 substr(x, start = 1L, stop = -1L) <- value
 
 substrl(x, start = 1L, length) <- value
+
+substring(text, first = 1L, last = -1L)
 
 substring(text, first = 1L, last = -1L) <- value
 }
@@ -26,31 +26,35 @@ substring(text, first = 1L, last = -1L) <- value
 whose parts are to be extracted/replaced}
 
 \item{start, first}{numeric vector giving the start indexes;
-e.g., 1 points to the first code point, -1 to the last}
+e.g., 1 denotes the first code point;
+negative indexes
+count from the end of a string, i.e., -1 is the last character}
 
 \item{stop, last}{numeric vector giving the end indexes (inclusive);
-as with \code{start}, for negative indexes, counting starts at the end
-of each string; note that if the start position is farther than the
+note that if the start position is farther than the
 end position, this indicates an empty substring therein (see Examples)}
 
-\item{length}{numeric vector giving the substring lengths}
+\item{length}{numeric vector giving the substring lengths;
+negative lengths result in an empty string or the corresponding
+substring being unchanged}
 
 \item{value}{character vector defining the replacements strings}
 }
 \value{
-\code{substr} and \code{substrl} return a character vector (in UTF-8).
+\code{substr2} and \code{substrl2} return a character vector (in UTF-8).
 Their replacement versions modify \code{x} 'in-place' (see Examples).
 
-The attributes are copied from the longest arguments (similarly
-as in the case of binary operators).
+The attributes are copied from the longest arguments (similar to
+binary operators).
 }
 \description{
 \code{substr} and \code{substrl} extract
 contiguous parts of given character strings.
 The former operates based on start and end positions
-while the later is fed with start position and substring length.
+while the latter is fed with substring lengths.
 
-Their replacement versions allows for substituting them with new content.
+Their replacement versions allow for substituting parts of strings
+with new content.
 }
 \details{
 Not to be confused with \code{\link{sub}}.
@@ -75,7 +79,7 @@ implemented with \code{\link[stringi]{stri_sub}}.
 \item \code{substr} is not vectorised with respect to all the arguments
     (and \code{substring} is not fully vectorised wrt \code{value})
     \bold{[fixed here]}
-\item not all attributes are taken form the longest of the inputs
+\item not all attributes are taken from the longest of the inputs
     \bold{[fixed here]}
 \item partial recycling with no warning
     \bold{[fixed here]}

@@ -16,20 +16,22 @@
 
 
 #' @title
-#' Detect Pattern Occurrences
+#' Locate Pattern Occurrences
 #'
 #' @description
-#' ... g stands for 'global'=all
+#' \code{regexpr} and \code{gregexpr} locate first and all
+#' (i.e., \textbf{g}lobally) occurrences of a pattern.
+#' \code{regexec} and \code{gregexec} can additionally
+#' pinpoint the matches to parenthesised subexpressions (regex capture groups).
 #'
 #' @details
-#' This function is fully vectorised with respect to both arguments.
+#' These functions are fully vectorised with respect to both \code{x} and
+#' \code{pattern}.
 #'
-#' For splitting text into 'characters' (grapheme clusters), words,
-#' or sentences, use \code{\link[stringi]{stri_split_boundaries}} instead.
 #'
 #' @section Differences from Base R:
-#' Replacements for base \code{\link[base]{strsplit}}
-#' implemented with \code{\link[stringi]{stri_split}}.
+#' Replacements for base \code{\link[base]{gregexpr}} (and others)
+#' implemented with \code{\link[stringi]{stri_locate}}.
 #'
 #' \itemize{
 #' \item there are inconsistencies between the argument order and naming
@@ -80,7 +82,11 @@
 #'
 #'
 #' @return
-#' Returns a list of character vectors representing the identified tokens.
+#' Lack of matches are denoted with -1s.???
+#'
+#' \code{regexpr} returns an integer vector which gives the
+#' start positions of the matches. The \code{match.length} attribute
+#'
 #'
 #'
 #' @examples
@@ -88,7 +94,7 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substr}},
+#'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substrl}},
 #'     \code{\link{grepl}}
 #'
 #' @rdname gregexpr

@@ -22,9 +22,10 @@
 #' \code{substr} and \code{substrl} extract
 #' contiguous parts of given character strings.
 #' The former operates based on start and end positions
-#' while the latter is fed with start position and substring length.
+#' while the latter is fed with substring lengths.
 #'
-#' Their replacement versions allows for substituting them with new content.
+#' Their replacement versions allow for substituting parts of strings
+#' with new content.
 #'
 #' @details
 #' Not to be confused with \code{\link{sub}}.
@@ -49,7 +50,7 @@
 #' \item \code{substr} is not vectorised with respect to all the arguments
 #'     (and \code{substring} is not fully vectorised wrt \code{value})
 #'     \bold{[fixed here]}
-#' \item not all attributes are taken form the longest of the inputs
+#' \item not all attributes are taken from the longest of the inputs
 #'     \bold{[fixed here]}
 #' \item partial recycling with no warning
 #'     \bold{[fixed here]}
@@ -73,24 +74,27 @@
 #'     whose parts are to be extracted/replaced
 #'
 #' @param start,first numeric vector giving the start indexes;
-#'     e.g., 1 denotes the first code point, and -1 the last one
+#'     e.g., 1 denotes the first code point;
+#'     negative indexes
+#'     count from the end of a string, i.e., -1 is the last character
 #'
 #' @param stop,last numeric vector giving the end indexes (inclusive);
-#'     as with \code{start}, for negative indexes, counting starts at the end
-#'     of each string; note that if the start position is farther than the
+#'     note that if the start position is farther than the
 #'     end position, this indicates an empty substring therein (see Examples)
 #'
-#' @param length numeric vector giving the substring lengths
+#' @param length numeric vector giving the substring lengths;
+#'     negative lengths result in an empty string or the corresponding
+#'     substring being unchanged
 #'
 #' @param value character vector defining the replacements strings
 #'
 #'
 #' @return
-#' \code{substr} and \code{substrl} return a character vector (in UTF-8).
+#' \code{substr2} and \code{substrl2} return a character vector (in UTF-8).
 #' Their replacement versions modify \code{x} 'in-place' (see Examples).
 #'
-#' The attributes are copied from the longest arguments (similarly
-#' as in the case of binary operators).
+#' The attributes are copied from the longest arguments (similar to
+#' binary operators).
 #'
 #'
 #'
@@ -147,13 +151,6 @@ substrl <- function(x, start=1L, length)
 
 
 #' @rdname substr
-substring <- function(text, first=1L, last=-1L)
-{
-    substr(x=text, start=first, stop=last)
-}
-
-
-#' @rdname substr
 `substr<-` <- function(x, start=1L, stop=-1L, value)
 {
     if (!is.character(x))     x     <- as.character(x)  # S3 generics, you do you
@@ -176,6 +173,13 @@ substring <- function(text, first=1L, last=-1L)
 
     ret <- stringi::`stri_sub<-`(x, from=start, length=length, omit_na=FALSE, value=value)
     .attribs_propagate_nary(ret, x, start, length, value)
+}
+
+
+#' @rdname substr
+substring <- function(text, first=1L, last=-1L)
+{
+    substr(x=text, start=first, stop=last)
 }
 
 
