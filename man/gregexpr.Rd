@@ -88,15 +88,26 @@ attempting to do so) [DEPRECATED]}
 \item{text}{alias to the \code{x} argument [DEPRECATED]}
 }
 \value{
-Lack of matches are denoted with -1s.???
+\code{regexpr2} and [DEPRECATED] \code{regexpr} return an integer vector
+which gives the start positions of the first substrings matching a pattern.
+The \code{match.length} attribute gives the corresponding
+match lengths. If there is no match, the two values are set to -1.
 
-\code{regexpr} returns an integer vector which gives the
-start positions of the matches. The \code{match.length} attribute
+\code{gregexpr2} and [DEPRECATED] \code{gregexpr} yield
+a list whose elements are integer vectors with \code{match.length}
+attributes, giving the positions of all the matches.
+For consistency with \code{regexpr2}, a no-match is denoted with
+a single -1, hence the output is guaranteed to consist of non-empty integer
+vectors.
+
+The functions preserve the attributes of the longest inputs (unless they are
+dropped due to coercion). Missing values in the inputs are propagated
+consistently.
 }
 \description{
-\code{regexpr} and \code{gregexpr} locate first and all
+\code{regexpr2} and \code{gregexpr2} locate first and all
 (i.e., \textbf{g}lobally) occurrences of a pattern.
-\code{regexec} and \code{gregexec} can additionally
+\code{regexec2} and \code{gregexec2} can additionally
 pinpoint the matches to parenthesised subexpressions (regex capture groups).
 }
 \details{
@@ -128,12 +139,21 @@ implemented with \code{\link[stringi]{stri_locate}}.
     is only available, hence the \code{perl} argument has no meaning]}
 \item not vectorised w.r.t. \code{pattern}
     \bold{[fixed here]}
-\item ...
+\item \code{ignore.case=TRUE} cannot be used with \code{fixed=TRUE}
+    \bold{[fixed here]}
+\item no attributes are preserved
+    \bold{[fixed here; see Value]}
 }
 }
 
 \examples{
-# ...
+x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
+regexpr2(x, "(A)[ACTG]\\\\1", ignore.case=TRUE)
+regexpr2(x, "aca") >= 0  # like grepl2
+gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
+
+# TODO: extract, make operable with substr and substr<-
+# .....
 
 }
 \seealso{
