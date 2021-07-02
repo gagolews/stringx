@@ -50,3 +50,23 @@ E(
     unlist(gregexpr(x, "mario", fixed=NA, strength=1L))!=-1L,
     c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)
 )
+
+E(
+    unlist(regexec(x, "mario", fixed=NA, ignore.case=TRUE))!=-1L,
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA)
+)
+
+E(
+    unlist(regexec(x, "mario", fixed=NA, strength=1L))!=-1L,
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)
+)
+
+E(
+    unlist(gregexec(x, "mario", fixed=NA, ignore.case=TRUE))!=-1L,
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA)
+)
+
+E(
+    unlist(gregexec(x, "mario", fixed=NA, strength=1L))!=-1L,
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)
+)

@@ -68,7 +68,7 @@ gregexec(
 
 \item{pattern}{character vector of nonempty search patterns}
 
-\item{...}{further arguments to \code{\link[stringi]{stri_split}},
+\item{...}{further arguments to \code{\link[stringi]{stri_locate}},
 e.g., \code{omit_empty}, \code{locale}, \code{dotall}}
 
 \item{ignore.case}{single logical value; indicates whether matching
@@ -100,13 +100,25 @@ For consistency with \code{regexpr2}, a no-match is denoted with
 a single -1, hence the output is guaranteed to consist of non-empty integer
 vectors.
 
-The functions preserve the attributes of the longest inputs (unless they are
-dropped due to coercion). Missing values in the inputs are propagated
+\code{regexec2} and [DEPRECATED] \code{regexec} return
+a list of integer vectors giving the positions of the first matches
+and the locations of matches to the consecutive parenthesised subexpressions
+(which can only be recognised if \code{fixed=FALSE}).
+Each vector is equipped with the \code{match.length} attribute.
+
+\code{gregexec2} and [DEPRECATED] \code{gregexec} generate
+a list of matrices, where each column corresponds to a separate match;
+the first row is the start index of the match, the second row gives the
+position of the first captured group, and so forth.
+Their \code{match.length} attributes are matrices of corresponding sizes.
+
+These functions preserve the attributes of the longest inputs (unless they
+are dropped due to coercion). Missing values in the inputs are propagated
 consistently.
 }
 \description{
-\code{regexpr2} and \code{gregexpr2} locate first and all
-(i.e., \textbf{g}lobally) occurrences of a pattern.
+\code{regexpr2} and \code{gregexpr2} locate, respectively, first and all
+(i.e., \bold{g}lobally) occurrences of a pattern.
 \code{regexec2} and \code{gregexec2} can additionally
 pinpoint the matches to parenthesised subexpressions (regex capture groups).
 }
@@ -143,6 +155,21 @@ implemented with \code{\link[stringi]{stri_locate}}.
     \bold{[fixed here]}
 \item no attributes are preserved
     \bold{[fixed here; see Value]}
+\item in \code{regexec}, \code{match.length} attribute is unnamed
+    even if the capture groups are (but \code{gregexec} sets dimnames
+    of both start positions and lengths)
+    \bold{[fixed here]}
+\item \code{regexec} and \code{gregexec} with \code{fixed} other than
+    \code{FALSE} make little sense.
+    \bold{[this argument is [DEPRECATED] in \code{regexec2}
+    and \code{gregexec2}]}
+\item \code{gregexec} does not always yield a list of matrices
+    \bold{[fixed here]}
+\item a no-match to a conditional capture group is assigned length 0
+    \bold{[fixed here]}
+\item no-matches result in a single -1, even if capture groups are
+    defined in the pattern
+    \bold{[fixed here]}
 }
 }
 
@@ -152,7 +179,12 @@ regexpr2(x, "(A)[ACTG]\\\\1", ignore.case=TRUE)
 regexpr2(x, "aca") >= 0  # like grepl2
 gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
 
+# two named capture groups:
+regexec2(x, "(?<x>a)(?<y>cac?)")
+gregexec2(x, "(?<x>a)(?<y>cac?)")
+
 # TODO: extract, make operable with substr and substr<-
+# replace  ..utils::strcapture and ..regmatches
 # .....
 
 }

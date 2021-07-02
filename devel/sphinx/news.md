@@ -3,10 +3,13 @@
 
 ## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
 
-* [GENERAL] On-line manual is [available](https://stringx.gagolewski.com).
+* [GENERAL] On-line manual is available at https://stringx.gagolewski.com.
+
 * [GENERAL] Using [*realtest*](https://realtest.gagolewski.com)
   for documenting base R behaviour, unit testing, and desired outcomes.
+
 * [NEW FEATURE] Added constants: `letters_greek`, `digits_hex`, etc.
+
 * [NEW FEATURE] Added functions and operators:
   `strcat`, `%x+%`, `%x*%`,
   `chartr2`, `strtrans`,
@@ -16,8 +19,11 @@
   `substrl`, `substrl<-`,
   `sub2`, `gsub2`,
   `grepl2`, `grepv2`, `grepv2<-`,
-  ..`regexpr2`, `gregexpr2`,
-  .. `regexec2`, `gregexec2`,
+  `regexpr2`, `gregexpr2`,
+  `regexec2`, `gregexec2`,
+  .. `gsubstrl`, `gsubstrl<-`,
+  .. `gsubstr`, `gsubstr<-`,
+
 * [NEW FEATURE] Rewritten functions:
   `paste`, `paste0`,
   `strrep`,
@@ -34,10 +40,10 @@
   `strsplit`,
   `sub`, `gsub`,
   `grep`, `grepl`,
-  ..`regexpr`, `gregexpr`,
-  ..`regexec`, `gregexec`,
+  `regexpr`, `gregexpr`,
+  `regexec`, `gregexec`,
   ..utils::strcapture ???
-
+  ..regmatches
 
 regexpr == what does that even mean? /positions/
 regexec == ? /positions+capture groups/

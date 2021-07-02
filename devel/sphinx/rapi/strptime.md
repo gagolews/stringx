@@ -74,22 +74,22 @@ Related function(s): [`sprintf`](sprintf.md)
 
 ```r
 stringx::strftime(Sys.time())  # default format - ISO 8601
-## [1] "2021-06-20T16:40:06+1000"
+## [1] "2021-07-02T15:14:53+1000"
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 stringx::strftime(Sys.time(), f)  # current default locale
-## [1] "Sunday, 20 June 2021"                                               
-## [2] "2021-06-20"                                                         
-## [3] "today"                                                              
-## [4] "Sunday, 20 June 2021 at 4:40:06 pm Australian Eastern Standard Time"
+## [1] "Friday, 2 July 2021"                                               
+## [2] "2021-07-02"                                                        
+## [3] "today"                                                             
+## [4] "Friday, 2 July 2021 at 3:14:53 pm Australian Eastern Standard Time"
 stringx::strftime(Sys.time(), f, locale="de_DE")
-## [1] "Sonntag, 20. Juni 2021"                                       
-## [2] "2021-06-20"                                                   
-## [3] "heute"                                                        
-## [4] "Sonntag, 20. Juni 2021 um 16:40:06 Ostaustralische Normalzeit"
+## [1] "Freitag, 2. Juli 2021"                                       
+## [2] "2021-07-02"                                                  
+## [3] "heute"                                                       
+## [4] "Freitag, 2. Juli 2021 um 15:14:53 Ostaustralische Normalzeit"
 stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "10 Tamuz 5781"
+## [1] "22 Tamuz 5781"
 stringx::strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
 ## [1] "1970-01-01 00:00:00 GMT"
 stringx::strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1943-04-19 16:40:06 AEST"
+## [1] "1943-04-19 15:14:53 AEST"
 ```

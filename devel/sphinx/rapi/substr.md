@@ -2,9 +2,9 @@
 
 ## Description
 
-`substr` and `substrl` extract contiguous parts of given character strings. The former operates based on start and end positions while the later is fed with start position and substring length.
+`substr` and `substrl` extract contiguous parts of given character strings. The former operates based on start and end positions while the latter is fed with substring lengths.
 
-Their replacement versions allows for substituting them with new content.
+Their replacement versions allow for substituting parts of strings with new content.
 
 ## Usage
 
@@ -13,24 +13,24 @@ substr(x, start = 1L, stop = -1L)
 
 substrl(x, start = 1L, length)
 
-substring(text, first = 1L, last = -1L)
-
 substr(x, start = 1L, stop = -1L) <- value
 
 substrl(x, start = 1L, length) <- value
+
+substring(text, first = 1L, last = -1L)
 
 substring(text, first = 1L, last = -1L) <- value
 ```
 
 ## Arguments
 
-|                |                                                                                                                                                                                                                                                                 |
-|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x, text`      | character vector whose parts are to be extracted/replaced                                                                                                                                                                                                       |
-| `start, first` | numeric vector giving the start indexes; e.g., 1 points to the first code point, -1 to the last                                                                                                                                                                 |
-| `stop, last`   | numeric vector giving the end indexes (inclusive); as with `start`, for negative indexes, counting starts at the end of each string; note that if the start position is farther than the end position, this indicates an empty substring therein (see Examples) |
-| `length`       | numeric vector giving the substring lengths                                                                                                                                                                                                                     |
-| `value`        | character vector defining the replacements strings                                                                                                                                                                                                              |
+|                |                                                                                                                                                                               |
+|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x, text`      | character vector whose parts are to be extracted/replaced                                                                                                                     |
+| `start, first` | numeric vector giving the start indexes; e.g., 1 denotes the first code point; negative indexes count from the end of a string, i.e., -1 is the last character                |
+| `stop, last`   | numeric vector giving the end indexes (inclusive); note that if the start position is farther than the end position, this indicates an empty substring therein (see Examples) |
+| `length`       | numeric vector giving the substring lengths; negative lengths result in an empty string or the corresponding substring being unchanged                                        |
+| `value`        | character vector defining the replacements strings                                                                                                                            |
 
 ## Details
 
@@ -42,9 +42,9 @@ Note that these functions can break some meaningful Unicode code point sequences
 
 ## Value
 
-`substr` and `substrl` return a character vector (in UTF-8). Their replacement versions modify `x` \'in-place\' (see Examples).
+`substr2` and `substrl2` return a character vector (in UTF-8). Their replacement versions modify `x` \'in-place\' (see Examples).
 
-The attributes are copied from the longest arguments (similarly as in the case of binary operators).
+The attributes are copied from the longest arguments (similar to binary operators).
 
 ## Differences from Base R
 
@@ -54,7 +54,7 @@ Replacement for base [`substr`](https://stat.ethz.ch/R-manual/R-devel/library/ba
 
 -   `substr` is not vectorised with respect to all the arguments (and `substring` is not fully vectorised wrt `value`) **\[fixed here\]**
 
--   not all attributes are taken form the longest of the inputs **\[fixed here\]**
+-   not all attributes are taken from the longest of the inputs **\[fixed here\]**
 
 -   partial recycling with no warning **\[fixed here\]**
 

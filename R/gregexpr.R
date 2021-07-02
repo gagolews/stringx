@@ -19,8 +19,8 @@
 #' Locate Pattern Occurrences
 #'
 #' @description
-#' \code{regexpr2} and \code{gregexpr2} locate first and all
-#' (i.e., \textbf{g}lobally) occurrences of a pattern.
+#' \code{regexpr2} and \code{gregexpr2} locate, respectively, first and all
+#' (i.e., \bold{g}lobally) occurrences of a pattern.
 #' \code{regexec2} and \code{gregexec2} can additionally
 #' pinpoint the matches to parenthesised subexpressions (regex capture groups).
 #'
@@ -57,6 +57,21 @@
 #'     \bold{[fixed here]}
 #' \item no attributes are preserved
 #'     \bold{[fixed here; see Value]}
+#' \item in \code{regexec}, \code{match.length} attribute is unnamed
+#'     even if the capture groups are (but \code{gregexec} sets dimnames
+#'     of both start positions and lengths)
+#'     \bold{[fixed here]}
+#' \item \code{regexec} and \code{gregexec} with \code{fixed} other than
+#'     \code{FALSE} make little sense.
+#'     \bold{[this argument is [DEPRECATED] in \code{regexec2}
+#'     and \code{gregexec2}]}
+#' \item \code{gregexec} does not always yield a list of matrices
+#'     \bold{[fixed here]}
+#' \item a no-match to a conditional capture group is assigned length 0
+#'     \bold{[fixed here]}
+#' \item no-matches result in a single -1, even if capture groups are
+#'     defined in the pattern
+#'     \bold{[fixed here]}
 #' }
 #'
 #'
@@ -75,7 +90,7 @@
 #' @param ignore.case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
-#' @param ... further arguments to \code{\link[stringi]{stri_split}},
+#' @param ... further arguments to \code{\link[stringi]{stri_locate}},
 #'     e.g., \code{omit_empty}, \code{locale}, \code{dotall}
 #'
 #' @param text alias to the \code{x} argument [DEPRECATED]
@@ -97,8 +112,20 @@
 #' a single -1, hence the output is guaranteed to consist of non-empty integer
 #' vectors.
 #'
-#' The functions preserve the attributes of the longest inputs (unless they are
-#' dropped due to coercion). Missing values in the inputs are propagated
+#' \code{regexec2} and [DEPRECATED] \code{regexec} return
+#' a list of integer vectors giving the positions of the first matches
+#' and the locations of matches to the consecutive parenthesised subexpressions
+#' (which can only be recognised if \code{fixed=FALSE}).
+#' Each vector is equipped with the \code{match.length} attribute.
+#'
+#' \code{gregexec2} and [DEPRECATED] \code{gregexec} generate
+#' a list of matrices, where each column corresponds to a separate match;
+#' the first row is the start index of the match, the second row gives the
+#' position of the first captured group, and so forth.
+#' Their \code{match.length} attributes are matrices of corresponding sizes.
+#'
+#' These functions preserve the attributes of the longest inputs (unless they
+#' are dropped due to coercion). Missing values in the inputs are propagated
 #' consistently.
 #'
 #'
@@ -107,6 +134,10 @@
 #' regexpr2(x, "(A)[ACTG]\\1", ignore.case=TRUE)
 #' regexpr2(x, "aca") >= 0  # like grepl2
 #' gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
+#'
+#' # two named capture groups:
+#' regexec2(x, "(?<x>a)(?<y>cac?)")
+#' gregexec2(x, "(?<x>a)(?<y>cac?)")
 #'
 #' # TODO: extract, make operable with substr and substr<-
 #' # replace  ..utils::strcapture and ..regmatches
@@ -140,7 +171,7 @@ regexpr2 <- function(
         }
     }
 
-    structure(
+    structure(  # as.integer will drop the "length"/"start" name
         .attribs_propagate_binary(as.integer(ret[, "start", drop=TRUE]), x, pattern),
         match.length=as.integer(ret[, "length", drop=TRUE])
     )
@@ -172,7 +203,7 @@ gregexpr2 <- function(
 
     .attribs_propagate_binary(
         lapply(ret, function(e)
-            structure(
+            structure(  # as.integer will drop the "length"/"start" name
                 as.integer(e[, "start", drop=TRUE]),
                 match.length=as.integer(e[, "length", drop=TRUE])
             )
@@ -187,7 +218,93 @@ regexec2 <- function(
     x, pattern, ...,
     ignore.case=FALSE, fixed=FALSE
 ) {
-    # TODO
+    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
+    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+
+    ret <- {
+        if (is.na(fixed)) {
+            if (!ignore.case)
+                stringi::stri_locate_first_coll(x, pattern, get_length=TRUE, ...)
+            else
+                stringi::stri_locate_first_coll(x, pattern, get_length=TRUE, strength=2L, ...)
+        } else if (fixed == TRUE) {
+            stringi::stri_locate_first_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+        } else {
+            NULL
+        }
+    }
+
+    if (!is.null(ret)) {  # TODO: DEPRECATED case
+        # there are definitely no capture groups
+
+        # as.integer will drop the "length"/"start" name
+        starts  <- as.integer(ret[, "start", drop=TRUE])
+        lengths <- as.integer(ret[, "length", drop=TRUE])
+
+        ret <- lapply(
+            seq_along(starts),
+            function(i) structure(
+                starts[i],
+                match.length=lengths[i]
+            )
+        )
+    }
+    else {
+        # TODO: currently stri_locate_first_regex does not distinguish
+        # between a non-existing capture group and a no-match to a capture
+        # group in the case of many patterns
+
+        # see stringi/#424
+
+        # ret <- stringi::stri_locate_first_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, capture_groups=TRUE, ...)
+        #
+        # cnames <- names(attr(ret, "capture_groups"))
+        # if (!is.null(cnames)) cnames <- c("", cnames)
+        # ret <- c(list(ret), attr(ret, "capture_groups"))
+        #
+        # starts <- do.call(rbind, lapply(ret, function(e) as.integer(e[, "start", drop=TRUE])))
+        # lengths <- do.call(rbind, lapply(ret, function(e) as.integer(e[, "length", drop=TRUE])))
+        #
+        # ret <- lapply(
+        #     seq_len(NCOL(starts)),
+        #     function(i) structure(
+        #         starts[, i],
+        #         match.length=structure(lengths[, i], names=cnames),
+        #         names=cnames
+        #     )
+        # )
+
+        ret <- stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, capture_groups=TRUE, ...)
+
+        ret <- lapply(ret, function(e) {
+            cnames <- names(attr(e, "capture_groups"))
+            if (!is.null(cnames)) cnames <- c("", cnames)
+            structure(
+                c(
+                    as.integer(e[1L, "start", drop=TRUE]),
+                    unlist(lapply(
+                        attr(e, "capture_groups"),
+                        function(e2) as.integer(e2[1L, "start", drop=TRUE])
+                    ))
+                ),
+                match.length=structure(
+                    c(
+                        as.integer(e[1L, "length", drop=TRUE]),
+                        unlist(lapply(
+                            attr(e, "capture_groups"),
+                            function(e2) as.integer(e2[1L, "length", drop=TRUE])
+                        ))
+                    ),
+                    names=cnames
+                ),
+                names=cnames
+            )
+        })
+    }
+
+    .attribs_propagate_binary(ret, x, pattern)
 }
 
 
@@ -196,7 +313,69 @@ gregexec2 <- function(
     x, pattern, ...,
     ignore.case=FALSE, fixed=FALSE
 ) {
-    # TODO
+    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
+    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+
+    ret <- {
+        if (is.na(fixed)) {
+            if (!ignore.case)
+                stringi::stri_locate_all_coll(x, pattern, get_length=TRUE, ...)
+            else
+                stringi::stri_locate_all_coll(x, pattern, get_length=TRUE, strength=2L, ...)
+        } else if (fixed == TRUE) {
+            stringi::stri_locate_all_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+        } else {
+            NULL
+        }
+    }
+
+    if (!is.null(ret)) {  # TODO: DEPRECATED case
+        # there are definitely no capture groups
+
+        ret <- lapply(
+            ret,
+            function(e) structure(  # as.integer will drop the "length"/"start" name
+                as.integer(e[, "start", drop=TRUE]),
+                match.length=structure(
+                    as.integer(e[, "length", drop=TRUE]),
+                    dim=c(1L, NROW(e))
+                ),
+                dim=c(1L, NROW(e))
+            )
+        )
+    }
+    else {
+        ret <- stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, capture_groups=TRUE, ...)
+
+        ret <- lapply(ret, function(e) {
+            cnames <- names(attr(e, "capture_groups"))
+            if (!is.null(cnames)) cnames <- c("", cnames)
+            structure(
+                do.call(rbind, c(
+                    list(as.integer(e[, "start", drop=TRUE])),
+                    lapply(
+                        attr(e, "capture_groups"),
+                        function(e2) as.integer(e2[, "start", drop=TRUE])
+                    )
+                )),
+                match.length=structure(
+                    do.call(rbind, c(
+                        list(as.integer(e[, "length", drop=TRUE])),
+                        lapply(
+                            attr(e, "capture_groups"),
+                            function(e2) as.integer(e2[, "length", drop=TRUE])
+                        )
+                    )),
+                    dimnames=if (!is.null(cnames)) list(cnames, NULL) else NULL
+                ),
+                dimnames=if (!is.null(cnames)) list(cnames, NULL) else NULL
+            )
+        })
+    }
+
+    .attribs_propagate_binary(ret, x, pattern)
 }
 
 
