@@ -5,17 +5,26 @@
 \alias{substrl}
 \alias{substr<-}
 \alias{substrl<-}
+\alias{gsubstrl}
+\alias{gsubstr<-}
+\alias{gsubstrl<-}
 \alias{substring}
 \alias{substring<-}
 \title{Extract or Replace Substrings}
 \usage{
 substr(x, start = 1L, stop = -1L)
 
-substrl(x, start = 1L, length)
+substrl(x, start = 1L, length = attr(start, "match.length"))
 
 substr(x, start = 1L, stop = -1L) <- value
 
-substrl(x, start = 1L, length) <- value
+substrl(x, start = 1L, length = attr(start, "match.length")) <- value
+
+gsubstrl(x, start = list(1L), length = lapply(start, attr, "match.length"))
+
+gsubstr(x, start = list(1L), stop = list(-1L)) <- value
+
+gsubstrl(x, start = list(1L), length = lapply(start, attr, "match.length")) <- value
 
 substring(text, first = 1L, last = -1L)
 

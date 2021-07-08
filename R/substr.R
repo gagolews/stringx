@@ -133,19 +133,21 @@ substr <- function(x, start=1L, stop=-1L)
     if (!is.numeric(start)) start <- as.numeric(start)
     if (!is.numeric(stop))  stop  <- as.numeric(stop)
 
-    ret <- stringi::stri_sub(x, from=start, to=stop)
+    ret <- stringi::stri_sub(x, from=start, to=stop, use_matrix=FALSE)
     .attribs_propagate_nary(ret, x, start, stop)
 }
 
 
 #' @rdname substr
-substrl <- function(x, start=1L, length)
+substrl <- function(x, start=1L, length=attr(start, "match.length"))
 {
     if (!is.character(x))    x <- as.character(x)  # S3 generics, you do you
     if (!is.numeric(start))  start <- as.numeric(start)
     if (!is.numeric(length)) length <- as.numeric(length)
 
-    ret <- stringi::stri_sub(x, from=start, length=length)
+    if (missing(length)) attr(start, "match.length") <- NULL
+
+    ret <- stringi::stri_sub(x, from=start, length=length, use_matrix=FALSE)
     .attribs_propagate_nary(ret, x, start, length)
 }
 
@@ -158,20 +160,71 @@ substrl <- function(x, start=1L, length)
     if (!is.numeric(stop))    stop  <- as.numeric(stop)
     if (!is.character(value)) value <- as.character(value)
 
-    ret <- stringi::`stri_sub<-`(x, from=start, to=stop, omit_na=FALSE, value=value)
+    ret <- stringi::`stri_sub<-`(x, from=start, to=stop, omit_na=FALSE, use_matrix=FALSE, value=value)
     .attribs_propagate_nary(ret, x, start, stop, value)
 }
 
 
 #' @rdname substr
-`substrl<-` <- function(x, start=1L, length, value)
+`substrl<-` <- function(x, start=1L, length=attr(start, "match.length"), value)
 {
     if (!is.character(x))     x      <- as.character(x)  # S3 generics, you do you
     if (!is.numeric(start))   start  <- as.numeric(start)
     if (!is.numeric(length))  length <- as.numeric(length)
     if (!is.character(value)) value  <- as.character(value)
 
-    ret <- stringi::`stri_sub<-`(x, from=start, length=length, omit_na=FALSE, value=value)
+    if (missing(length)) attr(start, "match.length") <- NULL
+
+    ret <- stringi::`stri_sub<-`(x, from=start, length=length, omit_na=FALSE, use_matrix=FALSE, value=value)
+    .attribs_propagate_nary(ret, x, start, length, value)
+}
+
+
+gsubstr <- function(x, start=list(1L), stop=list(-1L))
+{
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.list(start))  start <- as.list(start)
+    if (!is.list(stop))   stop  <- as.list(stop)
+
+    ret <- stringi::stri_sub_all(x, from=start, to=stop, use_matrix=FALSE)
+    .attribs_propagate_nary(ret, x, start, stop)
+}
+
+
+#' @rdname substr
+gsubstrl <- function(x, start=list(1L), length=lapply(start, attr, "match.length"))
+{
+    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.list(start))  start <- as.list(start)
+    if (!is.list(length)) length  <- as.list(length)
+
+    ret <- stringi::stri_sub_all(x, from=start, length=length, use_matrix=FALSE)
+    .attribs_propagate_nary(ret, x, start, length)
+}
+
+
+#' @rdname substr
+`gsubstr<-` <- function(x, start=list(1L), stop=list(-1L), value)
+{
+    if (!is.character(x))     x     <- as.character(x)  # S3 generics, you do you
+    if (!is.list(start))      start <- as.list(start)
+    if (!is.list(stop))       stop  <- as.list(stop)
+    if (!is.character(value)) value <- as.character(value)
+
+    ret <- stringi::`stri_sub_all<-`(x, from=start, to=stop, omit_na=FALSE, use_matrix=FALSE, value=value)
+    .attribs_propagate_nary(ret, x, start, stop, value)
+}
+
+
+#' @rdname substr
+`gsubstrl<-` <- function(x, start=list(1L), length=lapply(start, attr, "match.length"), value)
+{
+    if (!is.character(x))     x      <- as.character(x)  # S3 generics, you do you
+    if (!is.list(start))      start <- as.list(start)
+    if (!is.list(length))     length  <- as.list(length)
+    if (!is.character(value)) value  <- as.character(value)
+
+    ret <- stringi::`stri_sub_all<-`(x, from=start, length=length, omit_na=FALSE, use_matrix=FALSE, value=value)
     .attribs_propagate_nary(ret, x, start, length, value)
 }
 
