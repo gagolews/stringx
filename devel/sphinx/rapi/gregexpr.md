@@ -76,6 +76,8 @@ gregexec(
 
 These functions are fully vectorised with respect to both `x` and `pattern`.
 
+Use [`substrl`](substr.md) and [`gsubstrl`](substr.md) to extract or replace the identified chunks.
+
 ## Value
 
 `regexpr2` and \[DEPRECATED\] `regexpr` return an integer vector which gives the start positions of the first substrings matching a pattern. The `match.length` attribute gives the corresponding match lengths. If there is no match, the two values are set to -1.

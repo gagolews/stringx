@@ -125,6 +125,9 @@ pinpoint the matches to parenthesised subexpressions (regex capture groups).
 \details{
 These functions are fully vectorised with respect to both \code{x} and
 \code{pattern}.
+
+Use \code{\link{substrl}} and \code{\link{gsubstrl}}
+to extract or replace the identified chunks.
 }
 \section{Differences from Base R}{
 

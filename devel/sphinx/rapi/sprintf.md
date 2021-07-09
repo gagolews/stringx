@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1625202893.034990 is 2021-07-02 15:14:53.
-## 2021-07-02 15:14:53 is 1625202893.034990 UNIX time.
+## UNIX time 1625801339.916842 is 2021-07-09 13:28:59.
+## 2021-07-09 13:28:59 is 1625801339.916842 UNIX time.
 ```

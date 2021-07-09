@@ -13,22 +13,18 @@ E(`substrl<-`(x, -4, 0, value="spammity "), c("spam, spam, bacon, and spammity s
 E(`substrl<-`(x, -4, 2, value="j"), c("spam, spam, bacon, and jam", "eggs and jam"))
 E(`substrl<-`(x, -4, -1, value="spammity "), x)
 
+E(gsubstr(x, 1, 4), list("spam", "eggs"))
+E(gsubstr(x, c(13, 1), c(17, 4)), list("bacon", "eggs"))
+E(gsubstr(x, list(c(13, 1), 1), list(c(17, 4), 4)), list(c("bacon", "spam"), "eggs"))
+E(`gsubstr<-`(x, -4, -1, value="buckwheat"), c("spam, spam, bacon, and buckwheat", "eggs and buckwheat"))
 
+x <- c("aaa", "1aa2aaa3", "a", "bb", "\u0105\U0001F64Baaaaaaaa", NA)
+p <- c("(?<x>a)(?<y>a)?(?<z>a)?", "a+")
+E(substrl(x, regexpr2(x, p)), c("aaa", "aa", "a", NA, "aaa", NA))
+E(`substrl<-`(x, regexpr2(x, p), value="!"), c("!", "1!2aaa3", "!", "bb", "\u0105\U0001F64B!aaaaa", NA))
+E(gsubstrl(x, gregexpr2(x, p)), list("aaa", c("aa", "aaa"), "a", NA_character_, c("aaa", "aaa", "aa"), NA_character_))
+E(`gsubstrl<-`(x, gregexpr2(x, p), value="!"), c("!", "1!2!3", "!", "bb", "\u0105\U0001F64B!!!", NA))
+E(`gsubstrl<-`(x, gregexpr2(x, p), value=list(c("!", "?", "@"))), P(c("!", "1!2?3", "!", "bb", "\u0105\U0001F64B!?@", NA), warning=TRUE))
 
-x <- c("aaa", "1aa2aaa3", "a", "bb", NA)
-substrl(x, regexpr2(x, "(?<x>a)(?<y>a)?(?<z>a)?"))
-
-gsubstrl(x, regexec2(x, "(?<x>a)(?<y>a)?(?<z>a)?"))
-
-gsubstrl(x, gregexec2(x, "(?<x>a)(?<y>a)?(?<z>a)?"))
-
-`substrl<-`(x, regexpr2(x, "(?<x>a)(?<y>a)?(?<z>a)?"), value="xxxxx")
-
-gsubstrl(x, gregexpr2(x, "(?<x>a)(?<y>a)?(?<z>a)?"))
-
-`gsubstrl<-`(x, gregexpr2(x, "(?<x>a)(?<y>a)?(?<z>a)?"), value="xxxxx")
-
-
-gsubstrl(x[2], gregexec2(x[2], "(?<x>a)(?<y>a)?(?<z>a)?"))
-
-lapply(gregexec2(x[2], "(?<x>a)(?<y>a)?(?<z>a)?"), attr, "match.length")
+# gsubstrl(x, regexec2(x, p))
+# gsubstrl(x, gregexec2(x, p))

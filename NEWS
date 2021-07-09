@@ -42,8 +42,8 @@
   `grep`, `grepl`,
   `regexpr`, `gregexpr`,
   `regexec`, `gregexec`,
-  ..utils::strcapture ???
-  ..regmatches
+  ..utils::strcapture ??? - extract capture groups
+  ..regmatches - extract or replace matches or non-matches (invert...)
 
 
 ## 0.0.0 (2021-05-07)

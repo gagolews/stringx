@@ -21,8 +21,8 @@
   `grepl2`, `grepv2`, `grepv2<-`,
   `regexpr2`, `gregexpr2`,
   `regexec2`, `gregexec2`,
-  .. `gsubstrl`, `gsubstrl<-`,
-  .. `gsubstr`, `gsubstr<-`,
+  `gsubstrl`, `gsubstrl<-`,
+  `gsubstr`, `gsubstr<-`.
 
 * [NEW FEATURE] Rewritten functions:
   `paste`, `paste0`,
@@ -44,11 +44,6 @@
   `regexec`, `gregexec`,
   ..utils::strcapture ???
   ..regmatches
-
-regexpr == what does that even mean? /positions/
-regexec == ? /positions+capture groups/
-
-regexec  - POSIX has it
 
 
 ## 0.0.0 (2021-05-07)
