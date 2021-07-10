@@ -2,7 +2,7 @@ Package: stringx
 Type: Package
 Title: Drop-in Replacements for Base String Functions Powered by Stringi
 Version: 0.1.0.9001
-Date: 2021-07-09
+Date: 2021-07-10
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),
@@ -17,8 +17,9 @@ Description: English is the native language for only 5% of the World population.
     other technologies and communication platforms, this is no longer the case.
     This package replaces base R string functions (such as 'grep',
     'tolower', and 'sprintf') with ones that fully
-    support the Unicode standards related to natural language processing
-    and fix some long-standing inconsistencies.
+    support the Unicode standards related to natural language processing,
+    fix some long-standing inconsistencies, and introduce
+    some new, useful features.
     Thanks to ICU (International Components for Unicode) and stringi,
     they are fast, reliable, and portable across different platforms.
 BugReports: https://github.com/gagolews/stringx/issues

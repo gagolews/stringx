@@ -8,11 +8,11 @@
 \alias{grep}
 \title{Detect Pattern Occurrences}
 \usage{
-grepl2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE, invert = FALSE)
+grepl2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE, invert = FALSE)
 
-grepv2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE, invert = FALSE)
+grepv2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE, invert = FALSE)
 
-grepv2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE, invert = FALSE) <- value
+grepv2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE, invert = FALSE) <- value
 
 grepl(
   pattern,
@@ -46,7 +46,7 @@ for \code{grepv2} and \code{grep}, must not be longer than \code{x}}
 \item{...}{further arguments to \code{\link[stringi]{stri_detect}},
 e.g., \code{max_count}, \code{locale}, \code{dotall}}
 
-\item{ignore.case}{single logical value; indicates whether matching
+\item{ignore_case, ignore.case}{single logical value; indicates whether matching
 should be case-insensitive}
 
 \item{fixed}{single logical value;
@@ -161,8 +161,9 @@ print(x)
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-    \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{gregexpr}},
-    \code{\link{substr}}
+    \code{\link{strsplit}}, \code{\link{gsub2}},
+    \code{\link{gregexpr2}}, \code{\link{gregextr2}},
+    \code{\link{gsubstr}}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

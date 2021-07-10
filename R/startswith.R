@@ -64,10 +64,11 @@
 #'         (\link[stringi]{about_search_coll});
 #'     \code{FALSE} is not supported -- use \code{\link{grepl}} instead
 #'
-#' @param ignore.case single logical value; indicates whether matching
+#' @param ignore_case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
 #' @param prefix,suffix aliases to the \code{pattern} argument [DEPRECATED]
+#' @param ignore.case alias to the \code{ignore_case} argument [DEPRECATED]
 #' @param ... further arguments to \code{\link[stringi]{stri_startswith}}
 #'     and \code{\link[stringi]{stri_endswith}}, e.g., \code{locale}
 #'
@@ -94,24 +95,25 @@
 #' Related function(s): \code{\link{grepl}}, \code{\link{substr}}
 #'
 #' @rdname startswith
-startsWith <- function(x, pattern=prefix, ..., ignore.case=FALSE, fixed=TRUE, prefix)
+startsWith <- function(x, pattern=prefix, ..., ignore_case=ignore.case, fixed=TRUE, ignore.case=FALSE, prefix)
 {
-    if (!missing(prefix) && !missing(pattern)) stop("do not use `prefix` if `pattern` is given as well")
+    if (!missing(prefix) && !missing(pattern)) stop("do not use [DEPRECATED] `prefix` if `pattern` is given as well")
+    if (!missing(ignore.case) && !missing(ignore_case)) stop("do not use [DEPRECATED] `ignore.case` if `ignore_case` is given as well")
     if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
 
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_startswith_coll(x, pattern, ...)
             else
                 stringi::stri_startswith_coll(x, pattern, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_startswith_fixed(x, pattern, case_insensitive=ignore.case, ...)
+            stringi::stri_startswith_fixed(x, pattern, case_insensitive=ignore_case, ...)
         } else {
             stop("use `grepl` instead")
         }
@@ -122,24 +124,25 @@ startsWith <- function(x, pattern=prefix, ..., ignore.case=FALSE, fixed=TRUE, pr
 
 
 #' @rdname startswith
-endsWith <- function(x, pattern=suffix, ..., ignore.case=FALSE, fixed=TRUE, suffix)
+endsWith <- function(x, pattern=suffix, ..., ignore_case=ignore.case, fixed=TRUE, ignore.case=FALSE, suffix)
 {
-    if (!missing(suffix) && !missing(pattern)) stop("do not use `suffix` if `pattern` is given as well")
+    if (!missing(suffix) && !missing(pattern)) stop("do not use [DEPRECATED] `suffix` if `pattern` is given as well")
+    if (!missing(ignore.case) && !missing(ignore_case)) stop("do not use [DEPRECATED] `ignore.case` if `ignore_case` is given as well")
     if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
 
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_endswith_coll(x, pattern, ...)
             else
                 stringi::stri_endswith_coll(x, pattern, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_endswith_fixed(x, pattern, case_insensitive=ignore.case, ...)
+            stringi::stri_endswith_fixed(x, pattern, case_insensitive=ignore_case, ...)
         } else {
             stop("use `grepl` instead")
         }

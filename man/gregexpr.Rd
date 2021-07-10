@@ -11,13 +11,13 @@
 \alias{gregexec}
 \title{Locate Pattern Occurrences}
 \usage{
-regexpr2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE)
+regexpr2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE)
 
-gregexpr2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE)
+gregexpr2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE)
 
-regexec2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE)
+regexec2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE)
 
-gregexec2(x, pattern, ..., ignore.case = FALSE, fixed = FALSE)
+gregexec2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE)
 
 regexpr(
   pattern,
@@ -71,7 +71,7 @@ gregexec(
 \item{...}{further arguments to \code{\link[stringi]{stri_locate}},
 e.g., \code{omit_empty}, \code{locale}, \code{dotall}}
 
-\item{ignore.case}{single logical value; indicates whether matching
+\item{ignore_case, ignore.case}{single logical value; indicates whether matching
 should be case-insensitive}
 
 \item{fixed}{single logical value;
@@ -128,6 +128,8 @@ These functions are fully vectorised with respect to both \code{x} and
 
 Use \code{\link{substrl}} and \code{\link{gsubstrl}}
 to extract or replace the identified chunks.
+Also, consider using \code{\link{regextr2}} and
+\code{\link{gregextr2}} directly instead.
 }
 \section{Differences from Base R}{
 
@@ -186,6 +188,9 @@ gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
 regexec2(x, "(?<x>a)(?<y>cac?)")
 gregexec2(x, "(?<x>a)(?<y>cac?)")
 
+# extraction:
+gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\\\1", ignore.case=TRUE))
+
 # TODO: extract, make operable with substr and substr<-
 # replace  ..utils::strcapture and ..regmatches
 # .....
@@ -195,8 +200,8 @@ gregexec2(x, "(?<x>a)(?<y>cac?)")
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-    \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substrl}},
-    \code{\link{grepl}}
+    \code{\link{strsplit}}, \code{\link{gsub2}},
+    \code{\link{grepl2}}, \code{\link{gregextr2}}, \code{\link{gsubstrl}}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

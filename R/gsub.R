@@ -92,7 +92,7 @@
 #'     \code{NA} for the Unicode collation algorithm
 #'         (\link[stringi]{about_search_coll})
 #'
-#' @param ignore.case single logical value; indicates whether matching
+#' @param ignore_case,ignore.case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
 #' @param ... further arguments to \code{\link[stringi]{stri_replace_first}}
@@ -128,8 +128,8 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{grepl}}, \code{\link{gregexpr}}
-#'     \code{\link{strsplit}}, \code{\link{substr}}
+#'     \code{\link{grepl2}}, \code{\link{gregexpr2}}, \code{\link{gregextr2}}
+#'     \code{\link{strsplit}}, \code{\link{gsubstr}}
 #'
 #' \code{\link{trimws}} for removing whitespaces (amongst others)
 #' from the start or end of strings
@@ -138,24 +138,24 @@
 #' @rdname gsub
 sub2 <- function(
     x, pattern, replacement, ...,
-    ignore.case=FALSE, fixed=FALSE
+    ignore_case=FALSE, fixed=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)
     if (!is.character(replacement)) replacement <- as.character(replacement)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_replace_first_coll(x, pattern, replacement, ...)
             else
                 stringi::stri_replace_first_coll(x, pattern, replacement, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_replace_first_fixed(x, pattern, replacement, case_insensitive=ignore.case, ...)
+            stringi::stri_replace_first_fixed(x, pattern, replacement, case_insensitive=ignore_case, ...)
         } else {
-            stringi::stri_replace_first_regex(x, pattern, replacement, case_insensitive=ignore.case, ...)
+            stringi::stri_replace_first_regex(x, pattern, replacement, case_insensitive=ignore_case, ...)
         }
     }
 
@@ -166,24 +166,24 @@ sub2 <- function(
 #' @rdname gsub
 gsub2 <- function(
     x, pattern, replacement, ...,
-    ignore.case=FALSE, fixed=FALSE
+    ignore_case=FALSE, fixed=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)
     if (!is.character(replacement)) replacement <- as.character(replacement)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_replace_all_coll(x, pattern, replacement, vectorise_all=TRUE, ...)
             else
                 stringi::stri_replace_all_coll(x, pattern, replacement, vectorise_all=TRUE, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_replace_all_fixed(x, pattern, replacement, vectorise_all=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_replace_all_fixed(x, pattern, replacement, vectorise_all=TRUE, case_insensitive=ignore_case, ...)
         } else {
-            stringi::stri_replace_all_regex(x, pattern, replacement, vectorise_all=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_replace_all_regex(x, pattern, replacement, vectorise_all=TRUE, case_insensitive=ignore_case, ...)
         }
     }
 
@@ -208,7 +208,7 @@ sub <- function(
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (isFALSE(fixed)) replacement <- .convert_replacement_icu(replacement)
-    sub2(x, pattern, replacement, ..., ignore.case=ignore.case, fixed=fixed)
+    sub2(x, pattern, replacement, ..., ignore_case=ignore.case, fixed=fixed)
 }
 
 
@@ -221,5 +221,5 @@ gsub <- function(
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (isFALSE(fixed)) replacement <- .convert_replacement_icu(replacement)
-    gsub2(x, pattern, replacement, ..., ignore.case=ignore.case, fixed=fixed)
+    gsub2(x, pattern, replacement, ..., ignore_case=ignore.case, fixed=fixed)
 }

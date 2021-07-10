@@ -7,9 +7,9 @@
 \alias{gsub}
 \title{Replace Pattern Occurrences}
 \usage{
-sub2(x, pattern, replacement, ..., ignore.case = FALSE, fixed = FALSE)
+sub2(x, pattern, replacement, ..., ignore_case = FALSE, fixed = FALSE)
 
-gsub2(x, pattern, replacement, ..., ignore.case = FALSE, fixed = FALSE)
+gsub2(x, pattern, replacement, ..., ignore_case = FALSE, fixed = FALSE)
 
 sub(
   pattern,
@@ -49,7 +49,7 @@ only allow \code{\\1}..\code{\\9}}
 or \code{\link[stringi]{stri_replace_all}},
 e.g., \code{locale}, \code{dotall}}
 
-\item{ignore.case}{single logical value; indicates whether matching
+\item{ignore_case, ignore.case}{single logical value; indicates whether matching
 should be case-insensitive}
 
 \item{fixed}{single logical value;
@@ -146,8 +146,8 @@ gsub2(x, p, "$1$13")
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
 Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-    \code{\link{grepl}}, \code{\link{gregexpr}}
-    \code{\link{strsplit}}, \code{\link{substr}}
+    \code{\link{grepl2}}, \code{\link{gregexpr2}}, \code{\link{gregextr2}}
+    \code{\link{strsplit}}, \code{\link{gsubstr}}
 
 \code{\link{trimws}} for removing whitespaces (amongst others)
 from the start or end of strings

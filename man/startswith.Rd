@@ -5,9 +5,25 @@
 \alias{endsWith}
 \title{Detect Pattern Occurrences at Start or End of Strings}
 \usage{
-startsWith(x, pattern = prefix, ..., ignore.case = FALSE, fixed = TRUE, prefix)
+startsWith(
+  x,
+  pattern = prefix,
+  ...,
+  ignore_case = ignore.case,
+  fixed = TRUE,
+  ignore.case = FALSE,
+  prefix
+)
 
-endsWith(x, pattern = suffix, ..., ignore.case = FALSE, fixed = TRUE, suffix)
+endsWith(
+  x,
+  pattern = suffix,
+  ...,
+  ignore_case = ignore.case,
+  fixed = TRUE,
+  ignore.case = FALSE,
+  suffix
+)
 }
 \arguments{
 \item{x}{character vector whose elements are to be examined}
@@ -17,7 +33,7 @@ endsWith(x, pattern = suffix, ..., ignore.case = FALSE, fixed = TRUE, suffix)
 \item{...}{further arguments to \code{\link[stringi]{stri_startswith}}
 and \code{\link[stringi]{stri_endswith}}, e.g., \code{locale}}
 
-\item{ignore.case}{single logical value; indicates whether matching
+\item{ignore_case}{single logical value; indicates whether matching
 should be case-insensitive}
 
 \item{fixed}{single logical value;
@@ -26,6 +42,8 @@ should be case-insensitive}
 \code{NA} for the Unicode collation algorithm
     (\link[stringi]{about_search_coll});
 \code{FALSE} is not supported -- use \code{\link{grepl}} instead}
+
+\item{ignore.case}{alias to the \code{ignore_case} argument [DEPRECATED]}
 
 \item{prefix, suffix}{aliases to the \code{pattern} argument [DEPRECATED]}
 }

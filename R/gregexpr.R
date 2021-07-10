@@ -31,6 +31,8 @@
 #'
 #' Use \code{\link{substrl}} and \code{\link{gsubstrl}}
 #' to extract or replace the identified chunks.
+#' Also, consider using \code{\link{regextr2}} and
+#' \code{\link{gregextr2}} directly instead.
 #'
 #'
 #' @section Differences from Base R:
@@ -91,7 +93,7 @@
 #'     \code{NA} for the Unicode collation algorithm
 #'         (\link[stringi]{about_search_coll})
 #'
-#' @param ignore.case single logical value; indicates whether matching
+#' @param ignore_case,ignore.case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
 #' @param ... further arguments to \code{\link[stringi]{stri_locate}},
@@ -143,35 +145,38 @@
 #' regexec2(x, "(?<x>a)(?<y>cac?)")
 #' gregexec2(x, "(?<x>a)(?<y>cac?)")
 #'
+#' # extraction:
+#' gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\1", ignore.case=TRUE))
+#'
 #' # TODO: extract, make operable with substr and substr<-
 #' # replace  ..utils::strcapture and ..regmatches
 #' # .....
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{substrl}},
-#'     \code{\link{grepl}}
+#'     \code{\link{strsplit}}, \code{\link{gsub2}},
+#'     \code{\link{grepl2}}, \code{\link{gregextr2}}, \code{\link{gsubstrl}}
 #'
 #' @rdname gregexpr
 regexpr2 <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE
+    ignore_case=FALSE, fixed=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_locate_first_coll(x, pattern, get_length=TRUE, ...)
             else
                 stringi::stri_locate_first_coll(x, pattern, get_length=TRUE, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_locate_first_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_locate_first_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore_case, ...)
         } else {
-            stringi::stri_locate_first_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_locate_first_regex(x, pattern, get_length=TRUE, case_insensitive=ignore_case, ...)
         }
     }
 
@@ -185,23 +190,23 @@ regexpr2 <- function(
 #' @rdname gregexpr
 gregexpr2 <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE
+    ignore_case=FALSE, fixed=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_locate_all_coll(x, pattern, get_length=TRUE, ...)
             else
                 stringi::stri_locate_all_coll(x, pattern, get_length=TRUE, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_locate_all_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_locate_all_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore_case, ...)
         } else {
-            stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore_case, ...)
         }
     }
 
@@ -220,21 +225,21 @@ gregexpr2 <- function(
 #' @rdname gregexpr
 regexec2 <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE
+    ignore_case=FALSE, fixed=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_locate_first_coll(x, pattern, get_length=TRUE, ...)
             else
                 stringi::stri_locate_first_coll(x, pattern, get_length=TRUE, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_locate_first_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_locate_first_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore_case, ...)
         } else {
             NULL
         }
@@ -262,7 +267,7 @@ regexec2 <- function(
 
         # see stringi/#424
 
-        # ret <- stringi::stri_locate_first_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, capture_groups=TRUE, ...)
+        # ret <- stringi::stri_locate_first_regex(x, pattern, get_length=TRUE, case_insensitive=ignore_case, capture_groups=TRUE, ...)
         #
         # cnames <- names(attr(ret, "capture_groups"))
         # if (!is.null(cnames)) cnames <- c("", cnames)
@@ -280,7 +285,7 @@ regexec2 <- function(
         #     )
         # )
 
-        ret <- stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, capture_groups=TRUE, ...)
+        ret <- stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore_case, capture_groups=TRUE, ...)
 
         ret <- lapply(ret, function(e) {
             cnames <- names(attr(e, "capture_groups"))
@@ -315,21 +320,21 @@ regexec2 <- function(
 #' @rdname gregexpr
 gregexec2 <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE
+    ignore_case=FALSE, fixed=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_locate_all_coll(x, pattern, get_length=TRUE, ...)
             else
                 stringi::stri_locate_all_coll(x, pattern, get_length=TRUE, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_locate_all_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore.case, ...)
+            stringi::stri_locate_all_fixed(x, pattern, get_length=TRUE, case_insensitive=ignore_case, ...)
         } else {
             NULL
         }
@@ -351,7 +356,7 @@ gregexec2 <- function(
         )
     }
     else {
-        ret <- stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore.case, capture_groups=TRUE, ...)
+        ret <- stringi::stri_locate_all_regex(x, pattern, get_length=TRUE, case_insensitive=ignore_case, capture_groups=TRUE, ...)
 
         ret <- lapply(ret, function(e) {
             cnames <- names(attr(e, "capture_groups"))
@@ -392,7 +397,7 @@ regexpr <- function(
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
-    regexpr2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
+    regexpr2(x, pattern, ..., ignore_case=ignore.case, fixed=fixed)
 }
 
 
@@ -405,7 +410,7 @@ gregexpr <- function(
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
-    gregexpr2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
+    gregexpr2(x, pattern, ..., ignore_case=ignore.case, fixed=fixed)
 }
 
 
@@ -418,7 +423,7 @@ regexec <- function(
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
-    regexec2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
+    regexec2(x, pattern, ..., ignore_case=ignore.case, fixed=fixed)
 }
 
 
@@ -431,5 +436,5 @@ gregexec <- function(
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (!missing(x) && !missing(text)) stop("do not use `text` if `x` is given as well")
-    gregexec2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed)
+    gregexec2(x, pattern, ..., ignore_case=ignore.case, fixed=fixed)
 }

@@ -22,7 +22,9 @@
   `regexpr2`, `gregexpr2`,
   `regexec2`, `gregexec2`,
   `gsubstrl`, `gsubstrl<-`,
-  `gsubstr`, `gsubstr<-`.
+  `gsubstr`, `gsubstr<-`,
+  `regextr2`, `regextr2<-`,
+  `gregextr2`, `gregextr2<-`.
 
 * [NEW FEATURE] Rewritten functions:
   `paste`, `paste0`,
@@ -41,9 +43,7 @@
   `sub`, `gsub`,
   `grep`, `grepl`,
   `regexpr`, `gregexpr`,
-  `regexec`, `gregexec`,
-  ..utils::strcapture ??? - extract capture groups
-  ..regmatches - extract or replace matches or non-matches (invert...)
+  `regexec`, `gregexec`.
 
 
 ## 0.0.0 (2021-05-07)

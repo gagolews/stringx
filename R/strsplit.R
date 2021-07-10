@@ -81,13 +81,14 @@
 #'     \code{NA} for the Unicode collation algorithm
 #'         (\link[stringi]{about_search_coll})
 #'
-#' @param ignore.case single logical value; indicates whether matching
+#' @param ignore_case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
 #' @param ... further arguments to \code{\link[stringi]{stri_split}},
 #'     e.g., \code{omit_empty}, \code{locale}, \code{dotall}
 #'
 #' @param split alias to the \code{pattern} argument [DEPRECATED]
+#' @param ignore.case alias to the \code{ignore_case} argument [DEPRECATED]
 #' @param perl,useBytes not used (with a warning if
 #'     attempting to do so) [DEPRECATED]
 #'
@@ -114,9 +115,10 @@
 #'     \code{\link{grepl}}, \code{\link{gsub}}, \code{\link{substr}}
 #'
 #' @rdname strsplit
-strsplit <- function(x, pattern=split, ..., ignore.case=FALSE, fixed=FALSE, perl=FALSE, useBytes=FALSE, split)
+strsplit <- function(x, pattern=split, ..., ignore_case=ignore.case, fixed=FALSE, perl=FALSE, useBytes=FALSE, ignore.case=FALSE, split)
 {
-    if (!missing(split) && !missing(pattern)) stop("do not use `split` if `pattern` is given as well")
+    if (!missing(split) && !missing(pattern)) stop("do not use [DEPRECATED] `split` if `pattern` is given as well")
+    if (!missing(ignore.case) && !missing(ignore_case)) stop("do not use [DEPRECATED] `ignore.case` if `ignore_case` is given as well")
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
@@ -124,19 +126,19 @@ strsplit <- function(x, pattern=split, ..., ignore.case=FALSE, fixed=FALSE, perl
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_split_coll(x, pattern, ...)
             else
                 stringi::stri_split_coll(x, pattern, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_split_fixed(x, pattern, case_insensitive=ignore.case, ...)
+            stringi::stri_split_fixed(x, pattern, case_insensitive=ignore_case, ...)
         } else {
-            stringi::stri_split_regex(x, pattern, case_insensitive=ignore.case, ...)
+            stringi::stri_split_regex(x, pattern, case_insensitive=ignore_case, ...)
         }
     }
 

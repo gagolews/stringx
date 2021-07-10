@@ -41,9 +41,11 @@ as `paste`, `grep`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
     (related to vectorisation, handling of missing values,
     preservation of attributes, order of arguments, etc.;
     they are all thoroughly documented in this online manual,
-    happy reading! 🤓).
+    happy reading! 🤓),
+*   are more forward-pipe (`|>` or `magrittr::%>%`) operator-friendly.
 
-Also, a few new operations are introduced.
+
+Also, a few new, useful operations are introduced.
 
 .. code-block:: r
 

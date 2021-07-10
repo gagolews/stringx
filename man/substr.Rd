@@ -96,7 +96,8 @@ applied by \code{\link[stringi]{stri_sub_all}}, which calls
 
 Note that \code{substrl} and \code{gsubstrl} are
 interoperable with \code{\link{regexpr2}} and \code{\link{gregexpr2}},
-respectively.
+respectively, and hence can be considered as substituted for the
+[DEPRECATED] \code{\link[base]{regmatches}} (which is more specialised).
 }
 \section{Differences from Base R}{
 

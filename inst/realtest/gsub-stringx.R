@@ -1,6 +1,9 @@
 E(gsub2("abca", "a", "x"), "xbcx")
 E(sub2("abca", "a", "x"), "xbca")
 
+E(gsub2("abca", "A", "x", ignore_case=TRUE), "xbcx")
+E(sub2("abca", "A", "x", ignore_case=TRUE), "xbca")
+
 x <- "abcdefghijklmnopqrstuvwxyz"
 p <- "(?<first>.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(?<last>.)"
 E(sub2(x, p, "${first}${last}"), "amnopqrstuvwxyz")

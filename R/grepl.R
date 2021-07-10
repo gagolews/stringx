@@ -102,7 +102,7 @@
 #' @param invert single logical value; indicates whether a no-match
 #'     is rather of interest
 #'
-#' @param ignore.case single logical value; indicates whether matching
+#' @param ignore_case,ignore.case single logical value; indicates whether matching
 #'     should be case-insensitive
 #'
 #' @param perl,useBytes not used (with a warning if
@@ -141,30 +141,31 @@
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
-#'     \code{\link{strsplit}}, \code{\link{gsub}}, \code{\link{gregexpr}},
-#'     \code{\link{substr}}
+#'     \code{\link{strsplit}}, \code{\link{gsub2}},
+#'     \code{\link{gregexpr2}}, \code{\link{gregextr2}},
+#'     \code{\link{gsubstr}}
 #'
 #' @rdname grepl
 grepl2 <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE, invert=FALSE
+    ignore_case=FALSE, fixed=FALSE, invert=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
-    stopifnot(is.logical(ignore.case) && length(ignore.case) == 1L && !is.na(ignore.case))
+    stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
     stopifnot(is.logical(invert) && length(invert) == 1L && !is.na(invert))
 
     ret <- {
         if (is.na(fixed)) {
-            if (!ignore.case)
+            if (!ignore_case)
                 stringi::stri_detect_coll(x, pattern, negate=invert, ...)
             else
                 stringi::stri_detect_coll(x, pattern, negate=invert, strength=2L, ...)
         } else if (fixed == TRUE) {
-            stringi::stri_detect_fixed(x, pattern, negate=invert, case_insensitive=ignore.case, ...)
+            stringi::stri_detect_fixed(x, pattern, negate=invert, case_insensitive=ignore_case, ...)
         } else {
-            stringi::stri_detect_regex(x, pattern, negate=invert, case_insensitive=ignore.case, ...)
+            stringi::stri_detect_regex(x, pattern, negate=invert, case_insensitive=ignore_case, ...)
         }
     }
 
@@ -175,13 +176,13 @@ grepl2 <- function(
 #' @rdname grepl
 grepv2 <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE, invert=FALSE
+    ignore_case=FALSE, fixed=FALSE, invert=FALSE
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
     x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
     # pattern will be taken care of by grepl2
 
-    idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+    idx <- grepl2(x, pattern, ..., ignore_case=ignore_case, fixed=fixed, invert=invert)
     if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
 
     x[!is.na(idx) & idx]
@@ -192,7 +193,7 @@ grepv2 <- function(
 #' @rdname grepl
 `grepv2<-` <- function(
     x, pattern, ...,
-    ignore.case=FALSE, fixed=FALSE, invert=FALSE,
+    ignore_case=FALSE, fixed=FALSE, invert=FALSE,
     value
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
@@ -202,7 +203,7 @@ grepv2 <- function(
     if (!is.character(value)) value <- as.character(value)    # S3 generics, you do you
     value[] <- stringi::stri_enc_toutf8(value)  # to UTF-8 and preserve attributes
 
-    idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+    idx <- grepl2(x, pattern, ..., ignore_case=ignore_case, fixed=fixed, invert=invert)
     if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
 
     x[!is.na(idx) & idx] <- value  # will warn if incompatible lengths etc.
@@ -218,7 +219,7 @@ grepl <- function(
 ) {
     if (!isFALSE(perl)) warning("argument `perl` has no effect in stringx")
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
-    grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+    grepl2(x, pattern, ..., ignore_case=ignore.case, fixed=fixed, invert=invert)
 }
 
 
@@ -233,11 +234,11 @@ grep <- function(
     stopifnot(is.logical(value) && length(value) == 1L && !is.na(value))
 
     if (value)
-        grepv2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+        grepv2(x, pattern, ..., ignore_case=ignore.case, fixed=fixed, invert=invert)
     else {
         if (!is.character(x)) x <- as.character(x)
         # pattern will taken care of by grepl2
-        idx <- grepl2(x, pattern, ..., ignore.case=ignore.case, fixed=fixed, invert=invert)
+        idx <- grepl2(x, pattern, ..., ignore_case=ignore.case, fixed=fixed, invert=invert)
         if (length(idx) != length(x)) stop("`pattern` cannot be longer than `x`")
         which(idx)
     }

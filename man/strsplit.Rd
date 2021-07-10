@@ -8,10 +8,11 @@ strsplit(
   x,
   pattern = split,
   ...,
-  ignore.case = FALSE,
+  ignore_case = ignore.case,
   fixed = FALSE,
   perl = FALSE,
   useBytes = FALSE,
+  ignore.case = FALSE,
   split
 )
 }
@@ -23,7 +24,7 @@ strsplit(
 \item{...}{further arguments to \code{\link[stringi]{stri_split}},
 e.g., \code{omit_empty}, \code{locale}, \code{dotall}}
 
-\item{ignore.case}{single logical value; indicates whether matching
+\item{ignore_case}{single logical value; indicates whether matching
 should be case-insensitive}
 
 \item{fixed}{single logical value;
@@ -36,6 +37,8 @@ should be case-insensitive}
 
 \item{perl, useBytes}{not used (with a warning if
 attempting to do so) [DEPRECATED]}
+
+\item{ignore.case}{alias to the \code{ignore_case} argument [DEPRECATED]}
 
 \item{split}{alias to the \code{pattern} argument [DEPRECATED]}
 }
