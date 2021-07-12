@@ -22,7 +22,7 @@ x <- c("aaa", "1aa2aaa3", "a", "bb", "\u0105\U0001F64Baaaaaaaa", NA)
 p <- c("(?<x>a)(?<y>a)?(?<z>a)?", "a+")
 E(substrl(x, regexpr2(x, p)), c("aaa", "aa", "a", NA, "aaa", NA))
 E(`substrl<-`(x, regexpr2(x, p), value="!"), c("!", "1!2aaa3", "!", "bb", "\u0105\U0001F64B!aaaaa", NA))
-E(gsubstrl(x, gregexpr2(x, p)), list("aaa", c("aa", "aaa"), "a", NA_character_, c("aaa", "aaa", "aa"), NA_character_))
+E(gsubstrl(x, gregexpr2(x, p)), list("aaa", c("aa", "aaa"), "a", character(0), c("aaa", "aaa", "aa"), NA_character_))
 E(`gsubstrl<-`(x, gregexpr2(x, p), value="!"), c("!", "1!2!3", "!", "bb", "\u0105\U0001F64B!!!", NA))
 E(`gsubstrl<-`(x, gregexpr2(x, p), value=list(c("!", "?", "@"))), P(c("!", "1!2?3", "!", "bb", "\u0105\U0001F64B!?@", NA), warning=TRUE))
 

@@ -28,13 +28,17 @@
 #' @details
 #' Convenience functions based on \code{\link{gregexpr2}}
 #' and \code{\link{gsubstrl}} (amongst others).
-#'
-#' They are fully vectorised with respect to both \code{x} and
-#' \code{pattern}.
-#'
-#' Provided as pipe operator-friendly alternative
-#' to [DEPRECATED] \code{\link[base]{regmatches}}
+#' Provided as pipe operator-friendly alternatives
+#' to [DEPRECATED] \code{\link[base]{regmatches}} and
 #' [DEPRECATED] \code{\link[utils]{strcapture}}.
+#'
+#' They are fully vectorised with respect to \code{x},
+#' \code{pattern}, and \code{value}.
+#'
+#' Note that, unlike in \code{\link{gsub2}},
+#' each substituted chunk can be replaced with different content.
+#' However, references to matches to capture groups cannot be made.
+#'
 #'
 #'
 #' @param x character vector whose elements are to be examined
@@ -57,28 +61,47 @@
 #'
 #' @param value character vector  (for \code{regextr})
 #'     or list of character vectors  (for \code{gregextr})
-#'     defining the replacements strings
+#'     defining the replacement strings
 #'
 #' @param ... further arguments to \code{\link[stringi]{stri_locate}},
 #'     e.g., \code{omit_empty}, \code{locale}, \code{dotall}
 #'
-#' @param ..........
+#' @param capture_groups single logical value; whether matches
+#'     individual capture groups should be extracted separately
 #'
 #'
 #' @return
-#' \code{regextr2} ......
+#' \code{capture_groups} is \code{FALSE},
+#' \code{regextr2} returns a character vector and
+#' \code{gregextr2} gives a list of character vectors.
 #'
-#' \code{gregextr2} ......
+#' Otherwise, \code{regextr2} returns a list of character vectors,
+#' giving the whole match as well as matches to the individual capture groups.
+#' In \code{gregextr2}, this will be a matrix with as many columns
+#' as there are matches.
 #'
-#' \code{capture_groups} ...
+#' Missing values in the inputs are propagated consistently.
+#' In \code{regextr2}, a no-match is always denoted with \code{NA}
+#' (or series thereof). In \code{gregextr2}, the corresponding result is
+#' empty. Note that this function distinguishes between a missing input
+#' and a no-match.
+#'
+#' Their replacement versions return a character vector.
 #'
 #' These functions preserve the attributes of the longest inputs (unless they
-#' are dropped due to coercion). Missing values in the inputs are propagated
-#' consistently.
+#' are dropped due to coercion).
 #'
 #'
 #' @examples
-#' # ...
+#' x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
+#' regextr2(x, "(?<x>a)(?<y>cac?)")
+#' gregextr2(x, "(?<x>a)(?<y>cac?)")
+#' regextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
+#' gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
+#'
+#' `gregextr2<-`(x, "(?<x>a)(?<y>cac?)", value=list(c("!", "?"), "#"))
+#' gsub2(x, "(?<x>a)(?<y>cac?)", "{$1}{$2}")
+#'
 #'
 #' @seealso
 #' Related function(s): \code{\link{paste}}, \code{\link{nchar}},
@@ -90,12 +113,12 @@ regextr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, capture_groups=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x))       x <- as.character(x)    # S3 generics, you do you
     stopifnot(is.logical(capture_groups) && length(capture_groups) == 1L && !is.na(capture_groups))
 
     if (capture_groups) {
         m <- regexec2(x, pattern, ..., ignore_case=ignore_case, fixed=fixed)
-        v <- gsubstrl(x, m)
+        v <- gsubstrl(x, m, ignore_negative_length=FALSE)
         stopifnot(length(v) == length(m))
         for (i in seq_along(v))
             v[[i]] <- structure(v[[i]], names=names(m[[i]]))
@@ -111,15 +134,18 @@ gregextr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, capture_groups=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x))       x <- as.character(x)    # S3 generics, you do you
     stopifnot(is.logical(capture_groups) && length(capture_groups) == 1L && !is.na(capture_groups))
 
     if (capture_groups) {
         m <- gregexec2(x, pattern, ..., ignore_case=ignore_case, fixed=fixed)
-        v <- gsubstrl(x, m)
+        v <- gsubstrl(x, m, ignore_negative_length=FALSE)  # some capture groups may be missing
         stopifnot(length(v) == length(m))
-        for (i in seq_along(v))
+        for (i in seq_along(v)) {
+            # length -1 => no-match
             v[[i]] <- structure(v[[i]], dim=dim(m[[i]]), dimnames=dimnames(m[[i]]))
+            v[[i]] <- v[[i]][, attr(m[[i]], "match.length")[1, ] > 0, drop=FALSE]  # remove no-matches
+        }
         v
     }
     else
@@ -133,6 +159,14 @@ gregextr2 <- function(
     ignore_case=FALSE, fixed=FALSE, value
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(pattern)) pattern <- as.character(pattern)
+    if (!is.character(value))   value <- as.character(value)
+
+    # we need to vectorise x manually if value is the longest input
+    if (length(x) == 0 || length(pattern) == 0 || length(value) == 0)
+        x <- character(0)
+    else if (length(value) > length(x))
+        x <- `attributes<-`(rep(x, length.out=length(value)), NULL)  # drop all attribs, they must be take from value
 
     `substrl<-`(x, regexpr2(x, pattern, ..., ignore_case=ignore_case, fixed=fixed), value=value)
 }
@@ -144,6 +178,14 @@ gregextr2 <- function(
     ignore_case=FALSE, fixed=FALSE, value
 ) {
     if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(pattern)) pattern <- as.character(pattern)
+    if (!is.list(value))        value <- as.list(value)
+
+    # we need to vectorise x manually if value is the longest input
+    if (length(x) == 0 || length(pattern) == 0 || length(value) == 0)
+        x <- character(0)
+    else if (length(value) > length(x))
+        x <- `attributes<-`(rep(x, length.out=length(value)), NULL)  # drop all attribs, they must be take from value
 
     `gsubstrl<-`(x, gregexpr2(x, pattern, ..., ignore_case=ignore_case, fixed=fixed), value=value)
 }

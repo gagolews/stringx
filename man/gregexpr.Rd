@@ -190,10 +190,7 @@ gregexec2(x, "(?<x>a)(?<y>cac?)")
 
 # extraction:
 gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\\\1", ignore.case=TRUE))
-
-# TODO: extract, make operable with substr and substr<-
-# replace  ..utils::strcapture and ..regmatches
-# .....
+gregextr(x, "(A)[ACTG]\\\\1", ignore.case=TRUE)  # equivalent
 
 }
 \seealso{

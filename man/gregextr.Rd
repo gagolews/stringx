@@ -48,25 +48,33 @@ should be case-insensitive}
 \code{NA} for the Unicode collation algorithm
     (\link[stringi]{about_search_coll})}
 
-\item{capture_groups}{single logical value; whether to extract
-matches to regex capture groups as well}
+\item{capture_groups}{single logical value; whether matches
+individual capture groups should be extracted separately}
 
 \item{value}{character vector  (for \code{regextr})
 or list of character vectors  (for \code{gregextr})
-defining the replacements strings}
-
-\item{..........}{}
+defining the replacement strings}
 }
 \value{
-\code{regextr2} ......
+\code{capture_groups} is \code{FALSE},
+\code{regextr2} returns a character vector and
+\code{gregextr2} gives a list of character vectors.
 
-\code{gregextr2} ......
+Otherwise, \code{regextr2} returns a list of character vectors,
+giving the whole match as well as matches to the individual capture groups.
+In \code{gregextr2}, this will be a matrix with as many columns
+as there are matches.
 
-\code{capture_groups} ...
+Missing values in the inputs are propagated consistently.
+In \code{regextr2}, a no-match is always denoted with \code{NA}
+(or series thereof). In \code{gregextr2}, the corresponding result is
+empty. Note that this function distinguishes between a missing input
+and a no-match.
+
+Their replacement versions return a character vector.
 
 These functions preserve the attributes of the longest inputs (unless they
-are dropped due to coercion). Missing values in the inputs are propagated
-consistently.
+are dropped due to coercion).
 }
 \description{
 \code{regextr2} and \code{gregextr2} extract, respectively, first and all
@@ -77,16 +85,27 @@ new content.
 \details{
 Convenience functions based on \code{\link{gregexpr2}}
 and \code{\link{gsubstrl}} (amongst others).
-
-They are fully vectorised with respect to both \code{x} and
-\code{pattern}.
-
-Provided as pipe operator-friendly alternative
-to [DEPRECATED] \code{\link[base]{regmatches}}
+Provided as pipe operator-friendly alternatives
+to [DEPRECATED] \code{\link[base]{regmatches}} and
 [DEPRECATED] \code{\link[utils]{strcapture}}.
+
+They are fully vectorised with respect to \code{x},
+\code{pattern}, and \code{value}.
+
+Note that, unlike in \code{\link{gsub2}},
+each substituted chunk can be replaced with different content.
+However, references to matches to capture groups cannot be made.
 }
 \examples{
-# ...
+x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
+regextr2(x, "(?<x>a)(?<y>cac?)")
+gregextr2(x, "(?<x>a)(?<y>cac?)")
+regextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
+gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
+
+`gregextr2<-`(x, "(?<x>a)(?<y>cac?)", value=list(c("!", "?"), "#"))
+gsub2(x, "(?<x>a)(?<y>cac?)", "{$1}{$2}")
+
 
 }
 \seealso{

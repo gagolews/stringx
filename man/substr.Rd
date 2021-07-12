@@ -14,13 +14,23 @@
 \usage{
 substr(x, start = 1L, stop = -1L)
 
-substrl(x, start = 1L, length = attr(start, "match.length"))
+substrl(
+  x,
+  start = 1L,
+  length = attr(start, "match.length"),
+  ignore_negative_length = FALSE
+)
 
 substr(x, start = 1L, stop = -1L) <- value
 
 substrl(x, start = 1L, length = attr(start, "match.length")) <- value
 
-gsubstrl(x, start = list(1L), length = lapply(start, attr, "match.length"))
+gsubstrl(
+  x,
+  start = list(1L),
+  length = lapply(start, attr, "match.length"),
+  ignore_negative_length = TRUE
+)
 
 gsubstr(x, start = list(1L), stop = list(-1L)) <- value
 
