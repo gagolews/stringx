@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.0.9001
+                0.1.1
               </div>
             
           
@@ -92,30 +92,41 @@
             
               <p class="caption"><span class="caption-text">stringx</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://stringx.gagolewski.com/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../rapi.html">R Package <em>stringx</em> Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">chartr: Transliteration and Other Text Transforms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#arguments">Arguments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#details">Details</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#value">Value</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#author-s">Author(s)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">chartr: Transliteration and Other Text Transforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#differences-from-base-r">Differences from Base R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-s">Author(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="paste.html">paste: Concatenate Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sprintf.html">sprintf: Format Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="strptime.html">strptime: Date-time Parsing and Formatting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="strrep.html">strrep: Duplicate Strings</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gregexpr.html">gregexpr: Locate Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gregextr.html">gregextr: Extract Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grepl.html">grepl: Detect Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsub.html">gsub: Replace Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nchar.html">nchar: Get Length or Width of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sort.html">sort: Sort Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strcoll.html">strcoll: Compare Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strptime.html">strptime: Date-time Parsing and Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strrep.html">strrep: Duplicate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strsplit.html">strsplit: Split Strings into Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strwrap.html">strwrap: Word-Wrap Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="substr.html">substr: Extract or Replace Substrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trimws.html">trimws: Trim Leading or Trailing Whitespaces</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
 <ul>
@@ -171,8 +182,6 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../rapi.html">R Package <em>stringx</em> Reference</a> &raquo;</li>
-        
       <li>chartr: Transliteration and Other Text Transforms</li>
     
     
@@ -203,11 +212,13 @@
 <h1>chartr: Transliteration and Other Text Transforms<a class="headerlink" href="#chartr-transliteration-and-other-text-transforms" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Translate characters, including case mapping and folding, script to script conversion, and Unicode normalisation.</p>
+<p>These functions can be used to translate characters, including case mapping and folding, script to script conversion, and Unicode normalisation.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strtrans</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span>
+
+<span class="nf">chartr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)</span>
 
 <span class="nf">chartr</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
@@ -234,14 +245,14 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">transform</span></code></p></td>
 <td><p>single string with ICU general transform specifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_list.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_list</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">old</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pattern,</span> <span class="pre">old</span></code></p></td>
 <td><p>single string</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">new</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">replacement,</span> <span class="pre">new</span></code></p></td>
 <td><p>single string, preferably of the same length as <code class="docutils literal notranslate"><span class="pre">old</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">locale</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default locale (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_set.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_get</span></code></a>) or a single string with a locale identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_list.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_list</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> for the default locale (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_set.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_get</span></code></a>) or a single string with a locale identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_list.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_list</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upper</span></code></p></td>
 <td><p>single logical value; switches between case folding (the default, <code class="docutils literal notranslate"><span class="pre">NA</span></code>), lower-, and upper-case</p></td>
@@ -251,14 +262,17 @@
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
-<p>Unlike their base R counterparts, the new <code class="docutils literal notranslate"><span class="pre">tolower</span></code> and <code class="docutils literal notranslate"><span class="pre">toupper</span></code> are locale-sensitive; see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_casemap.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_tolower</span></code></a>.</p>
-<p>The base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/casefold.html"><code class="docutils literal notranslate"><span class="pre">casefold</span></code></a> simply dispatches to <code class="docutils literal notranslate"><span class="pre">tolower</span></code> or <code class="docutils literal notranslate"><span class="pre">toupper</span></code> ‘for compatibility with S-PLUS’ (that was only crucial long time ago). The version implemented here, by default, performs the true case folding, whose purpose is to make two pieces of text that differ only in case identical, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_casemap.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_casefold</span></code></a>.</p>
-<p>The new <code class="docutils literal notranslate"><span class="pre">chartr</span></code> is a wrapper for <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_char.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_char</span></code></a>. Contrary to the base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/chartr.html"><code class="docutils literal notranslate"><span class="pre">chartr</span></code></a>, it always generates a warning when <code class="docutils literal notranslate"><span class="pre">old</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> are of different lengths.</p>
-<p>A new function <code class="docutils literal notranslate"><span class="pre">strtrans</span></code> applies ICU general transforms, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_general.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_general</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tolower</span></code> and <code class="docutils literal notranslate"><span class="pre">toupper</span></code> perform case mapping. <code class="docutils literal notranslate"><span class="pre">chartr2</span></code> (and [DEPRECATED] <code class="docutils literal notranslate"><span class="pre">chartr</span></code>) translate individual code points. <code class="docutils literal notranslate"><span class="pre">casefold</span></code> commits case folding. The new function <code class="docutils literal notranslate"><span class="pre">strtrans</span></code> applies general <span class="pkg">ICU</span> transforms, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_general.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_general</span></code></a>.</p>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p>These functions return a character vector (in UTF-8). They preserve most attributes of <code class="docutils literal notranslate"><span class="pre">x</span></code>. Note that their base R counterparts drop all the attributes if not fed with character vectors.</p>
+</div>
+<div class="section" id="differences-from-base-r">
+<h2>Differences from Base R<a class="headerlink" href="#differences-from-base-r" title="Permalink to this headline">¶</a></h2>
+<p>Unlike their base R counterparts, the new <code class="docutils literal notranslate"><span class="pre">tolower</span></code> and <code class="docutils literal notranslate"><span class="pre">toupper</span></code> are locale-sensitive; see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_casemap.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_tolower</span></code></a>.</p>
+<p>The base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/casefold.html"><code class="docutils literal notranslate"><span class="pre">casefold</span></code></a> simply dispatches to <code class="docutils literal notranslate"><span class="pre">tolower</span></code> or <code class="docutils literal notranslate"><span class="pre">toupper</span></code> ‘for compatibility with S-PLUS’ (which was only crucial long time ago). The version implemented here, by default, performs the true case folding, whose purpose is to make two pieces of text that differ only in case identical, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_casemap.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_casefold</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">chartr2</span></code> and [DEPRECATED] <code class="docutils literal notranslate"><span class="pre">chartr</span></code> are wrappers for <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_trans_char.html"><code class="docutils literal notranslate"><span class="pre">stri_trans_char</span></code></a>. Contrary to the base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/chartr.html"><code class="docutils literal notranslate"><span class="pre">chartr</span></code></a>, they always generate a warning when <code class="docutils literal notranslate"><span class="pre">old</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> are of different lengths. <code class="docutils literal notranslate"><span class="pre">chartr2</span></code> has argument order and naming consistent with <a class="reference internal" href="gsub.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">gsub</span></code></span></a>.</p>
 </div>
 <div class="section" id="author-s">
 <h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
@@ -287,7 +301,7 @@
 <span class="n">stringx</span><span class="o">::</span><span class="nf">toupper</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;GROSS&quot;</span>
 <span class="nf">casefold</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;groß&quot;</span>
+<span class="c1">## [1] &quot;gross&quot;</span>
 <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s">&quot;\u00DFpam ba\U0001D554on spam&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">NA</span><span class="p">))</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">chartr</span><span class="p">(</span><span class="s">&quot;\u00DF\U0001D554aba&quot;</span><span class="p">,</span> <span class="s">&quot;SCXBA&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="c1">##   [,1]             </span>
@@ -322,7 +336,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-04T17:05:28+1000.
+        Last updated on 2021-07-12T19:56:06+1000.
       </span>
 
     </p>

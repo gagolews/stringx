@@ -109,12 +109,16 @@
 #' @param length numeric vector  (for \code{substr})
 #'     or list of numeric vectors (for \code{gsubstr})
 #'     giving the substring lengths;
-#'     negative lengths result in an empty string or the corresponding
+#'     negative lengths result in a missing value or empty vector
+#'     (see \code{ignore_negative_length}) or the corresponding
 #'     substring being unchanged
 #'
 #' @param value character vector  (for \code{substr})
 #'     or list of character vectors  (for \code{gsubstr})
 #'     defining the replacements strings
+#'
+#' @param ignore_negative_length single logical value;
+#'     whether negative lengths should be ignored or yield missing values
 #'
 #'
 #' @return
@@ -213,6 +217,7 @@ substrl <- function(x, start=1L, length=attr(start, "match.length"), ignore_nega
 }
 
 
+#' @rdname substr
 gsubstr <- function(x, start=list(1L), stop=list(-1L))
 {
     if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you

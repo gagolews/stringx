@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="R Package stringx Reference" href="rapi.html" /> 
+    <link rel="next" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" href="rapi/about_stringx.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.0.9001
+                0.1.1
               </div>
             
           
@@ -90,12 +90,31 @@
             
             
               <p class="caption"><span class="caption-text">stringx</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://stringx.gagolewski.com/">About</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rapi.html">R Package <em>stringx</em> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/constants.html">constants: Character Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gregexpr.html">gregexpr: Locate Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gregextr.html">gregextr: Extract Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/grepl.html">grepl: Detect Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gsub.html">gsub: Replace Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/nchar.html">nchar: Get Length or Width of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/sort.html">sort: Sort Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strcoll.html">strcoll: Compare Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strptime.html">strptime: Date-time Parsing and Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strrep.html">strrep: Duplicate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strsplit.html">strsplit: Split Strings into Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strwrap.html">strwrap: Word-Wrap Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/substr.html">substr: Extract or Replace Substrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/trimws.html">trimws: Trim Leading or Trailing Whitespaces</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
 <ul>
@@ -165,7 +184,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="rapi.html" class="btn btn-neutral float-right" title="R Package stringx Reference" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rapi/about_stringx.html" class="btn btn-neutral float-right" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
   </div>
@@ -192,28 +211,48 @@ Thanks to <a class="reference external" href="http://site.icu-project.org/">ICU<
 they are fast, reliable, and portable across different platforms.</p>
 <p class="attribution">—by <a class="reference external" href="https://www.gagolewski.com/">Marek Gagolewski</a></p>
 </div></blockquote>
-<p><em>stringx</em> replaces base <a class="reference external" href="https://www.r-project.org/">R</a> functions such
-as <cite>paste</cite>, <cite>gregexpr</cite>, <cite>tolower</cite>, <cite>strftime</cite>, <cite>sprintf</cite>, etc., with ones that:</p>
+<p><a class="reference external" href="https://www.r-project.org/">R</a>’s ambitions go far beyond being merely the
+“free software environment for statistical computing and graphics”.
+It has proven effective in the development of whole data analysis pipelines:
+from gathering of information through discovery of knowledge to
+communication of results.</p>
+<p><strong>Modern data science is no longer just about number crunching.</strong>
+Text is a rich source of new knowledge — from natural language
+processing to bioinformatics. It also gives powerful
+means to represent or transfer unstructured data.</p>
+<p><strong>stringx brings R string processing abilities into the 21st century.</strong>
+It replaces functions like <cite>paste</cite>, <cite>grep</cite>, <cite>tolower</cite>, <cite>strftime</cite>,
+and <cite>sprintf</cite> with ones that:</p>
 <ul class="simple">
+<li><p>support a wide range of languages and scripts and
+fully conform to <a class="reference external" href="https://www.unicode.org/">Unicode</a> standards
+(see also <a class="reference external" href="https://www.youtube.com/watch?v=-n2nlPHEMG8">this video</a>),</p></li>
 <li><p>work in the same way on every platform,</p></li>
-<li><p>support a wide range of languages and scripts,</p></li>
-<li><p>fix some annoying and long-standing inconsistencies in the base R functions
-(they are thoroughly documented in this online manual, happy reading!).</p></li>
+<li><p>fix some long-standing inconsistencies in the base R functions
+(related to vectorisation, handling of missing values,
+preservation of attributes, order of arguments, interoperability
+with other procedures, etc.;
+they are all thoroughly documented in this online manual,
+happy reading! 🤓),</p></li>
+<li><p>are more forward-pipe (<cite>|&gt;</cite> or <cite>magrittr::%&gt;%</cite>) operator-friendly.</p></li>
 </ul>
-<p>Also, a few new operations are introduced.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stringx</span><span class="o">::</span><span class="nf">toupper</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span>
+<p>Also, a few new, useful operations are introduced.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;stringx&quot;</span><span class="p">))</span>
+
+<span class="nf">c</span><span class="p">(</span><span class="s">&quot;ACTGCT&quot;</span><span class="p">,</span> <span class="s">&quot;42&quot;</span><span class="p">,</span> <span class="s">&quot;stringx \U0001f970&quot;</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="nf">grepv2</span><span class="p">(</span><span class="s">&quot;\\p{EMOJI_PRESENTATION}&quot;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;stringx 🥰&quot;</span>
+
+<span class="nf">toupper</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span>  <span class="c1"># replaces base::toupper()</span>
 <span class="c1">## [1] &quot;GROSS&quot;</span>
 
 <span class="n">l</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;e\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\U0001f602\U0001f603&quot;</span><span class="p">)</span>
 <span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> <span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">),</span> <span class="kc">pi</span><span class="p">,</span> <span class="kc">pi</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">)</span>
-<span class="nf">cat</span><span class="p">(</span><span class="n">stringx</span><span class="o">::</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;%8s=%+.3f&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;%8s=%+.3f&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;\n&quot;</span><span class="p">)</span>  <span class="c1"># replaces base::sprintf()</span>
 <span class="c1">##        e=+2.718</span>
 <span class="c1">##       e²=+7.389</span>
 <span class="c1">##        π=+3.142</span>
 <span class="c1">##       π²=+9.870</span>
 <span class="c1">##     😂😃= NaN</span>
-
-<span class="c1"># TODO: regex unicode example</span>
 </pre></div>
 </div>
 <p><strong>stringx</strong> is a set of wrappers around
@@ -228,24 +267,30 @@ It is distributed under the terms of the GNU General Public License,
 either Version 2 or Version 3, see
 <a class="reference external" href="https://raw.githubusercontent.com/gagolews/stringx/master/LICENSE">license</a>.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">stringx</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://stringx.gagolewski.com/">About</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rapi.html">R Package <em>stringx</em> Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/constants.html">constants: Character Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/paste.html">paste: Concatenate Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/sprintf.html">sprintf: Format Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/strptime.html">strptime: Date-time Parsing and Formatting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rapi/strrep.html">strrep: Duplicate Strings</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/constants.html">constants: Character Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gregexpr.html">gregexpr: Locate Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gregextr.html">gregextr: Extract Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/grepl.html">grepl: Detect Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gsub.html">gsub: Replace Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/nchar.html">nchar: Get Length or Width of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/sort.html">sort: Sort Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strcoll.html">strcoll: Compare Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strptime.html">strptime: Date-time Parsing and Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strrep.html">strrep: Duplicate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strsplit.html">strsplit: Split Strings into Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strwrap.html">strwrap: Word-Wrap Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/substr.html">substr: Extract or Replace Substrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/trimws.html">trimws: Trim Leading or Trailing Whitespaces</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -265,7 +310,7 @@ either Version 2 or Version 3, see
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="rapi.html" class="btn btn-neutral float-right" title="R Package stringx Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rapi/about_stringx.html" class="btn btn-neutral float-right" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -274,7 +319,7 @@ either Version 2 or Version 3, see
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-04T17:05:28+1000.
+        Last updated on 2021-07-12T19:56:06+1000.
       </span>
 
     </p>

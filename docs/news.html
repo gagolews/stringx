@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="strrep: Duplicate Strings" href="rapi/strrep.html" /> 
+    <link rel="prev" title="trimws: Trim Leading or Trailing Whitespaces" href="rapi/trimws.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.0.9001
+                0.1.1
               </div>
             
           
@@ -91,11 +91,30 @@
             
               <p class="caption"><span class="caption-text">stringx</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://stringx.gagolewski.com/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">About</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rapi.html">R Package <em>stringx</em> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/constants.html">constants: Character Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gregexpr.html">gregexpr: Locate Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gregextr.html">gregextr: Extract Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/grepl.html">grepl: Detect Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/gsub.html">gsub: Replace Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/nchar.html">nchar: Get Length or Width of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/sort.html">sort: Sort Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strcoll.html">strcoll: Compare Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strptime.html">strptime: Date-time Parsing and Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strrep.html">strrep: Duplicate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strsplit.html">strsplit: Split Strings into Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strwrap.html">strwrap: Word-Wrap Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/substr.html">substr: Extract or Replace Substrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/trimws.html">trimws: Trim Leading or Trailing Whitespaces</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
 <ul class="current">
@@ -103,8 +122,8 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx/issues">Bug Tracker and Feature Suggestions</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">What Is New in <em>stringx</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#xxx-to-be-0-1-1-2021-xx-yy">0.1.0.9xxx (to-be &gt;= 0.1.1) (2021-xx-yy)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">0.0.0 (2021-05-07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">0.1.1 (2021-07-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">0.0.0 (2021-05-07)</a></li>
 </ul>
 </li>
 </ul>
@@ -170,7 +189,7 @@
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
       
-        <a href="rapi/strrep.html" class="btn btn-neutral float-left" title="strrep: Duplicate Strings" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rapi/trimws.html" class="btn btn-neutral float-left" title="trimws: Trim Leading or Trailing Whitespaces" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -181,25 +200,50 @@
             
   <div class="section" id="what-is-new-in-stringx">
 <h1>What Is New in <em>stringx</em><a class="headerlink" href="#what-is-new-in-stringx" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="xxx-to-be-0-1-1-2021-xx-yy">
-<h2>0.1.0.9xxx (to-be &gt;= 0.1.1) (2021-xx-yy)<a class="headerlink" href="#xxx-to-be-0-1-1-2021-xx-yy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>0.1.1 (2021-07-12)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>[NEW FEATURE] <code class="docutils literal notranslate"><span class="pre">paste</span></code>, <code class="docutils literal notranslate"><span class="pre">paste0</span></code>, <code class="docutils literal notranslate"><span class="pre">strcat</span></code>, <code class="docutils literal notranslate"><span class="pre">%x+%</span></code>.</p></li>
-<li><p>[NEW FEATURE] <code class="docutils literal notranslate"><span class="pre">strrep</span></code>, <code class="docutils literal notranslate"><span class="pre">%x*%</span></code>.</p></li>
-<li><p>[NEW FEATURE] constants, e.g., <code class="docutils literal notranslate"><span class="pre">letters_greek</span></code>, <code class="docutils literal notranslate"><span class="pre">LETTERS_BB</span></code>, <code class="docutils literal notranslate"><span class="pre">digits_hex</span></code>.</p></li>
-<li><p>[NEW FEATURE] <code class="docutils literal notranslate"><span class="pre">chartr</span></code>, <code class="docutils literal notranslate"><span class="pre">tolower</span></code>, <code class="docutils literal notranslate"><span class="pre">toupper</span></code>, <code class="docutils literal notranslate"><span class="pre">casefold</span></code>, <code class="docutils literal notranslate"><span class="pre">strtrans</span></code>.</p></li>
-<li><p>[NEW FEATURE] <code class="docutils literal notranslate"><span class="pre">sprintf</span></code>, <code class="docutils literal notranslate"><span class="pre">printf</span></code>.</p></li>
-<li><p>[NEW FEATURE] <code class="docutils literal notranslate"><span class="pre">strftime</span></code>,     TODO: …strptime</p></li>
-<li><p>[NEW FEATURE] ..ISOdate, ISOdatetime</p></li>
-<li><p>[NEW FEATURE] ..nchar, nzchar</p></li>
-<li><p>[NEW FEATURE] ..substr, substring</p></li>
-<li><p>[NEW FEATURE] ..trimws</p></li>
-<li><p>[NEW FEATURE] ..strtrim</p></li>
-<li><p>[NEW FEATURE] ..strcmp/strcoll</p></li>
+<li><p>[GENERAL] On-line manual is available at https://stringx.gagolewski.com.</p></li>
+<li><p>[GENERAL] Using <a class="reference external" href="https://realtest.gagolewski.com"><em>realtest</em></a>
+for documenting base R behaviour, unit testing, and desired outcomes.</p></li>
+<li><p>[NEW FEATURE] Added constants: <code class="docutils literal notranslate"><span class="pre">letters_greek</span></code>, <code class="docutils literal notranslate"><span class="pre">digits_hex</span></code>, etc.</p></li>
+<li><p>[NEW FEATURE] Added functions and operators:
+<code class="docutils literal notranslate"><span class="pre">strcat</span></code>, <code class="docutils literal notranslate"><span class="pre">%x+%</span></code>, <code class="docutils literal notranslate"><span class="pre">%x*%</span></code>,
+<code class="docutils literal notranslate"><span class="pre">chartr2</span></code>, <code class="docutils literal notranslate"><span class="pre">strtrans</span></code>,
+<code class="docutils literal notranslate"><span class="pre">printf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">strftime</span></code>, <code class="docutils literal notranslate"><span class="pre">strptime</span></code>,
+<code class="docutils literal notranslate"><span class="pre">strcoll</span></code>, <code class="docutils literal notranslate"><span class="pre">%x==%</span></code>, <code class="docutils literal notranslate"><span class="pre">%x!=%</span></code>, <code class="docutils literal notranslate"><span class="pre">%x&lt;%</span></code>, <code class="docutils literal notranslate"><span class="pre">%x&lt;=%</span></code>, <code class="docutils literal notranslate"><span class="pre">%x&gt;%</span></code>, <code class="docutils literal notranslate"><span class="pre">%x&gt;=%</span></code>,
+<code class="docutils literal notranslate"><span class="pre">substrl</span></code>, <code class="docutils literal notranslate"><span class="pre">substrl&lt;-</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sub2</span></code>, <code class="docutils literal notranslate"><span class="pre">gsub2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">grepl2</span></code>, <code class="docutils literal notranslate"><span class="pre">grepv2</span></code>, <code class="docutils literal notranslate"><span class="pre">grepv2&lt;-</span></code>,
+<code class="docutils literal notranslate"><span class="pre">regexpr2</span></code>, <code class="docutils literal notranslate"><span class="pre">gregexpr2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">regexec2</span></code>, <code class="docutils literal notranslate"><span class="pre">gregexec2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gsubstrl</span></code>, <code class="docutils literal notranslate"><span class="pre">gsubstrl&lt;-</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gsubstr</span></code>, <code class="docutils literal notranslate"><span class="pre">gsubstr&lt;-</span></code>,
+<code class="docutils literal notranslate"><span class="pre">regextr2</span></code>, <code class="docutils literal notranslate"><span class="pre">regextr2&lt;-</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gregextr2</span></code>, <code class="docutils literal notranslate"><span class="pre">gregextr2&lt;-</span></code>.</p></li>
+<li><p>[NEW FEATURE] Rewritten functions:
+<code class="docutils literal notranslate"><span class="pre">paste</span></code>, <code class="docutils literal notranslate"><span class="pre">paste0</span></code>,
+<code class="docutils literal notranslate"><span class="pre">strrep</span></code>,
+<code class="docutils literal notranslate"><span class="pre">chartr</span></code>, <code class="docutils literal notranslate"><span class="pre">tolower</span></code>, <code class="docutils literal notranslate"><span class="pre">toupper</span></code>, <code class="docutils literal notranslate"><span class="pre">casefold</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sprintf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">strftime</span></code>, <code class="docutils literal notranslate"><span class="pre">strptime</span></code>,
+<code class="docutils literal notranslate"><span class="pre">nchar</span></code>, <code class="docutils literal notranslate"><span class="pre">nzchar</span></code>,
+<code class="docutils literal notranslate"><span class="pre">strtrim</span></code>,
+<code class="docutils literal notranslate"><span class="pre">trimws</span></code>,
+<code class="docutils literal notranslate"><span class="pre">startsWith</span></code>, <code class="docutils literal notranslate"><span class="pre">endsWith</span></code>,
+<code class="docutils literal notranslate"><span class="pre">xtfrm</span></code>, <code class="docutils literal notranslate"><span class="pre">sort</span></code>,
+<code class="docutils literal notranslate"><span class="pre">strwrap</span></code>,
+<code class="docutils literal notranslate"><span class="pre">substr</span></code>, <code class="docutils literal notranslate"><span class="pre">substring</span></code>, <code class="docutils literal notranslate"><span class="pre">substr&lt;-</span></code>,  <code class="docutils literal notranslate"><span class="pre">substring&lt;-</span></code>,
+<code class="docutils literal notranslate"><span class="pre">strsplit</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sub</span></code>, <code class="docutils literal notranslate"><span class="pre">gsub</span></code>,
+<code class="docutils literal notranslate"><span class="pre">grep</span></code>, <code class="docutils literal notranslate"><span class="pre">grepl</span></code>,
+<code class="docutils literal notranslate"><span class="pre">regexpr</span></code>, <code class="docutils literal notranslate"><span class="pre">gregexpr</span></code>,
+<code class="docutils literal notranslate"><span class="pre">regexec</span></code>, <code class="docutils literal notranslate"><span class="pre">gregexec</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h2>0.0.0 (2021-05-07)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>0.0.0 (2021-05-07)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The <em>stringx</em> project has been started.</p></li>
 </ul>
@@ -212,7 +256,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="rapi/strrep.html" class="btn btn-neutral float-left" title="strrep: Duplicate Strings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rapi/trimws.html" class="btn btn-neutral float-left" title="trimws: Trim Leading or Trailing Whitespaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -221,7 +265,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-04T17:05:28+1000.
+        Last updated on 2021-07-12T19:56:06+1000.
       </span>
 
     </p>

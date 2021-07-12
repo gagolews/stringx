@@ -25,23 +25,27 @@ printf(fmt, ..., file = "", sep = "\n", append = FALSE, na_string = "NA")
 
 ## Details
 
-Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sprintf.html) implemented with [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
-
 Note that the purpose of `printf` is to display a string, not to create a new one for use elsewhere, therefore this function, as an exception, treats missing values as `"NA"` strings.
 
-Inconsistencies/limitations in base R and the way we have addressed them:
+## Value
 
--   missing values in `...` are treated as `"NA"` strings **\[fixed in `sprintf`, left in `printf`, but see the `na_string` argument\]**;
+`sprintf` returns a character vector (in UTF-8). No attributes are preserved. `printf` returns \'nothing\'.
 
--   partial recycling results in an error **\[fixed here - warning given\]**;
+## Differences from Base R
 
--   input objects\' attributes are not preserved **\[not fixed\]**;
+Replacement for base [`sprintf`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sprintf.html) implemented with [`stri_sprintf`](https://stringi.gagolewski.com/rapi/stri_sprintf.html).
 
--   in to-string conversions, field widths and precisions are interpreted as bytes which is of course problematic for text in UTF-8 **\[fixed by interpreting these as Unicode code point widths\]**;
+-   missing values in `...` are treated as `"NA"` strings **\[fixed in `sprintf`, left in `printf`, but see the `na_string` argument\]**
 
--   `fmt` is limited to 8192 bytes and the number of arguments passed via `...` to 99 (note that we can easily exceed this limit by using [`do.call`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/do.call.html)) **\[rewritten from scratch, there is no limit anymore\]**;
+-   partial recycling results in an error **\[fixed here -- warning given\]**
 
--   unused values in \... are evaluated anyway (should not evaluation be lazy?) **\[not fixed here because this is somewhat questionable; in both base R and our case, a warning is given if this is the case; moreover, the length of the longest argument always determines the length of the output\]**;
+-   input objects\' attributes are not preserved **\[not fixed, somewhat tricky\]**
+
+-   in to-string conversions, field widths and precisions are interpreted as bytes which is of course problematic for text in UTF-8 **\[fixed by interpreting these as Unicode code point widths\]**
+
+-   `fmt` is limited to 8192 bytes and the number of arguments passed via `...` to 99 (note that we can easily exceed this limit by using [`do.call`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/do.call.html)) **\[rewritten from scratch, there is no limit anymore\]**
+
+-   unused values in \... are evaluated anyway (should not evaluation be lazy?) **\[not fixed here because this is somewhat questionable; in both base R and our case, a warning is given if this is the case; moreover, the length of the longest argument always determines the length of the output\]**
 
 -   coercion of each argument can only be done once **\[fixed here - can coerce to integer, real, and character\]**
 
@@ -51,10 +55,6 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 -   the outputs are implementation-dependent; the format strings are passed down to the system (`libc`) `sprintf` function **\[not fixed here (yet), but the format specifiers are normalised more eagerly\]**
 
-## Value
-
-`sprintf` returns a character vector (in UTF-8). No attributes are preserved.
-
 ## Author(s)
 
 [Marek Gagolewski](https://www.gagolewski.com/)
@@ -63,7 +63,7 @@ Inconsistencies/limitations in base R and the way we have addressed them:
 
 The official online manual of <span class="pkg">stringx</span> at <https://stringx.gagolewski.com/>
 
-Related function(s): [`paste`](paste.md), [`strrep`](strrep.md)
+Related function(s): [`paste`](paste.md), [`strrep`](strrep.md), [`strtrim`](strtrim.md), [`substr`](substr.md), [`nchar`](nchar.md), [`strwrap`](strwrap.md)
 
 ## Examples
 
@@ -89,6 +89,6 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 # coercion of the same argument to different types:
 stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
     Sys.time())
-## UNIX time 1622790326.673772 is 2021-06-04 17:05:26.
-## 2021-06-04 17:05:26 is 1622790326.673772 UNIX time.
+## UNIX time 1626083761.803807 is 2021-07-12 19:56:01.
+## 2021-07-12 19:56:01 is 1626083761.803807 UNIX time.
 ```

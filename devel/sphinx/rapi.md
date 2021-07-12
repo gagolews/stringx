@@ -8,6 +8,7 @@ rapi/about_stringx
 rapi/chartr
 rapi/constants
 rapi/gregexpr
+rapi/gregextr
 rapi/grepl
 rapi/gsub
 rapi/nchar

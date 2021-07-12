@@ -68,8 +68,9 @@ as there are matches.
 Missing values in the inputs are propagated consistently.
 In \code{regextr2}, a no-match is always denoted with \code{NA}
 (or series thereof). In \code{gregextr2}, the corresponding result is
-empty. Note that this function distinguishes between a missing input
-and a no-match.
+empty (unless we mean a no-match to an optional capture group within
+a matching substring). Note that this function distinguishes
+between a missing input and a no-match.
 
 Their replacement versions return a character vector.
 
@@ -103,8 +104,13 @@ gregextr2(x, "(?<x>a)(?<y>cac?)")
 regextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 
+# substitution - note the different replacement strings:
 `gregextr2<-`(x, "(?<x>a)(?<y>cac?)", value=list(c("!", "?"), "#"))
+# references to capture groups can only be used in gsub and sub:
 gsub2(x, "(?<x>a)(?<y>cac?)", "{$1}{$2}")
+
+regextr2(x, "(?<x>a)(?<y>cac?)") <- "\U0001D554\U0001F4A9"
+print(x)  # x was modified 'in-place'
 
 
 }

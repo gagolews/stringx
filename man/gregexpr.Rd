@@ -180,7 +180,7 @@ implemented with \code{\link[stringi]{stri_locate}}.
 
 \examples{
 x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
-regexpr2(x, "(A)[ACTG]\\\\1", ignore.case=TRUE)
+regexpr2(x, "(A)[ACTG]\\\\1", ignore_case=TRUE)
 regexpr2(x, "aca") >= 0  # like grepl2
 gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
 
@@ -189,8 +189,8 @@ regexec2(x, "(?<x>a)(?<y>cac?)")
 gregexec2(x, "(?<x>a)(?<y>cac?)")
 
 # extraction:
-gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\\\1", ignore.case=TRUE))
-gregextr(x, "(A)[ACTG]\\\\1", ignore.case=TRUE)  # equivalent
+gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\\\1", ignore_case=TRUE))
+gregextr2(x, "(A)[ACTG]\\\\1", ignore_case=TRUE)  # equivalent
 
 }
 \seealso{

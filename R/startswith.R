@@ -80,16 +80,16 @@
 #' dropped due to coercion).
 #'
 #' @examples
-#' stringx::startsWith("ababa", c("a", "ab", "aba", "baba", NA))
+#' startsWith("ababa", c("a", "ab", "aba", "baba", NA))
 #' outer(
 #'     c("aba", "abb", "abc", "baba", "bac"),
 #'     c("A", "B", "C"),
-#'     stringx::endsWith,
-#'     ignore.case=TRUE
+#'     endsWith,
+#'     ignore_case=TRUE
 #' )
 #' x <- c("Mario", "mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario")
-#' x[stringx::startsWith(x, "mario", ignore.case=TRUE)]
-#' x[stringx::startsWith(x, "mario", fixed=NA, strength=1L)]
+#' x[startsWith(x, "mario", ignore_case=TRUE)]
+#' x[startsWith(x, "mario", fixed=NA, strength=1L)]
 #'
 #' @seealso
 #' Related function(s): \code{\link{grepl}}, \code{\link{substr}}

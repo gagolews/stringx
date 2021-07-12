@@ -19,19 +19,18 @@ stringx: Drop-in replacements for base R string functions powered by stringi
 
 `R <https://www.r-project.org/>`_'s ambitions go far beyond being merely the
 "free software environment for statistical computing and graphics".
-It has proven effective in programming whole data analysis pipelines:
-from information gathering through knowledge discovery to communication
-of results.
+It has proven effective in the development of whole data analysis pipelines:
+from gathering of information through discovery of knowledge to
+communication of results.
 
-Modern data science is no longer just about crunching numbers.
+**Modern data science is no longer just about number crunching.**
 Text is a rich source of new knowledge — from natural language
 processing to bioinformatics. It also gives powerful
 means to represent or transfer unstructured data.
 
-*stringx* brings `R <https://www.r-project.org/>`_ string processing
-abilities into the 21st century.
-It replaces functions such
-as `paste`, `grep`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
+**stringx brings R string processing abilities into the 21st century.**
+It replaces functions like `paste`, `grep`, `tolower`, `strftime`,
+and `sprintf` with ones that:
 
 *   support a wide range of languages and scripts and
     fully conform to `Unicode <https://www.unicode.org/>`_ standards
@@ -39,11 +38,11 @@ as `paste`, `grep`, `tolower`, `strftime`, `sprintf`, etc., with ones that:
 *   work in the same way on every platform,
 *   fix some long-standing inconsistencies in the base R functions
     (related to vectorisation, handling of missing values,
-    preservation of attributes, order of arguments, etc.;
+    preservation of attributes, order of arguments, interoperability
+    with other procedures, etc.;
     they are all thoroughly documented in this online manual,
     happy reading! 🤓),
 *   are more forward-pipe (`|>` or `magrittr::%>%`) operator-friendly.
-
 
 Also, a few new, useful operations are introduced.
 

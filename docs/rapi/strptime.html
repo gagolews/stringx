@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="strrep: Duplicate Strings" href="strrep.html" />
-    <link rel="prev" title="sprintf: Format Strings" href="sprintf.html" /> 
+    <link rel="prev" title="strcoll: Compare Strings" href="strcoll.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.0.9001
+                0.1.1
               </div>
             
           
@@ -92,30 +92,41 @@
             
               <p class="caption"><span class="caption-text">stringx</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://stringx.gagolewski.com/">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../rapi.html">R Package <em>stringx</em> Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="paste.html">paste: Concatenate Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sprintf.html">sprintf: Format Strings</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">strptime: Date-time Parsing and Formatting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#arguments">Arguments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#details">Details</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#value">Value</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#author-s">Author(s)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gregexpr.html">gregexpr: Locate Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gregextr.html">gregextr: Extract Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grepl.html">grepl: Detect Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsub.html">gsub: Replace Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nchar.html">nchar: Get Length or Width of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sort.html">sort: Sort Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strcoll.html">strcoll: Compare Strings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">strptime: Date-time Parsing and Formatting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#differences-from-base-r">Differences from Base R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-s">Author(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="strrep.html">strrep: Duplicate Strings</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="strrep.html">strrep: Duplicate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strsplit.html">strsplit: Split Strings into Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strwrap.html">strwrap: Word-Wrap Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="substr.html">substr: Extract or Replace Substrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trimws.html">trimws: Trim Leading or Trailing Whitespaces</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
 <ul>
@@ -171,8 +182,6 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../rapi.html">R Package <em>stringx</em> Reference</a> &raquo;</li>
-        
       <li>strptime: Date-time Parsing and Formatting</li>
     
     
@@ -190,7 +199,7 @@
         <a href="strrep.html" class="btn btn-neutral float-right" title="strrep: Duplicate Strings" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="sprintf.html" class="btn btn-neutral float-left" title="sprintf: Format Strings" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="strcoll.html" class="btn btn-neutral float-left" title="strcoll: Compare Strings" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -207,13 +216,7 @@
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strptime</span><span class="p">(</span>
-  <span class="n">x</span><span class="p">,</span>
-  <span class="n">format</span> <span class="o">=</span> <span class="s">&quot;%Y-%m-%dT%H:%M:%S%z&quot;</span><span class="p">,</span>
-  <span class="n">tz</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
-  <span class="n">lenient</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span>
-<span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">format</span><span class="p">,</span> <span class="n">tz</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">lenient</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
 
 <span class="nf">strftime</span><span class="p">(</span>
   <span class="n">x</span><span class="p">,</span>
@@ -236,13 +239,13 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
-<td><p>object to be converted</p></td>
+<td><p>object to be converted: a character vector for <code class="docutils literal notranslate"><span class="pre">strptime</span></code> and an object of class <code class="docutils literal notranslate"><span class="pre">POSIXct</span></code> for <code class="docutils literal notranslate"><span class="pre">strftime</span></code>, or objects coercible to</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></td>
-<td><p>character vector of date-time format specifiers, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_fstr.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_fstr</span></code></a>; e.g., <code class="docutils literal notranslate"><span class="pre">&quot;%Y-%m-%d&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;datetime_full&quot;</span></code>; the default conforms to the ISO 8601 guideline, e.g., ‘2015-12-31T23:59:59+0100’</p></td>
+<td><p>character vector of date-time format specifiers, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_fstr.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_fstr</span></code></a>; e.g., <code class="docutils literal notranslate"><span class="pre">&quot;%Y-%m-%d&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;datetime_full&quot;</span></code>; the default conforms to the ISO 8601 guideline</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tz</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default time zone (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_set.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_get</span></code></a>) or a single string with a timezone identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_list.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_list</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default time zone (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_set.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_get</span></code></a>) or a single string with a timezone identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_list.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_list</span></code></a>; note that even when <code class="docutils literal notranslate"><span class="pre">x</span></code> is equipped with <code class="docutils literal notranslate"><span class="pre">tzone</span></code> attribute, this datum is not used</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lenient</span></code></p></td>
 <td><p>single logical value; should date/time parsing be lenient?</p></td>
@@ -251,7 +254,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default locale (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_set.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_get</span></code></a>) or a single string with a locale identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_list.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_list</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">usetz</span></code></p></td>
-<td><p>….</p></td>
+<td><p>not used (with a warning if attempting to do so) [DEPRECATED]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
 <td><p>not used</p></td>
@@ -261,18 +264,24 @@
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
-<p>Replacements for base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/strptime.html"><code class="docutils literal notranslate"><span class="pre">strptime</span></code></a> and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/strftime.html"><code class="docutils literal notranslate"><span class="pre">strftime</span></code></a> implemented with <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_format.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_parse</span></code></a> and <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_format.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_format</span></code></a>.</p>
-<p>Inconsistencies/limitations in base R and the way we have addressed them:</p>
-<ul class="simple">
-<li><p>formatting/parsing date-time in different locales and calendars is difficult and non-portable across platforms <strong>[fixed here - using services provided by ICU]</strong>;</p></li>
-<li><p>default format not conforming to ISO 8601, in particular not displaying the current time zone <strong>[fixed here]</strong>;</p></li>
-<li><p>partial recycling with no warning <strong>[fixed here]</strong>; … format 2nd arg (but sprintf has as 1st); undocumented default arg</p></li>
-</ul>
+<p>Note that the ISO 8601 guideline suggests a year-month-day date format and a 24-hour time format always indicating the effective time zone, e.g., <code class="docutils literal notranslate"><span class="pre">2015-12-31T23:59:59+0100</span></code>. This is so as to avoid ambiguity.</p>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">strftime</span></code> returns a character vector (in UTF-8).</p>
-<p><code class="docutils literal notranslate"><span class="pre">strptime</span></code> returns an object of class <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/DateTimeClasses.html"><code class="docutils literal notranslate"><span class="pre">POSIXlt</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">strptime</span></code> returns an object of class <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXct.html"><code class="docutils literal notranslate"><span class="pre">POSIXct</span></code></a>, see also <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/DateTimeClasses.html">DateTimeClasses</a>. If a string cannot be recognised as valid date/time specified (as per the given format string), the corresponding output will be <code class="docutils literal notranslate"><span class="pre">NA</span></code>.</p>
+</div>
+<div class="section" id="differences-from-base-r">
+<h2>Differences from Base R<a class="headerlink" href="#differences-from-base-r" title="Permalink to this headline">¶</a></h2>
+<p>Replacements for base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/strptime.html"><code class="docutils literal notranslate"><span class="pre">strptime</span></code></a> and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/strftime.html"><code class="docutils literal notranslate"><span class="pre">strftime</span></code></a> implemented with <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_format.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_parse</span></code></a> and <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_format.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_format</span></code></a>.</p>
+<ul class="simple">
+<li><p>formatting/parsing date-time in different locales and calendars is difficult and non-portable across platforms <strong>[fixed here – using services provided by ICU]</strong></p></li>
+<li><p>default format not conforming to ISO 8601, in particular not displaying the current time zone <strong>[fixed here]</strong></p></li>
+<li><p>only the names attribute in <code class="docutils literal notranslate"><span class="pre">x</span></code> is propagated <strong>[fixed here]</strong></p></li>
+<li><p>partial recycling with no warning <strong>[fixed here]</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strptime</span></code> returns an object of class <code class="docutils literal notranslate"><span class="pre">POSIXlt</span></code>, which is not the most convenient to work with, e.g., when including in data frames <strong>[fixed here]</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strftime</span></code> does not honour the <code class="docutils literal notranslate"><span class="pre">tzone</span></code> attribute, which is used whilst displaying time (via <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/format.html"><code class="docutils literal notranslate"><span class="pre">format</span></code></a>) <strong>[not fixed here]</strong></p></li>
+</ul>
 </div>
 <div class="section" id="author-s">
 <h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
@@ -285,19 +294,25 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;date_full&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">,</span> <span class="s">&quot;date_relative_short&quot;</span><span class="p">,</span> <span class="s">&quot;datetime_full&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stringx</span><span class="o">::</span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">())</span>  <span class="c1"># default format - ISO 8601</span>
+<span class="c1">## [1] &quot;2021-07-12T19:56:02+1000&quot;</span>
+<span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;date_full&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">,</span> <span class="s">&quot;date_relative_short&quot;</span><span class="p">,</span> <span class="s">&quot;datetime_full&quot;</span><span class="p">)</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="n">f</span><span class="p">)</span>  <span class="c1"># current default locale</span>
-<span class="c1">## [1] &quot;Friday, 4 June 2021&quot;                                               </span>
-<span class="c1">## [2] &quot;2021-06-04&quot;                                                        </span>
-<span class="c1">## [3] &quot;today&quot;                                                             </span>
-<span class="c1">## [4] &quot;Friday, 4 June 2021 at 5:05:26 pm Australian Eastern Standard Time&quot;</span>
+<span class="c1">## [1] &quot;Monday, 12 July 2021&quot;                                               </span>
+<span class="c1">## [2] &quot;2021-07-12&quot;                                                         </span>
+<span class="c1">## [3] &quot;today&quot;                                                              </span>
+<span class="c1">## [4] &quot;Monday, 12 July 2021 at 7:56:02 pm Australian Eastern Standard Time&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="n">f</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;Freitag, 4. Juni 2021&quot;                                       </span>
-<span class="c1">## [2] &quot;2021-06-04&quot;                                                  </span>
+<span class="c1">## [1] &quot;Montag, 12. Juli 2021&quot;                                       </span>
+<span class="c1">## [2] &quot;2021-07-12&quot;                                                  </span>
 <span class="c1">## [3] &quot;heute&quot;                                                       </span>
-<span class="c1">## [4] &quot;Freitag, 4. Juni 2021 um 17:05:26 Ostaustralische Normalzeit&quot;</span>
+<span class="c1">## [4] &quot;Montag, 12. Juli 2021 um 19:56:02 Ostaustralische Normalzeit&quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="s">&quot;date_short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;24 Sivan 5781&quot;</span>
+<span class="c1">## [1] &quot;3 Av 5781&quot;</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01 00:00:00&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s">&quot;GMT&quot;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1970-01-01 00:00:00 GMT&quot;</span>
+<span class="n">stringx</span><span class="o">::</span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;14 Nisan 5703&quot;</span><span class="p">,</span> <span class="s">&quot;date_short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
+<span class="c1">## [1] &quot;1943-04-19 19:56:02 AEST&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -310,7 +325,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="strrep.html" class="btn btn-neutral float-right" title="strrep: Duplicate Strings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="sprintf.html" class="btn btn-neutral float-left" title="sprintf: Format Strings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="strcoll.html" class="btn btn-neutral float-left" title="strcoll: Compare Strings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -319,7 +334,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-06-04T17:05:28+1000.
+        Last updated on 2021-07-12T19:56:06+1000.
       </span>
 
     </p>

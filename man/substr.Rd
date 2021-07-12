@@ -5,6 +5,7 @@
 \alias{substrl}
 \alias{substr<-}
 \alias{substrl<-}
+\alias{gsubstr}
 \alias{gsubstrl}
 \alias{gsubstr<-}
 \alias{gsubstrl<-}
@@ -24,6 +25,8 @@ substrl(
 substr(x, start = 1L, stop = -1L) <- value
 
 substrl(x, start = 1L, length = attr(start, "match.length")) <- value
+
+gsubstr(x, start = list(1L), stop = list(-1L))
 
 gsubstrl(
   x,
@@ -60,8 +63,12 @@ end position, this indicates an empty substring therein (see Examples)}
 \item{length}{numeric vector  (for \code{substr})
 or list of numeric vectors (for \code{gsubstr})
 giving the substring lengths;
-negative lengths result in an empty string or the corresponding
+negative lengths result in a missing value or empty vector
+(see \code{ignore_negative_length}) or the corresponding
 substring being unchanged}
+
+\item{ignore_negative_length}{single logical value;
+whether negative lengths should be ignored or yield missing values}
 
 \item{value}{character vector  (for \code{substr})
 or list of character vectors  (for \code{gsubstr})

@@ -1,7 +1,7 @@
 # What Is New in *stringx*
 
 
-## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
+## 0.1.1 (2021-07-12)
 
 * [GENERAL] On-line manual is available at https://stringx.gagolewski.com.
 
@@ -22,7 +22,9 @@
   `regexpr2`, `gregexpr2`,
   `regexec2`, `gregexec2`,
   `gsubstrl`, `gsubstrl<-`,
-  `gsubstr`, `gsubstr<-`.
+  `gsubstr`, `gsubstr<-`,
+  `regextr2`, `regextr2<-`,
+  `gregextr2`, `gregextr2<-`.
 
 * [NEW FEATURE] Rewritten functions:
   `paste`, `paste0`,
@@ -41,9 +43,7 @@
   `sub`, `gsub`,
   `grep`, `grepl`,
   `regexpr`, `gregexpr`,
-  `regexec`, `gregexec`,
-  ..utils::strcapture ???
-  ..regmatches
+  `regexec`, `gregexec`.
 
 
 ## 0.0.0 (2021-05-07)

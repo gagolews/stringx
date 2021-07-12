@@ -1,20 +1,49 @@
 # What Is New in *stringx*
 
 
-## 0.1.0.9xxx (to-be >= 0.1.1) (2021-xx-yy)
+## 0.1.1 (2021-07-12)
 
-* [NEW FEATURE] `paste`, `paste0`, `strcat`, `%x+%`.
-* [NEW FEATURE] `strrep`, `%x*%`.
-* [NEW FEATURE] constants, e.g., `letters_greek`, `LETTERS_BB`, `digits_hex`.
-* [NEW FEATURE] `chartr`, `tolower`, `toupper`, `casefold`, `strtrans`.
-* [NEW FEATURE] `sprintf`, `printf`.
-* [NEW FEATURE] `strftime`,     TODO: ...strptime
-* [NEW FEATURE] ..ISOdate, ISOdatetime
-* [NEW FEATURE] ..nchar, nzchar
-* [NEW FEATURE] ..substr, substring
-* [NEW FEATURE] ..trimws
-* [NEW FEATURE] ..strtrim
-* [NEW FEATURE] ..strcmp/strcoll
+* [GENERAL] On-line manual is available at https://stringx.gagolewski.com.
+
+* [GENERAL] Using [*realtest*](https://realtest.gagolewski.com)
+  for documenting base R behaviour, unit testing, and desired outcomes.
+
+* [NEW FEATURE] Added constants: `letters_greek`, `digits_hex`, etc.
+
+* [NEW FEATURE] Added functions and operators:
+  `strcat`, `%x+%`, `%x*%`,
+  `chartr2`, `strtrans`,
+  `printf`,
+  `strftime`, `strptime`,
+  `strcoll`, `%x==%`, `%x!=%`, `%x<%`, `%x<=%`, `%x>%`, `%x>=%`,
+  `substrl`, `substrl<-`,
+  `sub2`, `gsub2`,
+  `grepl2`, `grepv2`, `grepv2<-`,
+  `regexpr2`, `gregexpr2`,
+  `regexec2`, `gregexec2`,
+  `gsubstrl`, `gsubstrl<-`,
+  `gsubstr`, `gsubstr<-`,
+  `regextr2`, `regextr2<-`,
+  `gregextr2`, `gregextr2<-`.
+
+* [NEW FEATURE] Rewritten functions:
+  `paste`, `paste0`,
+  `strrep`,
+  `chartr`, `tolower`, `toupper`, `casefold`,
+  `sprintf`,
+  `strftime`, `strptime`,
+  `nchar`, `nzchar`,
+  `strtrim`,
+  `trimws`,
+  `startsWith`, `endsWith`,
+  `xtfrm`, `sort`,
+  `strwrap`,
+  `substr`, `substring`, `substr<-`,  `substring<-`,
+  `strsplit`,
+  `sub`, `gsub`,
+  `grep`, `grepl`,
+  `regexpr`, `gregexpr`,
+  `regexec`, `gregexec`.
 
 
 ## 0.0.0 (2021-05-07)

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sort: Sort Strings &mdash; stringx</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="https://stringx.gagolewski.com/rapi/sort.html" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sprintf: Format Strings" href="sprintf.html" />
+    <link rel="prev" title="paste: Concatenate Strings" href="paste.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> stringx
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">stringx</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">constants: Character Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gregexpr.html">gregexpr: Locate Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gregextr.html">gregextr: Extract Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grepl.html">grepl: Detect Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsub.html">gsub: Replace Pattern Occurrences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nchar.html">nchar: Get Length or Width of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paste.html">paste: Concatenate Strings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">sort: Sort Strings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#differences-from-base-r">Differences from Base R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-s">Author(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sprintf.html">sprintf: Format Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strcoll.html">strcoll: Compare Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strptime.html">strptime: Date-time Parsing and Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strrep.html">strrep: Duplicate Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strsplit.html">strsplit: Split Strings into Tokens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strwrap.html">strwrap: Word-Wrap Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="substr.html">substr: Extract or Replace Substrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trimws.html">trimws: Trim Leading or Trailing Whitespaces</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx">Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx/issues">Bug Tracker and Feature Suggestions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author's Homepage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">What Is New in <em>stringx</em></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">stringx</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>sort: Sort Strings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="sprintf.html" class="btn btn-neutral float-right" title="sprintf: Format Strings" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+      
+        <a href="paste.html" class="btn btn-neutral float-left" title="paste: Concatenate Strings" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sort-sort-strings">
+<h1>sort: Sort Strings<a class="headerlink" href="#sort-sort-strings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sort</span></code> method for objects of class <code class="docutils literal notranslate"><span class="pre">character</span></code> (<code class="docutils literal notranslate"><span class="pre">sort.character</span></code>) uses the locale-sensitive Unicode collation algorithm to arrange strings in a vector with regards to a chosen lexicographic order.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> generates an integer vector that sorts in the same way as its input, and hence can be used in conjunction with <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html"><code class="docutils literal notranslate"><span class="pre">order</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html"><code class="docutils literal notranslate"><span class="pre">rank</span></code></a>.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+
+<span class="c1">## Default S3 method:</span>
+<span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+
+<span class="c1">## S3 method for class &#39;character&#39;</span>
+<span class="nf">xtfrm</span><span class="p">(</span>
+  <span class="n">x</span><span class="p">,</span>
+  <span class="kc">...</span><span class="p">,</span>
+  <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">strength</span> <span class="o">=</span> <span class="m">3L</span><span class="p">,</span>
+  <span class="n">alternate_shifted</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">french</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">uppercase_first</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span>
+  <span class="n">case_level</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">normalisation</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">numeric</span> <span class="o">=</span> <span class="kc">FALSE</span>
+<span class="p">)</span>
+
+<span class="c1">## S3 method for class &#39;character&#39;</span>
+<span class="nf">sort</span><span class="p">(</span>
+  <span class="n">x</span><span class="p">,</span>
+  <span class="kc">...</span><span class="p">,</span>
+  <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">na.last</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span>
+  <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">strength</span> <span class="o">=</span> <span class="m">3L</span><span class="p">,</span>
+  <span class="n">alternate_shifted</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">french</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">uppercase_first</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span>
+  <span class="n">case_level</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">normalisation</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+  <span class="n">numeric</span> <span class="o">=</span> <span class="kc">FALSE</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p>character vector whose elements are to be sorted</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+<td><p>further arguments passed to other methods</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">locale</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> for the default locale (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_set.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_get</span></code></a>) or a single string with a locale identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_list.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_list</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">strength</span></code></p></td>
+<td><p>see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_opts_collator.html"><code class="docutils literal notranslate"><span class="pre">stri_opts_collator</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">alternate_shifted</span></code></p></td>
+<td><p>see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_opts_collator.html"><code class="docutils literal notranslate"><span class="pre">stri_opts_collator</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">french</span></code></p></td>
+<td><p>see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_opts_collator.html"><code class="docutils literal notranslate"><span class="pre">stri_opts_collator</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uppercase_first</span></code></p></td>
+<td><p>see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_opts_collator.html"><code class="docutils literal notranslate"><span class="pre">stri_opts_collator</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">case_level</span></code></p></td>
+<td><p>see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_opts_collator.html"><code class="docutils literal notranslate"><span class="pre">stri_opts_collator</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">normalisation</span></code></p></td>
+<td><p>see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_opts_collator.html"><code class="docutils literal notranslate"><span class="pre">stri_opts_collator</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numeric</span></code></p></td>
+<td><p>see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_opts_collator.html"><code class="docutils literal notranslate"><span class="pre">stri_opts_collator</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">decreasing</span></code></p></td>
+<td><p>single logical value; if <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, the ordering is nondecreasing (weakly increasing)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">na.last</span></code></p></td>
+<td><p>single logical value; if <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, then missing values are placed at the end; if <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, they are put at the beginning; if <code class="docutils literal notranslate"><span class="pre">NA</span></code>, then they are removed from the output whatsoever.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>What ‘xtfrm’ stands for the current author does not know, but would appreciate someone’s enlightening him.</p>
+</div>
+<div class="section" id="value">
+<h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sort.character</span></code> returns a character vector, with only the <code class="docutils literal notranslate"><span class="pre">names</span></code> attribute preserved. Note that the output vector may be shorter than the input one.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xtfrm.character</span></code> returns an integer vector; most attributes are preserved.</p>
+</div>
+<div class="section" id="differences-from-base-r">
+<h2>Differences from Base R<a class="headerlink" href="#differences-from-base-r" title="Permalink to this headline">¶</a></h2>
+<p>Replacements for the default S3 methods <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/sort.html"><code class="docutils literal notranslate"><span class="pre">sort</span></code></a> and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/xtfrm.html"><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code></a> for character vectors implemented with <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_sort.html"><code class="docutils literal notranslate"><span class="pre">stri_sort</span></code></a> and <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_rank.html"><code class="docutils literal notranslate"><span class="pre">stri_rank</span></code></a>.</p>
+<ul class="simple">
+<li><p>Collation in different locales is difficult and non-portable across platforms <strong>[fixed here – using services provided by ICU]</strong></p></li>
+<li><p>Overloading <code class="docutils literal notranslate"><span class="pre">xtfrm.character</span></code> has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. Thus, we needed to replace the generic <code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> with the one that calls <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html"><code class="docutils literal notranslate"><span class="pre">UseMethod</span></code></a> <strong>[fixed here]</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> does not support customisation of the linear ordering relation it is based upon <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">...</span></code> argument to the generic]</strong></p></li>
+<li><p>Neither <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html"><code class="docutils literal notranslate"><span class="pre">order</span></code></a>, <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html"><code class="docutils literal notranslate"><span class="pre">rank</span></code></a>, nor <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/sort.list.html"><code class="docutils literal notranslate"><span class="pre">sort.list</span></code></a> is a generic, therefore they should have to be rewritten from scratch to allow the inclusion of our patches; interestingly, <code class="docutils literal notranslate"><span class="pre">order</span></code> even calls <code class="docutils literal notranslate"><span class="pre">xtfrm</span></code>, but only for classed objects <strong>[not fixed here – see Examples for a workaround]</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> for objects of type <code class="docutils literal notranslate"><span class="pre">character</span></code> does not preserve the names attribute (but does so for <code class="docutils literal notranslate"><span class="pre">numeric</span></code>) <strong>[fixed here]</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sort</span></code> seems to preserve only the names attribute which makes sense if <code class="docutils literal notranslate"><span class="pre">na.last</span></code> is <code class="docutils literal notranslate"><span class="pre">NA</span></code>, because the resulting vector might be shorter <strong>[not fixed here as it would break compatibility with other sorting methods]</strong></p></li>
+<li><p>Note that <code class="docutils literal notranslate"><span class="pre">sort</span></code> by default removes missing values whatsoever, whereas <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html"><code class="docutils literal notranslate"><span class="pre">order</span></code></a> has <code class="docutils literal notranslate"><span class="pre">na.last=TRUE</span></code> <strong>[not fixed here as it would break compatibility with other sorting methods]</strong></p></li>
+</ul>
+</div>
+<div class="section" id="author-s">
+<h2>Author(s)<a class="headerlink" href="#author-s" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.gagolewski.com/">Marek Gagolewski</a></p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p>The official online manual of <span class="pkg">stringx</span> at <a class="reference external" href="https://stringx.gagolewski.com/">https://stringx.gagolewski.com/</a></p>
+<p>Related function(s): <a class="reference internal" href="strcoll.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">strcoll</span></code></span></a></p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a100&quot;</span><span class="p">,</span> <span class="s">&quot;a101&quot;</span><span class="p">,</span> <span class="s">&quot;a1000&quot;</span><span class="p">,</span> <span class="s">&quot;a10&quot;</span><span class="p">,</span> <span class="s">&quot;a10&quot;</span><span class="p">,</span> <span class="s">&quot;a11&quot;</span><span class="p">,</span> <span class="s">&quot;a99&quot;</span><span class="p">,</span> <span class="s">&quot;a10&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">)</span>
+<span class="n">base</span><span class="o">::</span><span class="nf">sort.default</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># lexicographic sort</span>
+<span class="c1">##  [1] &quot;a1&quot;    &quot;a1&quot;    &quot;a10&quot;   &quot;a10&quot;   &quot;a10&quot;   &quot;a100&quot;  &quot;a1000&quot; &quot;a101&quot;  &quot;a11&quot;  </span>
+<span class="c1">## [10] &quot;a99&quot;</span>
+<span class="nf">sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>   <span class="c1"># calls stringx:::sort.character</span>
+<span class="c1">##  [1] &quot;a1&quot;    &quot;a1&quot;    &quot;a10&quot;   &quot;a10&quot;   &quot;a10&quot;   &quot;a11&quot;   &quot;a99&quot;   &quot;a100&quot;  &quot;a101&quot; </span>
+<span class="c1">## [10] &quot;a1000&quot;</span>
+<span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># calls stringx:::xtfrm.character</span>
+<span class="c1">##  [1]  1  8  9 10  3  3  6  7  3  1</span>
+<span class="nf">rank</span><span class="p">(</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span> <span class="n">ties.method</span><span class="o">=</span><span class="s">&quot;average&quot;</span><span class="p">)</span>  <span class="c1"># ranks with averaged ties</span>
+<span class="c1">##  [1]  1.5  8.0  9.0 10.0  4.0  4.0  6.0  7.0  4.0  1.5</span>
+<span class="nf">order</span><span class="p">(</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>    <span class="c1"># ordering permutation</span>
+<span class="c1">##  [1]  1 10  5  6  9  7  8  2  3  4</span>
+<span class="n">x</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))]</span> <span class="c1"># equivalent to sort()</span>
+<span class="c1">##  [1] &quot;a1&quot;    &quot;a1&quot;    &quot;a10&quot;   &quot;a10&quot;   &quot;a10&quot;   &quot;a11&quot;   &quot;a99&quot;   &quot;a100&quot;  &quot;a101&quot; </span>
+<span class="c1">## [10] &quot;a1000&quot;</span>
+<span class="c1"># order a data frame w.r.t. decreasing ids and increasing vals</span>
+<span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vals</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="nf">runif</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="m">1</span><span class="p">),</span> <span class="n">ids</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">d</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="o">-</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">d</span><span class="p">[[</span><span class="s">&quot;ids&quot;</span><span class="p">]],</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span> <span class="n">d</span><span class="p">[[</span><span class="s">&quot;vals&quot;</span><span class="p">]]),</span> <span class="p">]</span>
+<span class="c1">##    vals   ids</span>
+<span class="c1">## 4   0.9 a1000</span>
+<span class="c1">## 3   0.4  a101</span>
+<span class="c1">## 2   0.8  a100</span>
+<span class="c1">## 8   0.9   a99</span>
+<span class="c1">## 7   0.5   a11</span>
+<span class="c1">## 6   0.0   a10</span>
+<span class="c1">## 9   0.6   a10</span>
+<span class="c1">## 5   0.9   a10</span>
+<span class="c1">## 1   0.3    a1</span>
+<span class="c1">## 10  0.5    a1</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sprintf.html" class="btn btn-neutral float-right" title="sprintf: Format Strings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="paste.html" class="btn btn-neutral float-left" title="paste: Concatenate Strings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Marek Gagolewski.
+      <span class="lastupdated">
+        Last updated on 2021-07-12T19:56:06+1000.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

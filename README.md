@@ -18,12 +18,12 @@
 
 
 [*stringx*](https://stringx.gagolewski.com/) replaces base
-[R](https://www.r-project.org/) functions such as
-`paste`, `gregexpr`, `tolower`, etc., with ones that:
+[R](https://www.r-project.org/) functions like
+`paste`, `gregexpr`, and `tolower` with ones that:
 
 * work in the same way on every platform,
 * support a wide range of languages and scripts,
-* fix some long-standing inconsistencies in the base R functions
+* fix some long-standing inconsistencies in base R
   (which are pointed out in the package
   [manual](https://stringx.gagolewski.com)).
 
