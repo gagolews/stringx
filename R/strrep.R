@@ -25,7 +25,7 @@
 #'
 #' Both arguments are recycled if necessary.
 #'
-#' The \code{`\%x*\%`} mimics a vectorised version of Python's
+#' The \code{`\%x*\%`} operator mimics a vectorised version of Python's
 #' \code{`*`} for strings (\code{str.__mul__}).
 #'
 #'

@@ -23,7 +23,7 @@ e1 %x*% e2
 
 Both arguments are recycled if necessary.
 
-The `` `%x*%` `` mimics a vectorised version of Python\'s `` `*` `` for strings (`str.__mul__`).
+The `` `%x*%` `` operator mimics a vectorised version of Python\'s `` `*` `` for strings (`str.__mul__`).
 
 ## Value
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-<span class="pkg">stringx</span> reimplements the built-in R functions for string processing based on <span class="pkg">stringi</span> -- a mature R package for fast, correct, consistent, and convenient text manipulation. Thanks to the <span class="pkg">ICU</span> library, we obtain predictable results on every platform, in each locale, and under any native character encoding.
+<span class="pkg">stringx</span> reimplements the built-in R string processing functions based on <span class="pkg">stringi</span> -- a mature R package for fast, correct, consistent, and convenient text manipulation. Thanks to the <span class="pkg">ICU</span> library, we obtain predictable results on every platform, in each locale, and under any native character encoding.
 
 **Keywords**: R, text processing, character strings, internationalisation, localisation, ICU, ICU4C, i18n, l10n, Unicode
 

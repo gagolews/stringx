@@ -7,7 +7,7 @@
 \alias{stringx-package}
 \title{Drop-in Replacements for Base String Functions Powered by Stringi}
 \description{
-\pkg{stringx} reimplements the built-in R functions for string processing
+\pkg{stringx} reimplements the built-in R string processing functions
 based on \pkg{stringi} -- a mature R package for fast, correct, consistent,
 and convenient text manipulation. Thanks to the \pkg{ICU} library, we obtain
 predictable results on every platform, in each locale, and under any
