@@ -75,21 +75,21 @@ E(
     regextr2(x, c("(?<a>.)b(\\1)?", "bab")),
     P(
         structure(c(a="aba", b="bab", c="aba"), attr1="value1"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 E(
     regextr2(x, c("(?<a>.)b(\\1)?", "bab"), capture_groups=TRUE),
     P(
         structure(list(a=c("aba", a="a", "a"), b="bab", c=c("aba", a="a", "a")), attr1="value1"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 E(
     gregextr2(x, c("(?<a>.)b(\\1)?", "bab")),
     P(
         structure(list(a=c("aba", "aba", "ab"), b=c("bab"), c=c("aba")), attr1="value1"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 E(
@@ -100,7 +100,7 @@ E(
             b=cbind(c("bab")),
             c=cbind(c("aba", a="a", "a"))
         ), attr1="value1"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 
@@ -108,7 +108,7 @@ E(
     `regextr2<-`(x, c("(?<a>.)b(\\1)?", "bab"), value=c(f="!", g="?", h="@", i="$", j="&")),
     P(
         c(f="!xabaab", g="?", h="@", i="abaxabaab", j="b&"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 
@@ -117,7 +117,7 @@ E(
     `gregextr2<-`(x, c("(?<a>.)b(\\1)?", "bab"), value=c(f="!", g="?", h="@", i="$", j="&")),
     P(
         c(f="!x!!", g="?", h="@", i="abaxabaab", j="b&"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 
@@ -131,7 +131,7 @@ E(
     `regextr2<-`(c("a", "b"), c("a", "b", "a"), value=c(f="!", g="?", h="@", i="$", j="&")),
     P(
         c(f="!", g="?", h="@", i="b", j="a"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 
@@ -139,7 +139,7 @@ E(
     `gregextr2<-`(c("a", "b"), c("a", "b", "a"), value=c(f="!", g="?", h="@", i="$", j="&")),
     P(
         c(f="!", g="?", h="@", i="b", j="a"),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     )
 )
 
@@ -150,10 +150,7 @@ E(
             c(a="!x?@", b="!", c="!"),
             attr1="value1"
         ),
-        warning=c(
-            "longer object length is not a multiple of shorter object length",
-            rep("vector length not consistent with other arguments", 3)
-        )
+        warning=TRUE
     )
 )
 

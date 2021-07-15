@@ -28,14 +28,14 @@ E(strsplit("123aaa456", "a+", fixed=FALSE), list(c("123", "456")))
 E(
     strsplit("123a456", "A", fixed=FALSE, ignore.case=TRUE),
     list(c("123", "456")),
-    bad=P(error="unused argument (ignore.case = TRUE)"),
+    bad=P(error=TRUE),
     .comment="`grep` has `ignore.case` argument"
 )
 
 E(
     strsplit("123a456", "A", fixed=TRUE, ignore.case=TRUE),
     list(c("123", "456")),
-    bad=P(error="unused argument (ignore.case = TRUE)"),
+    bad=P(error=TRUE),
     .comment="`grep` has `ignore.case` argument"
 )
 
@@ -65,13 +65,13 @@ E(
 
 E(
     strsplit(c(a="a.b,c.d", b="a,b.c,d", c="d,e,f"), c(",", "."), fixed=TRUE),
-    P(list(a=c("a.b", "c.d"), b=c("a,b", "c,d"), c=c("d", "e", "f")), warning="longer object length is not a multiple of shorter object length"),
+    P(list(a=c("a.b", "c.d"), b=c("a,b", "c,d"), c=c("d", "e", "f")), warning=TRUE),
     bad=list(a=c("a.b", "c.d"), b=c("a,b", "c,d"), c=c("d", "e", "f"))
 )
 
 E(
     strsplit(c("a.b,c.d", "a,b.c,d"), c(",", ".", "."), fixed=TRUE),
-    P(list(c("a.b", "c.d"), c("a,b", "c,d"), c("a", "b,c", "d")), warning="longer object length is not a multiple of shorter object length"),
+    P(list(c("a.b", "c.d"), c("a,b", "c,d"), c("a", "b,c", "d")), warning=TRUE),
     bad=list(c("a.b", "c.d"), c("a,b", "c,d"))
 )
 

@@ -55,7 +55,7 @@ E(
 
 E(
     substr(x[c(1, 1, 2)], c(1, 13), c(4, 17)),
-    P(c("spam", "bacon", "eggs"), warning="longer object length is not a multiple of shorter object length"),
+    P(c("spam", "bacon", "eggs"), warning=TRUE),
     bad=c("spam", "bacon", "eggs")
 )
 
@@ -97,7 +97,7 @@ E(
 
 E(
     `substr<-`(x, 1, 4, value=c("jam", "pear", "porridge")),
-    P(c("jam, spam, bacon, and spam", "pear and spam", "porridge, spam, bacon, and spam"), warning="longer object length is not a multiple of shorter object length"),
+    P(c("jam, spam, bacon, and spam", "pear and spam", "porridge, spam, bacon, and spam"), warning=TRUE),
     bad=c("jamm, spam, bacon, and spam", "pear and spam", "porr, spam, bacon, and spam"),
     worst=c("jamm, spam, bacon, and spam", "pear and spam")
 )

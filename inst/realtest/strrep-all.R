@@ -17,7 +17,6 @@ E(strrep(c(TRUE, FALSE, NA), 2), c("TRUETRUE", "FALSEFALSE", NA))
 
 E(
     strrep(1:3, 1:2),
-    P(c("1", "22", "3"), warning="longer object length is not a multiple of shorter object length"),
     P(c("1", "22", "3"), warning=TRUE),
     bad=c("1", "22", "3"),
     .comment="recycling rule warning"

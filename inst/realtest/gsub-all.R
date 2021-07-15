@@ -23,13 +23,13 @@ E(gsub(c("a", "b"), "x", "abc"), c("xbc", "axc"), bad=P(error=TRUE), bad=P("xbc"
 
 E(
     sub(c("a", "b", "c"), c("x", "y"), "abc"),
-    P(c("xbc", "ayc", "abx"), warning="longer object length is not a multiple of shorter object length"),
+    P(c("xbc", "ayc", "abx"), warning=TRUE),
     bad=P(error=TRUE),
     bad=P("xbc", warning=TRUE)
 )
 E(
     gsub(c("a", "b", "c"), c("x", "y"), "abc"),
-    P(c("xbc", "ayc", "abx"), warning="longer object length is not a multiple of shorter object length"),
+    P(c("xbc", "ayc", "abx"), warning=TRUE),
     bad=P(error=TRUE),
     bad=P("xbc", warning=TRUE)
 )

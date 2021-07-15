@@ -55,14 +55,11 @@ E(
     regexpr(c("a", "b"), c("aa", "b", "A"), fixed=TRUE, ignore.case=TRUE),
     better=P(
         structure(c(1L, 1L, 1L), match.length=c(1L, 1L, 1L)),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         structure(c(1L, -1L, -1L), match.length=c(1L, -1L, -1L)),
-        warning=c(
-            "argument 'ignore.case = TRUE' will be ignored",
-            "argument 'pattern' has length > 1 and only the first element will be used"
-        )
+        warning=TRUE
     )
 )
 
@@ -70,11 +67,11 @@ E(
     regexpr(c("a", "b"), c("aa", "b", "A"), fixed=FALSE, ignore.case=TRUE),
     better=P(
         structure(c(1L, 1L, 1L), match.length=c(1L, 1L, 1L)),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         structure(c(1L, -1L, 1L), match.length=c(1L, -1L, 1L)),
-        warning="argument 'pattern' has length > 1 and only the first element will be used"
+        warning=TRUE
     )
 )
 
@@ -142,7 +139,7 @@ E(
             structure(c(1L), match.length=c(1L)),
             structure(c(1L), match.length=c(1L))
         ),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         list(
@@ -150,10 +147,7 @@ E(
             structure(c(-1L), match.length=c(-1L)),
             structure(c(-1L), match.length=c(-1L))
         ),
-        warning=c(
-            "argument 'ignore.case = TRUE' will be ignored",
-            "argument 'pattern' has length > 1 and only the first element will be used"
-        )
+        warning=TRUE
     )
 )
 
@@ -165,7 +159,7 @@ E(
             structure(c(1L), match.length=c(1L)),
             structure(c(1L), match.length=c(1L))
         ),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         list(
@@ -173,9 +167,7 @@ E(
             structure(c(-1L), match.length=c(-1L)),
             structure(c(1L), match.length=c(1L))
         ),
-        warning=c(
-            "argument 'pattern' has length > 1 and only the first element will be used"
-        )
+        warning=TRUE
     )
 )
 
@@ -281,7 +273,7 @@ E(
             structure(c(1L), match.length=c(1L)),
             structure(c(1L), match.length=c(1L))
         ),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         list(
@@ -289,10 +281,7 @@ E(
             structure(c(-1L), match.length=c(-1L)),
             structure(c(-1L), match.length=c(-1L))
         ),
-        warning=c(
-            "argument 'ignore.case = TRUE' will be ignored",
-            "argument 'pattern' has length > 1 and only the first element will be used"
-        )
+        warning=TRUE
     )
 )
 
@@ -304,7 +293,7 @@ E(
             structure(c(1L), match.length=c(1L)),
             structure(c(1L), match.length=c(1L))
         ),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         list(
@@ -312,7 +301,7 @@ E(
             structure(c(-1L), match.length=c(-1L)),
             structure(c(1L), match.length=c(1L))
         ),
-        warning="argument 'pattern' has length > 1 and only the first element will be used"
+        warning=TRUE
     )
 )
 
@@ -326,7 +315,7 @@ E(
             structure(c(-1L, u=-1L, v=-1L, w=-1L), match.length=c(-1L, u=-1L, v=-1L, w=-1L)),
             structure(c(NA_integer_, x=NA_integer_, y=NA_integer_), match.length=c(NA_integer_, x=NA_integer_, y=NA_integer_))
         ),
-        warning=TRUE  # argument `perl` has no effect in stringx, longer object length is not a multiple of shorter object length
+        warning=NA  # argument `perl` has no effect in stringx, longer object length is not a multiple of shorter object length
     ),
     P(
         list(
@@ -336,7 +325,7 @@ E(
             structure(c(-1L, x=-1L, y=-1L), match.length=c(-1L, x=-1L, y=-1L)),
             structure(c(NA_integer_, x=NA_integer_, y=NA_integer_), match.length=c(NA_integer_, x=NA_integer_, y=NA_integer_))
         ),
-        warning="argument 'pattern' has length > 1 and only the first element will be used"
+        warning=TRUE
     ),
     worse=P(
         list(
@@ -346,7 +335,7 @@ E(
             structure(c(-1L), match.length=c(-1L)),
             structure(c(NA_integer_), match.length=c(NA_integer_))
         ),
-        warning="argument 'pattern' has length > 1 and only the first element will be used"
+        warning=TRUE
     )
 )
 
@@ -464,7 +453,7 @@ E(
             structure(cbind(1L), match.length=cbind(1L)),
             structure(cbind(1L), match.length=cbind(1L))
         ),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         list(
@@ -484,7 +473,7 @@ E(
             structure(cbind(1L), match.length=cbind(1L)),
             structure(cbind(1L), match.length=cbind(1L))
         ),
-        warning="longer object length is not a multiple of shorter object length"
+        warning=TRUE
     ),
     P(
         list(
@@ -516,7 +505,7 @@ E(
             structure(cbind(c(-1L, x=-1L, y=-1L)),                         match.length=cbind(c(-1L, x=-1L, y=-1L))),
             structure(cbind(c(NA_integer_, x=NA_integer_, y=NA_integer_)), match.length=cbind(c(NA_integer_, x=NA_integer_, y=NA_integer_)))
         ),
-        warning="argument 'pattern' has length > 1 and only the first element will be used"
+        warning=TRUE
     ),
     worse=P(
         list(
@@ -526,7 +515,7 @@ E(
             structure((c(-1L)),            match.length=(c(-1L))),
             structure((c(NA_integer_)),    match.length=(c(NA_integer_)))
         ),
-        warning="argument 'pattern' has length > 1 and only the first element will be used"
+        warning=TRUE
     )
 )
 

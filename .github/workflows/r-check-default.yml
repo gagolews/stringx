@@ -20,9 +20,9 @@ jobs:
     - name: Install stringx
       run: |
         LC_ALL="pl_PL.UTF-8" sudo R CMD INSTALL .
-    - name: Check stringx
-      run: |
-        LC_ALL="pl_PL.UTF-8" sudo make check
     - name: Test stringx
       run: |
         LC_ALL="pl_PL.UTF-8" sudo Rscript -e 'source("devel/realtest.R")'
+    - name: Check stringx
+      run: |
+        LC_ALL="pl_PL.UTF-8" sudo make check

@@ -20,7 +20,7 @@ E(paste0(), character(0))
 
 E(
     paste0(1:2, 1:3),
-    P(c("11", "22", "13"), warning="longer object length is not a multiple of shorter object length"),
+    P(c("11", "22", "13"), warning=TRUE),
     bad=c("11", "22", "13"),
     .comment="recycling rule warning"
 )

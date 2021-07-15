@@ -13,14 +13,14 @@ E(endsWith(c("a", "ab", "aba", "baba", NA, "a"), c("a", NA)), c(TRUE, NA, TRUE, 
 
 E(
     startsWith(c("a", "b"), c("a", "b", "c")),
-    P(c(TRUE, TRUE, FALSE), warning="longer object length is not a multiple of shorter object length"),
+    P(c(TRUE, TRUE, FALSE), warning=TRUE),
     bad=c(TRUE, TRUE, FALSE),
     .comment="recycling rule warning"
 )
 
 E(
     endsWith(c("a", "b", "c"), c("a", "b")),
-    P(c(TRUE, TRUE, FALSE), warning="longer object length is not a multiple of shorter object length"),
+    P(c(TRUE, TRUE, FALSE), warning=TRUE),
     bad=c(TRUE, TRUE, FALSE),
     .comment="recycling rule warning"
 )
@@ -35,14 +35,14 @@ E(endsWith(1, 1), TRUE, bad=P(error=TRUE))
 E(
     startsWith("ABABA", c("a", "ab", "aba", "baba", NA), ignore.case=TRUE),
     c(TRUE, TRUE, TRUE, FALSE, NA),
-    bad=P(error="unused argument (ignore.case = TRUE)"),
+    bad=P(error=TRUE),
     .comment="`grep` has `ignore.case` argument"
 )
 
 E(
     endsWith("ABABA", c("a", "ab", "aba", "baba", NA), ignore.case=TRUE),
     c(TRUE, FALSE, TRUE, TRUE, NA),
-    bad=P(error="unused argument (ignore.case = TRUE)"),
+    bad=P(error=TRUE),
     .comment="`grep` has `ignore.case` argument"
 )
 

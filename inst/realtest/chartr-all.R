@@ -52,6 +52,14 @@ E(
     bad=P("xixyjyckz")
 )
 
+E(
+    chartr("\u00DF\U0001D554aba", "SCXBA", as.matrix(c(a="\u00DFpam ba\U0001D554on spam", b=NA))),
+    as.matrix(c(a="SpAm BACon spAm", b=NA)),
+    bad=c(a="SpAm BACon spAm", b=NA),
+    worst=P(error=TRUE)
+)
+
+
 
 # PHP has strtr("abc", "ab", "bc") == "bcc"
 # Bioinformatics prefers "bcc" (actg strings etc.)

@@ -32,7 +32,7 @@ E(
 
 E(
     strftime(strptime(c("1905-1806", "1704-1603", "1502-1401"), c("%Y-%d%m", "%d%m-%Y")), "%Y-%m-%d"),
-    P(c("1905-06-18", "1603-04-17", "1502-01-14"), warning="longer object length is not a multiple of shorter object length"),
+    P(c("1905-06-18", "1603-04-17", "1502-01-14"), warning=TRUE),
     bad=c("1905-06-18", "1603-04-17", "1502-01-14"),
     .comment="recycling rule warning"
 )
@@ -63,7 +63,7 @@ E(strftime(c("1970-01-01"), c("%Y-%m-%d", "%Y")), c("1970-01-01", "1970"))
 
 E(
     strftime(c("1970-01-01", "2021-05-26"), c("%Y-%m-%d", "%Y", "%y")),
-    P(c("1970-01-01", "2021", "70"), warning="longer object length is not a multiple of shorter object length"),
+    P(c("1970-01-01", "2021", "70"), warning=TRUE),
     bad=P(c("1970-01-01", "2021", "70")),
     .comment="recycling rule warning"
 )
@@ -77,7 +77,7 @@ E(
 
 E(
     strftime(2021),
-    bad=P(error="'origin' must be supplied"),  # more specific - list first
+    bad=P(error="'origin' must be supplied"),  # more specific - list first - LANGUAGE="en" only though
     P(error=TRUE),
     .comment="uninformative error message"
 )

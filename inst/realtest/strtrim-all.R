@@ -79,7 +79,6 @@ E(
 
 E(
     strtrim(c(1111, 2222, 3333), 1:2),
-    P(c("1", "22", "3"), warning="longer object length is not a multiple of shorter object length"),
     P(c("1", "22", "3"), warning=TRUE),
     bad=c("1", "22", "3"),
     bad=P(error=TRUE),

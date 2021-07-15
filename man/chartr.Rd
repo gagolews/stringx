@@ -91,11 +91,10 @@ stringx::toupper("gro\u00DF")
 casefold("gro\u00DF")
 
 x <- as.matrix(c(a="\u00DFpam ba\U0001D554on spam", b=NA))
-base::chartr("\u00DF\U0001D554aba", "SCXBA", x)
-stringx::chartr("\u00DF\U0001D554aba", "SCXBA", x)
+chartr("\u00DF\U0001D554aba", "SCXBA", x)
 
-stringx::toupper('i', locale='en_US')
-stringx::toupper('i', locale='tr_TR')
+toupper('i', locale='en_US')
+toupper('i', locale='tr_TR')
 
 }
 \author{

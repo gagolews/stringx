@@ -57,7 +57,7 @@ E(grepl("a", c("a", "A", "b"), ignore.case=TRUE), c(TRUE, TRUE, FALSE))
 E(
     grepl("a", c("a", "A", "b"), ignore.case=TRUE, fixed=TRUE),
     c(TRUE, TRUE, FALSE),
-    bad=P(c(TRUE, FALSE, FALSE), warning="argument 'ignore.case = TRUE' will be ignored")
+    bad=P(c(TRUE, FALSE, FALSE), warning=TRUE)
 )
 
 E(grep("a", c("a", "A", "b")), c(1L))
@@ -66,7 +66,7 @@ E(grep("a", c("a", "A", "b"), ignore.case=TRUE), c(1L, 2L))
 E(
     grep("a", c("a", "A", "b"), ignore.case=TRUE, fixed=TRUE),
     c(1L, 2L),
-    bad=P(c(1L), warning="argument 'ignore.case = TRUE' will be ignored")
+    bad=P(c(1L), warning=TRUE)
 )
 
 E(grep("a", c("a", "A", "b"), value=TRUE), c("a"))
@@ -75,41 +75,41 @@ E(grep("a", c("a", "A", "b"), value=TRUE, ignore.case=TRUE), c("a", "A"))
 E(
     grep("a", c("a", "A", "b"), value=TRUE, ignore.case=TRUE, fixed=TRUE),
     c("a", "A"),
-    bad=P(c("a"), warning="argument 'ignore.case = TRUE' will be ignored")
+    bad=P(c("a"), warning=TRUE)
 )
 
 
 E(
     grepl(1:2, 1:3),
-    better=P(c(TRUE, TRUE, FALSE), warning="longer object length is not a multiple of shorter object length"),
-    P(c(TRUE, FALSE, FALSE), warning="argument 'pattern' has length > 1 and only the first element will be used")
+    better=P(c(TRUE, TRUE, FALSE), warning=TRUE),
+    P(c(TRUE, FALSE, FALSE), warning=TRUE)
 )
 E(
     grepl(1:2, 1:3, fixed=TRUE),
-    better=P(c(TRUE, TRUE, FALSE), warning="longer object length is not a multiple of shorter object length"),
-    P(c(TRUE, FALSE, FALSE), warning="argument 'pattern' has length > 1 and only the first element will be used")
+    better=P(c(TRUE, TRUE, FALSE), warning=TRUE),
+    P(c(TRUE, FALSE, FALSE), warning=TRUE)
 )
 
 E(
     grep(1:2, 1:3),
-    better=P(c(1L, 2L), warning="longer object length is not a multiple of shorter object length"),
-    P(c(1L), warning="argument 'pattern' has length > 1 and only the first element will be used")
+    better=P(c(1L, 2L), warning=TRUE),
+    P(c(1L), warning=TRUE)
 )
 E(
     grep(1:2, 1:3, fixed=TRUE),
-    better=P(c(1L, 2L), warning="longer object length is not a multiple of shorter object length"),
-    P(c(1L), warning="argument 'pattern' has length > 1 and only the first element will be used")
+    better=P(c(1L, 2L), warning=TRUE),
+    P(c(1L), warning=TRUE)
 )
 
 E(
     grep(1:2, 1:3, value=TRUE),
-    better=P(c("1", "2"), warning="longer object length is not a multiple of shorter object length"),
-    P(c("1"), warning="argument 'pattern' has length > 1 and only the first element will be used")
+    better=P(c("1", "2"), warning=TRUE),
+    P(c("1"), warning=TRUE)
 )
 E(
     grep(1:2, 1:3, value=TRUE, fixed=TRUE),
-    better=P(c("1", "2"), warning="longer object length is not a multiple of shorter object length"),
-    P(c("1"), warning="argument 'pattern' has length > 1 and only the first element will be used")
+    better=P(c("1", "2"), warning=TRUE),
+    P(c("1"), warning=TRUE)
 )
 
 
