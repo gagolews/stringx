@@ -303,17 +303,13 @@
 <span class="nf">casefold</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;gross&quot;</span>
 <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s">&quot;\u00DFpam ba\U0001D554on spam&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">NA</span><span class="p">))</span>
-<span class="n">base</span><span class="o">::</span><span class="nf">chartr</span><span class="p">(</span><span class="s">&quot;\u00DF\U0001D554aba&quot;</span><span class="p">,</span> <span class="s">&quot;SCXBA&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nf">chartr</span><span class="p">(</span><span class="s">&quot;\u00DF\U0001D554aba&quot;</span><span class="p">,</span> <span class="s">&quot;SCXBA&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="c1">##   [,1]             </span>
 <span class="c1">## a &quot;SpAm BACon spAm&quot;</span>
 <span class="c1">## b NA</span>
-<span class="n">stringx</span><span class="o">::</span><span class="nf">chartr</span><span class="p">(</span><span class="s">&quot;\u00DF\U0001D554aba&quot;</span><span class="p">,</span> <span class="s">&quot;SCXBA&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="c1">##   [,1]             </span>
-<span class="c1">## a &quot;SpAm BACon spAm&quot;</span>
-<span class="c1">## b NA</span>
-<span class="n">stringx</span><span class="o">::</span><span class="nf">toupper</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="nf">toupper</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&#39;en_US&#39;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;I&quot;</span>
-<span class="n">stringx</span><span class="o">::</span><span class="nf">toupper</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&#39;tr_TR&#39;</span><span class="p">)</span>
+<span class="nf">toupper</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&#39;tr_TR&#39;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;İ&quot;</span>
 </pre></div>
 </div>
@@ -336,7 +332,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-07-15T12:13:39+1000.
+        Last updated on 2021-07-15T13:36:59+1000.
       </span>
 
     </p>
