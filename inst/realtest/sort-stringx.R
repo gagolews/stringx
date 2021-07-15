@@ -1,5 +1,6 @@
 x <- c("2", "1", "10", NA, "10")
 E(sort(x, numeric=TRUE), c("1", "2", "10", "10"))
 E(sort(x, numeric=TRUE, na.last=TRUE), c("1", "2", "10", "10", NA))
-E(xtfrm(x, numeric=TRUE), c(2L, 1L, 3L, NA, 3L))
+E(xtfrm2(x, numeric=TRUE), c(2L, 1L, 3L, NA, 3L))
+E(xtfrm2(as.integer(x)), as.integer(x))
 E(xtfrm(as.integer(x)), as.integer(x))

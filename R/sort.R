@@ -24,9 +24,9 @@
 #' algorithm to arrange strings in a vector with regards to a
 #' chosen lexicographic order.
 #'
-#' \code{xtfrm} generates an integer vector that sorts in the same way
-#' as its input, and hence can be used in conjunction with
-#' \code{\link[base]{order}} or \code{\link[base]{rank}}.
+#' \code{xtfrm2} and [DEPRECATED] \code{xtfrm} generate an integer vector
+#' that sort in the same way as its input, and hence can be used
+#' in conjunction with \code{\link[base]{order}} or \code{\link[base]{rank}}.
 #'
 #' @details
 #' What 'xtfrm' stands for the current author does not know,
@@ -50,7 +50,8 @@
 #'     \bold{[fixed here]}
 #' \item \code{xtfrm} does not support customisation of the linear ordering
 #'     relation it is based upon
-#'     \bold{[fixed by introducing \code{...} argument to the generic]}
+#'     \bold{[fixed by introducing \code{...} argument to the new
+#'     generic, \code{xtfrm2}]}
 #' \item Neither \code{\link[base]{order}}, \code{\link[base]{rank}}, nor
 #'     \code{\link[base]{sort.list}} is a generic, therefore
 #'     they should have to be rewritten from scratch to allow the inclusion of
@@ -102,7 +103,7 @@
 #' the \code{names} attribute preserved. Note that the output vector
 #' may be shorter than the input one.
 #'
-#' \code{xtfrm.character} returns an integer vector;
+#' \code{xtfrm2.character} and \code{xtfrm.character} return an integer vector;
 #' most attributes are preserved.
 #'
 #'
@@ -110,33 +111,33 @@
 #' x <- c("a1", "a100", "a101", "a1000", "a10", "a10", "a11", "a99", "a10", "a1")
 #' base::sort.default(x)   # lexicographic sort
 #' sort(x, numeric=TRUE)   # calls stringx:::sort.character
-#' xtfrm(x, numeric=TRUE)  # calls stringx:::xtfrm.character
+#' xtfrm2(x, numeric=TRUE)  # calls stringx:::xtfrm2.character
 #'
-#' rank(xtfrm(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
-#' order(xtfrm(x, numeric=TRUE))    # ordering permutation
-#' x[order(xtfrm(x, numeric=TRUE))] # equivalent to sort()
+#' rank(xtfrm2(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
+#' order(xtfrm2(x, numeric=TRUE))    # ordering permutation
+#' x[order(xtfrm2(x, numeric=TRUE))] # equivalent to sort()
 #'
 #' # order a data frame w.r.t. decreasing ids and increasing vals
 #' d <- data.frame(vals=round(runif(length(x)), 1), ids=x)
-#' d[order(-xtfrm(d[["ids"]], numeric=TRUE), d[["vals"]]), ]
+#' d[order(-xtfrm2(d[["ids"]], numeric=TRUE), d[["vals"]]), ]
 #'
 #'
 #' @seealso
 #' Related function(s): \code{\link{strcoll}}
 #'
 #' @rdname sort
-xtfrm <- function(x, ...) UseMethod("xtfrm")
-# we need to overload the built-in C-level dispatcher
-# because it only supports 1 argument and does not recognise
+xtfrm2 <- function(x, ...) UseMethod("xtfrm2")
+# base xtfrm only supports 1 argument and does not recognise
 # the method overloaded for objects of class 'character'
 
 
 #' @rdname sort
-xtfrm.default <- function(x, ...) base::xtfrm.default(x)
+xtfrm2.default <- function(x, ...) base::xtfrm.default(x)
+
 
 
 #' @rdname sort
-xtfrm.character <- function(
+xtfrm2.character <- function(
     x,
     ...,
     locale=NULL,
@@ -162,6 +163,18 @@ xtfrm.character <- function(
     )
     .attribs_propagate_unary(ret, x)
 }
+
+
+#' @rdname sort
+xtfrm <- function(x) UseMethod("xtfrm")
+# we need to overload the built-in C-level dispatcher because it does not
+# recognise the method overloaded for objects of class 'character'
+
+#' @rdname sort
+xtfrm.default <- function(x) base::xtfrm.default(x)
+
+#' @rdname sort
+xtfrm.character <- function(x) xtfrm2.character(x)  # default arguments
 
 
 #' @rdname sort

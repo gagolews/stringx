@@ -4,18 +4,18 @@
 
 The `sort` method for objects of class `character` (`sort.character`) uses the locale-sensitive Unicode collation algorithm to arrange strings in a vector with regards to a chosen lexicographic order.
 
-`xtfrm` generates an integer vector that sorts in the same way as its input, and hence can be used in conjunction with [`order`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html) or [`rank`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html).
+`xtfrm2` and \[DEPRECATED\] `xtfrm` generate an integer vector that sort in the same way as its input, and hence can be used in conjunction with [`order`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html) or [`rank`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html).
 
 ## Usage
 
 ```r
-xtfrm(x, ...)
+xtfrm2(x, ...)
 
 ## Default S3 method:
-xtfrm(x, ...)
+xtfrm2(x, ...)
 
 ## S3 method for class 'character'
-xtfrm(
+xtfrm2(
   x,
   ...,
   locale = NULL,
@@ -27,6 +27,14 @@ xtfrm(
   normalisation = FALSE,
   numeric = FALSE
 )
+
+xtfrm(x)
+
+## Default S3 method:
+xtfrm(x)
+
+## S3 method for class 'character'
+xtfrm(x)
 
 ## S3 method for class 'character'
 sort(
@@ -70,7 +78,7 @@ What \'xtfrm\' stands for the current author does not know, but would appreciate
 
 `sort.character` returns a character vector, with only the `names` attribute preserved. Note that the output vector may be shorter than the input one.
 
-`xtfrm.character` returns an integer vector; most attributes are preserved.
+`xtfrm2.character` and `xtfrm.character` return an integer vector; most attributes are preserved.
 
 ## Differences from Base R
 
@@ -80,7 +88,7 @@ Replacements for the default S3 methods [`sort`](https://stat.ethz.ch/R-manual/R
 
 -   Overloading `xtfrm.character` has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. Thus, we needed to replace the generic `xtfrm` with the one that calls [`UseMethod`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html) **\[fixed here\]**
 
--   `xtfrm` does not support customisation of the linear ordering relation it is based upon **\[fixed by introducing `...` argument to the generic\]**
+-   `xtfrm` does not support customisation of the linear ordering relation it is based upon **\[fixed by introducing `...` argument to the new generic, `xtfrm2`\]**
 
 -   Neither [`order`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html), [`rank`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html), nor [`sort.list`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sort.list.html) is a generic, therefore they should have to be rewritten from scratch to allow the inclusion of our patches; interestingly, `order` even calls `xtfrm`, but only for classed objects **\[not fixed here -- see Examples for a workaround\]**
 
@@ -113,18 +121,18 @@ base::sort.default(x)   # lexicographic sort
 sort(x, numeric=TRUE)   # calls stringx:::sort.character
 ##  [1] "a1"    "a1"    "a10"   "a10"   "a10"   "a11"   "a99"   "a100"  "a101" 
 ## [10] "a1000"
-xtfrm(x, numeric=TRUE)  # calls stringx:::xtfrm.character
+xtfrm2(x, numeric=TRUE)  # calls stringx:::xtfrm2.character
 ##  [1]  1  8  9 10  3  3  6  7  3  1
-rank(xtfrm(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
+rank(xtfrm2(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
 ##  [1]  1.5  8.0  9.0 10.0  4.0  4.0  6.0  7.0  4.0  1.5
-order(xtfrm(x, numeric=TRUE))    # ordering permutation
+order(xtfrm2(x, numeric=TRUE))    # ordering permutation
 ##  [1]  1 10  5  6  9  7  8  2  3  4
-x[order(xtfrm(x, numeric=TRUE))] # equivalent to sort()
+x[order(xtfrm2(x, numeric=TRUE))] # equivalent to sort()
 ##  [1] "a1"    "a1"    "a10"   "a10"   "a10"   "a11"   "a99"   "a100"  "a101" 
 ## [10] "a1000"
 # order a data frame w.r.t. decreasing ids and increasing vals
 d <- data.frame(vals=round(runif(length(x)), 1), ids=x)
-d[order(-xtfrm(d[["ids"]], numeric=TRUE), d[["vals"]]), ]
+d[order(-xtfrm2(d[["ids"]], numeric=TRUE), d[["vals"]]), ]
 ##    vals   ids
 ## 4   0.9 a1000
 ## 3   0.4  a101

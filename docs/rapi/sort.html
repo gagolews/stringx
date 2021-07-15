@@ -213,17 +213,17 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">sort</span></code> method for objects of class <code class="docutils literal notranslate"><span class="pre">character</span></code> (<code class="docutils literal notranslate"><span class="pre">sort.character</span></code>) uses the locale-sensitive Unicode collation algorithm to arrange strings in a vector with regards to a chosen lexicographic order.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> generates an integer vector that sorts in the same way as its input, and hence can be used in conjunction with <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html"><code class="docutils literal notranslate"><span class="pre">order</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html"><code class="docutils literal notranslate"><span class="pre">rank</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xtfrm2</span></code> and [DEPRECATED] <code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> generate an integer vector that sort in the same way as its input, and hence can be used in conjunction with <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html"><code class="docutils literal notranslate"><span class="pre">order</span></code></a> or <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html"><code class="docutils literal notranslate"><span class="pre">rank</span></code></a>.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">xtfrm2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
 
 <span class="c1">## Default S3 method:</span>
-<span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+<span class="nf">xtfrm2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
 
 <span class="c1">## S3 method for class &#39;character&#39;</span>
-<span class="nf">xtfrm</span><span class="p">(</span>
+<span class="nf">xtfrm2</span><span class="p">(</span>
   <span class="n">x</span><span class="p">,</span>
   <span class="kc">...</span><span class="p">,</span>
   <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
@@ -235,6 +235,14 @@
   <span class="n">normalisation</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
   <span class="n">numeric</span> <span class="o">=</span> <span class="kc">FALSE</span>
 <span class="p">)</span>
+
+<span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">## Default S3 method:</span>
+<span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">## S3 method for class &#39;character&#39;</span>
+<span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1">## S3 method for class &#39;character&#39;</span>
 <span class="nf">sort</span><span class="p">(</span>
@@ -309,7 +317,7 @@
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">sort.character</span></code> returns a character vector, with only the <code class="docutils literal notranslate"><span class="pre">names</span></code> attribute preserved. Note that the output vector may be shorter than the input one.</p>
-<p><code class="docutils literal notranslate"><span class="pre">xtfrm.character</span></code> returns an integer vector; most attributes are preserved.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xtfrm2.character</span></code> and <code class="docutils literal notranslate"><span class="pre">xtfrm.character</span></code> return an integer vector; most attributes are preserved.</p>
 </div>
 <div class="section" id="differences-from-base-r">
 <h2>Differences from Base R<a class="headerlink" href="#differences-from-base-r" title="Permalink to this headline">¶</a></h2>
@@ -317,7 +325,7 @@
 <ul class="simple">
 <li><p>Collation in different locales is difficult and non-portable across platforms <strong>[fixed here – using services provided by ICU]</strong></p></li>
 <li><p>Overloading <code class="docutils literal notranslate"><span class="pre">xtfrm.character</span></code> has no effect in R, because S3 method dispatch is done internally with hard-coded support for character arguments. Thus, we needed to replace the generic <code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> with the one that calls <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/UseMethod.html"><code class="docutils literal notranslate"><span class="pre">UseMethod</span></code></a> <strong>[fixed here]</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> does not support customisation of the linear ordering relation it is based upon <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">...</span></code> argument to the generic]</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> does not support customisation of the linear ordering relation it is based upon <strong>[fixed by introducing <code class="docutils literal notranslate"><span class="pre">...</span></code> argument to the new generic, <code class="docutils literal notranslate"><span class="pre">xtfrm2</span></code>]</strong></p></li>
 <li><p>Neither <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/order.html"><code class="docutils literal notranslate"><span class="pre">order</span></code></a>, <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/rank.html"><code class="docutils literal notranslate"><span class="pre">rank</span></code></a>, nor <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/sort.list.html"><code class="docutils literal notranslate"><span class="pre">sort.list</span></code></a> is a generic, therefore they should have to be rewritten from scratch to allow the inclusion of our patches; interestingly, <code class="docutils literal notranslate"><span class="pre">order</span></code> even calls <code class="docutils literal notranslate"><span class="pre">xtfrm</span></code>, but only for classed objects <strong>[not fixed here – see Examples for a workaround]</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">xtfrm</span></code> for objects of type <code class="docutils literal notranslate"><span class="pre">character</span></code> does not preserve the names attribute (but does so for <code class="docutils literal notranslate"><span class="pre">numeric</span></code>) <strong>[fixed here]</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sort</span></code> seems to preserve only the names attribute which makes sense if <code class="docutils literal notranslate"><span class="pre">na.last</span></code> is <code class="docutils literal notranslate"><span class="pre">NA</span></code>, because the resulting vector might be shorter <strong>[not fixed here as it would break compatibility with other sorting methods]</strong></p></li>
@@ -342,18 +350,18 @@
 <span class="nf">sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>   <span class="c1"># calls stringx:::sort.character</span>
 <span class="c1">##  [1] &quot;a1&quot;    &quot;a1&quot;    &quot;a10&quot;   &quot;a10&quot;   &quot;a10&quot;   &quot;a11&quot;   &quot;a99&quot;   &quot;a100&quot;  &quot;a101&quot; </span>
 <span class="c1">## [10] &quot;a1000&quot;</span>
-<span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># calls stringx:::xtfrm.character</span>
+<span class="nf">xtfrm2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># calls stringx:::xtfrm2.character</span>
 <span class="c1">##  [1]  1  8  9 10  3  3  6  7  3  1</span>
-<span class="nf">rank</span><span class="p">(</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span> <span class="n">ties.method</span><span class="o">=</span><span class="s">&quot;average&quot;</span><span class="p">)</span>  <span class="c1"># ranks with averaged ties</span>
+<span class="nf">rank</span><span class="p">(</span><span class="nf">xtfrm2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span> <span class="n">ties.method</span><span class="o">=</span><span class="s">&quot;average&quot;</span><span class="p">)</span>  <span class="c1"># ranks with averaged ties</span>
 <span class="c1">##  [1]  1.5  8.0  9.0 10.0  4.0  4.0  6.0  7.0  4.0  1.5</span>
-<span class="nf">order</span><span class="p">(</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>    <span class="c1"># ordering permutation</span>
+<span class="nf">order</span><span class="p">(</span><span class="nf">xtfrm2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>    <span class="c1"># ordering permutation</span>
 <span class="c1">##  [1]  1 10  5  6  9  7  8  2  3  4</span>
-<span class="n">x</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))]</span> <span class="c1"># equivalent to sort()</span>
+<span class="n">x</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="nf">xtfrm2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))]</span> <span class="c1"># equivalent to sort()</span>
 <span class="c1">##  [1] &quot;a1&quot;    &quot;a1&quot;    &quot;a10&quot;   &quot;a10&quot;   &quot;a10&quot;   &quot;a11&quot;   &quot;a99&quot;   &quot;a100&quot;  &quot;a101&quot; </span>
 <span class="c1">## [10] &quot;a1000&quot;</span>
 <span class="c1"># order a data frame w.r.t. decreasing ids and increasing vals</span>
 <span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vals</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="nf">runif</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="m">1</span><span class="p">),</span> <span class="n">ids</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="n">d</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="o">-</span><span class="nf">xtfrm</span><span class="p">(</span><span class="n">d</span><span class="p">[[</span><span class="s">&quot;ids&quot;</span><span class="p">]],</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span> <span class="n">d</span><span class="p">[[</span><span class="s">&quot;vals&quot;</span><span class="p">]]),</span> <span class="p">]</span>
+<span class="n">d</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="o">-</span><span class="nf">xtfrm2</span><span class="p">(</span><span class="n">d</span><span class="p">[[</span><span class="s">&quot;ids&quot;</span><span class="p">]],</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span> <span class="n">d</span><span class="p">[[</span><span class="s">&quot;vals&quot;</span><span class="p">]]),</span> <span class="p">]</span>
 <span class="c1">##    vals   ids</span>
 <span class="c1">## 4   0.9 a1000</span>
 <span class="c1">## 3   0.4  a101</span>
@@ -386,7 +394,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-07-15T11:02:44+1000.
+        Last updated on 2021-07-15T12:13:39+1000.
       </span>
 
     </p>
