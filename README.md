@@ -1,8 +1,6 @@
-# **stringx**
+# [**stringx**](https://stringx.gagolewski.com/)
 
-## Drop-in replacements for base [R](https://www.r-project.org/) string functions powered by *[stringi](https://stringi.gagolewski.com/)*
-
---------------------------------------------------------------------------------
+### Drop-in replacements for base [R](https://www.r-project.org/) string functions powered by *[stringi](https://stringi.gagolewski.com/)*
 
 > English is the native language for only 5% of the World population.
 > Also, only 17% of us can understand this text. Moreover, the Latin alphabet

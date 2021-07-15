@@ -1,0 +1,28 @@
+name: stringx for R
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get -y upgrade
+        sudo apt-get -y install libcurl4-openssl-dev r-base-dev devscripts libicu-dev language-pack-pl
+        sudo Rscript -e "install.packages(c('realtest', 'stringi'))"
+    - name: Install stringx
+      run: |
+        LC_ALL="pl_PL.UTF-8" sudo make r
+    - name: Test stringx
+      run: |
+        LC_ALL="pl_PL.UTF-8" sudo make realtest
+    - name: Check stringx
+      run: |
+        LC_ALL="pl_PL.UTF-8" sudo make check
