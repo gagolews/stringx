@@ -1,6 +1,11 @@
 # What Is New in *stringx*
 
 
+## 0.1.2 (2021-07-27)
+
+* First CRAN release.
+
+
 ## 0.1.1 (2021-07-15)
 
 * [GENERAL] On-line manual is available at https://stringx.gagolewski.com.
