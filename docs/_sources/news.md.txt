@@ -3,12 +3,12 @@
 
 ## 0.1.2 (2021-07-27)
 
-* First CRAN release.
+* First [CRAN](https://cran.r-project.org/package=stringx) release.
 
 
 ## 0.1.1 (2021-07-15)
 
-* [GENERAL] On-line manual is available at https://stringx.gagolewski.com.
+* [GENERAL] [On-line manual](https://stringx.gagolewski.com) is now available.
 
 * [GENERAL] Using [*realtest*](https://realtest.gagolewski.com)
   for documenting base R behaviour, unit testing, and desired outcomes.

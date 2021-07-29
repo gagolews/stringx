@@ -42,7 +42,7 @@ processing in any locale that relies on
 
 **Homepage**: https://stringx.gagolewski.com
 
-**CRAN Entry**: TODO
+**CRAN Entry**: https://cran.r-project.org/package=stringx
 
 **License**:
 *stringx* is distributed under the terms of the GNU General Public License,

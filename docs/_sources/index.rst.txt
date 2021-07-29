@@ -48,6 +48,7 @@ Also, a few new, useful operations are introduced.
 
 .. code-block:: r
 
+    install.packages("stringx")  # install from CRAN
     suppressMessages(library("stringx"))
 
     c("ACTGCT", "42", "stringx \U0001f970") |> grepv2("\\p{EMOJI_PRESENTATION}")
@@ -90,7 +91,8 @@ processing in any locale that relies on
 `ICU – International Components for Unicode <http://site.icu-project.org/>`_.
 
 *stringx*'s source code is hosted on
-`GitHub <https://github.com/gagolews/stringx>`_.
+`GitHub <https://github.com/gagolews/stringx>`_ and official releases
+are available on `CRAN <https://cran.r-project.org/package=stringx>`_.
 It is distributed under the terms of the GNU General Public License,
 either Version 2 or Version 3, see
 `license <https://raw.githubusercontent.com/gagolews/stringx/master/LICENSE>`_.
@@ -119,10 +121,10 @@ either Version 2 or Version 3, see
 
     Source Code (GitHub) <https://github.com/gagolews/stringx>
     Bug Tracker and Feature Suggestions <https://github.com/gagolews/stringx/issues>
+    CRAN Entry <https://cran.r-project.org/package=stringx>
     Author's Homepage <https://www.gagolewski.com/>
     news.md
 
 ..  COMMENT
-    CRAN Entry <https://cran.r-project.org/web/packages/stringx/>
     .. |downloads1| image:: https://cranlogs.r-pkg.org/badges/grand-total/stringx
     .. |downloads2| image:: https://cranlogs.r-pkg.org/badges/last-month/stringx
