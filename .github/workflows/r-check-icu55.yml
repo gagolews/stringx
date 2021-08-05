@@ -20,10 +20,12 @@ jobs:
         sudo Rscript -e "install.packages(c('realtest', 'roxygen2'))"
     - name: Install stringx
       run: |
-        LC_ALL="pl_PL.UTF-8" sudo R CMD INSTALL .
+        sudo R CMD INSTALL .
     - name: Test stringx
       run: |
-        LC_ALL="pl_PL.UTF-8" sudo Rscript -e 'source("devel/realtest.R")'
+        LC_ALL="pl_PL.UTF-8" sudo make test
+        LC_ALL="C" sudo make test
     - name: Check stringx
       run: |
         LC_ALL="pl_PL.UTF-8" sudo make check
+        LC_ALL="C" sudo make check

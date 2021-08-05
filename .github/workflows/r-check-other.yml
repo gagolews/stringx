@@ -1,6 +1,11 @@
 # based on https://raw.githubusercontent.com/tidyverse/dplyr/master/.github/workflows/R-CMD-check.yaml
-on: workflow_dispatch
 name: stringx for R (check on other platforms)
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   R-CMD-check:

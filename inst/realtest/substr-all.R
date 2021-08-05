@@ -79,20 +79,23 @@ E(
     `substr<-`(x, 1, 4, value="j\u0105m"),
     c("j\u0105m, spam, bacon, and spam", "j\u0105m and spam"),
     bad=c("j\u0105mm, spam, bacon, and spam", "j\u0105ms and spam"),
-    worst=c("jamm, spam, bacon, and spam", "jams and spam")
+    worst=c("jamm, spam, bacon, and spam", "jams and spam"),
+    worst=c("j<U+, spam, bacon, and spam", "j<U+ and spam")
 )
 
 E(
     `substr<-`(x, 1, 4, value="pe\u0105r"),
     c("pe\u0105r, spam, bacon, and spam", "pe\u0105r and spam"),
-    worst=c("pear, spam, bacon, and spam", "pear and spam")
+    worst=c("pear, spam, bacon, and spam", "pear and spam"),
+    worst=c("pe<U, spam, bacon, and spam", "pe<U and spam")
 )
 
 E(
     `substr<-`(x, 1, 4, value="p\u00f3rridge"),
     c("p\u00f3rridge, spam, bacon, and spam", "p\u00f3rridge and spam"),
     bad=c("p\u00f3rr, spam, bacon, and spam", "p\u00f3rr and spam"),
-    worst=c("porr, spam, bacon, and spam", "porr and spam")
+    worst=c("porr, spam, bacon, and spam", "porr and spam"),
+    worst=c("p<U+, spam, bacon, and spam", "p<U+ and spam")
 )
 
 E(

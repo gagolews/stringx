@@ -19,5 +19,14 @@ E(gsub("(.*)", "\\1", "(.*)", fixed=FALSE), "(.*)")
 E(sub("(.*)", "\\1", "(.*)", fixed=FALSE), "(.*)")
 
 x <- c("mario", "Mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario", NA)
-E(sub2(x, "mario", "X", fixed=NA, strength=1L), `[<-`(x, c(1, 2, 3, 4), "X"))
-E(sub2(x, "mario", "X", fixed=NA, strength=2L), `[<-`(x, c(1, 2), "X"))
+E(
+    sub2(x, "mario", "X", fixed=NA, strength=1L),
+    `[<-`(x, c(1, 2, 3, 4), "X"),
+    bad=`[<-`(x, 1, "X")  # C locale
+)
+
+E(
+    sub2(x, "mario", "X", fixed=NA, strength=2L),
+    `[<-`(x, c(1, 2), "X"),
+    bad=`[<-`(x, 1, "X")  # C locale
+)
