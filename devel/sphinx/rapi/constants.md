@@ -4,7 +4,7 @@
 
 Letters and digits sets complementing the built-in `LETTERS` and `letters`, see [Constants](https://stat.ethz.ch/R-manual/R-devel/library/base/help/Constants.html).
 
-Note: calling, e.g., [`tolower`](chartr.md) on `LETTERS_FRAK` does not currently yield `letters_frak`.
+Note: calling, e.g., [`tolower`](chartr.md) on `LETTERS_FRAK` in the current version of <span class="pkg">ICU</span> does not currently yield `letters_frak`.
 
 ## Usage
 

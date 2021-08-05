@@ -1,6 +1,13 @@
 # What Is New in *stringx*
 
 
+## 0.1.3 (2021-08-05)
+
+* [BUGFIX] #4: Fixed failing check with ICU 55.
+
+* [BUGFIX] #5: Fixed failing check under POSIX/C locale.
+
+
 ## 0.1.2 (2021-07-27)
 
 * First [CRAN](https://cran.r-project.org/package=stringx) release.

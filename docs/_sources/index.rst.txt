@@ -29,8 +29,8 @@ processing to bioinformatics. It also gives powerful
 means to represent or transfer unstructured data.
 
 **stringx brings R string processing abilities into the 21st century.**
-It replaces functions like `paste`, `grep`, `tolower`, `strftime`,
-and `sprintf` with ones that:
+It replaces functions like ``paste()``, ``grep()``, ``tolower()``,
+``strftime()``, and ``sprintf()`` with ones that:
 
 *   support a wide range of languages and scripts and
     fully conform to `Unicode <https://www.unicode.org/>`_ standards
@@ -42,7 +42,7 @@ and `sprintf` with ones that:
     with other procedures, etc.;
     they are all thoroughly documented in this online manual,
     happy reading! 🤓),
-*   are more forward-pipe (`|>` or `magrittr::%>%`) operator-friendly.
+*   are more forward-pipe (``|>`` or ``magrittr::%>%``) operator-friendly.
 
 Also, a few new, useful operations are introduced.
 

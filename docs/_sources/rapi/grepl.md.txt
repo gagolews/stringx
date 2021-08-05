@@ -107,23 +107,23 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`strsplit`](strs
 
 ```r
 x <- c("abc", "1237", "\U0001f602", "\U0001f603", "stringx\U0001f970", NA)
-grepl2(x, "\\p{EMOJI_PRESENTATION}")
-## [1] FALSE FALSE  TRUE  TRUE  TRUE    NA
-which(grepl2(x, "\\p{EMOJI_PRESENTATION}"))  # like grep
-## [1] 3 4 5
-# at least 1 letter, digit, or emoji:
-p <- c("\\p{L}", "\\p{N}", "\\p{EMOJI_PRESENTATION}")
+grepl2(x, "\\p{L}")
+## [1]  TRUE FALSE FALSE FALSE  TRUE    NA
+which(grepl2(x, "\\p{L}"))  # like grep
+## [1] 1 5
+# at least 1 letter or digit:
+p <- c("\\p{L}", "\\p{N}")
 `dimnames<-`(outer(x, p, grepl2), list(x, p))
-##           \\p{L} \\p{N} \\p{EMOJI_PRESENTATION}
-## abc         TRUE  FALSE                   FALSE
-## 1237       FALSE   TRUE                   FALSE
-## 😂         FALSE  FALSE                    TRUE
-## 😃         FALSE  FALSE                    TRUE
-## stringx🥰   TRUE  FALSE                    TRUE
-## <NA>          NA     NA                      NA
-x |> grepv2("\\p{EMOJI_PRESENTATION}")
-## [1] "😂"        "😃"        "stringx🥰"
-grepv2(x, "\\p{EMOJI_PRESENTATION}", invert=TRUE) <- "\U0001F496"
+##           \\p{L} \\p{N}
+## abc         TRUE  FALSE
+## 1237       FALSE   TRUE
+## 😂         FALSE  FALSE
+## 😃         FALSE  FALSE
+## stringx🥰   TRUE  FALSE
+## <NA>          NA     NA
+x |> grepv2("\\p{L}")
+## [1] "abc"       "stringx🥰"
+grepv2(x, "\\p{L}", invert=TRUE) <- "\U0001F496"
 print(x)
-## [1] "💖"        "💖"        "😂"        "😃"        "stringx🥰" NA
+## [1] "abc"       "💖"        "💖"        "💖"        "stringx🥰" NA
 ```
