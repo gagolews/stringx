@@ -114,7 +114,7 @@ strwrap <- function(
     initial=prefix,
     locale=NULL
 ) {
-    if (!is.character(x)) x <- as.character(x)         # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
 
     ret <- stringi::stri_wrap(
         x,

@@ -123,7 +123,7 @@ strsplit <- function(x, pattern=split, ..., ignore_case=ignore.case, fixed=FALSE
     if (!isFALSE(useBytes)) warning("argument `useBytes` has no effect in stringx")
     if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
 
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))

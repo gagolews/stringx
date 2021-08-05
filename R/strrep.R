@@ -81,8 +81,8 @@
 #' @rdname strrep
 strrep <- function(x, times)
 {
-    if (!is.character(x)) x <- as.character(x)          # S3 generics, you do you
-    if (!is.numeric(times)) times <- as.numeric(times)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.numeric(times)) times <- as.numeric(times)
     ret <- stringi::stri_dup(x, times)
     .attribs_propagate_binary(ret, x, times)
 }
@@ -91,8 +91,8 @@ strrep <- function(x, times)
 #' @rdname strrep
 `%x*%` <- function(e1, e2)
 {
-    if (!is.character(e1)) e1 <- as.character(e1)  # S3 generics, you do you
-    if (!is.numeric(e2)) e2 <- as.numeric(e2)      # S3 generics, you do you
+    if (!is.character(e1)) e1 <- as.character(e1)
+    if (!is.numeric(e2)) e2 <- as.numeric(e2)
     ret <- stringi::stri_dup(e1, e2)
     .attribs_propagate_binary(ret, e1, e2)
 }

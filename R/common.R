@@ -15,27 +15,18 @@
 ## a copy of the GNU General Public License along with this program.
 
 
-# we are often outputting character vectors,
+# We are often outputting character vectors,
 # hence, some assumptions are made below.
 
-# if a function is vectorised wrt 2 arguments, it should
-# preserve the attributes of both inputs (if of the same length)
+# If a function is vectorised wrt 2 arguments, it should
+# preserve the attributes of both inputs (if of the same length).
 
 
-# string functions: character vectors in, character vector out
-# in !is.character on input, then converted with...
-# as.character()? (note that the default method drops all attributes)
-
-# the type designers themselves should define the semantics
-# which attributes they would like to preserve?
-
-# character vectors in, logical/numeric out -- a different story
-# names, dim, dimnames - yes
-# tsp - ?
-
-# char in, list out -- are all vector-like
-# char in, classed out (e.g., POSIXct) -- special treatment, ideally, there should be some constructor
-
+# String functions: character vectors in, character vector out
+# if !is.character on input, then converted with
+# as.character() (note that the default method drops all attributes);
+# the class designers themselves should define the semantics
+# which attributes they would like to preserve.
 
 # x <- list(
 #     c(a="a", b="b"),

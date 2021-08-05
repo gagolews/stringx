@@ -54,7 +54,8 @@
 #'
 #' @param pattern,old single string
 #'
-#' @param replacement,new single string, preferably of the same length as \code{old}
+#' @param replacement,new single string,
+#'     preferably of the same length as \code{old}
 #'
 #' @param upper single logical value; switches between case folding
 #'    (the default, \code{NA}), lower-, and upper-case
@@ -97,7 +98,7 @@
 #' @rdname chartr
 strtrans <- function(x, transform)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     ret <- stringi::stri_trans_general(x, transform)
     .attribs_propagate_unary(ret, x)
 }
@@ -107,7 +108,7 @@ strtrans <- function(x, transform)
 #' @rdname chartr
 chartr2 <- function(x, pattern, replacement)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     ret <- stringi::stri_trans_char(x, pattern, replacement)
     .attribs_propagate_unary(ret, x)
 }
@@ -123,7 +124,7 @@ chartr <- function(old, new, x)
 #' @rdname chartr
 tolower <- function(x, locale=NULL)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     ret <- stringi::stri_trans_tolower(x, locale=locale)
     .attribs_propagate_unary(ret, x)
 }
@@ -132,7 +133,7 @@ tolower <- function(x, locale=NULL)
 #' @rdname chartr
 toupper <- function(x, locale=NULL)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     ret <- stringi::stri_trans_toupper(x, locale=locale)
     .attribs_propagate_unary(ret, x)
 }
@@ -141,7 +142,7 @@ toupper <- function(x, locale=NULL)
 #' @rdname chartr
 casefold <- function(x, upper=NA)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     ret <- {
         if (isTRUE(upper)) stringx::toupper(x)
         else if (isFALSE(upper)) stringx::tolower(x)

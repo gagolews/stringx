@@ -29,7 +29,8 @@ specifier, see \code{\link[stringi]{stri_trans_list}}}
 
 \item{pattern, old}{single string}
 
-\item{replacement, new}{single string, preferably of the same length as \code{old}}
+\item{replacement, new}{single string,
+preferably of the same length as \code{old}}
 
 \item{locale}{\code{NULL} or \code{""} for the default locale
 (see \code{\link[stringi]{stri_locale_get}})

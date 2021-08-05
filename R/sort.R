@@ -149,7 +149,7 @@ xtfrm2.character <- function(
     normalisation=FALSE,
     numeric=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     ret <- stringi::stri_rank(
         x,
         locale=locale,
@@ -192,7 +192,7 @@ sort.character <- function(
     normalisation=FALSE,
     numeric=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
 
     idx <- stringi::stri_order(
         x,

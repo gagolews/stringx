@@ -150,8 +150,8 @@ grepl2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, invert=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
     stopifnot(is.logical(invert) && length(invert) == 1L && !is.na(invert))
@@ -178,7 +178,7 @@ grepv2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, invert=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
     # pattern will be taken care of by grepl2
 
@@ -196,11 +196,11 @@ grepv2 <- function(
     ignore_case=FALSE, fixed=FALSE, invert=FALSE,
     value
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     x[] <- stringi::stri_enc_toutf8(x)  # to UTF-8 and preserve attributes
     # pattern will be taken care of by grepl2
 
-    if (!is.character(value)) value <- as.character(value)    # S3 generics, you do you
+    if (!is.character(value)) value <- as.character(value)
     value[] <- stringi::stri_enc_toutf8(value)  # to UTF-8 and preserve attributes
 
     idx <- grepl2(x, pattern, ..., ignore_case=ignore_case, fixed=fixed, invert=invert)

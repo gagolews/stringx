@@ -166,7 +166,7 @@
 #' @rdname substr
 substr <- function(x, start=1L, stop=-1L)
 {
-    if (!is.character(x))   x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x))   x <- as.character(x)
     if (!is.numeric(start)) start <- as.numeric(start)
     if (!is.numeric(stop))  stop  <- as.numeric(stop)
 
@@ -178,7 +178,7 @@ substr <- function(x, start=1L, stop=-1L)
 #' @rdname substr
 substrl <- function(x, start=1L, length=attr(start, "match.length"), ignore_negative_length=FALSE)
 {
-    if (!is.character(x))    x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x))    x <- as.character(x)
     if (!is.numeric(start))  start <- as.numeric(start)
     if (!is.numeric(length)) length <- as.numeric(length)
 
@@ -192,7 +192,7 @@ substrl <- function(x, start=1L, length=attr(start, "match.length"), ignore_nega
 #' @rdname substr
 `substr<-` <- function(x, start=1L, stop=-1L, value)
 {
-    if (!is.character(x))     x     <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x))     x     <- as.character(x)
     if (!is.numeric(start))   start <- as.numeric(start)
     if (!is.numeric(stop))    stop  <- as.numeric(stop)
     if (!is.character(value)) value <- as.character(value)
@@ -205,7 +205,7 @@ substrl <- function(x, start=1L, length=attr(start, "match.length"), ignore_nega
 #' @rdname substr
 `substrl<-` <- function(x, start=1L, length=attr(start, "match.length"), value)
 {
-    if (!is.character(x))     x      <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x))     x      <- as.character(x)
     if (!is.numeric(start))   start  <- as.numeric(start)
     if (!is.numeric(length))  length <- as.numeric(length)
     if (!is.character(value)) value  <- as.character(value)
@@ -220,7 +220,7 @@ substrl <- function(x, start=1L, length=attr(start, "match.length"), ignore_nega
 #' @rdname substr
 gsubstr <- function(x, start=list(1L), stop=list(-1L))
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     if (!is.list(start))  start <- as.list(start)
     if (!is.list(stop))   stop  <- as.list(stop)
 
@@ -232,7 +232,7 @@ gsubstr <- function(x, start=list(1L), stop=list(-1L))
 #' @rdname substr
 gsubstrl <- function(x, start=list(1L), length=lapply(start, attr, "match.length"), ignore_negative_length=TRUE)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     if (!is.list(start))  start <- as.list(start)
     if (!is.list(length)) length  <- as.list(length)
 
@@ -244,7 +244,7 @@ gsubstrl <- function(x, start=list(1L), length=lapply(start, attr, "match.length
 #' @rdname substr
 `gsubstr<-` <- function(x, start=list(1L), stop=list(-1L), value)
 {
-    if (!is.character(x))     x     <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x))     x     <- as.character(x)
     if (!is.list(start))      start <- as.list(start)
     if (!is.list(stop))       stop  <- as.list(stop)
     if (!is.list(value))      value <- as.list(value)
@@ -257,7 +257,7 @@ gsubstrl <- function(x, start=list(1L), length=lapply(start, attr, "match.length
 #' @rdname substr
 `gsubstrl<-` <- function(x, start=list(1L), length=lapply(start, attr, "match.length"), value)
 {
-    if (!is.character(x))     x      <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x))     x      <- as.character(x)
     if (!is.list(start))      start  <- as.list(start)
     if (!is.list(length))     length <- as.list(length)
     if (!is.list(value))      value  <- as.list(value)

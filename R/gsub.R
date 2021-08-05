@@ -140,7 +140,7 @@ sub2 <- function(
     x, pattern, replacement, ...,
     ignore_case=FALSE, fixed=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     if (!is.character(pattern)) pattern <- as.character(pattern)
     if (!is.character(replacement)) replacement <- as.character(replacement)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
@@ -168,7 +168,7 @@ gsub2 <- function(
     x, pattern, replacement, ...,
     ignore_case=FALSE, fixed=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     if (!is.character(pattern)) pattern <- as.character(pattern)
     if (!is.character(replacement)) replacement <- as.character(replacement)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
@@ -195,7 +195,7 @@ gsub2 <- function(
 .convert_replacement_icu <- function(r)
 {
     if (!is.character(r)) r <- as.character(r)
-    stringi::stri_replace_rstr(r)  # unexported function
+    stringi::stri_replace_rstr(r)
 }
 
 

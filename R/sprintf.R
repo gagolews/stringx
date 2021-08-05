@@ -113,7 +113,7 @@
 #' @rdname sprintf
 sprintf <- function(fmt, ..., na_string=NA_character_)
 {
-    if (!is.character(fmt)) fmt <- as.character(fmt)  # S3 generics, you do you
+    if (!is.character(fmt)) fmt <- as.character(fmt)
 
     # args in `...` will be converted to integer, real, character depending on fmt
     # we don't do the 'if (is.xxx(x)) as.xxx(x)' thing here;
@@ -134,7 +134,7 @@ sprintf <- function(fmt, ..., na_string=NA_character_)
 #' @rdname sprintf
 printf <- function(fmt, ..., file="", sep="\n", append=FALSE, na_string="NA")
 {
-    if (!is.character(fmt)) fmt <- as.character(fmt)  # S3 generics, you do you
+    if (!is.character(fmt)) fmt <- as.character(fmt)
 
     stringi::stri_printf(
         fmt,

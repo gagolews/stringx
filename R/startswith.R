@@ -101,8 +101,8 @@ startsWith <- function(x, pattern=prefix, ..., ignore_case=ignore.case, fixed=TR
     if (!missing(ignore.case) && !missing(ignore_case)) stop("do not use [DEPRECATED] `ignore.case` if `ignore_case` is given as well")
     if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
 
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
@@ -130,8 +130,8 @@ endsWith <- function(x, pattern=suffix, ..., ignore_case=ignore.case, fixed=TRUE
     if (!missing(ignore.case) && !missing(ignore_case)) stop("do not use [DEPRECATED] `ignore.case` if `ignore_case` is given as well")
     if (any(is.na(...names()))) stop("further arguments can only be passed as keywords")
 
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 

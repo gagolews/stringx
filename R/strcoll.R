@@ -99,8 +99,8 @@ strcoll <- function(
     normalisation=FALSE,
     numeric=FALSE
 ) {
-    if (!is.character(e1)) e1 <- as.character(e1)  # S3 generics, you do you
-    if (!is.character(e2)) e2 <- as.character(e2)  # S3 generics, you do you
+    if (!is.character(e1)) e1 <- as.character(e1)
+    if (!is.character(e2)) e2 <- as.character(e2)
     ret <- stringi::stri_cmp(
         e1,
         e2,

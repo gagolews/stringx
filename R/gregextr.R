@@ -119,7 +119,7 @@ regextr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, capture_groups=FALSE
 ) {
-    if (!is.character(x))       x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     stopifnot(is.logical(capture_groups) && length(capture_groups) == 1L && !is.na(capture_groups))
 
     if (capture_groups) {
@@ -140,7 +140,7 @@ gregextr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, capture_groups=FALSE
 ) {
-    if (!is.character(x))       x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     stopifnot(is.logical(capture_groups) && length(capture_groups) == 1L && !is.na(capture_groups))
 
     if (capture_groups) {
@@ -164,7 +164,7 @@ gregextr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, value
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     if (!is.character(pattern)) pattern <- as.character(pattern)
     if (!is.character(value))   value <- as.character(value)
 
@@ -183,7 +183,7 @@ gregextr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE, value
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x))       x <- as.character(x)
     if (!is.character(pattern)) pattern <- as.character(pattern)
     if (!is.list(value))        value <- as.list(value)
 

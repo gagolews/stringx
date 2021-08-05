@@ -88,7 +88,7 @@
 nchar <- function(x, type="chars", allowNA=FALSE, keepNA=TRUE)
 {
     if (!isFALSE(allowNA)) warning("argument `allowNA` has no effect in stringx")
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
 
     ret <- if (identical(type, "chars"))
         stringi::stri_length(x)
@@ -110,7 +110,7 @@ nchar <- function(x, type="chars", allowNA=FALSE, keepNA=TRUE)
 #' @rdname nchar
 nzchar <- function(x, keepNA=TRUE)
 {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     ret <- !stringi::stri_isempty(x)
 
     if (isFALSE(keepNA) && length(ret) > 0)

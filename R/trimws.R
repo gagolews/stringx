@@ -80,7 +80,7 @@ trimws <- function(x, which="both", whitespace="\\p{Wspace}")
 
     which <- match.arg(which, c("both", "left", "right"))  # less non-standard eval
 
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
 
     if (which == "left")
         pattern <- stringi::stri_sprintf("^[%1$s]+", whitespace)

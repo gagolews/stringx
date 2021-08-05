@@ -70,7 +70,8 @@ Letters and digits sets complementing the built-in
 \code{LETTERS} and \code{letters}, see \link[base]{Constants}.
 
 Note: calling, e.g., \code{\link{tolower}} on \code{LETTERS_FRAK}
-does not currently yield \code{letters_frak}.
+in the current version of \pkg{ICU} does not currently yield
+\code{letters_frak}.
 }
 \examples{
 letters_bb

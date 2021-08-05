@@ -50,7 +50,8 @@
 #'
 #' @description
 #' Note: calling, e.g., \code{\link{tolower}} on \code{LETTERS_FRAK}
-#' does not currently yield \code{letters_frak}.
+#' in the current version of \pkg{ICU} does not currently yield
+#' \code{letters_frak}.
 #'
 #' @format Decimal digits
 #' @rdname constants

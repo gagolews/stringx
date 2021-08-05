@@ -80,8 +80,8 @@
 #' @rdname strtrim
 strtrim <- function(x, width)
 {
-    if (!is.character(x)) x <- as.character(x)          # S3 generics, you do you
-    if (!is.numeric(width)) width <- as.numeric(width)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.numeric(width)) width <- as.numeric(width)
     ret <- stringi::stri_sprintf("%.*s", width, x, use_length=FALSE)
     .attribs_propagate_binary(ret, x, width)
 }

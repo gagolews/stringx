@@ -171,7 +171,7 @@
 paste <- function(..., sep=" ", collapse=NULL, recycle0=FALSE)
 {
     args <- lapply(list(...), function(x) {
-        if (!is.character(x)) as.character(x)  # S3 generics, you do you
+        if (!is.character(x)) as.character(x)
         else x
     })
 
@@ -194,8 +194,8 @@ paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 #' @rdname paste
 `%x+%` <- function(e1, e2)
 {
-    if (!is.character(e1)) e1 <- as.character(e1)  # S3 generics, you do you
-    if (!is.character(e2)) e2 <- as.character(e2)  # S3 generics, you do you
+    if (!is.character(e1)) e1 <- as.character(e1)
+    if (!is.character(e2)) e2 <- as.character(e2)
     ret <- stringi::`%s+%`(e1, e2)
     .attribs_propagate_binary(ret, e1, e2)
 }
@@ -203,7 +203,7 @@ paste0 <- function(..., sep="", collapse=NULL, recycle0=FALSE)
 
 #' @rdname paste
 strcat <- function(x, collapse="", na.rm=FALSE) {
-    if (!is.character(x)) x <- as.character(x)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
     stringi::stri_flatten(
         x,
         collapse=collapse,

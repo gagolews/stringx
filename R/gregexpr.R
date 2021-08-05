@@ -159,8 +159,8 @@ regexpr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
@@ -189,8 +189,8 @@ gregexpr2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
@@ -224,8 +224,8 @@ regexec2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
@@ -319,8 +319,8 @@ gregexec2 <- function(
     x, pattern, ...,
     ignore_case=FALSE, fixed=FALSE
 ) {
-    if (!is.character(x)) x <- as.character(x)    # S3 generics, you do you
-    if (!is.character(pattern)) pattern <- as.character(pattern)  # S3 generics, you do you
+    if (!is.character(x)) x <- as.character(x)
+    if (!is.character(pattern)) pattern <- as.character(pattern)
     stopifnot(is.logical(fixed) && length(fixed) == 1L)  # can be NA
     stopifnot(is.logical(ignore_case) && length(ignore_case) == 1L && !is.na(ignore_case))
 
