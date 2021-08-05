@@ -8,8 +8,26 @@ E(endsWith(x, "mario", fixed=NA), c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)
 E(startsWith(x, "mario", ignore_case=TRUE), c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA))
 E(endsWith(x, "mario", ignore_case=TRUE), c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA))
 
-E(startsWith(x, "mario", fixed=NA, ignore_case=TRUE), c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA))
-E(endsWith(x, "mario", fixed=NA, ignore_case=TRUE), c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA))
+E(
+    startsWith(x, "mario", fixed=NA, ignore_case=TRUE),
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
+)
 
-E(startsWith(x, "mario", fixed=NA, strength=1L), c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA))
-E(endsWith(x, "mario", fixed=NA, strength=1L), c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA))
+E(
+    endsWith(x, "mario", fixed=NA, ignore_case=TRUE),
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
+)
+
+E(
+    startsWith(x, "mario", fixed=NA, strength=1L),
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
+)
+
+E(
+    endsWith(x, "mario", fixed=NA, strength=1L),
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
+)

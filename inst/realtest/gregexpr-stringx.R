@@ -17,12 +17,14 @@ E(
 
 E(
     regexpr2(x, "mario", fixed=NA, ignore_case=TRUE)!=-1L,
-    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )
 
 E(
     regexpr2(x, "mario", fixed=NA, strength=1L)!=-1L,
-    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )
 
 
@@ -43,30 +45,36 @@ E(
 
 E(
     unlist(gregexpr2(x, "mario", fixed=NA, ignore_case=TRUE))!=-1L,
-    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )
 
 E(
     unlist(gregexpr2(x, "mario", fixed=NA, strength=1L))!=-1L,
-    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )
 
 E(
     unlist(regexec2(x, "mario", fixed=NA, ignore_case=TRUE))!=-1L,
-    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )
 
 E(
     unlist(regexec2(x, "mario", fixed=NA, strength=1L))!=-1L,
-    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )
 
 E(
     unlist(gregexec2(x, "mario", fixed=NA, ignore_case=TRUE))!=-1L,
-    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )
 
 E(
     unlist(gregexec2(x, "mario", fixed=NA, strength=1L))!=-1L,
-    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)
+    c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA),
+    bad=c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, NA)  # C locale
 )

@@ -125,7 +125,7 @@ and \code{\link[stringi]{stri_replace_all}}, respectively.
 }
 
 \examples{
-"change \U0001f602 me \U0001f603" |> gsub2("\\\\p{EMOJI_PRESENTATION}", "O_O")
+"change \U0001f602 me \U0001f603" |> gsub2("\\\\p{L}+", "O_O")
 
 x <- c("mario", "Mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario", NA)
 sub2(x, "mario", "M\u00E1rio", fixed=NA, strength=1L)

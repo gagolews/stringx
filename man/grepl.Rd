@@ -145,15 +145,15 @@ implemented with \code{\link[stringi]{stri_detect}}.
 
 \examples{
 x <- c("abc", "1237", "\U0001f602", "\U0001f603", "stringx\U0001f970", NA)
-grepl2(x, "\\\\p{EMOJI_PRESENTATION}")
-which(grepl2(x, "\\\\p{EMOJI_PRESENTATION}"))  # like grep
+grepl2(x, "\\\\p{L}")
+which(grepl2(x, "\\\\p{L}"))  # like grep
 
-# at least 1 letter, digit, or emoji:
-p <- c("\\\\p{L}", "\\\\p{N}", "\\\\p{EMOJI_PRESENTATION}")
+# at least 1 letter or digit:
+p <- c("\\\\p{L}", "\\\\p{N}")
 `dimnames<-`(outer(x, p, grepl2), list(x, p))
 
-x |> grepv2("\\\\p{EMOJI_PRESENTATION}")
-grepv2(x, "\\\\p{EMOJI_PRESENTATION}", invert=TRUE) <- "\U0001F496"
+x |> grepv2("\\\\p{L}")
+grepv2(x, "\\\\p{L}", invert=TRUE) <- "\U0001F496"
 print(x)
 
 }

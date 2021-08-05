@@ -83,7 +83,7 @@ E(
 )
 
 
-t <- ISOdate(2021, 05, 27)
+t <- ISOdatetime(2021, 05, 27, 12, 0, 0)  # default time zone
 
 E(
     strftime(t),

@@ -1,4 +1,4 @@
-t <- structure(ISOdate(2021, 05, 27), names="t")
+t <- structure(ISOdatetime(2021, 05, 27, 12, 0, 0), names="t")  # default time zone
 
 # different calendar/locale - easy with stringx:
 
@@ -16,6 +16,9 @@ E(
     strftime(t, "%A", locale="de-DE"),
     c(t="Donnerstag")
 )
+
+
+t <- structure(ISOdatetime(2021, 05, 27, 12, 0, 0, tz="GMT"), names="t")
 
 E(
     strftime(t, "%H:%M:%S", tz="UTC", usetz=TRUE),

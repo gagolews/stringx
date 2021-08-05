@@ -39,13 +39,15 @@ E(
 E(
     nchar(x, "width", keepNA=FALSE),
     c(1L, 0L, 2L, 1L, 8L, 6L, 2L, 2L),
-    bad=c(1L, 0L, 2L, 1L, 8L, 6L, 2L, 4L)
+    bad=c(1L, 0L, 2L, 1L, 8L, 6L, 2L, 4L),
+    bad=c(1L, 0L, 2L, 1L, 8L, 6L, 2L, 3L)
 )
 
 E(
     nchar(x, "width", keepNA=TRUE),
     c(1L, 0L, NA, 1L, 8L, 6L, 2L, 2L),
-    bad=c(1L, 0L, NA, 1L, 8L, 6L, 2L, 4L)
+    bad=c(1L, 0L, NA, 1L, 8L, 6L, 2L, 4L),
+    bad=c(1L, 0L, NA, 1L, 8L, 6L, 2L, 3L)
 )
 
 E(

@@ -18,8 +18,16 @@ x <- c("mario", "Mario M\u00E1rio M\u00C1RIO Mar\u00EDa Marios", "Rosario", NA)
 E(regextr2(x, "mario", ignore_case=TRUE, fixed=TRUE), c("mario", "Mario", NA, NA))
 E(gregextr2(x, "mario", ignore_case=TRUE, fixed=TRUE), list("mario", c("Mario", "Mario"), character(0), NA_character_))
 
-E(regextr2(x, "mario", fixed=NA, strength=1L), c("mario", "Mario", NA, NA))
-E(gregextr2(x, "mario", fixed=NA, strength=1L), list("mario", c("Mario", "M\u00E1rio", "M\u00C1RIO", "Mario"), character(0), NA_character_))
+E(
+    regextr2(x, "mario", fixed=NA, strength=1L),
+    c("mario", "Mario", NA, NA),
+    bad=c("mario", NA, NA, NA)  # C locale
+)
+E(
+    gregextr2(x, "mario", fixed=NA, strength=1L),
+    list("mario", c("Mario", "M\u00E1rio", "M\u00C1RIO", "Mario"), character(0), NA_character_),
+    bad=list("mario", character(0), character(0), NA_character_)  # C locale
+)
 
 E(regextr2(x, "m(?<a>[a\u00E1])rio(?<plural>s)?", ignore_case=TRUE), c("mario", "Mario", NA, NA))
 E(gregextr2(x, "m(?<a>[a\u00E1])rio(?<plural>s)?", ignore_case=TRUE), list("mario", c("Mario", "M\u00E1rio", "M\u00C1RIO", "Marios"), character(0), NA_character_))
@@ -44,7 +52,11 @@ E(
     )
 )
 
-E(regextr2(x, "mario", fixed=NA, strength=1L, capture_groups=TRUE), list("mario", "Mario", NA_character_, NA_character_))
+E(
+    regextr2(x, "mario", fixed=NA, strength=1L, capture_groups=TRUE),
+    list("mario", "Mario", NA_character_, NA_character_),
+    bad=list("mario", NA_character_, NA_character_, NA_character_)  # C locale
+)
 
 E(
     gregextr2(x, "mario", fixed=NA, strength=1L, capture_groups=TRUE),
@@ -53,7 +65,13 @@ E(
         cbind("Mario", "M\u00E1rio", "M\u00C1RIO", "Mario"),
         cbind(NA_character_)[, -1, drop=FALSE],
         cbind(NA_character_)
-    )
+    ),
+    bad=list(
+        cbind("mario"),
+        cbind(NA_character_)[, -1, drop=FALSE],
+        cbind(NA_character_)[, -1, drop=FALSE],
+        cbind(NA_character_)
+    )  # C locale
 )
 
 E(`regextr2<-`(x, "[mM]\\w+", value="x"), c("x", "x M\u00E1rio M\u00C1RIO Mar\u00EDa Marios", "Rosario", NA))
