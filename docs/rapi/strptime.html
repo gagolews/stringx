@@ -252,6 +252,9 @@
 <span class="c1">## Default S3 method:</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tz</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
 
+<span class="c1">## S3 method for class &#39;POSIXxt&#39;</span>
+<span class="nf">as.Date</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+
 <span class="c1">## S3 method for class &#39;Date&#39;</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
 
@@ -288,7 +291,7 @@
 <td><p>character vector of date-time format specifiers, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_fstr.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_fstr</span></code></a>; e.g., <code class="docutils literal notranslate"><span class="pre">&quot;%Y-%m-%d&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;datetime_full&quot;</span></code>; the default conforms to the ISO 8601 guideline</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tz</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default time zone (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_set.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_get</span></code></a>) or a single string with a timezone identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_list.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_list</span></code></a>; note that when <code class="docutils literal notranslate"><span class="pre">x</span></code> is equipped with <code class="docutils literal notranslate"><span class="pre">tzone</span></code> attribute, this datum is used; <code class="docutils literal notranslate"><span class="pre">as.POSIXxt.character</span></code> treats dates as being at midnight UTC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default time zone (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_set.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_get</span></code></a>) or a single string with a timezone identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_list.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_list</span></code></a>; note that when <code class="docutils literal notranslate"><span class="pre">x</span></code> is equipped with <code class="docutils literal notranslate"><span class="pre">tzone</span></code> attribute, this datum is used; <code class="docutils literal notranslate"><span class="pre">as.POSIXxt.character</span></code> treats dates as being at midnight local time</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lenient</span></code></p></td>
 <td><p>single logical value; should date/time parsing be lenient?</p></td>
@@ -311,6 +314,7 @@
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
 <p>Note that the ISO 8601 guideline suggests a year-month-day date format and a 24-hour time format always indicating the effective time zone, e.g., <code class="docutils literal notranslate"><span class="pre">2015-12-31T23:59:59+0100</span></code>. This is so as to avoid ambiguity.</p>
+<p>When parsing strings, <span class="pkg">ICU</span> fills the ‘blanks’ with current date/time, the skipped ‘<code class="docutils literal notranslate"><span class="pre">%s</span></code>’ part will be replaced by the current seconds at ‘now’.</p>
 </div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
@@ -328,8 +332,8 @@
 <li><p>only the names attribute in <code class="docutils literal notranslate"><span class="pre">x</span></code> is propagated <strong>[fixed here]</strong></p></li>
 <li><p>partial recycling with no warning <strong>[fixed here]</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strptime</span></code> returns an object of class <code class="docutils literal notranslate"><span class="pre">POSIXlt</span></code>, which is not the most convenient to work with, e.g., when including in data frames <strong>[fixed here]</strong></p></li>
-<li><p>Ideally, there should be only one class to represent dates and one to represent date/time; <code class="docutils literal notranslate"><span class="pre">POSIXlt</span></code> is no longer needed as we have <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_fields.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_fields</span></code></a>; our new <code class="docutils literal notranslate"><span class="pre">POSIXxt</span></code> class aims to solve the underlying problems with <code class="docutils literal notranslate"><span class="pre">POSIXct</span></code>’s not being consistent with regards to working in different time zones. <strong>[partially fixed here]</strong></p></li>
-<li><p>dates without times are not always treated as being at midnight UTC (despite that being stated in the help page for <code class="docutils literal notranslate"><span class="pre">as.POSIXct</span></code>) <strong>[fixed here]</strong></p></li>
+<li><p>Ideally, there should be only one class to represent dates and one to represent date/time; <code class="docutils literal notranslate"><span class="pre">POSIXlt</span></code> is no longer needed as we have <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_fields.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_fields</span></code></a>; our new <code class="docutils literal notranslate"><span class="pre">POSIXxt</span></code> class aims to solve the underlying problems with <code class="docutils literal notranslate"><span class="pre">POSIXct</span></code>’s not being consistent with regards to working in different time zones and dates (see, e.g., <code class="docutils literal notranslate"><span class="pre">as.Date(as.POSIXct(strftime(Sys.Date())))</span></code>) <strong>[addressed here]</strong></p></li>
+<li><p>dates without times are not always treated as being at midnight (despite that being stated in the help page for <code class="docutils literal notranslate"><span class="pre">as.POSIXct</span></code>) <strong>[fixed here]</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strftime</span></code> does not honour the <code class="docutils literal notranslate"><span class="pre">tzone</span></code> attribute, which is used whilst displaying time (via <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/format.html"><code class="docutils literal notranslate"><span class="pre">format</span></code></a>) <strong>[fixed here]</strong></p></li>
 </ul>
 </div>
@@ -345,26 +349,28 @@
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">())</span>  <span class="c1"># default format - ISO 8601</span>
-<span class="c1">## [1] &quot;2021-08-27T15:17:53+1000&quot;</span>
+<span class="c1">## [1] &quot;2021-08-27T16:19:45+1000&quot;</span>
 <span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;date_full&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">,</span> <span class="s">&quot;date_relative_short&quot;</span><span class="p">,</span> <span class="s">&quot;datetime_full&quot;</span><span class="p">)</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="n">f</span><span class="p">)</span>  <span class="c1"># current default locale</span>
 <span class="c1">## [1] &quot;Friday, 27 August 2021&quot;                                               </span>
 <span class="c1">## [2] &quot;2021-08-27&quot;                                                           </span>
 <span class="c1">## [3] &quot;today&quot;                                                                </span>
-<span class="c1">## [4] &quot;Friday, 27 August 2021 at 3:17:53 pm Australian Eastern Standard Time&quot;</span>
+<span class="c1">## [4] &quot;Friday, 27 August 2021 at 4:19:45 pm Australian Eastern Standard Time&quot;</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="n">f</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;Freitag, 27. August 2021&quot;                                       </span>
 <span class="c1">## [2] &quot;2021-08-27&quot;                                                     </span>
 <span class="c1">## [3] &quot;heute&quot;                                                          </span>
-<span class="c1">## [4] &quot;Freitag, 27. August 2021 um 15:17:53 Ostaustralische Normalzeit&quot;</span>
+<span class="c1">## [4] &quot;Freitag, 27. August 2021 um 16:19:45 Ostaustralische Normalzeit&quot;</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="s">&quot;date_short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;19 Elul 5781&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01 00:00:00&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s">&quot;GMT&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T00:00:00+0000&quot;</span>
+<span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">)</span>  <span class="c1"># missing time info replaced with current</span>
+<span class="c1">## [1] &quot;1970-01-01T16:19:45+1000&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;14 Nisan 5703&quot;</span><span class="p">,</span> <span class="s">&quot;date_short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;1943-04-19T15:17:53+1000&quot;</span>
+<span class="c1">## [1] &quot;1943-04-19T16:19:45+1000&quot;</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;1970-01-01T00:00:00+0000&quot;</span>
+<span class="c1">## [1] &quot;1970-01-01T00:00:00+1000&quot;</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970/01/01 12:00&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T12:00:00+1000&quot;</span>
 </pre></div>
@@ -388,7 +394,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-08-27T15:17:59+1000.
+        Last updated on 2021-08-27T16:19:50+1000.
       </span>
 
     </p>

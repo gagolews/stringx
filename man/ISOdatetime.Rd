@@ -25,7 +25,7 @@ ISOdate(
   hour = 0L,
   min = 0L,
   sec = 0L,
-  tz = "UTC",
+  tz = "",
   lenient = FALSE,
   locale = NULL
 )
@@ -61,9 +61,6 @@ No attributes are preserved (because they are too many).
 from numeric representations.
 \code{Sys.time} returns current time.
 }
-\details{
-Dates are treated as being at midnight UTC.
-}
 \section{Differences from Base R}{
 
 Replacements for base \code{\link[base]{ISOdatetime}}
@@ -71,7 +68,7 @@ and \code{\link[base]{ISOdate}} implemented with
 \code{\link[stringi]{stri_datetime_create}}.
 
 \itemize{
-\item \code{ISOdate} does not treat dates as being at midnight UTC
+\item \code{ISOdate} does not treat dates as being at midnight
     by default \bold{[fixed here]}
 }
 }

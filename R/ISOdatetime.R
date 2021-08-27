@@ -25,9 +25,6 @@
 #' from numeric representations.
 #' \code{Sys.time} returns current time.
 #'
-#' @details
-#' Dates are treated as being at midnight UTC.
-#'
 #'
 #' @section Differences from Base R:
 #' Replacements for base \code{\link[base]{ISOdatetime}}
@@ -35,7 +32,7 @@
 #' \code{\link[stringi]{stri_datetime_create}}.
 #'
 #' \itemize{
-#' \item \code{ISOdate} does not treat dates as being at midnight UTC
+#' \item \code{ISOdate} does not treat dates as being at midnight
 #'     by default \bold{[fixed here]}
 #' }
 #'
@@ -91,7 +88,7 @@ ISOdatetime <- function(
 #' @rdname ISOdatetime
 ISOdate <- function(
     year, month, day,
-    hour=0L, min=0L, sec=0L, tz="UTC", lenient=FALSE, locale=NULL
+    hour=0L, min=0L, sec=0L, tz="", lenient=FALSE, locale=NULL
 ) {
     ISOdatetime(year, month, day, hour, min, sec, tz, lenient, locale)
 }
@@ -101,4 +98,3 @@ ISOdate <- function(
 Sys.time <- function() {
     as.POSIXxt(stringi::stri_datetime_now())
 }
-

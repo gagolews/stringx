@@ -43,6 +43,10 @@
 #' time zone, e.g., \code{2015-12-31T23:59:59+0100}. This is so as to avoid
 #' ambiguity.
 #'
+#' When parsing strings, \pkg{ICU} fills the `blanks` with current date/time,
+#' the skipped '\code{\%s}' part will be replaced by the current seconds at
+#' 'now'.
+#'
 #'
 #' @section Differences from Base R:
 #' Replacements for base \code{\link[base]{strptime}}
@@ -74,9 +78,10 @@
 #'     \code{\link[stringi]{stri_datetime_fields}};
 #'     our new \code{POSIXxt} class aims to solve the underlying problems
 #'     with \code{POSIXct}'s not being consistent with regards to
-#'     working in different time zones.
-#'     \bold{[partially fixed here]}
-#' \item dates without times are not always treated as being at midnight UTC
+#'     working in different time zones and dates
+#'     (see, e.g., \code{as.Date(as.POSIXct(strftime(Sys.Date())))})
+#'     \bold{[addressed here]}
+#' \item dates without times are not always treated as being at midnight
 #'     (despite that being stated in the help page for \code{as.POSIXct})
 #'     \bold{[fixed here]}
 #' \item \code{strftime} does not honour the \code{tzone} attribute,
@@ -97,7 +102,7 @@
 #'    see \code{\link[stringi]{stri_timezone_list}};
 #'    note that when \code{x} is equipped with \code{tzone} attribute,
 #'    this datum is used;
-#'    \code{as.POSIXxt.character} treats dates as being at midnight UTC
+#'    \code{as.POSIXxt.character} treats dates as being at midnight local time
 #'
 #' @param usetz not used (with a warning if attempting to do so) [DEPRECATED]
 #'
@@ -142,6 +147,7 @@
 #' strftime(Sys.time(), f, locale="de_DE")
 #' strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 #' strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
+#' strptime("1970-01-01", "%Y-%m-%d")  # missing time info replaced with current
 #' strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
 #' as.POSIXxt("1970-01-01")
 #' as.POSIXxt("1970/01/01 12:00")
@@ -243,11 +249,39 @@ as.POSIXxt.default <- function(x, tz="", ...)
     x
 }
 
+
+#' @rdname strptime
+as.Date.POSIXxt <- function(x, ...)
+{
+    if (!is.POSIXxt(x)) x <- as.POSIXxt(x)
+
+    x_date_str <- strftime(x, "%Y-%m-%d")
+    x_utc <- strptime(paste0(x_date_str, " 00:00:00"), "%Y-%m-%d %H:%M:%S", tz="UTC")
+
+    structure(
+        `attributes<-`(
+            floor(unclass(x_utc)/86400),
+            attributes(x)
+        ),
+        class="Date",
+        tzone=NULL
+    )
+}
+
+
 #' @rdname strptime
 as.POSIXxt.Date <- function(x, ...)
 {
     if (!inherits(x, "Date")) x <- as.Date(x)
-    structure(unclass(x) * 86400, class=c("POSIXxt", "POSIXct", "POSIXt"), tzone="UTC")
+
+    x_time_utc <- structure(unclass(x) * 86400, class=c("POSIXxt", "POSIXct", "POSIXt"), tzone="UTC")
+
+    ret <- strptime(
+        paste0(strftime(x_time_utc, "%Y-%m-%d"), " 00:00:00"),
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+    `attributes<-`(floor(unclass(ret)), attributes(ret))
 }
 
 
@@ -276,7 +310,7 @@ as.POSIXxt.character <- function(
             ret <- strptime(
                 paste0(x, suffix),
                 format=fmt,
-                tz=if(suffix == " 00:00:00" && tz == "") "UTC" else tz,
+                tz=tz,
                 lenient=lenient,
                 locale=locale
             )

@@ -9,6 +9,7 @@
 \alias{as.POSIXxt}
 \alias{as.POSIXxt.POSIXt}
 \alias{as.POSIXxt.default}
+\alias{as.Date.POSIXxt}
 \alias{as.POSIXxt.Date}
 \alias{as.POSIXxt.character}
 \alias{Ops.POSIXxt}
@@ -45,6 +46,8 @@ as.POSIXxt(x, tz = "", ...)
 
 \method{as.POSIXxt}{default}(x, tz = "", ...)
 
+\method{as.Date}{POSIXxt}(x, ...)
+
 \method{as.POSIXxt}{Date}(x, ...)
 
 \method{as.POSIXxt}{character}(x, tz = "", format = NULL, ..., lenient = FALSE, locale = NULL)
@@ -75,7 +78,7 @@ or a single string with a timezone identifier,
 see \code{\link[stringi]{stri_timezone_list}};
 note that when \code{x} is equipped with \code{tzone} attribute,
 this datum is used;
-\code{as.POSIXxt.character} treats dates as being at midnight UTC}
+\code{as.POSIXxt.character} treats dates as being at midnight local time}
 
 \item{lenient}{single logical value; should date/time parsing be lenient?}
 
@@ -123,6 +126,10 @@ Note that the ISO 8601 guideline suggests a year-month-day
 date format and a 24-hour time format always indicating the effective
 time zone, e.g., \code{2015-12-31T23:59:59+0100}. This is so as to avoid
 ambiguity.
+
+When parsing strings, \pkg{ICU} fills the `blanks` with current date/time,
+the skipped '\code{\%s}' part will be replaced by the current seconds at
+'now'.
 }
 \section{Differences from Base R}{
 
@@ -155,9 +162,10 @@ and \code{\link[base]{strftime}} implemented with
     \code{\link[stringi]{stri_datetime_fields}};
     our new \code{POSIXxt} class aims to solve the underlying problems
     with \code{POSIXct}'s not being consistent with regards to
-    working in different time zones.
-    \bold{[partially fixed here]}
-\item dates without times are not always treated as being at midnight UTC
+    working in different time zones and dates
+    (see, e.g., \code{as.Date(as.POSIXct(strftime(Sys.Date())))})
+    \bold{[addressed here]}
+\item dates without times are not always treated as being at midnight
     (despite that being stated in the help page for \code{as.POSIXct})
     \bold{[fixed here]}
 \item \code{strftime} does not honour the \code{tzone} attribute,
@@ -173,6 +181,7 @@ strftime(Sys.time(), f)  # current default locale
 strftime(Sys.time(), f, locale="de_DE")
 strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 strptime("1970-01-01 00:00:00", "\%Y-\%m-\%d \%H:\%M:\%S", tz="GMT")
+strptime("1970-01-01", "\%Y-\%m-\%d")  # missing time info replaced with current
 strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
 as.POSIXxt("1970-01-01")
 as.POSIXxt("1970/01/01 12:00")

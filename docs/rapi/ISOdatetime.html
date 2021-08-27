@@ -100,7 +100,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#details">Details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#value">Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#differences-from-base-r">Differences from Base R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#author-s">Author(s)</a></li>
@@ -237,7 +236,7 @@
   <span class="n">hour</span> <span class="o">=</span> <span class="m">0L</span><span class="p">,</span>
   <span class="n">min</span> <span class="o">=</span> <span class="m">0L</span><span class="p">,</span>
   <span class="n">sec</span> <span class="o">=</span> <span class="m">0L</span><span class="p">,</span>
-  <span class="n">tz</span> <span class="o">=</span> <span class="s">&quot;UTC&quot;</span><span class="p">,</span>
+  <span class="n">tz</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
   <span class="n">lenient</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
   <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span>
 <span class="p">)</span>
@@ -270,10 +269,6 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="details">
-<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
-<p>Dates are treated as being at midnight UTC.</p>
-</div>
 <div class="section" id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
 <p>These functions return an object of class <code class="docutils literal notranslate"><span class="pre">POSIXxt</span></code>, which extends upon <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXct.html"><code class="docutils literal notranslate"><span class="pre">POSIXct</span></code></a>, <a class="reference internal" href="strptime.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">strptime</span></code></span></a>.</p>
@@ -284,7 +279,7 @@
 <h2>Differences from Base R<a class="headerlink" href="#differences-from-base-r" title="Permalink to this headline">¶</a></h2>
 <p>Replacements for base <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/ISOdatetime.html"><code class="docutils literal notranslate"><span class="pre">ISOdatetime</span></code></a> and <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/ISOdate.html"><code class="docutils literal notranslate"><span class="pre">ISOdate</span></code></a> implemented with <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_datetime_create.html"><code class="docutils literal notranslate"><span class="pre">stri_datetime_create</span></code></a>.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ISOdate</span></code> does not treat dates as being at midnight UTC by default <strong>[fixed here]</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ISOdate</span></code> does not treat dates as being at midnight by default <strong>[fixed here]</strong></p></li>
 </ul>
 </div>
 <div class="section" id="author-s">
@@ -299,7 +294,7 @@
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ISOdate</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-<span class="c1">## [1] &quot;1970-01-01T00:00:00+0000&quot;</span>
+<span class="c1">## [1] &quot;1970-01-01T00:00:00+1000&quot;</span>
 <span class="nf">ISOdatetime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T12:00:00+1000&quot;</span>
 </pre></div>
@@ -323,7 +318,7 @@
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-08-27T15:17:59+1000.
+        Last updated on 2021-08-27T16:19:50+1000.
       </span>
 
     </p>

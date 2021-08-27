@@ -8,7 +8,7 @@
 ## 0.2.1 (2021-08-27)
 
 * [BACKWARD INCOMPATIBILITY, BUGFIX] #7: Dates without times are now always
-    treated as being at midnight UTC.
+    treated as being at midnight in the local (default) time zone.
 
 * [BACKWARD INCOMPATIBILITY] Date-time functions now yield objects
     of class `POSIXxt`, which extend upon `POSIXct` (and allow for custom

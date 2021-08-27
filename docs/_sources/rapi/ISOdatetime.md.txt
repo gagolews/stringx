@@ -26,7 +26,7 @@ ISOdate(
   hour = 0L,
   min = 0L,
   sec = 0L,
-  tz = "UTC",
+  tz = "",
   lenient = FALSE,
   locale = NULL
 )
@@ -43,10 +43,6 @@ Sys.time()
 | `lenient`                          | single logical value; should date/time parsing be lenient?                                                                                                                                                                                                              |
 | `locale`                           | `NULL` or `''` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html)              |
 
-## Details
-
-Dates are treated as being at midnight UTC.
-
 ## Value
 
 These functions return an object of class `POSIXxt`, which extends upon [`POSIXct`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXct.html), [`strptime`](strptime.md).
@@ -59,7 +55,7 @@ No attributes are preserved (because they are too many).
 
 Replacements for base [`ISOdatetime`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/ISOdatetime.html) and [`ISOdate`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/ISOdate.html) implemented with [`stri_datetime_create`](https://stringi.gagolewski.com/rapi/stri_datetime_create.html).
 
--   `ISOdate` does not treat dates as being at midnight UTC by default **\[fixed here\]**
+-   `ISOdate` does not treat dates as being at midnight by default **\[fixed here\]**
 
 ## Author(s)
 
@@ -78,7 +74,7 @@ Related function(s): [`strptime`](strptime.md)
 
 ```r
 ISOdate(1970, 1, 1)
-## [1] "1970-01-01T00:00:00+0000"
+## [1] "1970-01-01T00:00:00+1000"
 ISOdatetime(1970, 1, 1, 12, 0, 0)
 ## [1] "1970-01-01T12:00:00+1000"
 ```
