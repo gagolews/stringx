@@ -80,32 +80,32 @@ get_test_times <- function() {
 stringi::stri_timezone_set("Etc/GMT-14")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=i)
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=deparse(times[[i]]))
 
 stringi::stri_timezone_set("Etc/GMT+12")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=i)
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=deparse(times[[i]]))
 
 stringi::stri_timezone_set("UTC")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=i)
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=deparse(times[[i]]))
 
 stringi::stri_timezone_set("Australia/Melbourne")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=i)
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=deparse(times[[i]]))
 
 stringi::stri_timezone_set("Europe/Warsaw")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=i)
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=deparse(times[[i]]))
 
 stringi::stri_timezone_set("America/Montreal")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=i)
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=deparse(times[[i]]))
 
 
 stringi::stri_timezone_set(oldtz)
