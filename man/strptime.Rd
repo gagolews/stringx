@@ -8,6 +8,7 @@
 \alias{is.POSIXxt}
 \alias{as.POSIXxt}
 \alias{as.POSIXxt.POSIXt}
+\alias{as.POSIXlt.POSIXxt}
 \alias{as.POSIXxt.default}
 \alias{as.Date.POSIXxt}
 \alias{as.POSIXxt.Date}
@@ -43,6 +44,8 @@ is.POSIXxt(x)
 as.POSIXxt(x, tz = "", ...)
 
 \method{as.POSIXxt}{POSIXt}(x, tz = attr(x, "tzone")[1L], ...)
+
+\method{as.POSIXlt}{POSIXxt}(x, tz = attr(x, "tzone")[1L], ..., locale = NULL)
 
 \method{as.POSIXxt}{default}(x, tz = "", ...)
 

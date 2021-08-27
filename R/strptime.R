@@ -230,16 +230,57 @@ as.POSIXxt <- function(x, tz="", ...) UseMethod("as.POSIXxt")
 #' @rdname strptime
 as.POSIXxt.POSIXt <- function(x, tz=attr(x, "tzone")[1L], ...)
 {
-    if (!is.POSIXxt(x)) {
-        if (is.null(tz)) tz <- ""
-        if (!inherits(x, "POSIXct"))
+    if (is.POSIXxt(x)) return(x)
+
+    if (inherits(x, "POSIXlt")) {
+        x <- unclass(x)
+        return(ISOdatetime(
+            x[["year"]]+1900L,
+            x[["mon"]]+1L,
+            x[["mday"]],
+            x[["hour"]],
+            x[["min"]],
+            x[["sec"]],
+            tz=tz
+        ))
+    }
+    else {
+        if (!inherits(x, "POSIXct")) {
+            if (is.null(tz)) tz <- ""
             x <- as.POSIXct(x, tz=tz, ...)
+        }
 
         attr(x, "class") <- c("POSIXxt", attr(x, "class"))
+        return(x)
     }
-
-    x
 }
+
+
+#' @rdname strptime
+as.POSIXlt.POSIXxt <- function(x, tz=attr(x, "tzone")[1L], ..., locale=NULL)
+{
+    if (!is.POSIXxt(x)) x <- as.POSIXxt(x)
+
+    y <- stringi::stri_datetime_fields(x, tz=tz, locale=locale)
+    structure(
+        list(
+            sec=y[["Second"]],
+            min=as.integer(y[["Minute"]]),
+            hour=as.integer(y[["Hour"]]),
+            mday=as.integer(y[["Day"]]),
+            mon=as.integer(y[["Month"]]-1L),
+            year=structure(as.integer(y[["Year"]]-1900L), names=names(x)),
+            wday=as.integer(y[["DayOfWeek"]]-1L),
+            yday=as.integer(y[["DayOfYear"]]-1L),
+            isdst=-1L,
+            zone=stringi::stri_timezone_info(tz=tz)[["Name"]],
+            tzone=tz
+        ),
+        class=c("POSIXlt", "POSIXt")
+    )
+}
+
+
 
 #' @rdname strptime
 as.POSIXxt.default <- function(x, tz="", ...)
