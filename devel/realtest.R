@@ -59,6 +59,27 @@ realtest_report <- function(r, context="", ...)
     )
     cat("\n")
 
+
+    if (context != "base") {
+        ugly <- c("bad", "worse", "worst")
+        fails <- x[x[["match"]] %in% ugly, , drop=FALSE]
+        if (nrow(fails) != 0) {
+            cat(sprintf("*** realtest [%s]: the following expectations are ugly:\n", context))
+
+            fails2 <- as.data.frame(fails[,
+                !(names(fails) %in% ".expr") & !sapply(fails, function(x) all(is.na(x))),
+                drop=FALSE])
+            for (i in row.names(fails2)) {
+                print(fails2[i, , drop=FALSE])
+                cat("    value: "); str(r[[i]][["object"]][["value"]], indent.str="    ")
+                cat("    sides: "); str(r[[i]][["object"]][["sides"]], indent.str="    ")
+                cat("\n")
+            }
+            cat("\n")
+        }
+    }
+
+
     fails <- x[x[["match"]] == "fail", , drop=FALSE]
     if (nrow(fails) == 0) return(invisible(x))
 
