@@ -60,7 +60,7 @@ The \[DEPRECATED\] `grepl` simply calls `grepl2` which have a cleaned-up argumen
 
 The \[DEPRECATED\] `grep` with `value=FALSE` is actually redundant -- it can be trivially reproduced with `grepl` and [`which`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/which.html).
 
-`grepv2` and `grep` with `value=FALSE` combine pattern matching and subsetting and some users may find it convenient in conjunction with the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/%7C%3E.html).
+`grepv2` and `grep` with `value=FALSE` combine pattern matching and subsetting and some users may find it convenient in conjunction with the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/+7C+3E.html).
 
 ## Value
 
@@ -74,7 +74,7 @@ The replacement version of `grepv2` modifies `x` \'in-place\'.
 
 `grepl` and `grep` are \[DEPRECATED\] replacements for base [`grep`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grep.html) and [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html) implemented with [`stri_detect`](https://stringi.gagolewski.com/rapi/stri_detect.html).
 
--   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/%7C%3E.html), is less convenient **\[fixed by introducing `grepl2`\]**
+-   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/+7C+3E.html), is less convenient **\[fixed by introducing `grepl2`\]**
 
 -   base R implementation is not portable as it is based on the system PCRE or TRE library (e.g., some Unicode classes may not be available or matching thereof can depend on the current `LC_CTYPE` category **\[fixed here\]**
 

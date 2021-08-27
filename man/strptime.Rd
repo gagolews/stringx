@@ -2,23 +2,66 @@
 % Please edit documentation in R/strptime.R
 \name{strptime}
 \alias{strptime}
+\alias{POSIXxt}
 \alias{strftime}
-\title{Date-time Parsing and Formatting}
+\alias{format.POSIXxt}
+\alias{is.POSIXxt}
+\alias{as.POSIXxt}
+\alias{as.POSIXxt.POSIXt}
+\alias{as.POSIXxt.default}
+\alias{as.POSIXxt.Date}
+\alias{as.POSIXxt.character}
+\alias{Ops.POSIXxt}
+\alias{seq.POSIXxt}
+\alias{c.POSIXxt}
+\alias{rep.POSIXxt}
+\title{Parse and Format Date-time Objects}
 \usage{
 strptime(x, format, tz = "", lenient = FALSE, locale = NULL)
 
 strftime(
   x,
   format = "\%Y-\%m-\%dT\%H:\%M:\%S\%z",
-  tz = "",
+  tz = attr(x, "tzone")[1L],
   usetz = FALSE,
   ...,
   locale = NULL
 )
+
+\method{format}{POSIXxt}(
+  x,
+  format = "\%Y-\%m-\%dT\%H:\%M:\%S\%z",
+  tz = attr(x, "tzone")[1L],
+  usetz = FALSE,
+  ...,
+  locale = NULL
+)
+
+is.POSIXxt(x)
+
+as.POSIXxt(x, tz = "", ...)
+
+\method{as.POSIXxt}{POSIXt}(x, tz = attr(x, "tzone")[1L], ...)
+
+\method{as.POSIXxt}{default}(x, tz = "", ...)
+
+\method{as.POSIXxt}{Date}(x, ...)
+
+\method{as.POSIXxt}{character}(x, tz = "", format = NULL, ..., lenient = FALSE, locale = NULL)
+
+\method{Ops}{POSIXxt}(e1, e2)
+
+\method{seq}{POSIXxt}(from, to, by, length.out = NULL, along.with = NULL, ...)
+
+\method{c}{POSIXxt}(..., recursive = FALSE)
+
+\method{rep}{POSIXxt}(..., recursive = FALSE)
 }
 \arguments{
 \item{x}{object to be converted: a character vector for \code{strptime}
-and an object of class \code{POSIXct} for \code{strftime},
+and \code{as.POSIXxt.character},
+an object of class \code{POSIXxt} for \code{strftime}
+an object of class \code{Date} for \code{as.POSIXxt.Date},
 or objects coercible to}
 
 \item{format}{character vector of date-time format specifiers,
@@ -30,8 +73,9 @@ the default conforms to the ISO 8601 guideline}
 (see \code{\link[stringi]{stri_timezone_get}})
 or a single string with a timezone identifier,
 see \code{\link[stringi]{stri_timezone_list}};
-note that even when \code{x} is equipped with \code{tzone} attribute,
-this datum is not used}
+note that when \code{x} is equipped with \code{tzone} attribute,
+this datum is used;
+\code{as.POSIXxt.character} treats dates as being at midnight UTC}
 
 \item{lenient}{single logical value; should date/time parsing be lenient?}
 
@@ -43,20 +87,36 @@ see \code{\link[stringi]{stri_locale_list}}}
 \item{usetz}{not used (with a warning if attempting to do so) [DEPRECATED]}
 
 \item{...}{not used}
+
+\item{e1, e2, from, to, by, length.out, along.with, recursive}{arguments to \code{\link{c}}, \code{\link{rep}}, \code{\link{seq}}, etc.}
 }
 \value{
-\code{strftime} returns a character vector (in UTF-8).
+\code{strftime} and \code{format} return a character vector (in UTF-8).
 
-\code{strptime} returns an object of class \code{\link[base]{POSIXct}},
+\code{strptime}, \code{as.POSIXxt.Date},
+and \code{asPOSIXxt.character} return an object
+of class \code{POSIXxt}, which
+extends upon \code{\link[base]{POSIXct}},
 see also \link[base]{DateTimeClasses}.
-If a string cannot be recognised as valid date/time specified
+
+
+If a string cannot be recognised as valid date/time specifier
 (as per the given format string), the corresponding output will be \code{NA}.
 }
 \description{
+Note that the date-time processing functions in \pkg{stringx} are a work
+in progress. Feature requests/comments/remarks are welcome.
+
 \code{strptime} parses strings representing date-time data
 and converts it to a date-time object.
+
 \code{strftime} formats a date-time object and outputs it as a
 character vector.
+
+The functions are meant to be operable with each other,
+especially with regards to formatting/printing. This is why
+they return/deal with objects of a new class, \code{POSIXxt}, which
+expends upon the built-in \code{POSIXct}.
 }
 \details{
 Note that the ISO 8601 guideline suggests a year-month-day
@@ -70,6 +130,9 @@ Replacements for base \code{\link[base]{strptime}}
 and \code{\link[base]{strftime}} implemented with
 \code{\link[stringi]{stri_datetime_parse}} and
 \code{\link[stringi]{stri_datetime_format}}.
+
+\code{format.POSIXxt} is a thin wrapper around \code{strftime}.
+
 
 \itemize{
 \item formatting/parsing date-time in different locales and calendars
@@ -86,27 +149,40 @@ and \code{\link[base]{strftime}} implemented with
     which is not the most convenient to work with, e.g., when
     including in data frames
     \bold{[fixed here]}
+\item Ideally, there should be only one class to represent dates
+    and one to represent date/time; \code{POSIXlt}
+    is no longer needed as we have
+    \code{\link[stringi]{stri_datetime_fields}};
+    our new \code{POSIXxt} class aims to solve the underlying problems
+    with \code{POSIXct}'s not being consistent with regards to
+    working in different time zones.
+    \bold{[partially fixed here]}
+\item dates without times are not always treated as being at midnight UTC
+    (despite that being stated in the help page for \code{as.POSIXct})
+    \bold{[fixed here]}
 \item \code{strftime} does not honour the \code{tzone} attribute,
     which is used whilst displaying time (via \code{\link[base]{format}})
-    \bold{[not fixed here]}
+    \bold{[fixed here]}
 }
 }
 
 \examples{
-stringx::strftime(Sys.time())  # default format - ISO 8601
+strftime(Sys.time())  # default format - ISO 8601
 f <- c("date_full", "\%Y-\%m-\%d", "date_relative_short", "datetime_full")
-stringx::strftime(Sys.time(), f)  # current default locale
-stringx::strftime(Sys.time(), f, locale="de_DE")
-stringx::strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-stringx::strptime("1970-01-01 00:00:00", "\%Y-\%m-\%d \%H:\%M:\%S", tz="GMT")
-stringx::strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
+strftime(Sys.time(), f)  # current default locale
+strftime(Sys.time(), f, locale="de_DE")
+strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
+strptime("1970-01-01 00:00:00", "\%Y-\%m-\%d \%H:\%M:\%S", tz="GMT")
+strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
+as.POSIXxt("1970-01-01")
+as.POSIXxt("1970/01/01 12:00")
 
 
 }
 \seealso{
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
 
-Related function(s): \code{\link{sprintf}}
+Related function(s): \code{\link{sprintf}}, \code{\link{ISOdatetime}}
 }
 \author{
 \href{https://www.gagolewski.com/}{Marek Gagolewski}

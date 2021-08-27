@@ -28,16 +28,27 @@ E(
 )
 
 
-E(toupper(stringx::letters_greek), stringx::LETTERS_GREEK,   bad=stringx::letters_greek)
-E(tolower(stringx::LETTERS_GREEK), stringx::letters_greek,   bad=stringx::LETTERS_GREEK)
-E(toupper(stringx::letters_bf),    stringx::LETTERS_BF,      bad=stringx::letters_bf)
-E(tolower(stringx::LETTERS_BF),    stringx::letters_bf,      bad=stringx::LETTERS_BF)
-E(toupper(stringx::letters_bb),    stringx::LETTERS_BB,      bad=stringx::letters_bb)
-E(tolower(stringx::LETTERS_BB),    stringx::letters_bb,      bad=stringx::LETTERS_BB)
-E(toupper(stringx::letters_cal),   stringx::LETTERS_CAL,     bad=stringx::letters_cal)
-E(tolower(stringx::LETTERS_CAL),   stringx::letters_cal,     bad=stringx::LETTERS_CAL)
-E(toupper(stringx::letters_frak),  stringx::LETTERS_FRAK,    bad=stringx::letters_frak)
-E(tolower(stringx::LETTERS_FRAK),  stringx::letters_frak,    bad=stringx::LETTERS_FRAK)
+E(
+    toupper(c("\u03B1", "\u03B2", "\u03B3", "\u03B4", "\u03B5", "\u03B6")),
+    c("\u0391", "\u0392", "\u0393", "\u0394", "\u0395", "\u0396"),
+    bad=c("\u03B1", "\u03B2", "\u03B3", "\u03B4", "\u03B5", "\u03B6")
+)
+E(
+    tolower(c("\u0391", "\u0392", "\u0393", "\u0394", "\u0395", "\u0396")),
+    c("\u03B1", "\u03B2", "\u03B3", "\u03B4", "\u03B5", "\u03B6"),
+    bad=c("\u0391", "\u0392", "\u0393", "\u0394", "\u0395", "\u0396")
+)
+E(
+    toupper(c("\U0001D41A", "\U0001D41B", "\U0001D41C", "\U0001D41D")),
+    c("\U0001D400", "\U0001D401", "\U0001D402", "\U0001D403"),
+    bad=c("\U0001D41A", "\U0001D41B", "\U0001D41C", "\U0001D41D")
+)
+E(
+    tolower(c("\U0001D400", "\U0001D401", "\U0001D402", "\U0001D403")),
+    c("\U0001D41A", "\U0001D41B", "\U0001D41C", "\U0001D41D"),
+    bad=c("\U0001D400", "\U0001D401", "\U0001D402", "\U0001D403")
+)
+
 
 
 

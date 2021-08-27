@@ -54,7 +54,7 @@ Each function returns a logical vector, indicating whether a pattern match has b
 
 Replacements for base [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) and [`endsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/endsWith.html) implemented with [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html).
 
--   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/%7C%3E.html), is less convenient **\[fixed here\]**
+-   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/+7C+3E.html), is less convenient **\[fixed here\]**
 
 -   [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html) also features the `ignore.case` argument **\[added here\]**
 

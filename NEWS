@@ -1,5 +1,26 @@
 # What Is New in *stringx*
 
+> Note that the date-time processing functions in *stringx* are a work
+> in progress. Feature requests/comments/remarks are welcome,
+> see https://github.com/gagolews/stringx/issues.
+
+
+## 0.2.1 (2021-08-27)
+
+* [BACKWARD INCOMPATIBILITY, BUGFIX] #7: Dates without times are now always
+    treated as being at midnight UTC.
+
+* [BACKWARD INCOMPATIBILITY] Date-time functions now yield objects
+    of class `POSIXxt`, which extend upon `POSIXct` (and allow for custom
+    formatting etc.).
+
+* [BACKWARD INCOMPATIBILITY, BUGFIX] #7: `strftime` uses the `tzone` attribute
+    by default.
+
+* [NEW FEATURE] Added functions: `as.POSIXxt`, `is.POSIXxt`,
+    `Sys.time`, `ISOdatetime`, `ISOdate`, `Ops.POSIXxt`,
+    `c.POSIXxt`, `rep.POSIXxt`, `seq.POSIXxt`.
+
 
 ## 0.1.3 (2021-08-05)
 

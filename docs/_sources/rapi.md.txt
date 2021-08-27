@@ -11,6 +11,7 @@ rapi/gregexpr
 rapi/gregextr
 rapi/grepl
 rapi/gsub
+rapi/ISOdatetime
 rapi/nchar
 rapi/paste
 rapi/sort

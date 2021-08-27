@@ -64,7 +64,7 @@ Both functions return a character vector. They preserve the attributes of the lo
 
 Replacements for base [`sub`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/sub.html) and [`gsub`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/gsub.html) implemented with [`stri_replace_first`](https://stringi.gagolewski.com/rapi/stri_replace.html) and [`stri_replace_all`](https://stringi.gagolewski.com/rapi/stri_replace.html), respectively.
 
--   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/%7C%3E.html), is less convenient **\[fixed here\]**
+-   there are inconsistencies between the argument order and naming in [`grepl`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/grepl.html), [`strsplit`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/strsplit.html), and [`startsWith`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/startsWith.html) (amongst others); e.g., where the needle can precede the haystack, the use of the forward pipe operator, [`|>`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/+7C+3E.html), is less convenient **\[fixed here\]**
 
 -   base R implementation is not portable as it is based on the system PCRE or TRE library (e.g., some Unicode classes may not be available or matching thereof can depend on the current `LC_CTYPE` category **\[fixed here\]**
 

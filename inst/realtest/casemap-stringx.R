@@ -1,2 +1,13 @@
 E(toupper('i', locale='en_US'), "I")
 E(toupper('i', locale='tr_TR'), "\u0130")
+
+E(toupper(stringx::letters_greek), stringx::LETTERS_GREEK,   bad=stringx::letters_greek)
+E(tolower(stringx::LETTERS_GREEK), stringx::letters_greek,   bad=stringx::LETTERS_GREEK)
+E(toupper(stringx::letters_bf),    stringx::LETTERS_BF,      bad=stringx::letters_bf)
+E(tolower(stringx::LETTERS_BF),    stringx::letters_bf,      bad=stringx::LETTERS_BF)
+E(toupper(stringx::letters_bb),    stringx::LETTERS_BB,      bad=stringx::letters_bb)
+E(tolower(stringx::LETTERS_BB),    stringx::letters_bb,      bad=stringx::LETTERS_BB)
+E(toupper(stringx::letters_cal),   stringx::LETTERS_CAL,     bad=stringx::letters_cal)
+E(tolower(stringx::LETTERS_CAL),   stringx::letters_cal,     bad=stringx::LETTERS_CAL)
+E(toupper(stringx::letters_frak),  stringx::LETTERS_FRAK,    bad=stringx::letters_frak)
+E(tolower(stringx::LETTERS_FRAK),  stringx::letters_frak,    bad=stringx::LETTERS_FRAK)

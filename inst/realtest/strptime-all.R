@@ -1,4 +1,5 @@
 E(strptime(character(0), "%Y-%m-%d"),
+    structure(as.POSIXct(c()), class=c("POSIXxt", "POSIXct", "POSIXt")),
     as.POSIXct(c()),
     as.POSIXlt(c())
 )
@@ -7,6 +8,7 @@ E(strftime(strptime(NA_character_, "%Y-%m-%d")), NA_character_)
 
 E(
     strptime("1970-01-01", character(0)),
+    structure(as.POSIXct(c()), class=c("POSIXxt", "POSIXct", "POSIXt")),
     as.POSIXct(c()),
     as.POSIXlt(c()),
     bad=P(error=TRUE)
@@ -26,6 +28,7 @@ E(
 
 E(
     class(strptime("1970-01-01", "%Y-%m-%d")),
+    better=c("POSIXxt", "POSIXct", "POSIXt"),
     better=c("POSIXct", "POSIXt"),
     c("POSIXlt", "POSIXt")
 )
@@ -94,23 +97,38 @@ E(
 )
 
 E(
+    strftime(t, "%Y-%m-%d"),
+    "2021-05-27",
+    bad="2021-05-26",
+    bad="2021-05-28"
+)
+
+E(
     strftime(as.POSIXlt(t), "%Y-%m-%d"),
-    strftime(t, "%Y-%m-%d")
+    "2021-05-27",
+    bad="2021-05-26",
+    bad="2021-05-28"
 )
 
 E(
     strftime(as.POSIXct(t), "%Y-%m-%d"),
-    strftime(t, "%Y-%m-%d")
+    "2021-05-27",
+    bad="2021-05-26",
+    bad="2021-05-28"
 )
 
 E(
     strftime(as.Date(t), "%Y-%m-%d"),
-    strftime(t, "%Y-%m-%d")
+    "2021-05-27",
+    bad="2021-05-26",
+    bad="2021-05-28"
 )
 
 E(
     strftime(as.character(t), "%Y-%m-%d"),
-    strftime(t, "%Y-%m-%d")
+    "2021-05-27",
+    bad="2021-05-26",
+    bad="2021-05-28"
 )
 
 

@@ -8,7 +8,8 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     of the internet, smartphones, social media, and other technologies
     and communication platforms, this is no longer the case.
     This package replaces base R string functions with ones that fully
-    support the Unicode standards related to natural language processing.
+    support the Unicode standards related to natural language
+    and date-time processing.
     Thanks to `ICU <http://site.icu-project.org/>`_
     (International Components for Unicode) and
     `stringi <https://stringi.gagolewski.com/>`_,
@@ -30,7 +31,7 @@ means to represent or transfer unstructured data.
 
 **stringx brings R string processing abilities into the 21st century.**
 It replaces functions like ``paste()``, ``grep()``, ``tolower()``,
-``strftime()``, and ``sprintf()`` with ones that:
+``strptime()``, and ``sprintf()`` with ones that:
 
 *   support a wide range of languages and scripts and
     fully conform to `Unicode <https://www.unicode.org/>`_ standards

@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" href="rapi/about_stringx.html" /> 
+    <link rel="next" title="ISOdatetime: Construct Date-time Objects" href="rapi/ISOdatetime.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.3
+                0.2.1
               </div>
             
           
@@ -95,6 +95,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="rapi/ISOdatetime.html">ISOdatetime: Construct Date-time Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/constants.html">constants: Character Constants</a></li>
@@ -108,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="rapi/sprintf.html">sprintf: Format Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strcoll.html">strcoll: Compare Strings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/strptime.html">strptime: Date-time Parsing and Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strptime.html">strptime: Parse and Format Date-time Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strrep.html">strrep: Duplicate Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strsplit.html">strsplit: Split Strings into Tokens</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
@@ -185,7 +186,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="rapi/about_stringx.html" class="btn btn-neutral float-right" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rapi/ISOdatetime.html" class="btn btn-neutral float-right" title="ISOdatetime: Construct Date-time Objects" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
   </div>
@@ -205,7 +206,8 @@ now a very long time ago, was dominated by the US. Due to the proliferation
 of the internet, smartphones, social media, and other technologies
 and communication platforms, this is no longer the case.
 This package replaces base R string functions with ones that fully
-support the Unicode standards related to natural language processing.
+support the Unicode standards related to natural language
+and date-time processing.
 Thanks to <a class="reference external" href="http://site.icu-project.org/">ICU</a>
 (International Components for Unicode) and
 <a class="reference external" href="https://stringi.gagolewski.com/">stringi</a>,
@@ -223,7 +225,7 @@ processing to bioinformatics. It also gives powerful
 means to represent or transfer unstructured data.</p>
 <p><strong>stringx brings R string processing abilities into the 21st century.</strong>
 It replaces functions like <code class="docutils literal notranslate"><span class="pre">paste()</span></code>, <code class="docutils literal notranslate"><span class="pre">grep()</span></code>, <code class="docutils literal notranslate"><span class="pre">tolower()</span></code>,
-<code class="docutils literal notranslate"><span class="pre">strftime()</span></code>, and <code class="docutils literal notranslate"><span class="pre">sprintf()</span></code> with ones that:</p>
+<code class="docutils literal notranslate"><span class="pre">strptime()</span></code>, and <code class="docutils literal notranslate"><span class="pre">sprintf()</span></code> with ones that:</p>
 <ul class="simple">
 <li><p>support a wide range of languages and scripts and
 fully conform to <a class="reference external" href="https://www.unicode.org/">Unicode</a> standards
@@ -274,6 +276,7 @@ either Version 2 or Version 3, see
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Reference Manual</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="rapi/ISOdatetime.html">ISOdatetime: Construct Date-time Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/about_stringx.html">about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/chartr.html">chartr: Transliteration and Other Text Transforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/constants.html">constants: Character Constants</a></li>
@@ -287,7 +290,7 @@ either Version 2 or Version 3, see
 <li class="toctree-l1"><a class="reference internal" href="rapi/sprintf.html">sprintf: Format Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/startswith.html">startswith: Detect Pattern Occurrences at Start or End of Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strcoll.html">strcoll: Compare Strings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rapi/strptime.html">strptime: Date-time Parsing and Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rapi/strptime.html">strptime: Parse and Format Date-time Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strrep.html">strrep: Duplicate Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strsplit.html">strsplit: Split Strings into Tokens</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rapi/strtrim.html">strtrim: Shorten Strings to Specified Width</a></li>
@@ -314,7 +317,7 @@ either Version 2 or Version 3, see
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="rapi/about_stringx.html" class="btn btn-neutral float-right" title="about_stringx: Drop-in Replacements for Base String Functions Powered by Stringi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rapi/ISOdatetime.html" class="btn btn-neutral float-right" title="ISOdatetime: Construct Date-time Objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -323,7 +326,7 @@ either Version 2 or Version 3, see
     <p>
         &#169; Copyright 2021, Marek Gagolewski.
       <span class="lastupdated">
-        Last updated on 2021-08-05T14:30:46+1000.
+        Last updated on 2021-08-27T15:17:59+1000.
       </span>
 
     </p>
