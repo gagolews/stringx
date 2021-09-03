@@ -5,6 +5,11 @@
 > see https://github.com/gagolews/stringx/issues.
 
 
+## 0.2.2 (2021-09-03)
+
+* [DOCUMENTATION] ICU Project site has been moved to <https://icu.unicode.org/>.
+
+
 ## 0.2.1 (2021-08-27)
 
 * [BACKWARD INCOMPATIBILITY, BUGFIX] #7: Dates without times are now always

@@ -10,7 +10,7 @@
 > this is no longer the case. This package replaces base R string functions
 > with ones that fully support the Unicode standards related to natural
 > language and date-time processing. Thanks to
-> [ICU (International Components for Unicode)](http://site.icu-project.org/)
+> [ICU (International Components for Unicode)](https://icu.unicode.org/)
 > and [*stringi*](https://stringi.gagolewski.com/),
 > they are fast, reliable, and portable across different platforms.
 
@@ -31,7 +31,7 @@
 [R](https://www.r-project.org/) package for
 fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
-[ICU – International Components for Unicode](http://site.icu-project.org/).
+[ICU – International Components for Unicode](https://icu.unicode.org/).
 
 
 --------------------------------------------------------------------------------

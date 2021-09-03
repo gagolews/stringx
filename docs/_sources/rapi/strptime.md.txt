@@ -135,26 +135,26 @@ Related function(s): [`sprintf`](sprintf.md), [`ISOdatetime`](ISOdatetime.md)
 
 ```r
 strftime(Sys.time())  # default format - ISO 8601
-## [1] "2021-08-27T17:31:57+1000"
+## [1] "2021-09-03T10:25:50+1000"
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 strftime(Sys.time(), f)  # current default locale
-## [1] "Friday, 27 August 2021"                                               
-## [2] "2021-08-27"                                                           
-## [3] "today"                                                                
-## [4] "Friday, 27 August 2021 at 5:31:57 pm Australian Eastern Standard Time"
+## [1] "Friday, 3 September 2021"                                                
+## [2] "2021-09-03"                                                              
+## [3] "today"                                                                   
+## [4] "Friday, 3 September 2021 at 10:25:50 am Australian Eastern Standard Time"
 strftime(Sys.time(), f, locale="de_DE")
-## [1] "Freitag, 27. August 2021"                                       
-## [2] "2021-08-27"                                                     
-## [3] "heute"                                                          
-## [4] "Freitag, 27. August 2021 um 17:31:57 Ostaustralische Normalzeit"
+## [1] "Freitag, 3. September 2021"                                       
+## [2] "2021-09-03"                                                       
+## [3] "heute"                                                            
+## [4] "Freitag, 3. September 2021 um 10:25:50 Ostaustralische Normalzeit"
 strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "19 Elul 5781"
+## [1] "26 Elul 5781"
 strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
 ## [1] "1970-01-01T00:00:00+0000"
 strptime("1970-01-01", "%Y-%m-%d")  # missing time info replaced with current
-## [1] "1970-01-01T17:31:57+1000"
+## [1] "1970-01-01T10:25:50+1000"
 strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1943-04-19T17:31:57+1000"
+## [1] "1943-04-19T10:25:50+1000"
 as.POSIXxt("1970-01-01")
 ## [1] "1970-01-01T00:00:00+1000"
 as.POSIXxt("1970/01/01 12:00")

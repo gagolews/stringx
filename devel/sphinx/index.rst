@@ -10,7 +10,7 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     This package replaces base R string functions with ones that fully
     support the Unicode standards related to natural language
     and date-time processing.
-    Thanks to `ICU <http://site.icu-project.org/>`_
+    Thanks to `ICU <https://icu.unicode.org/>`_
     (International Components for Unicode) and
     `stringi <https://stringi.gagolewski.com/>`_,
     they are fast, reliable, and portable across different platforms.
@@ -89,7 +89,7 @@ Also, a few new, useful operations are introduced.
 `R <https://www.r-project.org/>`_ package for
 fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
-`ICU – International Components for Unicode <http://site.icu-project.org/>`_.
+`ICU – International Components for Unicode <https://icu.unicode.org/>`_.
 
 *stringx*'s source code is hosted on
 `GitHub <https://github.com/gagolews/stringx>`_ and official releases

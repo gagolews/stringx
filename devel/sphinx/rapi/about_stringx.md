@@ -16,7 +16,7 @@
 
 *<span class="pkg">stringi</span> Package homepage*, <https://stringi.gagolewski.com/>
 
-*ICU -- International Components for Unicode*, <http://site.icu-project.org/>
+*ICU -- International Components for Unicode*, <https://icu.unicode.org/>
 
 *The Unicode Consortium*, <https://home.unicode.org/>
 

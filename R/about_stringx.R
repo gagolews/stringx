@@ -34,7 +34,7 @@
 #' \url{https://stringi.gagolewski.com/}
 #'
 #' \emph{ICU -- International Components for Unicode},
-#' \url{http://site.icu-project.org/}
+#' \url{https://icu.unicode.org/}
 #'
 #' \emph{The Unicode Consortium},
 #' \url{https://home.unicode.org/}
