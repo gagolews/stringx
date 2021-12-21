@@ -66,7 +66,7 @@
 #'
 #'
 #' @return
-#' \code{strcmp} returns an integer vector representing the comparison results:
+#' \code{strcoll} returns an integer vector representing the comparison results:
 #' if a string in \code{e1} is smaller than the corresponding string in
 #' \code{e2}, the corresponding result will be equal to \code{-1}, and
 #' \code{0} if they are canonically equivalent,
