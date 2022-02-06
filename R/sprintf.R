@@ -1,7 +1,7 @@
 # kate: default-dictionary en_AU
 
 ## stringx package for R
-## Copyleft (C) 2021, Marek Gagolewski <https://www.gagolewski.com>
+## Copyleft (C) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -52,8 +52,8 @@
 #'     passed via \code{...} to 99 (note that we can easily
 #'     exceed this limit by using \code{\link[base]{do.call}})
 #'     \bold{[rewritten from scratch, there is no limit anymore]}
-#' \item unused values in {...} are evaluated anyway (should not evaluation be
-#'     lazy?)
+#' \item unused values in \code{...} are evaluated anyway (should not
+#'     evaluation be lazy?)
 #'     \bold{[not fixed here because this is somewhat questionable;
 #'     in both base R and our case, a warning is given if this is the case;
 #'     moreover, the length of the longest argument always

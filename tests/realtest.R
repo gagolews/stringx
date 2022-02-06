@@ -1,5 +1,5 @@
 # This file is part of the 'stringx' project.
-# Copyleft (c) 2021, Marek Gagolewski <https://www.gagolewski.com>
+# Copyleft (c) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
 
 # Runs all unit tests for the package
 

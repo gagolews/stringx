@@ -1,4 +1,4 @@
-# Copyright (c) 2021, Marek Gagolewski <https://www.gagolewski.com>
+# Copyright (c) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
 
 
 .PHONY:  r check build clean purge sphinx docs test

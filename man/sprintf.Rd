@@ -60,8 +60,8 @@ implemented with \code{\link[stringi]{stri_sprintf}}.
     passed via \code{...} to 99 (note that we can easily
     exceed this limit by using \code{\link[base]{do.call}})
     \bold{[rewritten from scratch, there is no limit anymore]}
-\item unused values in {...} are evaluated anyway (should not evaluation be
-    lazy?)
+\item unused values in \code{...} are evaluated anyway (should not
+    evaluation be lazy?)
     \bold{[not fixed here because this is somewhat questionable;
     in both base R and our case, a warning is given if this is the case;
     moreover, the length of the longest argument always
