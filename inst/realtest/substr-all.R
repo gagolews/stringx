@@ -120,7 +120,8 @@ E(
 E(
     `substr<-`(rep("abc", 9), c(-1, 0, 0, 1, 1, 2, NA, 1, NA), c(-1, -1, 0, -1, 0, 1, 1, NA, NA), value="x"),
     better=c("abx", "x", "xabc", "x", "xabc", "axbc", NA, NA, NA),
-    c("xbc", "xbc", "abc", "xbc", "abc", "abc", NA, NA, NA)
+    c("xbc", "xbc", "abc", "xbc", "abc", "abc", NA, NA, NA),
+    c("abc", "abc", "abc", "abc", "abc", "abc", NA, NA, NA)
 )
 
 x1 <- structure(c(a="a"), attrib1="value1")
@@ -130,11 +131,13 @@ y <- structure(c(x="x", y="y"), attrib2="value2")
 E(
     `substr<-`(x1, 1, 1, value=y),
     y,
-    bad="x"
+    bad=structure(c(a="x"), attrib1="value1"),
+    worse="x"
 )
 
 E(
     `substr<-`(x2, 1, 1, value=y),
     structure(c(a="x", b="y"), attrib1="value1", attrib2="value2"),
-    bad=c("x", "y")
+    bad=structure(c(a="x", b="y"), attrib1="value1"),
+    worse=c("x", "y")
 )
