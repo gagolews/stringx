@@ -105,6 +105,7 @@ either Version 2 or Version 3, see
     :hidden:
 
     About <self>
+    Author <https://www.gagolewski.com/>
 
 
 .. toctree::
@@ -123,7 +124,6 @@ either Version 2 or Version 3, see
     Source Code (GitHub) <https://github.com/gagolews/stringx>
     Bug Tracker and Feature Suggestions <https://github.com/gagolews/stringx/issues>
     CRAN Entry <https://cran.r-project.org/package=stringx>
-    Author's Homepage <https://www.gagolewski.com/>
     news.md
 
 ..  COMMENT
