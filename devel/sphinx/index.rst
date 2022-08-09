@@ -1,6 +1,7 @@
 stringx: Drop-in replacements for base R string functions powered by stringi
 ============================================================================
 
+.. epigraph::
     English is the native language for only 5% of the World population.
     Also, only 17% of us can understand this text. Moreover, the Latin alphabet
     is the main one for merely 36% of the total. The early computer era,
@@ -14,8 +15,6 @@ stringx: Drop-in replacements for base R string functions powered by stringi
     (International Components for Unicode) and
     `stringi <https://stringi.gagolewski.com/>`_,
     they are fast, reliable, and portable across different platforms.
-
-    -- by `Marek Gagolewski <https://www.gagolewski.com/>`_
 
 
 `R <https://www.r-project.org/>`_'s ambitions go far beyond being merely the
@@ -109,7 +108,7 @@ either Version 2 or Version 3, see
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :caption: Reference Manual
     :glob:
 
