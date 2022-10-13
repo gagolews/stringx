@@ -81,6 +81,8 @@ E(
 E(
     strftime(2021),
     bad=P(error="'origin' must be supplied"),  # more specific - list first - LANGUAGE="en" only though
+    bad="1970-01-01T01:33:41+0100",
+    bad="1970-01-01T02:33:41+0200",
     P(error=TRUE),
     .comment="uninformative error message"
 )

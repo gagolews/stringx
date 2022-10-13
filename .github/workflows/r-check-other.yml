@@ -80,7 +80,7 @@ jobs:
 
       - name: Test
         run: |
-          source("devel/realtest.R")
+          source("./devel/realtest.R")
         shell: Rscript {0}
 
       - name: Check

@@ -3,7 +3,7 @@
 ^\.Rproj\.user$
 ^.*\.kdev4$
 ^\.kdev4
-^devel
+^.devel
 kate-swp$
 ^README
 LICENSE

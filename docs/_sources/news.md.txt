@@ -5,6 +5,12 @@
 > see https://github.com/gagolews/stringx/issues.
 
 
+
+## 0.2.3 (2022-10-13)
+
+* [BUGFIX] Fixed failing checks/tests.
+
+
 ## 0.2.2 (2021-09-03)
 
 * [DOCUMENTATION] ICU Project site has been moved to <https://icu.unicode.org/>.
