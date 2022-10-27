@@ -126,14 +126,6 @@ E(
     bad="2021-05-28"
 )
 
-E(
-    strftime(as.character(t), "%Y-%m-%d"),
-    "2021-05-27",
-    bad="2021-05-26",
-    bad="2021-05-28"
-)
-
-
 # only names of x are preserved
 f <- structure(c(x="%Y", y="%Y-%m-%d"), class="format", attrib1="val1")
 x <- structure(c(a=t), attrib2="val2")

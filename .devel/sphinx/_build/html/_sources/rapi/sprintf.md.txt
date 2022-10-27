@@ -71,7 +71,7 @@ Related function(s): [`paste`](paste.md), [`strrep`](strrep.md), [`strtrim`](str
 
 
 ```r
-# UTF-8 number of bytes vs. Unicode code point width:
+# UTF-8 number of bytes vs Unicode code point width:
 l <- c("e", "e\u00b2", "\u03c0", "\u03c0\u00b2", "\U0001f602\U0001f603")
 r <- c(exp(1), exp(2), pi, pi^2, NaN)
 cat(base::sprintf("%8s=%+.3f", l, r), sep="\n")
@@ -86,9 +86,4 @@ cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 ##        π=+3.142
 ##       π²=+9.870
 ##     😂😃= NaN
-# coercion of the same argument to different types:
-stringx::printf(c("UNIX time %1$f is %1$s.", "%1$s is %1$f UNIX time."),
-    Sys.time())
-## UNIX time 1665630159.556000 is 2022-10-13T14:02:39+1100.
-## 2022-10-13T14:02:39+1100 is 1665630159.556000 UNIX time.
 ```

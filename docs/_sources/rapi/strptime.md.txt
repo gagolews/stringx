@@ -135,26 +135,26 @@ Related function(s): [`sprintf`](sprintf.md), [`ISOdatetime`](ISOdatetime.md)
 
 ```r
 strftime(Sys.time())  # default format - ISO 8601
-## [1] "2022-10-13T14:02:40+1100"
+## [1] "2022-10-27T13:27:57+1100"
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 strftime(Sys.time(), f)  # current default locale
-## [1] "Thursday, October 13, 2022"                                               
-## [2] "2022-10-13"                                                               
+## [1] "Thursday, October 27, 2022"                                               
+## [2] "2022-10-27"                                                               
 ## [3] "today"                                                                    
-## [4] "Thursday, October 13, 2022 at 2:02:40 PM Australian Eastern Daylight Time"
+## [4] "Thursday, October 27, 2022 at 1:27:57 PM Australian Eastern Daylight Time"
 strftime(Sys.time(), f, locale="de_DE")
-## [1] "Donnerstag, 13. Oktober 2022"                                       
-## [2] "2022-10-13"                                                         
+## [1] "Donnerstag, 27. Oktober 2022"                                       
+## [2] "2022-10-27"                                                         
 ## [3] "heute"                                                              
-## [4] "Donnerstag, 13. Oktober 2022 um 14:02:40 Ostaustralische Sommerzeit"
+## [4] "Donnerstag, 27. Oktober 2022 um 13:27:57 Ostaustralische Sommerzeit"
 strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "18 Tishri 5783"
+## [1] "2 Heshvan 5783"
 strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
 ## [1] "1970-01-01T00:00:00+0000"
 strptime("1970-01-01", "%Y-%m-%d")  # missing time info replaced with current
-## [1] "1970-01-01T14:02:40+1000"
+## [1] "1970-01-01T13:27:57+1000"
 strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1943-04-19T14:02:40+1000"
+## [1] "1943-04-19T13:27:57+1000"
 as.POSIXxt("1970-01-01")
 ## [1] "1970-01-01T00:00:00+1000"
 as.POSIXxt("1970/01/01 12:00")

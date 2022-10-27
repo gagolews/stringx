@@ -5,10 +5,14 @@
 > see https://github.com/gagolews/stringx/issues.
 
 
+## 0.2.4 (2022-10-27)
+
+* [BUGFIX] Fixed failing checks/tests due to some updates in R-devel.
+
 
 ## 0.2.3 (2022-10-13)
 
-* [BUGFIX] Fixed failing checks/tests.
+* [BUGFIX] Fixed failing checks/tests due to some updates in R-devel.
 
 
 ## 0.2.2 (2021-09-03)

@@ -70,7 +70,7 @@
             
             
               <div class="version">
-                0.2.3
+                0.2.4
               </div>
             
           
@@ -259,7 +259,7 @@
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># UTF-8 number of bytes vs. Unicode code point width:</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># UTF-8 number of bytes vs Unicode code point width:</span>
 <span class="n">l</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;e\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\U0001f602\U0001f603&quot;</span><span class="p">)</span>
 <span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> <span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">),</span> <span class="kc">pi</span><span class="p">,</span> <span class="kc">pi</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">)</span>
 <span class="nf">cat</span><span class="p">(</span><span class="n">base</span><span class="o">::</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;%8s=%+.3f&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
@@ -274,11 +274,6 @@
 <span class="c1">##        π=+3.142</span>
 <span class="c1">##       π²=+9.870</span>
 <span class="c1">##     😂😃= NaN</span>
-<span class="c1"># coercion of the same argument to different types:</span>
-<span class="n">stringx</span><span class="o">::</span><span class="nf">printf</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;UNIX time %1$f is %1$s.&quot;</span><span class="p">,</span> <span class="s">&quot;%1$s is %1$f UNIX time.&quot;</span><span class="p">),</span>
-    <span class="nf">Sys.time</span><span class="p">())</span>
-<span class="c1">## UNIX time 1665630159.556000 is 2022-10-13T14:02:39+1100.</span>
-<span class="c1">## 2022-10-13T14:02:39+1100 is 1665630159.556000 UNIX time.</span>
 </pre></div>
 </div>
 </section>
@@ -297,7 +292,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2022-10-13T14:02:44+1100.
+      <span class="lastupdated">Last updated on 2022-10-27T13:28:01+1100.
       </span></p>
   </div>
 
