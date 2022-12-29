@@ -28,6 +28,10 @@ Text is a rich source of new knowledge — from natural language
 processing to bioinformatics. It also gives powerful
 means to represent or transfer unstructured data.
 
+.. note::
+    To learn more about R, check out Marek's open-access (free!) textbook
+    `Deep R Programming <https://deepr.gagolewski.com/>`_\ .
+
 **stringx brings R string processing abilities into the 21st century.**
 It replaces functions like ``paste()``, ``grep()``, ``tolower()``,
 ``strptime()``, and ``sprintf()`` with ones that:
@@ -105,6 +109,9 @@ either Version 2 or Version 3; see
 
     About <self>
     Author <https://www.gagolewski.com/>
+    Source Code (GitHub) <https://github.com/gagolews/stringx>
+    Bug Tracker and Feature Suggestions <https://github.com/gagolews/stringx/issues>
+    CRAN Entry <https://cran.r-project.org/package=stringx>
 
 
 .. toctree::
@@ -120,9 +127,8 @@ either Version 2 or Version 3; see
     :maxdepth: 1
     :caption: Other
 
-    Source Code (GitHub) <https://github.com/gagolews/stringx>
-    Bug Tracker and Feature Suggestions <https://github.com/gagolews/stringx/issues>
-    CRAN Entry <https://cran.r-project.org/package=stringx>
+    Deep R Programming <https://deepr.gagolewski.com>
+    stringi <https://stringi.gagolewski.com/>
     news.md
 
 ..  COMMENT

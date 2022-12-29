@@ -33,6 +33,9 @@ fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
 [ICU – International Components for Unicode](https://icu.unicode.org/).
 
+To learn more about R, check out Marek's recent open-access (free!) textbook
+[*Deep R Programming*](https://deepr.gagolewski.com/).
+
 
 --------------------------------------------------------------------------------
 

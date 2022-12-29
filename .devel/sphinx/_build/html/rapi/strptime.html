@@ -99,6 +99,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">About</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.gagolewski.com/">Author</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx">Source Code (GitHub)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx/issues">Bug Tracker and Feature Suggestions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cran.r-project.org/package=stringx">CRAN Entry</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference Manual</span></p>
 <ul class="current">
@@ -137,9 +140,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx">Source Code (GitHub)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gagolews/stringx/issues">Bug Tracker and Feature Suggestions</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://cran.r-project.org/package=stringx">CRAN Entry</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://deepr.gagolewski.com">Deep R Programming</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stringi.gagolewski.com/">stringi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../news.html">What Is New in <em>stringx</em></a></li>
 </ul>
 
@@ -322,26 +324,26 @@
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">())</span>  <span class="c1"># default format - ISO 8601</span>
-<span class="c1">## [1] &quot;2022-10-27T13:27:57+1100&quot;</span>
+<span class="c1">## [1] &quot;2022-12-29T11:52:48+1100&quot;</span>
 <span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;date_full&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">,</span> <span class="s">&quot;date_relative_short&quot;</span><span class="p">,</span> <span class="s">&quot;datetime_full&quot;</span><span class="p">)</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="n">f</span><span class="p">)</span>  <span class="c1"># current default locale</span>
-<span class="c1">## [1] &quot;Thursday, October 27, 2022&quot;                                               </span>
-<span class="c1">## [2] &quot;2022-10-27&quot;                                                               </span>
-<span class="c1">## [3] &quot;today&quot;                                                                    </span>
-<span class="c1">## [4] &quot;Thursday, October 27, 2022 at 1:27:57 PM Australian Eastern Daylight Time&quot;</span>
+<span class="c1">## [1] &quot;Thursday, 29 December 2022&quot;                                                </span>
+<span class="c1">## [2] &quot;2022-12-29&quot;                                                                </span>
+<span class="c1">## [3] &quot;today&quot;                                                                     </span>
+<span class="c1">## [4] &quot;Thursday, 29 December 2022 at 11:52:48 am Australian Eastern Daylight Time&quot;</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="n">f</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;Donnerstag, 27. Oktober 2022&quot;                                       </span>
-<span class="c1">## [2] &quot;2022-10-27&quot;                                                         </span>
-<span class="c1">## [3] &quot;heute&quot;                                                              </span>
-<span class="c1">## [4] &quot;Donnerstag, 27. Oktober 2022 um 13:27:57 Ostaustralische Sommerzeit&quot;</span>
+<span class="c1">## [1] &quot;Donnerstag, 29. Dezember 2022&quot;                                       </span>
+<span class="c1">## [2] &quot;2022-12-29&quot;                                                          </span>
+<span class="c1">## [3] &quot;heute&quot;                                                               </span>
+<span class="c1">## [4] &quot;Donnerstag, 29. Dezember 2022 um 11:52:48 Ostaustralische Sommerzeit&quot;</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span> <span class="s">&quot;date_short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;2 Heshvan 5783&quot;</span>
+<span class="c1">## [1] &quot;5 Tevet 5783&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01 00:00:00&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s">&quot;GMT&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T00:00:00+0000&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">)</span>  <span class="c1"># missing time info replaced with current</span>
-<span class="c1">## [1] &quot;1970-01-01T13:27:57+1000&quot;</span>
+<span class="c1">## [1] &quot;1970-01-01T11:52:48+1000&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;14 Nisan 5703&quot;</span><span class="p">,</span> <span class="s">&quot;date_short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;1943-04-19T13:27:57+1000&quot;</span>
+<span class="c1">## [1] &quot;1943-04-19T11:52:48+1000&quot;</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T00:00:00+1000&quot;</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970/01/01 12:00&quot;</span><span class="p">)</span>
@@ -364,7 +366,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2022-10-27T13:28:01+1100.
+      <span class="lastupdated">Last updated on 2022-12-29T11:52:52+1100.
       </span></p>
   </div>
 
