@@ -14,14 +14,14 @@ printf(fmt, ..., file = "", sep = "\n", append = FALSE, na_string = "NA")
 
 ## Arguments
 
-|             |                                                                                                                                |
-|-------------|--------------------------------------------------------------------------------------------------------------------------------|
-| `fmt`       | character vector of format strings                                                                                             |
-| `...`       | vectors with data to format (coercible to integer, real, or character)                                                         |
-| `na_string` | single string to represent missing values; if `NA`, missing values in `...` result in the corresponding outputs be missing too |
-| `file`      | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
-| `sep`       | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
-| `append`    | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
+|                                   |                                                                                                                                |
+|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `fmt`{#sprintf_:_fmt}             | character vector of format strings                                                                                             |
+| `...`{#sprintf_:_...}             | vectors with data to format (coercible to integer, real, or character)                                                         |
+| `na_string`{#sprintf_:_na_string} | single string to represent missing values; if `NA`, missing values in `...` result in the corresponding outputs be missing too |
+| `file`{#sprintf_:_file}           | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
+| `sep`{#sprintf_:_sep}             | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
+| `append`{#sprintf_:_append}       | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
 
 ## Details
 

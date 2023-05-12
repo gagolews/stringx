@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -34,11 +34,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -78,7 +77,7 @@
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -169,8 +168,8 @@
         
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>gregexpr: Locate Pattern Occurrences</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">gregexpr: Locate Pattern Occurrences</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
@@ -190,88 +189,88 @@
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">regexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="kc">...</span><span class="p">,</span> <span class="n">ignore_case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">regexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 
-<span class="nf">gregexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="kc">...</span><span class="p">,</span> <span class="n">ignore_case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">gregexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 
-<span class="nf">regexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="kc">...</span><span class="p">,</span> <span class="n">ignore_case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">regexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 
-<span class="nf">gregexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="kc">...</span><span class="p">,</span> <span class="n">ignore_case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">gregexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 
 <span class="nf">regexpr</span><span class="p">(</span>
-  <span class="n">pattern</span><span class="p">,</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">text</span><span class="p">,</span>
-  <span class="kc">...</span><span class="p">,</span>
-  <span class="n">ignore.case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">perl</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">useBytes</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">text</span>
+<span class="w">  </span><span class="n">pattern</span><span class="p">,</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">...</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ignore.case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">perl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">useBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">text</span>
 <span class="p">)</span>
 
 <span class="nf">gregexpr</span><span class="p">(</span>
-  <span class="n">pattern</span><span class="p">,</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">text</span><span class="p">,</span>
-  <span class="kc">...</span><span class="p">,</span>
-  <span class="n">ignore.case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">perl</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">useBytes</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">text</span>
+<span class="w">  </span><span class="n">pattern</span><span class="p">,</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">...</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ignore.case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">perl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">useBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">text</span>
 <span class="p">)</span>
 
 <span class="nf">regexec</span><span class="p">(</span>
-  <span class="n">pattern</span><span class="p">,</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">text</span><span class="p">,</span>
-  <span class="kc">...</span><span class="p">,</span>
-  <span class="n">ignore.case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">perl</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">useBytes</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">text</span>
+<span class="w">  </span><span class="n">pattern</span><span class="p">,</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">...</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ignore.case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">perl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">useBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">text</span>
 <span class="p">)</span>
 
 <span class="nf">gregexec</span><span class="p">(</span>
-  <span class="n">pattern</span><span class="p">,</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">text</span><span class="p">,</span>
-  <span class="kc">...</span><span class="p">,</span>
-  <span class="n">ignore.case</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">fixed</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">perl</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">useBytes</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">text</span>
+<span class="w">  </span><span class="n">pattern</span><span class="p">,</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">...</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ignore.case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">perl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">useBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">text</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading"></a></h2>
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code>{#regexpr2_:_x}</p></td>
 <td><p>character vector whose elements are to be examined</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pattern</span></code>{#regexpr2_:_pattern}</p></td>
 <td><p>character vector of nonempty search patterns</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code>{#regexpr2_:_…}</p></td>
 <td><p>further arguments to <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locate.html"><code class="docutils literal notranslate"><span class="pre">stri_locate</span></code></a>, e.g., <code class="docutils literal notranslate"><span class="pre">omit_empty</span></code>, <code class="docutils literal notranslate"><span class="pre">locale</span></code>, <code class="docutils literal notranslate"><span class="pre">dotall</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ignore_case,</span> <span class="pre">ignore.case</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ignore_case</span></code>{#regexpr2_:<em>ignore_case}, <code class="docutils literal notranslate"><span class="pre">ignore.case</span></code>{#regexpr2</em>:_ignore.case}</p></td>
 <td><p>single logical value; indicates whether matching should be case-insensitive</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fixed</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fixed</span></code>{#regexpr2_:_fixed}</p></td>
 <td><p>single logical value; <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> for matching with regular expressions (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/about_search_regex.html">about_search_regex</a>); <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> for fixed pattern matching (<a class="reference external" href="https://stringi.gagolewski.com/rapi/about_search_fixed.html">about_search_fixed</a>); <code class="docutils literal notranslate"><span class="pre">NA</span></code> for the Unicode collation algorithm (<a class="reference external" href="https://stringi.gagolewski.com/rapi/about_search_coll.html">about_search_coll</a>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">perl,</span> <span class="pre">useBytes</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">perl</span></code>{#regexpr2_:<em>perl}, <code class="docutils literal notranslate"><span class="pre">useBytes</span></code>{#regexpr2</em>:_useBytes}</p></td>
 <td><p>not used (with a warning if attempting to do so) [DEPRECATED]</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text</span></code>{#regexpr2_:_text}</p></td>
 <td><p>alias to the <code class="docutils literal notranslate"><span class="pre">x</span></code> argument [DEPRECATED]</p></td>
 </tr>
 </tbody>
@@ -280,7 +279,7 @@
 <section id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this heading"></a></h2>
 <p>These functions are fully vectorised with respect to both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">pattern</span></code>.</p>
-<p>Use <a class="reference internal" href="substr.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">substrl</span></code></span></a> and <a class="reference internal" href="substr.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">gsubstrl</span></code></span></a> to extract or replace the identified chunks. Also, consider using <a class="reference internal" href="gregextr.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">regextr2</span></code></span></a> and <a class="reference internal" href="gregextr.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">gregextr2</span></code></span></a> directly instead.</p>
+<p>Use <a class="reference internal" href="substr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">substrl</span></code></span></a> and <a class="reference internal" href="substr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">gsubstrl</span></code></span></a> to extract or replace the identified chunks. Also, consider using <a class="reference internal" href="gregextr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">regextr2</span></code></span></a> and <a class="reference internal" href="gregextr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">gregextr2</span></code></span></a> directly instead.</p>
 </section>
 <section id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this heading"></a></h2>
@@ -315,20 +314,20 @@
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
 <p>The official online manual of <span class="pkg">stringx</span> at <a class="reference external" href="https://stringx.gagolewski.com/">https://stringx.gagolewski.com/</a></p>
-<p>Related function(s): <a class="reference internal" href="paste.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">paste</span></code></span></a>, <a class="reference internal" href="nchar.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">nchar</span></code></span></a>, <a class="reference internal" href="strsplit.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">strsplit</span></code></span></a>, <a class="reference internal" href="gsub.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">gsub2</span></code></span></a>, <a class="reference internal" href="grepl.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">grepl2</span></code></span></a>, <a class="reference internal" href="gregextr.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">gregextr2</span></code></span></a>, <a class="reference internal" href="substr.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">gsubstrl</span></code></span></a></p>
+<p>Related function(s): <a class="reference internal" href="paste.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">paste</span></code></span></a>, <a class="reference internal" href="nchar.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">nchar</span></code></span></a>, <a class="reference internal" href="strsplit.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">strsplit</span></code></span></a>, <a class="reference internal" href="gsub.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">gsub2</span></code></span></a>, <a class="reference internal" href="grepl.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">grepl2</span></code></span></a>, <a class="reference internal" href="gregextr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">gregextr2</span></code></span></a>, <a class="reference internal" href="substr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">gsubstrl</span></code></span></a></p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">aca1</span><span class="o">=</span><span class="s">&quot;acacaca&quot;</span><span class="p">,</span> <span class="n">aca2</span><span class="o">=</span><span class="s">&quot;gaca&quot;</span><span class="p">,</span> <span class="n">noaca</span><span class="o">=</span><span class="s">&quot;actgggca&quot;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span>
-<span class="nf">regexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;(A)[ACTG]\\1&quot;</span><span class="p">,</span> <span class="n">ignore_case</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">aca1</span><span class="o">=</span><span class="s">&quot;acacaca&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">aca2</span><span class="o">=</span><span class="s">&quot;gaca&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">noaca</span><span class="o">=</span><span class="s">&quot;actgggca&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span>
+<span class="nf">regexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;(A)[ACTG]\\1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 <span class="c1">##  aca1  aca2 noaca    na </span>
 <span class="c1">##     1     2    -1    NA </span>
 <span class="c1">## attr(,&quot;match.length&quot;)</span>
 <span class="c1">## [1]  3  3 -1 NA</span>
-<span class="nf">regexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;aca&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="m">0</span>  <span class="c1"># like grepl2</span>
+<span class="nf">regexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aca&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="c1"># like grepl2</span>
 <span class="c1">##  aca1  aca2 noaca    na </span>
 <span class="c1">##  TRUE  TRUE FALSE    NA</span>
-<span class="nf">gregexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;aca&quot;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">gregexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aca&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fixed</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">overlap</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 <span class="c1">## $aca1</span>
 <span class="c1">## [1] 1 3 5</span>
 <span class="c1">## attr(,&quot;match.length&quot;)</span>
@@ -349,7 +348,7 @@
 <span class="c1">## attr(,&quot;match.length&quot;)</span>
 <span class="c1">## [1] NA</span>
 <span class="c1"># two named capture groups:</span>
-<span class="nf">regexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;(?&lt;x&gt;a)(?&lt;y&gt;cac?)&quot;</span><span class="p">)</span>
+<span class="nf">regexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;(?&lt;x&gt;a)(?&lt;y&gt;cac?)&quot;</span><span class="p">)</span>
 <span class="c1">## $aca1</span>
 <span class="c1">##   x y </span>
 <span class="c1">## 1 1 2 </span>
@@ -377,7 +376,7 @@
 <span class="c1">## attr(,&quot;match.length&quot;)</span>
 <span class="c1">##     x  y </span>
 <span class="c1">## NA NA NA</span>
-<span class="nf">gregexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;(?&lt;x&gt;a)(?&lt;y&gt;cac?)&quot;</span><span class="p">)</span>
+<span class="nf">gregexec2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;(?&lt;x&gt;a)(?&lt;y&gt;cac?)&quot;</span><span class="p">)</span>
 <span class="c1">## $aca1</span>
 <span class="c1">##   [,1] [,2]</span>
 <span class="c1">##      1    5</span>
@@ -422,7 +421,7 @@
 <span class="c1">## x   NA</span>
 <span class="c1">## y   NA</span>
 <span class="c1"># extraction:</span>
-<span class="nf">gsubstrl</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">gregexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;(A)[ACTG]\\1&quot;</span><span class="p">,</span> <span class="n">ignore_case</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+<span class="nf">gsubstrl</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nf">gregexpr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;(A)[ACTG]\\1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
 <span class="c1">## $aca1</span>
 <span class="c1">## [1] &quot;aca&quot; &quot;aca&quot;</span>
 <span class="c1">## </span>
@@ -434,7 +433,7 @@
 <span class="c1">## </span>
 <span class="c1">## $na</span>
 <span class="c1">## [1] NA</span>
-<span class="nf">gregextr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;(A)[ACTG]\\1&quot;</span><span class="p">,</span> <span class="n">ignore_case</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># equivalent</span>
+<span class="nf">gregextr2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;(A)[ACTG]\\1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">  </span><span class="c1"># equivalent</span>
 <span class="c1">## $aca1</span>
 <span class="c1">## [1] &quot;aca&quot; &quot;aca&quot;</span>
 <span class="c1">## </span>
@@ -464,7 +463,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2022-12-29T11:52:52+1100.
+      <span class="lastupdated">Last updated on 2023-05-12T11:54:39+1000.
       </span></p>
   </div>
 

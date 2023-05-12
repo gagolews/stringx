@@ -14,12 +14,12 @@ nzchar(x, keepNA = TRUE)
 
 ## Arguments
 
-|           |                                                                                                                                           |
-|-----------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`       | character vector or an object coercible to                                                                                                |
-| `type`    | `"chars"` gives the number of code points, `"width"` estimates the string width, `"bytes"` computes the number of bytes                   |
-| `allowNA` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                           |
-| `keepNA`  | if `FALSE`, missing values will be treated as `"NA"` strings; otherwise, the corresponding outputs will be missing as well \[DEPRECATED\] |
+|                             |                                                                                                                                           |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`{#nchar_:_x}             | character vector or an object coercible to                                                                                                |
+| `type`{#nchar_:_type}       | `"chars"` gives the number of code points, `"width"` estimates the string width, `"bytes"` computes the number of bytes                   |
+| `allowNA`{#nchar_:_allowNA} | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                           |
+| `keepNA`{#nchar_:_keepNA}   | if `FALSE`, missing values will be treated as `"NA"` strings; otherwise, the corresponding outputs will be missing as well \[DEPRECATED\] |
 
 ## Details
 

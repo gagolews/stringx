@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -34,11 +34,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -78,7 +77,7 @@
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -168,8 +167,8 @@
         
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>ISOdatetime: Construct Date-time Objects</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ISOdatetime: Construct Date-time Objects</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
@@ -190,27 +189,27 @@
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ISOdatetime</span><span class="p">(</span>
-  <span class="n">year</span><span class="p">,</span>
-  <span class="n">month</span><span class="p">,</span>
-  <span class="n">day</span><span class="p">,</span>
-  <span class="n">hour</span><span class="p">,</span>
-  <span class="n">min</span><span class="p">,</span>
-  <span class="n">sec</span><span class="p">,</span>
-  <span class="n">tz</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
-  <span class="n">lenient</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span>
+<span class="w">  </span><span class="n">year</span><span class="p">,</span>
+<span class="w">  </span><span class="n">month</span><span class="p">,</span>
+<span class="w">  </span><span class="n">day</span><span class="p">,</span>
+<span class="w">  </span><span class="n">hour</span><span class="p">,</span>
+<span class="w">  </span><span class="n">min</span><span class="p">,</span>
+<span class="w">  </span><span class="n">sec</span><span class="p">,</span>
+<span class="w">  </span><span class="n">tz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">lenient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">locale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span>
 <span class="p">)</span>
 
 <span class="nf">ISOdate</span><span class="p">(</span>
-  <span class="n">year</span><span class="p">,</span>
-  <span class="n">month</span><span class="p">,</span>
-  <span class="n">day</span><span class="p">,</span>
-  <span class="n">hour</span> <span class="o">=</span> <span class="m">0L</span><span class="p">,</span>
-  <span class="n">min</span> <span class="o">=</span> <span class="m">0L</span><span class="p">,</span>
-  <span class="n">sec</span> <span class="o">=</span> <span class="m">0L</span><span class="p">,</span>
-  <span class="n">tz</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
-  <span class="n">lenient</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-  <span class="n">locale</span> <span class="o">=</span> <span class="kc">NULL</span>
+<span class="w">  </span><span class="n">year</span><span class="p">,</span>
+<span class="w">  </span><span class="n">month</span><span class="p">,</span>
+<span class="w">  </span><span class="n">day</span><span class="p">,</span>
+<span class="w">  </span><span class="n">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span>
+<span class="w">  </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span>
+<span class="w">  </span><span class="n">sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span>
+<span class="w">  </span><span class="n">tz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">lenient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">locale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span>
 <span class="p">)</span>
 
 <span class="nf">Sys.time</span><span class="p">()</span>
@@ -219,23 +218,23 @@
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading"></a></h2>
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">year,</span> <span class="pre">month,</span> <span class="pre">day,</span> <span class="pre">hour,</span> <span class="pre">min,</span> <span class="pre">sec</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">year</span></code>{#ISOdatetime_:<em>year}, <code class="docutils literal notranslate"><span class="pre">month</span></code>{#ISOdatetime</em>:<em>month}, <code class="docutils literal notranslate"><span class="pre">day</span></code>{#ISOdatetime</em>:<em>day}, <code class="docutils literal notranslate"><span class="pre">hour</span></code>{#ISOdatetime</em>:<em>hour}, <code class="docutils literal notranslate"><span class="pre">min</span></code>{#ISOdatetime</em>:<em>min}, <code class="docutils literal notranslate"><span class="pre">sec</span></code>{#ISOdatetime</em>:_sec}</p></td>
 <td><p>numeric vectors</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tz</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tz</span></code>{#ISOdatetime_:_tz}</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default time zone (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_set.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_get</span></code></a>) or a single string with a timezone identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_timezone_list.html"><code class="docutils literal notranslate"><span class="pre">stri_timezone_list</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lenient</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lenient</span></code>{#ISOdatetime_:_lenient}</p></td>
 <td><p>single logical value; should date/time parsing be lenient?</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">locale</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">locale</span></code>{#ISOdatetime_:_locale}</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> for the default locale (see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_set.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_get</span></code></a>) or a single string with a locale identifier, see <a class="reference external" href="https://stringi.gagolewski.com/rapi/stri_locale_list.html"><code class="docutils literal notranslate"><span class="pre">stri_locale_list</span></code></a></p></td>
 </tr>
 </tbody>
@@ -243,7 +242,7 @@
 </section>
 <section id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this heading"></a></h2>
-<p>These functions return an object of class <code class="docutils literal notranslate"><span class="pre">POSIXxt</span></code>, which extends upon <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXct.html"><code class="docutils literal notranslate"><span class="pre">POSIXct</span></code></a>, <a class="reference internal" href="strptime.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">strptime</span></code></span></a>.</p>
+<p>These functions return an object of class <code class="docutils literal notranslate"><span class="pre">POSIXxt</span></code>, which extends upon <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXct.html"><code class="docutils literal notranslate"><span class="pre">POSIXct</span></code></a>, <a class="reference internal" href="strptime.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">strptime</span></code></span></a>.</p>
 <p>You might wish to consider calling <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/as.Date.html"><code class="docutils literal notranslate"><span class="pre">as.Date</span></code></a> on the result yielded by <code class="docutils literal notranslate"><span class="pre">ISOdate</span></code>.</p>
 <p>No attributes are preserved (because they are too many).</p>
 </section>
@@ -261,13 +260,13 @@
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
 <p>The official online manual of <span class="pkg">stringx</span> at <a class="reference external" href="https://stringx.gagolewski.com/">https://stringx.gagolewski.com/</a></p>
-<p>Related function(s): <a class="reference internal" href="strptime.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">strptime</span></code></span></a></p>
+<p>Related function(s): <a class="reference internal" href="strptime.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">strptime</span></code></span></a></p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ISOdate</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ISOdate</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T00:00:00+1000&quot;</span>
-<span class="nf">ISOdatetime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+<span class="nf">ISOdatetime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T12:00:00+1000&quot;</span>
 </pre></div>
 </div>
@@ -287,7 +286,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2022-12-29T11:52:52+1100.
+      <span class="lastupdated">Last updated on 2023-05-12T11:54:39+1000.
       </span></p>
   </div>
 

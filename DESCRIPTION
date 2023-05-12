@@ -2,7 +2,7 @@ Package: stringx
 Type: Package
 Title: Drop-in Replacements for Base String Functions Powered by 'stringi'
 Version: 0.2.4
-Date: 2022-10-27
+Date: 2023-05-12
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),
@@ -34,4 +34,4 @@ Imports:
 Suggests:
     realtest (>= 0.2.1)
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3

@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -34,11 +34,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -78,7 +77,7 @@
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -166,8 +165,8 @@
         
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>constants: Character Constants</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">constants: Character Constants</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
@@ -184,7 +183,7 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>Letters and digits sets complementing the built-in <code class="docutils literal notranslate"><span class="pre">LETTERS</span></code> and <code class="docutils literal notranslate"><span class="pre">letters</span></code>, see <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/base/help/Constants.html">Constants</a>.</p>
-<p>Note: calling, e.g., <a class="reference internal" href="chartr.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">tolower</span></code></span></a> on <code class="docutils literal notranslate"><span class="pre">LETTERS_FRAK</span></code> in the current version of <span class="pkg">ICU</span> does not currently yield <code class="docutils literal notranslate"><span class="pre">letters_frak</span></code>.</p>
+<p>Note: calling, e.g., <a class="reference internal" href="chartr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">tolower</span></code></span></a> on <code class="docutils literal notranslate"><span class="pre">LETTERS_FRAK</span></code> in the current version of <span class="pkg">ICU</span> does not currently yield <code class="docutils literal notranslate"><span class="pre">letters_frak</span></code>.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
@@ -291,7 +290,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2022-12-29T11:52:52+1100.
+      <span class="lastupdated">Last updated on 2023-05-12T11:54:39+1000.
       </span></p>
   </div>
 

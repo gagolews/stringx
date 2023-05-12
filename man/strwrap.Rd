@@ -48,7 +48,7 @@ Due to this, no attributes are preserved.
 }
 \description{
 Splits each string into words which are then arranged to form text lines
-of no more of a given width.
+of mo more than a given width.
 }
 \details{
 Might be useful when displaying strings using a monospaced font.

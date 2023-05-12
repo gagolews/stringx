@@ -44,14 +44,14 @@ substring(text, first = 1L, last = -1L) <- value
 
 ## Arguments
 
-|                          |                                                                                                                                                                                                                                                 |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x, text`                | character vector whose parts are to be extracted/replaced                                                                                                                                                                                       |
-| `start, first`           | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the start indexes; e.g., 1 denotes the first code point; negative indexes count from the end of a string, i.e., -1 is the last character                        |
-| `stop, last`             | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the end indexes (inclusive); note that if the start position is farther than the end position, this indicates an empty substring therein (see Examples)         |
-| `length`                 | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the substring lengths; negative lengths result in a missing value or empty vector (see `ignore_negative_length`) or the corresponding substring being unchanged |
-| `ignore_negative_length` | single logical value; whether negative lengths should be ignored or yield missing values                                                                                                                                                        |
-| `value`                  | character vector (for `substr`) or list of character vectors (for `gsubstr`) defining the replacements strings                                                                                                                                  |
+|                                                            |                                                                                                                                                                                                                                                 |
+|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`{#substr_:_x}, `text`{#substr_:_text}                   | character vector whose parts are to be extracted/replaced                                                                                                                                                                                       |
+| `start`{#substr_:_start}, `first`{#substr_:_first}         | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the start indexes; e.g., 1 denotes the first code point; negative indexes count from the end of a string, i.e., -1 is the last character                        |
+| `stop`{#substr_:_stop}, `last`{#substr_:_last}             | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the end indexes (inclusive); note that if the start position is farther than the end position, this indicates an empty substring therein (see Examples)         |
+| `length`{#substr_:_length}                                 | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the substring lengths; negative lengths result in a missing value or empty vector (see `ignore_negative_length`) or the corresponding substring being unchanged |
+| `ignore_negative_length`{#substr_:_ignore_negative_length} | single logical value; whether negative lengths should be ignored or yield missing values                                                                                                                                                        |
+| `value`{#substr_:_value}                                   | character vector (for `substr`) or list of character vectors (for `gsubstr`) defining the replacements strings                                                                                                                                  |
 
 ## Details
 
@@ -85,9 +85,9 @@ Replacements for and enhancements of base [`substr`](https://stat.ethz.ch/R-manu
 
 -   partial recycling with no warning **\[fixed here\]**
 
--   if the replacement string of different length than the chunk being substituted, then **\[fixed here\]**
+-   the replacement must be of the same length as the chunk being substituted **\[fixed here\]**
 
--   negative indexes are silently treated as 1 **\[changed here -- negative indexes count from the end of the string\]**
+-   negative indexes are silently treated as 1 **\[changed here: negative indexes count from the end of the string\]**
 
 -   replacement of different length than the extracted substring never changes the length of the string **\[changed here -- output length is input length minus length of extracted plus length of replacement\]**
 

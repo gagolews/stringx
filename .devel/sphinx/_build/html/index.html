@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -34,11 +34,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -77,7 +76,7 @@
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -157,8 +156,8 @@
         
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>stringx: Drop-in replacements for base R string functions powered by stringi</li>
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">stringx: Drop-in replacements for base R string functions powered by stringi</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
@@ -217,18 +216,18 @@ happy reading! 🤓),</p></li>
 <li><p>are more forward-pipe (<code class="docutils literal notranslate"><span class="pre">|&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">magrittr::%&gt;%</span></code>) operator-friendly.</p></li>
 </ul>
 <p>Also, a few new, useful operations are introduced.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;stringx&quot;</span><span class="p">)</span>  <span class="c1"># install from CRAN</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;stringx&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># install from CRAN</span>
 <span class="nf">suppressMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;stringx&quot;</span><span class="p">))</span>
 
-<span class="nf">c</span><span class="p">(</span><span class="s">&quot;ACTGCT&quot;</span><span class="p">,</span> <span class="s">&quot;42&quot;</span><span class="p">,</span> <span class="s">&quot;stringx \U0001f970&quot;</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="nf">grepv2</span><span class="p">(</span><span class="s">&quot;\\p{EMOJI_PRESENTATION}&quot;</span><span class="p">)</span>
+<span class="nf">c</span><span class="p">(</span><span class="s">&quot;ACTGCT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;42&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;stringx \U0001f970&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">grepv2</span><span class="p">(</span><span class="s">&quot;\\p{EMOJI_PRESENTATION}&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;stringx 🥰&quot;</span>
 
-<span class="nf">toupper</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span>  <span class="c1"># replaces base::toupper()</span>
+<span class="nf">toupper</span><span class="p">(</span><span class="s">&quot;gro\u00DF&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># replaces base::toupper()</span>
 <span class="c1">## [1] &quot;GROSS&quot;</span>
 
-<span class="n">l</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;e\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0&quot;</span><span class="p">,</span> <span class="s">&quot;\u03c0\u00b2&quot;</span><span class="p">,</span> <span class="s">&quot;\U0001f602\U0001f603&quot;</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> <span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">),</span> <span class="kc">pi</span><span class="p">,</span> <span class="kc">pi</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">)</span>
-<span class="nf">cat</span><span class="p">(</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;%8s=%+.3f&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;\n&quot;</span><span class="p">)</span>  <span class="c1"># replaces base::sprintf()</span>
+<span class="n">l</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;e\u00b2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\u03c0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\u03c0\u00b2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\U0001f602\U0001f603&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="kc">pi</span><span class="p">,</span><span class="w"> </span><span class="kc">pi</span><span class="o">^</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="kc">NaN</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;%8s=%+.3f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">),</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;\n&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># replaces base::sprintf()</span>
 <span class="c1">##        e=+2.718</span>
 <span class="c1">##       e²=+7.389</span>
 <span class="c1">##        π=+3.142</span>
@@ -520,7 +519,7 @@ either Version 2 or Version 3; see
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2022-12-29T11:52:52+1100.
+      <span class="lastupdated">Last updated on 2023-05-12T11:54:39+1000.
       </span></p>
   </div>
 

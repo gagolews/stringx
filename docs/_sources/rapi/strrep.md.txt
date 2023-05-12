@@ -14,10 +14,10 @@ e1 %x*% e2
 
 ## Arguments
 
-|             |                                                                                  |
-|-------------|----------------------------------------------------------------------------------|
-| `e1, x`     | character vector (or an object coercible to) whose elements are to be duplicated |
-| `e2, times` | numeric vector giving the number of times to repeat the corresponding strings    |
+|                                              |                                                                                  |
+|----------------------------------------------|----------------------------------------------------------------------------------|
+| `e1`{#strrep_:_e1}, `x`{#strrep_:_x}         | character vector (or an object coercible to) whose elements are to be duplicated |
+| `e2`{#strrep_:_e2}, `times`{#strrep_:_times} | numeric vector giving the number of times to repeat the corresponding strings    |
 
 ## Details
 

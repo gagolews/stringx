@@ -18,15 +18,15 @@ strcat(x, collapse = "", na.rm = FALSE)
 
 ## Arguments
 
-|            |                                                                                                             |
-|------------|-------------------------------------------------------------------------------------------------------------|
-| `...`      | character vectors (or objects coercible to) whose corresponding/consecutive elements are to be concatenated |
-| `sep`      | single string; separates terms                                                                              |
-| `collapse` | single string or `NULL`; an optional separator if tokens are to be merged into a single string              |
-| `recycle0` | single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored                |
-| `e1, e2`   | character vectors (or objects coercible to) whose corresponding elements are to be concatenated             |
-| `x`        | character vector (or an object coercible to) whose consecutive elements are to be concatenated              |
-| `na.rm`    | single logical value; if `TRUE`, missing values are silently ignored                                        |
+|                                      |                                                                                                             |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| `...`{#paste_:_...}                  | character vectors (or objects coercible to) whose corresponding/consecutive elements are to be concatenated |
+| `sep`{#paste_:_sep}                  | single string; separates terms                                                                              |
+| `collapse`{#paste_:_collapse}        | single string or `NULL`; an optional separator if tokens are to be merged into a single string              |
+| `recycle0`{#paste_:_recycle0}        | single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored                |
+| `e1`{#paste_:_e1}, `e2`{#paste_:_e2} | character vectors (or objects coercible to) whose corresponding elements are to be concatenated             |
+| `x`{#paste_:_x}                      | character vector (or an object coercible to) whose consecutive elements are to be concatenated              |
+| `na.rm`{#paste_:_na.rm}              | single logical value; if `TRUE`, missing values are silently ignored                                        |
 
 ## Details
 

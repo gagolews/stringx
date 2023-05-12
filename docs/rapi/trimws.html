@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -34,11 +34,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -78,7 +77,7 @@
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -169,8 +168,8 @@
         
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>trimws: Trim Leading or Trailing Whitespaces</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">trimws: Trim Leading or Trailing Whitespaces</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
@@ -190,26 +189,26 @@
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">trimws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">which</span> <span class="o">=</span> <span class="s">&quot;both&quot;</span><span class="p">,</span> <span class="n">whitespace</span> <span class="o">=</span> <span class="s">&quot;\\p{Wspace}&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">trimws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;both&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">whitespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\\p{Wspace}&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading"></a></h2>
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code>{#trimws_:_x}</p></td>
 <td><p>character vector whose elements are to be trimmed</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">which</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">which</span></code>{#trimws_:_which}</p></td>
 <td><p>single string; either <code class="docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code>; side(s) from which the code points matching the <code class="docutils literal notranslate"><span class="pre">whitespace</span></code> pattern are to be removed</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">whitespace</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">whitespace</span></code>{#trimws_:_whitespace}</p></td>
 <td><p>single string; specifies the set of Unicode code points for removal, see ‘Character Classes’ in <a class="reference external" href="https://stringi.gagolewski.com/rapi/about_search_regex.html">about_search_regex</a> for more details</p></td>
 </tr>
 </tbody>
@@ -217,7 +216,7 @@
 </section>
 <section id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this heading"></a></h2>
-<p>Not to be confused with <a class="reference internal" href="strtrim.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">strtrim</span></code></span></a>.</p>
+<p>Not to be confused with <a class="reference internal" href="strtrim.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">strtrim</span></code></span></a>.</p>
 </section>
 <section id="value">
 <h2>Value<a class="headerlink" href="#value" title="Permalink to this heading"></a></h2>
@@ -239,13 +238,13 @@
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
 <p>The official online manual of <span class="pkg">stringx</span> at <a class="reference external" href="https://stringx.gagolewski.com/">https://stringx.gagolewski.com/</a></p>
-<p>Related function(s): <a class="reference internal" href="gsub.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">sub</span></code></span></a></p>
+<p>Related function(s): <a class="reference internal" href="gsub.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">sub</span></code></span></a></p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">base</span><span class="o">::</span><span class="nf">trimws</span><span class="p">(</span><span class="s">&quot;NAAAAANA!!!NANAAAAA&quot;</span><span class="p">,</span> <span class="n">whitespace</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span>  <span class="c1"># stringx raises an error</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">base</span><span class="o">::</span><span class="nf">trimws</span><span class="p">(</span><span class="s">&quot;NAAAAANA!!!NANAAAAA&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">whitespace</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span><span class="w">  </span><span class="c1"># stringx raises an error</span>
 <span class="c1">## [1] &quot;NA!!!NA&quot;</span>
-<span class="n">x</span> <span class="o">&lt;-</span> <span class="s">&quot;   :)\v\u00a0 \n\r\t&quot;</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;   :)\v\u00a0 \n\r\t&quot;</span>
 <span class="n">base</span><span class="o">::</span><span class="nf">trimws</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="c1">## [1] &quot;:)\v &quot;</span>
 <span class="n">stringx</span><span class="o">::</span><span class="nf">trimws</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -268,7 +267,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2022-12-29T11:52:52+1100.
+      <span class="lastupdated">Last updated on 2023-05-12T11:54:39+1000.
       </span></p>
   </div>
 
