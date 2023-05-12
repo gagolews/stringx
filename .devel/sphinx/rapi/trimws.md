@@ -12,11 +12,11 @@ trimws(x, which = "both", whitespace = "\\p{Wspace}")
 
 ## Arguments
 
-|                                    |                                                                                                                                                                                                      |
-|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`{#trimws_:_x}                   | character vector whose elements are to be trimmed                                                                                                                                                    |
-| `which`{#trimws_:_which}           | single string; either `"both"`, `"left"`, or `"right"`; side(s) from which the code points matching the `whitespace` pattern are to be removed                                                       |
-| `whitespace`{#trimws_:_whitespace} | single string; specifies the set of Unicode code points for removal, see \'Character Classes\' in [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html) for more details |
+|              |                                                                                                                                                                                                      |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x`          | character vector whose elements are to be trimmed                                                                                                                                                    |
+| `which`      | single string; either `"both"`, `"left"`, or `"right"`; side(s) from which the code points matching the `whitespace` pattern are to be removed                                                       |
+| `whitespace` | single string; specifies the set of Unicode code points for removal, see \'Character Classes\' in [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html) for more details |
 
 ## Details
 

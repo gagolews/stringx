@@ -12,10 +12,10 @@ strtrim(x, width)
 
 ## Arguments
 
-|                           |                                                                                       |
-|---------------------------|---------------------------------------------------------------------------------------|
-| `x`{#strtrim_:_x}         | character vector whose elements are to be trimmed                                     |
-| `width`{#strtrim_:_width} | numeric vector giving the widths to which the corresponding strings are to be trimmed |
+|         |                                                                                       |
+|---------|---------------------------------------------------------------------------------------|
+| `x`     | character vector whose elements are to be trimmed                                     |
+| `width` | numeric vector giving the widths to which the corresponding strings are to be trimmed |
 
 ## Details
 

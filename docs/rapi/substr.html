@@ -232,22 +232,22 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code>{#substr_:<em>x}, <code class="docutils literal notranslate"><span class="pre">text</span></code>{#substr</em>:_text}</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code></p></td>
 <td><p>character vector whose parts are to be extracted/replaced</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code>{#substr_:<em>start}, <code class="docutils literal notranslate"><span class="pre">first</span></code>{#substr</em>:_first}</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">first</span></code></p></td>
 <td><p>numeric vector (for <code class="docutils literal notranslate"><span class="pre">substr</span></code>) or list of numeric vectors (for <code class="docutils literal notranslate"><span class="pre">gsubstr</span></code>) giving the start indexes; e.g., 1 denotes the first code point; negative indexes count from the end of a string, i.e., -1 is the last character</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>{#substr_:<em>stop}, <code class="docutils literal notranslate"><span class="pre">last</span></code>{#substr</em>:_last}</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>, <code class="docutils literal notranslate"><span class="pre">last</span></code></p></td>
 <td><p>numeric vector (for <code class="docutils literal notranslate"><span class="pre">substr</span></code>) or list of numeric vectors (for <code class="docutils literal notranslate"><span class="pre">gsubstr</span></code>) giving the end indexes (inclusive); note that if the start position is farther than the end position, this indicates an empty substring therein (see Examples)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">length</span></code>{#substr_:_length}</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">length</span></code></p></td>
 <td><p>numeric vector (for <code class="docutils literal notranslate"><span class="pre">substr</span></code>) or list of numeric vectors (for <code class="docutils literal notranslate"><span class="pre">gsubstr</span></code>) giving the substring lengths; negative lengths result in a missing value or empty vector (see <code class="docutils literal notranslate"><span class="pre">ignore_negative_length</span></code>) or the corresponding substring being unchanged</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ignore_negative_length</span></code>{#substr_:_ignore_negative_length}</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ignore_negative_length</span></code></p></td>
 <td><p>single logical value; whether negative lengths should be ignored or yield missing values</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code>{#substr_:_value}</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
 <td><p>character vector (for <code class="docutils literal notranslate"><span class="pre">substr</span></code>) or list of character vectors (for <code class="docutils literal notranslate"><span class="pre">gsubstr</span></code>) defining the replacements strings</p></td>
 </tr>
 </tbody>
@@ -342,7 +342,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2022, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2023-05-12T11:54:39+1000.
+      <span class="lastupdated">Last updated on 2023-05-12T12:19:41+1000.
       </span></p>
   </div>
 
