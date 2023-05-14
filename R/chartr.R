@@ -1,7 +1,7 @@
 # kate: default-dictionary en_AU
 
 ## stringx package for R
-## Copyleft (C) 2021-2022, Marek Gagolewski <https://www.gagolewski.com>
+## Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com>
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by

@@ -1,8 +1,13 @@
-# What Is New in *stringx*
+# Changelog
 
 > Note that the date-time processing functions in *stringx* are a work
 > in progress. Feature requests/comments/remarks are welcome,
-> see https://github.com/gagolews/stringx/issues.
+> see <https://github.com/gagolews/stringx/issues>.
+
+
+## 0.2.5 (2023-05-15)
+
+* [BUGFIX] Fixed failing checks/tests due to some updates in R-devel.
 
 
 ## 0.2.4 (2022-10-27)

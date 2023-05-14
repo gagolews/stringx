@@ -44,7 +44,8 @@ f <- structure(c(x="%Y-%d%m", y="%d%m-%Y"), class="format", attrib1="val1")
 x <- structure(c(a="1603-1502"), attrib2="val2")
 E(
     names(strptime(x, f)),
-    names(f),
+    better=names(f),
+    c("a", "a"),
     bad=c("a", NA)
 )
 
@@ -83,6 +84,29 @@ E(
     bad=P(error="'origin' must be supplied"),  # more specific - list first - LANGUAGE="en" only though
     bad="1970-01-01T01:33:41+0100",
     bad="1970-01-01T02:33:41+0200",
+    bad="1970-01-01T03:33:41+0300",
+    bad="1970-01-01T04:33:41+0400",
+    bad="1970-01-01T05:33:41+0500",
+    bad="1970-01-01T06:33:41+0600",
+    bad="1970-01-01T07:33:41+0700",
+    bad="1970-01-01T08:33:41+0800",
+    bad="1970-01-01T09:33:41+0900",
+    bad="1970-01-01T10:33:41+1000",
+    bad="1970-01-01T11:33:41+1100",
+    bad="1970-01-01T12:33:41+1200",
+    bad="1970-01-01 00:33:41",
+    bad="1970-01-01 01:33:41",
+    bad="1970-01-01 02:33:41",
+    bad="1970-01-01 03:33:41",
+    bad="1970-01-01 04:33:41",
+    bad="1970-01-01 05:33:41",
+    bad="1970-01-01 06:33:41",
+    bad="1970-01-01 07:33:41",
+    bad="1970-01-01 08:33:41",
+    bad="1970-01-01 09:33:41",
+    bad="1970-01-01 10:33:41",
+    bad="1970-01-01 11:33:41",
+    bad="1970-01-01 12:33:41",
     P(error=TRUE),
     .comment="uninformative error message"
 )
@@ -131,7 +155,8 @@ f <- structure(c(x="%Y", y="%Y-%m-%d"), class="format", attrib1="val1")
 x <- structure(c(a=t), attrib2="val2")
 E(
     strftime(x, f),
-    `attributes<-`(c("2021", "2021-05-27"), attributes(f)),
+    better=`attributes<-`(c("2021", "2021-05-27"), attributes(f)),
+    structure(c("2021", "2021-05-27"), names=c("a", "a")),
     bad=structure(c("2021", "2021-05-27"), names=c("a", "")),
     bad=structure(c("2021", "2021-05-27"), names=c("a", NA))
 )
