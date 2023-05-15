@@ -323,26 +323,26 @@
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">())</span><span class="w">  </span><span class="c1"># default format - ISO 8601</span>
-<span class="c1">## [1] &quot;2023-05-15T09:51:39+1000&quot;</span>
+<span class="c1">## [1] &quot;2023-05-15T10:35:28+1000&quot;</span>
 <span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;date_full&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;date_relative_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;datetime_full&quot;</span><span class="p">)</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w">  </span><span class="c1"># current default locale</span>
-<span class="c1">## [1] &quot;Monday, 15 May 2023&quot;                                               </span>
-<span class="c1">## [2] &quot;2023-05-15&quot;                                                        </span>
-<span class="c1">## [3] &quot;today&quot;                                                             </span>
-<span class="c1">## [4] &quot;Monday, 15 May 2023 at 9:51:39 am Australian Eastern Standard Time&quot;</span>
+<span class="c1">## [1] &quot;Monday, 15 May 2023&quot;                                                </span>
+<span class="c1">## [2] &quot;2023-05-15&quot;                                                         </span>
+<span class="c1">## [3] &quot;today&quot;                                                              </span>
+<span class="c1">## [4] &quot;Monday, 15 May 2023 at 10:35:28 am Australian Eastern Standard Time&quot;</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;Montag, 15. Mai 2023&quot;                                       </span>
 <span class="c1">## [2] &quot;2023-05-15&quot;                                                 </span>
 <span class="c1">## [3] &quot;heute&quot;                                                      </span>
-<span class="c1">## [4] &quot;Montag, 15. Mai 2023 um 09:51:39 Ostaustralische Normalzeit&quot;</span>
+<span class="c1">## [4] &quot;Montag, 15. Mai 2023 um 10:35:28 Ostaustralische Normalzeit&quot;</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;date_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;24 Iyar 5783&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tz</span><span class="o">=</span><span class="s">&quot;GMT&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T00:00:00+0000&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># missing time info replaced with current</span>
-<span class="c1">## [1] &quot;1970-01-01T09:51:39+1000&quot;</span>
+<span class="c1">## [1] &quot;1970-01-01T10:35:28+1000&quot;</span>
 <span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;14 Nisan 5703&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;date_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span class="c1">## [1] &quot;1943-04-19T09:51:39+1000&quot;</span>
+<span class="c1">## [1] &quot;1943-04-19T10:35:28+1000&quot;</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">)</span>
 <span class="c1">## [1] &quot;1970-01-01T00:00:00+1000&quot;</span>
 <span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970/01/01 12:00&quot;</span><span class="p">)</span>
@@ -365,7 +365,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021-2023, Marek Gagolewski.
-      <span class="lastupdated">Last updated on 2023-05-15T09:51:41+1000.
+      <span class="lastupdated">Last updated on 2023-05-15T10:35:30+1000.
       </span></p>
   </div>
 

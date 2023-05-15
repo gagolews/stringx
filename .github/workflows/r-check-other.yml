@@ -1,4 +1,3 @@
-# based on https://raw.githubusercontent.com/tidyverse/dplyr/master/.github/workflows/R-CMD-check.yaml
 name: stringx for R (check on other platforms)
 
 on:
@@ -19,6 +18,7 @@ jobs:
         config:
           - {os: macOS-latest,   r: 'release'}
           - {os: windows-latest, r: 'release'}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
