@@ -1,4 +1,4 @@
-stringx: Drop-in replacements for base R string functions powered by stringi
+stringx: Replacements for base R string functions powered by stringi
 ============================================================================
 
 .. epigraph::
