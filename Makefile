@@ -36,7 +36,7 @@ check: stop-on-utf8 build
 	cd .. && R_DEFAULT_INTERNET_TIMEOUT=240 \
 	    _R_CHECK_CRAN_INCOMING_REMOTE_=FALSE \
 	    _R_CHECK_FORCE_SUGGESTS_=0 \
-	    R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran
+	    R CMD check `ls -t ${PKGNAME}*.tar.gz | head -1` --as-cran --no-manual
 
 ################################################################################
 
