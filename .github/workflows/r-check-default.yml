@@ -1,4 +1,4 @@
-name: stringx for R
+name: stringx for R (system ICU; ubuntu-20.04)
 
 on:
   push:
@@ -8,23 +8,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get -y upgrade
         sudo apt-get -y install libcurl4-openssl-dev r-base-dev devscripts libicu-dev language-pack-pl
-        sudo Rscript -e "install.packages(c('realtest', 'stringi', 'roxygen2'))"
+        sudo Rscript -e "install.packages('stringi')"
+        sudo Rscript -e "install.packages(c('realtest', 'roxygen2'))"
     - name: Install stringx
       run: |
-        LC_ALL="pl_PL.UTF-8" sudo R CMD INSTALL .
+        sudo R CMD INSTALL .
     - name: Test stringx
       run: |
+        sudo make test
         LC_ALL="pl_PL.UTF-8" sudo make test
         LC_ALL="C" sudo make test
     - name: Check stringx
       run: |
+        sudo make check
         LC_ALL="pl_PL.UTF-8" sudo make check
         LC_ALL="C" sudo make check

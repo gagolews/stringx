@@ -1,4 +1,4 @@
-name: stringx for R (ICU 55)
+name: stringx for R (ICU bundle; ubuntu-latest)
 
 on:
   push:
@@ -10,22 +10,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get -y upgrade
         sudo apt-get -y install libcurl4-openssl-dev r-base-dev devscripts libicu-dev language-pack-pl
-        sudo Rscript -e "install.packages('stringi', configure.args='--disable-cxx11 --disable-pkg-config')"
+        sudo Rscript -e "install.packages('stringi', configure.args='--disable-pkg-config')"
         sudo Rscript -e "install.packages(c('realtest', 'roxygen2'))"
     - name: Install stringx
       run: |
-        sudo R CMD INSTALL .
+        LC_ALL="pl_PL.UTF-8" sudo R CMD INSTALL .
     - name: Test stringx
       run: |
+        sudo make test
         LC_ALL="pl_PL.UTF-8" sudo make test
         LC_ALL="C" sudo make test
     - name: Check stringx
       run: |
+        sudo make check
         LC_ALL="pl_PL.UTF-8" sudo make check
         LC_ALL="C" sudo make check
