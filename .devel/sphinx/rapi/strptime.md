@@ -135,28 +135,79 @@ Related function(s): [`sprintf`](sprintf.md), [`ISOdatetime`](ISOdatetime.md)
 
 ```r
 strftime(Sys.time())  # default format - ISO 8601
-## [1] "2023-05-21T13:43:43+1000"
+```
+
+```
+## [1] "2023-10-29T14:36:07+1100"
+```
+
+```r
 f <- c("date_full", "%Y-%m-%d", "date_relative_short", "datetime_full")
 strftime(Sys.time(), f)  # current default locale
-## [1] "Sunday, 21 May 2023"                                               
-## [2] "2023-05-21"                                                        
-## [3] "today"                                                             
-## [4] "Sunday, 21 May 2023 at 1:43:43 pm Australian Eastern Standard Time"
+```
+
+```
+## [1] "Sunday, October 29, 2023"                                               
+## [2] "2023-10-29"                                                             
+## [3] "today"                                                                  
+## [4] "Sunday, October 29, 2023 at 2:36:07 PM Australian Eastern Daylight Time"
+```
+
+```r
 strftime(Sys.time(), f, locale="de_DE")
-## [1] "Sonntag, 21. Mai 2023"                                       
-## [2] "2023-05-21"                                                  
-## [3] "heute"                                                       
-## [4] "Sonntag, 21. Mai 2023 um 13:43:43 Ostaustralische Normalzeit"
+```
+
+```
+## [1] "Sonntag, 29. Oktober 2023"                                       
+## [2] "2023-10-29"                                                      
+## [3] "heute"                                                           
+## [4] "Sonntag, 29. Oktober 2023 um 14:36:07 Ostaustralische Sommerzeit"
+```
+
+```r
 strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1 Sivan 5783"
+```
+
+```
+## [1] "14 Heshvan 5784"
+```
+
+```r
 strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
+```
+
+```
 ## [1] "1970-01-01T00:00:00+0000"
+```
+
+```r
 strptime("1970-01-01", "%Y-%m-%d")  # missing time info replaced with current
-## [1] "1970-01-01T13:43:43+1000"
+```
+
+```
+## [1] "1970-01-01T14:36:07+1000"
+```
+
+```r
 strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
-## [1] "1943-04-19T13:43:43+1000"
+```
+
+```
+## [1] "1943-04-19T14:36:07+1000"
+```
+
+```r
 as.POSIXxt("1970-01-01")
+```
+
+```
 ## [1] "1970-01-01T00:00:00+1000"
+```
+
+```r
 as.POSIXxt("1970/01/01 12:00")
+```
+
+```
 ## [1] "1970-01-01T12:00:00+1000"
 ```

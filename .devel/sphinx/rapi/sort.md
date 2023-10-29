@@ -116,23 +116,62 @@ Related function(s): [`strcoll`](strcoll.md)
 ```r
 x <- c("a1", "a100", "a101", "a1000", "a10", "a10", "a11", "a99", "a10", "a1")
 base::sort.default(x)   # lexicographic sort
+```
+
+```
 ##  [1] "a1"    "a1"    "a10"   "a10"   "a10"   "a100"  "a1000" "a101"  "a11"  
 ## [10] "a99"
+```
+
+```r
 sort(x, numeric=TRUE)   # calls stringx:::sort.character
+```
+
+```
 ##  [1] "a1"    "a1"    "a10"   "a10"   "a10"   "a11"   "a99"   "a100"  "a101" 
 ## [10] "a1000"
+```
+
+```r
 xtfrm2(x, numeric=TRUE)  # calls stringx:::xtfrm2.character
+```
+
+```
 ##  [1]  1  8  9 10  3  3  6  7  3  1
+```
+
+```r
 rank(xtfrm2(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
+```
+
+```
 ##  [1]  1.5  8.0  9.0 10.0  4.0  4.0  6.0  7.0  4.0  1.5
+```
+
+```r
 order(xtfrm2(x, numeric=TRUE))    # ordering permutation
+```
+
+```
 ##  [1]  1 10  5  6  9  7  8  2  3  4
+```
+
+```r
 x[order(xtfrm2(x, numeric=TRUE))] # equivalent to sort()
+```
+
+```
 ##  [1] "a1"    "a1"    "a10"   "a10"   "a10"   "a11"   "a99"   "a100"  "a101" 
 ## [10] "a1000"
+```
+
+```r
 # order a data frame w.r.t. decreasing ids and increasing vals
 d <- data.frame(vals=round(runif(length(x)), 1), ids=x)
 d[order(-xtfrm2(d[["ids"]], numeric=TRUE), d[["vals"]]), ]
+```
+
+```
 ##    vals   ids
 ## 4   0.9 a1000
 ## 3   0.4  a101

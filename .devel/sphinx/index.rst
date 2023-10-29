@@ -115,8 +115,9 @@ either Version 2 or Version 3; see
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Reference Manual
+    :hidden:
     :glob:
 
     rapi/*
@@ -125,9 +126,10 @@ either Version 2 or Version 3; see
 
 .. toctree::
     :maxdepth: 1
+    :hidden:
     :caption: Other
 
-    Deep R Programming <https://deepr.gagolewski.com>
+    Deep R Programming <https://deepr.gagolewski.com/>
     stringi <https://stringi.gagolewski.com/>
     news.md
 

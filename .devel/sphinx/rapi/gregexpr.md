@@ -136,14 +136,29 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`strsplit`](strs
 ```r
 x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
 regexpr2(x, "(A)[ACTG]\\1", ignore_case=TRUE)
+```
+
+```
 ##  aca1  aca2 noaca    na 
 ##     1     2    -1    NA 
 ## attr(,"match.length")
 ## [1]  3  3 -1 NA
+```
+
+```r
 regexpr2(x, "aca") >= 0  # like grepl2
+```
+
+```
 ##  aca1  aca2 noaca    na 
 ##  TRUE  TRUE FALSE    NA
+```
+
+```r
 gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
+```
+
+```
 ## $aca1
 ## [1] 1 3 5
 ## attr(,"match.length")
@@ -163,8 +178,14 @@ gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
 ## [1] NA
 ## attr(,"match.length")
 ## [1] NA
+```
+
+```r
 # two named capture groups:
 regexec2(x, "(?<x>a)(?<y>cac?)")
+```
+
+```
 ## $aca1
 ##   x y 
 ## 1 1 2 
@@ -192,7 +213,13 @@ regexec2(x, "(?<x>a)(?<y>cac?)")
 ## attr(,"match.length")
 ##     x  y 
 ## NA NA NA
+```
+
+```r
 gregexec2(x, "(?<x>a)(?<y>cac?)")
+```
+
+```
 ## $aca1
 ##   [,1] [,2]
 ##      1    5
@@ -236,8 +263,14 @@ gregexec2(x, "(?<x>a)(?<y>cac?)")
 ##     NA
 ## x   NA
 ## y   NA
+```
+
+```r
 # extraction:
 gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\1", ignore_case=TRUE))
+```
+
+```
 ## $aca1
 ## [1] "aca" "aca"
 ## 
@@ -249,7 +282,13 @@ gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\1", ignore_case=TRUE))
 ## 
 ## $na
 ## [1] NA
+```
+
+```r
 gregextr2(x, "(A)[ACTG]\\1", ignore_case=TRUE)  # equivalent
+```
+
+```
 ## $aca1
 ## [1] "aca" "aca"
 ## 

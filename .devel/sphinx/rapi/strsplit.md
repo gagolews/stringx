@@ -84,11 +84,17 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grepl`](grepl.m
 
 ```r
 stringx::strsplit(c(x="a, b", y="c,d,  e"), ",\\s*")
+```
+
+```
 ## $x
 ## [1] "a" "b"
 ## 
 ## $y
 ## [1] "c" "d" "e"
+```
+
+```r
 x <- strcat(c(
     "abc", "123", ",!.", "\U0001F4A9",
     "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
@@ -97,14 +103,29 @@ x <- strcat(c(
 ))
 # be careful when splitting into individual code points:
 base::strsplit(x, "")  # stringx does not support this
+```
+
+```
 ## [[1]]
 ##  [1] "a"  "b"  "c"  "1"  "2"  "3"  ","  "!"  "."  "💩" "🙍" "🏼" "‍"   "♂"  "️"  
 ## [16] "⛹"  "🏿" "‍"   "♀"  "️"   "🏴" "󠁧"   "󠁢"   "󠁳"   "󠁣"   "󠁴"   "󠁿"
+```
+
+```r
 stringx::strsplit(x, "(?s)(?=.)", omit_empty=TRUE)  # look-ahead for any char with dot-all
+```
+
+```
 ## [[1]]
 ##  [1] "a"  "b"  "c"  "1"  "2"  "3"  ","  "!"  "."  "💩" "🙍" "🏼" "‍"   "♂"  "️"  
 ## [16] "⛹"  "🏿" "‍"   "♀"  "️"   "🏴" "󠁧"   "󠁢"   "󠁳"   "󠁣"   "󠁴"   "󠁿"
+```
+
+```r
 stringi::stri_split_boundaries(x, type="character")  # grapheme clusters
+```
+
+```
 ## [[1]]
 ##  [1] "a"     "b"     "c"     "1"     "2"     "3"     ","     "!"     "."    
 ## [10] "💩"    "🙍🏼‍♂️" "⛹🏿‍♀️"  "🏴󠁧󠁢󠁳󠁣󠁴󠁿"

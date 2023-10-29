@@ -81,22 +81,43 @@ Related function(s): [`grepl`](grepl.md), [`substr`](substr.md)
 
 ```r
 startsWith("ababa", c("a", "ab", "aba", "baba", NA))
+```
+
+```
 ## [1]  TRUE  TRUE  TRUE FALSE    NA
+```
+
+```r
 outer(
     c("aba", "abb", "abc", "baba", "bac"),
     c("A", "B", "C"),
     endsWith,
     ignore_case=TRUE
 )
+```
+
+```
 ##       [,1]  [,2]  [,3]
 ## [1,]  TRUE FALSE FALSE
 ## [2,] FALSE  TRUE FALSE
 ## [3,] FALSE FALSE  TRUE
 ## [4,]  TRUE FALSE FALSE
 ## [5,] FALSE FALSE  TRUE
+```
+
+```r
 x <- c("Mario", "mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario")
 x[startsWith(x, "mario", ignore_case=TRUE)]
+```
+
+```
 ## [1] "Mario" "mario"
+```
+
+```r
 x[startsWith(x, "mario", fixed=NA, strength=1L)]
+```
+
+```
 ## [1] "Mario" "mario" "Mário" "MÁRIO"
 ```

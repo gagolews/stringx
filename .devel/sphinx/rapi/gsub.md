@@ -97,24 +97,75 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grepl2`](grepl.
 
 ```r
 "change \U0001f602 me \U0001f603" |> gsub2("\\p{L}+", "O_O")
+```
+
+```
 ## [1] "O_O 😂 O_O 😃"
+```
+
+```r
 x <- c("mario", "Mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario", NA)
 sub2(x, "mario", "M\u00E1rio", fixed=NA, strength=1L)
+```
+
+```
 ## [1] "Mário"   "Mário"   "Mário"   "Mário"   "María"   "Rosario" NA
+```
+
+```r
 sub2(x, "mario", "Mario", fixed=NA, strength=2L)
+```
+
+```
 ## [1] "Mario"   "Mario"   "Mário"   "MÁRIO"   "María"   "Rosario" NA
+```
+
+```r
 x <- "abcdefghijklmnopqrstuvwxyz"
 p <- "(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)"
 base::sub(p, "\\1\\9", x)
+```
+
+```
 ## [1] "ainopqrstuvwxyz"
+```
+
+```r
 base::gsub(p, "\\1\\9", x)
+```
+
+```
 ## [1] "ainv"
+```
+
+```r
 base::gsub(p, "\\1\\9", x, perl=TRUE)
+```
+
+```
 ## [1] ""
+```
+
+```r
 base::gsub(p, "\\1\\13", x)
+```
+
+```
 ## [1] "aa3nn3"
+```
+
+```r
 sub2(x, p, "$1$13")
+```
+
+```
 ## [1] "amnopqrstuvwxyz"
+```
+
+```r
 gsub2(x, p, "$1$13")
+```
+
+```
 ## [1] "amnz"
 ```

@@ -108,12 +108,27 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`strsplit`](strs
 ```r
 x <- c("abc", "1237", "\U0001f602", "\U0001f603", "stringx\U0001f970", NA)
 grepl2(x, "\\p{L}")
+```
+
+```
 ## [1]  TRUE FALSE FALSE FALSE  TRUE    NA
+```
+
+```r
 which(grepl2(x, "\\p{L}"))  # like grep
+```
+
+```
 ## [1] 1 5
+```
+
+```r
 # at least 1 letter or digit:
 p <- c("\\p{L}", "\\p{N}")
 `dimnames<-`(outer(x, p, grepl2), list(x, p))
+```
+
+```
 ##           \\p{L} \\p{N}
 ## abc         TRUE  FALSE
 ## 1237       FALSE   TRUE
@@ -121,9 +136,21 @@ p <- c("\\p{L}", "\\p{N}")
 ## 😃         FALSE  FALSE
 ## stringx🥰   TRUE  FALSE
 ## <NA>          NA     NA
+```
+
+```r
 x |> grepv2("\\p{L}")
+```
+
+```
 ## [1] "abc"       "stringx🥰"
+```
+
+```r
 grepv2(x, "\\p{L}", invert=TRUE) <- "\U0001F496"
 print(x)
+```
+
+```
 ## [1] "abc"       "💖"        "💖"        "💖"        "stringx🥰" NA
 ```

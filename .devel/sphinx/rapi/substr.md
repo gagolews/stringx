@@ -113,33 +113,96 @@ Related function(s): [`strtrim`](strtrim.md), [`nchar`](nchar.md), [`startsWith`
 ```r
 x <- "spam, spam, bacon, and spam"
 base::substr(x, c(1, 13), c(4, 17))
+```
+
+```
 ## [1] "spam"
+```
+
+```r
 base::substring(x, c(1, 13), c(4, 17))
+```
+
+```
 ## [1] "spam"  "bacon"
+```
+
+```r
 substr(x, c(1, 13), c(4, 17))
+```
+
+```
 ## [1] "spam"  "bacon"
+```
+
+```r
 substrl(x, c(1, 13), c(4, 5))
+```
+
+```
 ## [1] "spam"  "bacon"
+```
+
+```r
 # replacement function used as an ordinary one - return a copy of x:
 base::`substr<-`(x, 1, 4, value="jam")
+```
+
+```
 ## [1] "jamm, spam, bacon, and spam"
+```
+
+```r
 `substr<-`(x, 1, 4, value="jam")
+```
+
+```
 ## [1] "jam, spam, bacon, and spam"
+```
+
+```r
 base::`substr<-`(x, 1, 4, value="porridge")
+```
+
+```
 ## [1] "porr, spam, bacon, and spam"
+```
+
+```r
 `substr<-`(x, 1, 4, value="porridge")
+```
+
+```
 ## [1] "porridge, spam, bacon, and spam"
+```
+
+```r
 # interoperability with gregexpr2:
 p <- "[\\w&&[^a]][\\w&&[^n]][\\w&&[^d]]\\w+"  # regex: all words but 'and'
 gsubstrl(x, gregexpr2(x, p))
+```
+
+```
 ## [[1]]
 ## [1] "spam"  "spam"  "bacon" "spam"
+```
+
+```r
 `gsubstrl<-`(x, gregexpr2(x, p), value=list(c("a", "b", "c", "d")))
+```
+
+```
 ## [1] "a, b, c, and d"
+```
+
+```r
 # replacement function modifying x in-place:
 substr(x, 1, 4) <- "eggs"
 substr(x, 1, 0) <- "porridge, "        # prepend (start<stop)
 substr(x, nchar(x)+1) <- " every day"  # append (start<stop)
 print(x)
+```
+
+```
 ## [1] "porridge, eggs, spam, bacon, and spam every day"
 ```

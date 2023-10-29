@@ -80,9 +80,18 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`strsplit`](strs
 ```r
 x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
 regextr2(x, "(?<x>a)(?<y>cac?)")
+```
+
+```
 ##   aca1   aca2  noaca     na 
 ## "acac"  "aca"     NA     NA
+```
+
+```r
 gregextr2(x, "(?<x>a)(?<y>cac?)")
+```
+
+```
 ## $aca1
 ## [1] "acac" "aca" 
 ## 
@@ -94,7 +103,13 @@ gregextr2(x, "(?<x>a)(?<y>cac?)")
 ## 
 ## $na
 ## [1] NA
+```
+
+```r
 regextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
+```
+
+```
 ## $aca1
 ##             x      y 
 ## "acac"    "a"  "cac" 
@@ -110,7 +125,13 @@ regextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 ## $na
 ##     x  y 
 ## NA NA NA
+```
+
+```r
 gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
+```
+
+```
 ## $aca1
 ##   [,1]   [,2] 
 ##   "acac" "aca"
@@ -134,16 +155,34 @@ gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 ##   NA  
 ## x NA  
 ## y NA
+```
+
+```r
 # substitution - note the different replacement strings:
 `gregextr2<-`(x, "(?<x>a)(?<y>cac?)", value=list(c("!", "?"), "#"))
+```
+
+```
 ##       aca1       aca2      noaca         na 
 ##       "!?"       "g#" "actgggca"         NA
+```
+
+```r
 # references to capture groups can only be used in gsub and sub:
 gsub2(x, "(?<x>a)(?<y>cac?)", "{$1}{$2}")
+```
+
+```
 ##              aca1              aca2             noaca                na 
 ## "{a}{cac}{a}{ca}"        "g{a}{ca}"        "actgggca"                NA
+```
+
+```r
 regextr2(x, "(?<x>a)(?<y>cac?)") <- "\U0001D554\U0001F4A9"
 print(x)  # x was modified 'in-place'
+```
+
+```
 ##       aca1       aca2      noaca         na 
 ##   "𝕔💩aca"     "g𝕔💩" "actgggca"         NA
 ```

@@ -23,7 +23,7 @@
 * support a wide range of languages and scripts,
 * fix some long-standing inconsistencies in base R
   (which are pointed out in the package
-  [manual](https://stringx.gagolewski.com)).
+  [manual](https://stringx.gagolewski.com/)).
 
 
 [**stringx**](https://stringx.gagolewski.com/) is a set of wrappers around
@@ -33,7 +33,7 @@ fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
 [ICU – International Components for Unicode](https://icu.unicode.org/).
 
-To learn more about R, check out Marek's recent open-access (free!) textbook
+To learn more about R, check out Marek's open-access (free!) textbook
 [*Deep R Programming*](https://deepr.gagolewski.com/).
 
 
@@ -43,7 +43,7 @@ To learn more about R, check out Marek's recent open-access (free!) textbook
 **Package Maintainer and Author**:
 [Marek Gagolewski](https://www.gagolewski.com/)
 
-**Homepage**: https://stringx.gagolewski.com
+**Homepage**: https://stringx.gagolewski.com/
 
 **CRAN Entry**: https://cran.r-project.org/package=stringx
 

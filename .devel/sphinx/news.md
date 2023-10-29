@@ -56,9 +56,9 @@
 
 ## 0.1.1 (2021-07-15)
 
-* [GENERAL] [On-line manual](https://stringx.gagolewski.com) is now available.
+* [GENERAL] [On-line manual](https://stringx.gagolewski.com/) is now available.
 
-* [GENERAL] Using [*realtest*](https://realtest.gagolewski.com)
+* [GENERAL] Using [*realtest*](https://realtest.gagolewski.com/)
   for documenting base R behaviour, unit testing, and desired outcomes.
 
 * [NEW FEATURE] Added constants: `letters_greek`, `digits_hex`, etc.

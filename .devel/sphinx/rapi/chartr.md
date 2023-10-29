@@ -62,30 +62,93 @@ The official online manual of <span class="pkg">stringx</span> at <https://strin
 
 ```r
 strtrans(strcat(letters_bf), "Any-NFKD; Any-Upper")
+```
+
+```
 ## [1] "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+```
+
+```r
 strtrans(strcat(letters_bb[1:6]), "Any-Hex/C")
+```
+
+```
 ## [1] "\\U0001D552\\U0001D553\\U0001D554\\U0001D555\\U0001D556\\U0001D557"
+```
+
+```r
 strtrans(strcat(letters_greek), "Greek-Latin")
+```
+
+```
 ## [1] "abgdezēthiklmn'xoprstyphchpsō"
+```
+
+```r
 toupper(letters_greek)
+```
+
+```
 ##  [1] "Α" "Β" "Γ" "Δ" "Ε" "Ζ" "Η" "Θ" "Ι" "Κ" "Λ" "Μ" "Ν" "Ξ" "Ο" "Π" "Ρ" "Σ" "Τ"
 ## [20] "Υ" "Φ" "Χ" "Ψ" "Ω"
+```
+
+```r
 tolower(LETTERS_GREEK)
+```
+
+```
 ##  [1] "α" "β" "γ" "δ" "ε" "ζ" "η" "θ" "ι" "κ" "λ" "μ" "ν" "ξ" "ο" "π" "ρ" "σ" "τ"
 ## [20] "υ" "φ" "χ" "ψ" "ω"
+```
+
+```r
 base::toupper("gro\u00DF")
+```
+
+```
 ## [1] "GROß"
+```
+
+```r
 stringx::toupper("gro\u00DF")
+```
+
+```
 ## [1] "GROSS"
+```
+
+```r
 casefold("gro\u00DF")
+```
+
+```
 ## [1] "gross"
+```
+
+```r
 x <- as.matrix(c(a="\u00DFpam ba\U0001D554on spam", b=NA))
 chartr("\u00DF\U0001D554aba", "SCXBA", x)
+```
+
+```
 ##   [,1]             
 ## a "SpAm BACon spAm"
 ## b NA
+```
+
+```r
 toupper('i', locale='en_US')
+```
+
+```
 ## [1] "I"
+```
+
+```r
 toupper('i', locale='tr_TR')
+```
+
+```
 ## [1] "İ"
 ```
