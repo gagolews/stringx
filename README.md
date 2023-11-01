@@ -1,3 +1,4 @@
+<a href="https://stringx.gagolewski.com"><img src="https://www.gagolewski.com/_static/img/stringx.png" align="right" height="128" width="128" /></a>
 # [**stringx**](https://stringx.gagolewski.com/)
 
 ### Replacements for base [R](https://www.r-project.org/) string functions powered by *[stringi](https://stringi.gagolewski.com/)*
