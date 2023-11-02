@@ -19,6 +19,9 @@ footer p {
     font-size: 75%;
 }
 
+img.sidebar-logo {
+    height: initial;
+}
 
 .mobile-header, .mobile-header.scrolled {
     box-shadow: none;

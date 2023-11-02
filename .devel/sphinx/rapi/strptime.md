@@ -138,7 +138,7 @@ strftime(Sys.time())  # default format - ISO 8601
 ```
 
 ```
-## [1] "2023-11-01T12:06:03+1100"
+## [1] "2023-11-02T12:13:51+1100"
 ```
 
 ```r
@@ -147,10 +147,10 @@ strftime(Sys.time(), f)  # current default locale
 ```
 
 ```
-## [1] "Wednesday, 1 November 2023"                                                
-## [2] "2023-11-01"                                                                
-## [3] "today"                                                                     
-## [4] "Wednesday, 1 November 2023 at 12:06:03 pm Australian Eastern Daylight Time"
+## [1] "Thursday, 2 November 2023"                                                
+## [2] "2023-11-02"                                                               
+## [3] "today"                                                                    
+## [4] "Thursday, 2 November 2023 at 12:13:51 pm Australian Eastern Daylight Time"
 ```
 
 ```r
@@ -158,10 +158,10 @@ strftime(Sys.time(), f, locale="de_DE")
 ```
 
 ```
-## [1] "Mittwoch, 1. November 2023"                                       
-## [2] "2023-11-01"                                                       
-## [3] "heute"                                                            
-## [4] "Mittwoch, 1. November 2023 um 12:06:03 Ostaustralische Sommerzeit"
+## [1] "Donnerstag, 2. November 2023"                                       
+## [2] "2023-11-02"                                                         
+## [3] "heute"                                                              
+## [4] "Donnerstag, 2. November 2023 um 12:13:51 Ostaustralische Sommerzeit"
 ```
 
 ```r
@@ -169,7 +169,7 @@ strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "17 Heshvan 5784"
+## [1] "18 Heshvan 5784"
 ```
 
 ```r
@@ -185,7 +185,7 @@ strptime("1970-01-01", "%Y-%m-%d")  # missing time info replaced with current
 ```
 
 ```
-## [1] "1970-01-01T12:06:03+1000"
+## [1] "1970-01-01T12:13:51+1000"
 ```
 
 ```r
@@ -193,7 +193,7 @@ strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "1943-04-19T12:06:03+1000"
+## [1] "1943-04-19T12:13:51+1000"
 ```
 
 ```r
