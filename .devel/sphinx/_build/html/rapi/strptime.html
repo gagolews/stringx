@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=36b46d30" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=dd03ec4f" />
     
     
 
@@ -396,26 +396,26 @@
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">())</span><span class="w">  </span><span class="c1"># default format - ISO 8601</span>
-<span></span><span class="c1">## [1] &quot;2023-11-02T12:13:51+1100&quot;</span>
+<span></span><span class="c1">## [1] &quot;2023-11-02T13:30:51+1100&quot;</span>
 <span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;date_full&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;date_relative_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;datetime_full&quot;</span><span class="p">)</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w">  </span><span class="c1"># current default locale</span>
-<span></span><span class="c1">## [1] &quot;Thursday, 2 November 2023&quot;                                                </span>
-<span class="c1">## [2] &quot;2023-11-02&quot;                                                               </span>
-<span class="c1">## [3] &quot;today&quot;                                                                    </span>
-<span class="c1">## [4] &quot;Thursday, 2 November 2023 at 12:13:51 pm Australian Eastern Daylight Time&quot;</span>
+<span></span><span class="c1">## [1] &quot;Thursday, 2 November 2023&quot;                                               </span>
+<span class="c1">## [2] &quot;2023-11-02&quot;                                                              </span>
+<span class="c1">## [3] &quot;today&quot;                                                                   </span>
+<span class="c1">## [4] &quot;Thursday, 2 November 2023 at 1:30:51 pm Australian Eastern Daylight Time&quot;</span>
 <span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
 <span></span><span class="c1">## [1] &quot;Donnerstag, 2. November 2023&quot;                                       </span>
 <span class="c1">## [2] &quot;2023-11-02&quot;                                                         </span>
 <span class="c1">## [3] &quot;heute&quot;                                                              </span>
-<span class="c1">## [4] &quot;Donnerstag, 2. November 2023 um 12:13:51 Ostaustralische Sommerzeit&quot;</span>
+<span class="c1">## [4] &quot;Donnerstag, 2. November 2023 um 13:30:51 Ostaustralische Sommerzeit&quot;</span>
 <span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;date_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
 <span></span><span class="c1">## [1] &quot;18 Heshvan 5784&quot;</span>
 <span></span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tz</span><span class="o">=</span><span class="s">&quot;GMT&quot;</span><span class="p">)</span>
 <span></span><span class="c1">## [1] &quot;1970-01-01T00:00:00+0000&quot;</span>
 <span></span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># missing time info replaced with current</span>
-<span></span><span class="c1">## [1] &quot;1970-01-01T12:13:51+1000&quot;</span>
+<span></span><span class="c1">## [1] &quot;1970-01-01T13:30:51+1000&quot;</span>
 <span></span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;14 Nisan 5703&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;date_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span></span><span class="c1">## [1] &quot;1943-04-19T12:13:51+1000&quot;</span>
+<span></span><span class="c1">## [1] &quot;1943-04-19T13:30:51+1000&quot;</span>
 <span></span><span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">)</span>
 <span></span><span class="c1">## [1] &quot;1970-01-01T00:00:00+1000&quot;</span>
 <span></span><span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970/01/01 12:00&quot;</span><span class="p">)</span>
@@ -460,7 +460,7 @@
               Some rights reserved. Licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY-NC-ND 4.0</a>.
               Built with <a href="https://sphinx-doc.org/">Sphinx</a>
               and a customised <a href="https://github.com/pradyunsg/furo">Furo</a> theme.
-              Last updated on 2023-11-02T12:13:53+1100.
+              Last updated on 2023-11-02T13:30:53+1100.
               This site will never display any ads: it is a non-profit project.
               It does not collect any data.
             </div>
