@@ -15,6 +15,7 @@ pkg_version = get_package_version()
 copyright_year = "2021–2023"
 html_baseurl = "https://stringx.gagolewski.com/"
 html_logo = "https://www.gagolewski.com/_static/img/stringx.png"
+html_favicon = "https://www.gagolewski.com/_static/img/stringx.png"
 github_url = "https://github.com/gagolews/stringx"
 github_star_repo = "gagolews/stringx"
 analytics_id = None  # don't use it! this site does not track its users
@@ -22,7 +23,6 @@ author = "Marek Gagolewski"
 copyright = f"{copyright_year}"
 html_title = f"R Package {pkg_title}"
 html_short_title = f"{pkg_title}"
-html_favicon = "_static/favicon.png"
 
 html_version_text = f'\
     R Package<br />\
