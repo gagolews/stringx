@@ -22,8 +22,8 @@
   --color-code-foreground: black;
   --admonition-font-size: 95%;
   --admonition-title-font-size: 95%;
-  --color-brand-primary: red;
-  --color-brand-content: #CC3333;
+  --color-brand-primary: #274641;
+  --color-brand-content: #2f7889;
   
   }
   @media not print {
@@ -32,8 +32,8 @@
   --color-code-foreground: #d0d0d0;
   --admonition-font-size: 95%;
   --admonition-title-font-size: 95%;
-  --color-brand-primary: #ff2b53;
-  --color-brand-content: #dd3333;
+  --color-brand-primary: #a8e3f0;
+  --color-brand-content: #f2f2a0;
   
     }
     @media (prefers-color-scheme: dark) {
@@ -42,8 +42,8 @@
   --color-code-foreground: #d0d0d0;
   --admonition-font-size: 95%;
   --admonition-title-font-size: 95%;
-  --color-brand-primary: #ff2b53;
-  --color-brand-content: #dd3333;
+  --color-brand-primary: #a8e3f0;
+  --color-brand-content: #f2f2a0;
   
       }
     }
@@ -166,7 +166,7 @@
 <a class="sidebar-brand" href="../index.html">stringx</a>
 </span>
 <div class="sidebar-brand">
-0.2.5
+0.2.6
 </div>
 <form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -259,7 +259,7 @@
 <p>Note that the date-time processing functions in <span class="pkg">stringx</span> are a work in progress. Feature requests/comments/remarks are welcome.</p>
 <p><code class="docutils literal notranslate"><span class="pre">strptime</span></code> parses strings representing date-time data and converts it to a date-time object.</p>
 <p><code class="docutils literal notranslate"><span class="pre">strftime</span></code> formats a date-time object and outputs it as a character vector.</p>
-<p>The functions are meant to be operable with each other, especially with regards to formatting/printing. This is why they return/deal with objects of a new class, <code class="docutils literal notranslate"><span class="pre">POSIXxt</span></code>, which expends upon the built-in <code class="docutils literal notranslate"><span class="pre">POSIXct</span></code>.</p>
+<p>The functions are meant to be compatible with each other, especially with regards to formatting/printing. This is why they return/deal with objects of a new class, <code class="docutils literal notranslate"><span class="pre">POSIXxt</span></code>, which expends upon the built-in <code class="docutils literal notranslate"><span class="pre">POSIXct</span></code>.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
@@ -361,7 +361,7 @@
 <section id="details">
 <h2>Details<a class="headerlink" href="#details" title="Link to this heading">#</a></h2>
 <p>Note that the ISO 8601 guideline suggests a year-month-day date format and a 24-hour time format always indicating the effective time zone, e.g., <code class="docutils literal notranslate"><span class="pre">2015-12-31T23:59:59+0100</span></code>. This is so as to avoid ambiguity.</p>
-<p>When parsing strings, <span class="pkg">ICU</span> fills the ‘blanks’ with current date/time, the skipped ‘<code class="docutils literal notranslate"><span class="pre">%s</span></code>’ part will be replaced by the current seconds at ‘now’.</p>
+<p>When parsing strings, missing fields are filled based on today’s midnight data.</p>
 </section>
 <section id="value">
 <h2>Value<a class="headerlink" href="#value" title="Link to this heading">#</a></h2>
@@ -396,26 +396,24 @@
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">())</span><span class="w">  </span><span class="c1"># default format - ISO 8601</span>
-<span></span><span class="c1">## [1] &quot;2023-11-05T12:32:09+1100&quot;</span>
+<span></span><span class="c1">## [1] &quot;2023-11-08T17:14:01+1100&quot;</span>
 <span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;date_full&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;date_relative_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;datetime_full&quot;</span><span class="p">)</span>
 <span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w">  </span><span class="c1"># current default locale</span>
-<span></span><span class="c1">## [1] &quot;Sunday 5 November 2023&quot;                                                </span>
-<span class="c1">## [2] &quot;2023-11-05&quot;                                                            </span>
-<span class="c1">## [3] &quot;today&quot;                                                                 </span>
-<span class="c1">## [4] &quot;Sunday 5 November 2023 at 12:32:09 pm Australian Eastern Daylight Time&quot;</span>
+<span></span><span class="c1">## [1] &quot;Wednesday 8 November 2023&quot;                                               </span>
+<span class="c1">## [2] &quot;2023-11-08&quot;                                                              </span>
+<span class="c1">## [3] &quot;today&quot;                                                                   </span>
+<span class="c1">## [4] &quot;Wednesday 8 November 2023 at 5:14:01 pm Australian Eastern Daylight Time&quot;</span>
 <span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
-<span></span><span class="c1">## [1] &quot;Sonntag, 5. November 2023&quot;                                       </span>
-<span class="c1">## [2] &quot;2023-11-05&quot;                                                      </span>
-<span class="c1">## [3] &quot;heute&quot;                                                           </span>
-<span class="c1">## [4] &quot;Sonntag, 5. November 2023 um 12:32:09 Ostaustralische Sommerzeit&quot;</span>
+<span></span><span class="c1">## [1] &quot;Mittwoch, 8. November 2023&quot;                                       </span>
+<span class="c1">## [2] &quot;2023-11-08&quot;                                                       </span>
+<span class="c1">## [3] &quot;heute&quot;                                                            </span>
+<span class="c1">## [4] &quot;Mittwoch, 8. November 2023 um 17:14:01 Ostaustralische Sommerzeit&quot;</span>
 <span></span><span class="nf">strftime</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;date_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span></span><span class="c1">## [1] &quot;21 Heshvan 5784&quot;</span>
+<span></span><span class="c1">## [1] &quot;24 Heshvan 5784&quot;</span>
 <span></span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tz</span><span class="o">=</span><span class="s">&quot;GMT&quot;</span><span class="p">)</span>
 <span></span><span class="c1">## [1] &quot;1970-01-01T00:00:00+0000&quot;</span>
-<span></span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># missing time info replaced with current</span>
-<span></span><span class="c1">## [1] &quot;1970-01-01T12:32:09+1000&quot;</span>
 <span></span><span class="nf">strptime</span><span class="p">(</span><span class="s">&quot;14 Nisan 5703&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;date_short&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="o">=</span><span class="s">&quot;en_IL@calendar=hebrew&quot;</span><span class="p">)</span>
-<span></span><span class="c1">## [1] &quot;1943-04-19T12:32:09+1000&quot;</span>
+<span></span><span class="c1">## [1] &quot;1943-04-19T00:00:00+1000&quot;</span>
 <span></span><span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">)</span>
 <span></span><span class="c1">## [1] &quot;1970-01-01T00:00:00+1000&quot;</span>
 <span></span><span class="nf">as.POSIXxt</span><span class="p">(</span><span class="s">&quot;1970/01/01 12:00&quot;</span><span class="p">)</span>
@@ -460,7 +458,7 @@
               Some rights reserved. Licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY-NC-ND 4.0</a>.
               Built with <a href="https://sphinx-doc.org/">Sphinx</a>
               and a customised <a href="https://github.com/pradyunsg/furo">Furo</a> theme.
-              Last updated on 2023-11-05T12:32:10+1100.
+              Last updated on 2023-11-08T17:14:02+1100.
               This site will never display any ads: it is a non-profit project.
               It does not collect any data.
             </div>
@@ -502,7 +500,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=cb850272"></script>
+</div><script src="../_static/documentation_options.js?v=fc7d8818"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>

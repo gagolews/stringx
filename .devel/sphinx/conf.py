@@ -1,4 +1,4 @@
-# Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com>
+# Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com/>
 # Configuration file for the Sphinx documentation builder.
 
 import sys, os
@@ -124,15 +124,17 @@ html_theme_options = {
     "light_css_variables": {
         "admonition-font-size": "95%",
         "admonition-title-font-size": "95%",
-        "color-brand-primary": "red",
-        "color-brand-content": "#CC3333",
+        # let each project have a different colour theme!
+        "color-brand-primary": "#274641",
+        "color-brand-content": "#2f7889",
     },
 
     "dark_css_variables": {
         "admonition-font-size": "95%",
         "admonition-title-font-size": "95%",
-        "color-brand-primary": "#ff2b53",
-        "color-brand-content": "#dd3333",
+        # let each project have a different colour theme!
+        "color-brand-primary": "#a8e3f0",
+        "color-brand-content": "#f2f2a0",
     },
 }
 

@@ -8,7 +8,7 @@ Note that the date-time processing functions in <span class="pkg">stringx</span>
 
 `strftime` formats a date-time object and outputs it as a character vector.
 
-The functions are meant to be operable with each other, especially with regards to formatting/printing. This is why they return/deal with objects of a new class, `POSIXxt`, which expends upon the built-in `POSIXct`.
+The functions are meant to be compatible with each other, especially with regards to formatting/printing. This is why they return/deal with objects of a new class, `POSIXxt`, which expends upon the built-in `POSIXct`.
 
 ## Usage
 
@@ -86,7 +86,7 @@ rep(..., recursive = FALSE)
 
 Note that the ISO 8601 guideline suggests a year-month-day date format and a 24-hour time format always indicating the effective time zone, e.g., `2015-12-31T23:59:59+0100`. This is so as to avoid ambiguity.
 
-When parsing strings, <span class="pkg">ICU</span> fills the \'blanks\' with current date/time, the skipped \'`%s`\' part will be replaced by the current seconds at \'now\'.
+When parsing strings, missing fields are filled based on today\'s midnight data.
 
 ## Value
 
@@ -138,7 +138,7 @@ strftime(Sys.time())  # default format - ISO 8601
 ```
 
 ```
-## [1] "2023-11-05T12:32:09+1100"
+## [1] "2023-11-08T17:14:01+1100"
 ```
 
 ```r
@@ -147,10 +147,10 @@ strftime(Sys.time(), f)  # current default locale
 ```
 
 ```
-## [1] "Sunday 5 November 2023"                                                
-## [2] "2023-11-05"                                                            
-## [3] "today"                                                                 
-## [4] "Sunday 5 November 2023 at 12:32:09 pm Australian Eastern Daylight Time"
+## [1] "Wednesday 8 November 2023"                                               
+## [2] "2023-11-08"                                                              
+## [3] "today"                                                                   
+## [4] "Wednesday 8 November 2023 at 5:14:01 pm Australian Eastern Daylight Time"
 ```
 
 ```r
@@ -158,10 +158,10 @@ strftime(Sys.time(), f, locale="de_DE")
 ```
 
 ```
-## [1] "Sonntag, 5. November 2023"                                       
-## [2] "2023-11-05"                                                      
-## [3] "heute"                                                           
-## [4] "Sonntag, 5. November 2023 um 12:32:09 Ostaustralische Sommerzeit"
+## [1] "Mittwoch, 8. November 2023"                                       
+## [2] "2023-11-08"                                                       
+## [3] "heute"                                                            
+## [4] "Mittwoch, 8. November 2023 um 17:14:01 Ostaustralische Sommerzeit"
 ```
 
 ```r
@@ -169,7 +169,7 @@ strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "21 Heshvan 5784"
+## [1] "24 Heshvan 5784"
 ```
 
 ```r
@@ -181,19 +181,11 @@ strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
 ```
 
 ```r
-strptime("1970-01-01", "%Y-%m-%d")  # missing time info replaced with current
-```
-
-```
-## [1] "1970-01-01T12:32:09+1000"
-```
-
-```r
 strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "1943-04-19T12:32:09+1000"
+## [1] "1943-04-19T00:00:00+1000"
 ```
 
 ```r

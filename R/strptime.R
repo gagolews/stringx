@@ -1,7 +1,7 @@
 # kate: default-dictionary en_AU
 
 ## stringx package for R
-## Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com>
+## Copyleft (C) 2021-2023, Marek Gagolewski <https://www.gagolewski.com/>
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #' \code{strftime} formats a date-time object and outputs it as a
 #' character vector.
 #'
-#' The functions are meant to be operable with each other,
+#' The functions are meant to be compatible with each other,
 #' especially with regards to formatting/printing. This is why
 #' they return/deal with objects of a new class, \code{POSIXxt}, which
 #' expends upon the built-in \code{POSIXct}.
@@ -43,9 +43,8 @@
 #' time zone, e.g., \code{2015-12-31T23:59:59+0100}. This is so as to avoid
 #' ambiguity.
 #'
-#' When parsing strings, \pkg{ICU} fills the `blanks` with current date/time,
-#' the skipped '\code{\%s}' part will be replaced by the current seconds at
-#' 'now'.
+#' When parsing strings, missing fields are filled based on today's midnight
+#' data.
 #'
 #'
 #' @section Differences from Base R:
@@ -147,7 +146,6 @@
 #' strftime(Sys.time(), f, locale="de_DE")
 #' strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 #' strptime("1970-01-01 00:00:00", "%Y-%m-%d %H:%M:%S", tz="GMT")
-#' strptime("1970-01-01", "%Y-%m-%d")  # missing time info replaced with current
 #' strptime("14 Nisan 5703", "date_short", locale="en_IL@calendar=hebrew")
 #' as.POSIXxt("1970-01-01")
 #' as.POSIXxt("1970/01/01 12:00")
