@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="ISOdatetime: Construct Date-time Objects" href="rapi/ISOdatetime.html" />
         <link rel="canonical" href="https://stringx.gagolewski.com/index.html" />
 
-    <link rel="shortcut icon" href="https://www.gagolewski.com/_static/img/stringx.png"/><!-- Generated with Sphinx 7.2.5 and Furo 2023.08.19 -->
+    <link rel="shortcut icon" href="https://www.gagolewski.com/_static/img/stringx.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>R Package stringx</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
@@ -252,7 +252,7 @@
           </label>
         </div>
         <article role="main">
-          <section id="stringx-replacements-for-base-r-string-functions-powered-by-stringi">
+          <section class="tex2jax_ignore mathjax_ignore" id="stringx-replacements-for-base-r-string-functions-powered-by-stringi">
 <h1>stringx: Replacements for base R string functions powered by stringi<a class="headerlink" href="#stringx-replacements-for-base-r-string-functions-powered-by-stringi" title="Link to this heading">#</a></h1>
 <blockquote class="epigraph">
 <div><p>English is the native language for only 5% of the World population.
@@ -264,9 +264,9 @@ and communication platforms, this is no longer the case.
 This package replaces base R string functions with ones that fully
 support the Unicode standards related to natural language
 and date-time processing.
-Thanks to <a class="reference external" href="https://icu.unicode.org/">ICU</a>
+Thanks to <a class="reference external" href="https://icu.unicode.org/"><strong class="program">ICU</strong></a>
 (International Components for Unicode) and
-<a class="reference external" href="https://stringi.gagolewski.com/">stringi</a>,
+<a class="reference external" href="https://stringi.gagolewski.com/"><strong class="program">stringi</strong></a>,
 they are fast, reliable, and portable across different platforms.</p>
 </div></blockquote>
 <p><a class="reference external" href="https://www.r-project.org/">R</a>’s ambitions go far beyond being merely the
@@ -284,8 +284,9 @@ means to represent or transfer unstructured data.</p>
 <a class="reference external" href="https://deepr.gagolewski.com/">Deep R Programming</a>.</p>
 </div>
 <p><strong>stringx brings R string processing abilities into the 21st century.</strong>
-It replaces functions like <code class="docutils literal notranslate"><span class="pre">paste()</span></code>, <code class="docutils literal notranslate"><span class="pre">grep()</span></code>, <code class="docutils literal notranslate"><span class="pre">tolower()</span></code>,
-<code class="docutils literal notranslate"><span class="pre">strptime()</span></code>, and <code class="docutils literal notranslate"><span class="pre">sprintf()</span></code> with ones that:</p>
+It replaces functions like <strong class="command">paste</strong>, <strong class="command">grep</strong>,
+<strong class="command">tolower</strong>, <strong class="command">strptime</strong>, and <strong class="command">sprintf</strong>
+with ones that:</p>
 <ul class="simple">
 <li><p>support a wide range of languages and scripts and
 fully conform to <a class="reference external" href="https://www.unicode.org/">Unicode</a> standards
@@ -297,7 +298,8 @@ preservation of attributes, order of arguments, interoperability
 with other procedures, etc.;
 they are all thoroughly documented in this online manual,
 happy reading! 🤓),</p></li>
-<li><p>are more forward-pipe (<code class="docutils literal notranslate"><span class="pre">|&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">magrittr::%&gt;%</span></code>) operator-friendly.</p></li>
+<li><p>are more forward-pipe (<strong class="command">|&gt;</strong> or <strong class="command">magrittr::%&gt;%</strong>)
+operator-friendly.</p></li>
 </ul>
 <p>Also, a few new, useful operations are introduced.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;stringx&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># install from CRAN</span>
@@ -319,13 +321,30 @@ happy reading! 🤓),</p></li>
 <span class="c1">##     😂😃= NaN</span>
 </pre></div>
 </div>
-<p><strong>stringx</strong> is a set of wrappers around
-<a class="reference external" href="https://stringi.gagolewski.com/">stringi</a> — a mature
+<!--
+% COMMENT
+%
+% but we do not aim to fix the whole nam.ING_meSS
+%
+% 99% compatible (cannot be 100% as they use a different regex engine,
+% for example, and some inconsistencies are quite obvious and can be a push
+% for a change in the right direction)
+%
+% * collator - portable (locales),  Unicode-correct (normalisation)
+% * date/time - portable (locales)
+% * iconv - portable
+% * regex - Unicode-correct, portable
+% * speed
+%
+% TODO: mention https://unicode-org.github.io/icu/userguide/icu/posix.html
+-->
+<p><strong class="program">stringx</strong> is a set of wrappers around
+<a class="reference external" href="https://stringi.gagolewski.com/"><strong class="program">stringi</strong></a> — a mature
 <a class="reference external" href="https://www.r-project.org/">R</a> package for
 fast, consistent, convenient, and portable string/text/natural language
 processing in any locale that relies on
-<a class="reference external" href="https://icu.unicode.org/">ICU – International Components for Unicode</a>.</p>
-<p><em>stringx</em>’s source code is hosted on
+<a class="reference external" href="https://icu.unicode.org/"><strong class="program">ICU</strong> – International Components for Unicode</a>.</p>
+<p><strong class="program">stringx</strong>’s source code is hosted on
 <a class="reference external" href="https://github.com/gagolews/stringx">GitHub</a>. Its official releases
 are available on <a class="reference external" href="https://cran.r-project.org/package=stringx">CRAN</a>.
 It is distributed under the terms of the GNU General Public License,
@@ -335,8 +354,16 @@ either Version 2 or Version 3; see
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<!--
+% rapi.md
+-->
 <div class="toctree-wrapper compound">
 </div>
+<!--
+% COMMENT
+% .. |downloads1| image:: https://cranlogs.r-pkg.org/badges/grand-total/stringx
+% .. |downloads2| image:: https://cranlogs.r-pkg.org/badges/last-month/stringx
+-->
 </section>
 
         </article>
@@ -364,7 +391,7 @@ either Version 2 or Version 3; see
               Some rights reserved. Licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY-NC-ND 4.0</a>.
               Built with <a href="https://sphinx-doc.org/">Sphinx</a>
               and a customised <a href="https://github.com/pradyunsg/furo">Furo</a> theme.
-              Last updated on 2023-11-08T17:14:02+1100.
+              Last updated on 2023-11-16T10:39:44+1100.
               This site will never display any ads: it is a non-profit project.
               It does not collect any data.
             </div>

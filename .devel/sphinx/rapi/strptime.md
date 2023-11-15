@@ -138,7 +138,7 @@ strftime(Sys.time())  # default format - ISO 8601
 ```
 
 ```
-## [1] "2023-11-08T17:14:01+1100"
+## [1] "2023-11-16T10:39:42+1100"
 ```
 
 ```r
@@ -147,10 +147,10 @@ strftime(Sys.time(), f)  # current default locale
 ```
 
 ```
-## [1] "Wednesday 8 November 2023"                                               
-## [2] "2023-11-08"                                                              
-## [3] "today"                                                                   
-## [4] "Wednesday 8 November 2023 at 5:14:01 pm Australian Eastern Daylight Time"
+## [1] "Thursday 16 November 2023"                                                
+## [2] "2023-11-16"                                                               
+## [3] "today"                                                                    
+## [4] "Thursday 16 November 2023 at 10:39:42 am Australian Eastern Daylight Time"
 ```
 
 ```r
@@ -158,10 +158,10 @@ strftime(Sys.time(), f, locale="de_DE")
 ```
 
 ```
-## [1] "Mittwoch, 8. November 2023"                                       
-## [2] "2023-11-08"                                                       
-## [3] "heute"                                                            
-## [4] "Mittwoch, 8. November 2023 um 17:14:01 Ostaustralische Sommerzeit"
+## [1] "Donnerstag, 16. November 2023"                                       
+## [2] "2023-11-16"                                                          
+## [3] "heute"                                                               
+## [4] "Donnerstag, 16. November 2023 um 10:39:42 Ostaustralische Sommerzeit"
 ```
 
 ```r
@@ -169,7 +169,7 @@ strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "24 Heshvan 5784"
+## [1] "3 Kislev 5784"
 ```
 
 ```r

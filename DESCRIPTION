@@ -2,7 +2,7 @@ Package: stringx
 Type: Package
 Title: Replacements for Base String Functions Powered by 'stringi'
 Version: 0.2.6
-Date: 2023-11-08
+Date: 2023-11-16
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),
