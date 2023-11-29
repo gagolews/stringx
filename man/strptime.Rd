@@ -105,6 +105,9 @@ of class \code{POSIXxt}, which
 extends upon \code{\link[base]{POSIXct}},
 see also \link[base]{DateTimeClasses}.
 
+Subtraction returns an object of the class \code{difftime},
+see \code{\link[base]{difftime}}.
+
 
 If a string cannot be recognised as valid date/time specifier
 (as per the given format string), the corresponding output will be \code{NA}.

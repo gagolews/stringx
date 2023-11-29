@@ -17,6 +17,14 @@ E(
     c(t="Donnerstag")
 )
 
+E(t+10, 10+t)
+E(as.numeric((10+t)-t), 10)
+E(as.numeric((t+10)-t), 10)
+E(t < t+10, c(t=TRUE))
+E(t <= t+10, c(t=TRUE))
+E(t == t, c(t=TRUE))
+E(t != t+10, c(t=TRUE))
+
 
 t <- structure(ISOdatetime(2021, 05, 27, 12, 0, 0, tz="GMT"), names="t")
 

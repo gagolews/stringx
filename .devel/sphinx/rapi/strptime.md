@@ -94,6 +94,8 @@ When parsing strings, missing fields are filled based on today\'s midnight data.
 
 `strptime`, `as.POSIXxt.Date`, and `asPOSIXxt.character` return an object of class `POSIXxt`, which extends upon [`POSIXct`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/POSIXct.html), see also [DateTimeClasses](https://stat.ethz.ch/R-manual/R-devel/library/base/help/DateTimeClasses.html).
 
+Subtraction returns an object of the class `difftime`, see [`difftime`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/difftime.html).
+
 If a string cannot be recognised as valid date/time specifier (as per the given format string), the corresponding output will be `NA`.
 
 ## Differences from Base R
@@ -138,7 +140,7 @@ strftime(Sys.time())  # default format - ISO 8601
 ```
 
 ```
-## [1] "2023-11-16T10:39:42+1100"
+## [1] "2023-11-30T09:13:18+1100"
 ```
 
 ```r
@@ -147,10 +149,10 @@ strftime(Sys.time(), f)  # current default locale
 ```
 
 ```
-## [1] "Thursday 16 November 2023"                                                
-## [2] "2023-11-16"                                                               
-## [3] "today"                                                                    
-## [4] "Thursday 16 November 2023 at 10:39:42 am Australian Eastern Daylight Time"
+## [1] "Thursday 30 November 2023"                                               
+## [2] "2023-11-30"                                                              
+## [3] "today"                                                                   
+## [4] "Thursday 30 November 2023 at 9:13:18 am Australian Eastern Daylight Time"
 ```
 
 ```r
@@ -158,10 +160,10 @@ strftime(Sys.time(), f, locale="de_DE")
 ```
 
 ```
-## [1] "Donnerstag, 16. November 2023"                                       
-## [2] "2023-11-16"                                                          
+## [1] "Donnerstag, 30. November 2023"                                       
+## [2] "2023-11-30"                                                          
 ## [3] "heute"                                                               
-## [4] "Donnerstag, 16. November 2023 um 10:39:42 Ostaustralische Sommerzeit"
+## [4] "Donnerstag, 30. November 2023 um 09:13:18 Ostaustralische Sommerzeit"
 ```
 
 ```r
@@ -169,7 +171,7 @@ strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "3 Kislev 5784"
+## [1] "17 Kislev 5784"
 ```
 
 ```r

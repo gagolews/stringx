@@ -134,6 +134,9 @@
 #' extends upon \code{\link[base]{POSIXct}},
 #' see also \link[base]{DateTimeClasses}.
 #'
+#' Subtraction returns an object of the class \code{difftime},
+#' see \code{\link[base]{difftime}}.
+#'
 #'
 #' If a string cannot be recognised as valid date/time specifier
 #' (as per the given format string), the corresponding output will be \code{NA}.
@@ -362,7 +365,10 @@ as.POSIXxt.character <- function(
 
 #' @rdname strptime
 Ops.POSIXxt <- function(e1, e2) {
-    as.POSIXxt(NextMethod(.Generic))
+    if (.Generic == "+")
+        as.POSIXxt(NextMethod(.Generic))
+    else
+        NextMethod(.Generic)
 }
 
 

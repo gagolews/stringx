@@ -44,9 +44,9 @@ To learn more about R, check out Marek's open-access (free!) textbook
 **Package Maintainer and Author**:
 [Marek Gagolewski](https://www.gagolewski.com/)
 
-**Homepage**: https://stringx.gagolewski.com/
+**Homepage**: <https://stringx.gagolewski.com/>
 
-**CRAN Entry**: https://cran.r-project.org/package=stringx
+**CRAN Entry**: <https://cran.r-project.org/package=stringx>
 
 **License**:
 **`stringx`** is distributed under the terms of the GNU General Public License,
