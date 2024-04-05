@@ -36,6 +36,7 @@ E(
 E(
     strftime(strptime(c("1905-1806", "1704-1603", "1502-1401"), c("%Y-%d%m", "%d%m-%Y")), "%Y-%m-%d"),
     P(c("1905-06-18", "1603-04-17", "1502-01-14"), warning=TRUE),
+    worst=P(c("--", "--", "--"), warning=TRUE),
     bad=c("1905-06-18", "1603-04-17", "1502-01-14"),
     .comment="recycling rule warning"
 )
@@ -60,14 +61,15 @@ E(
 # recycling rule, NA handling:
 E(strftime(character(0)), character(0))
 E(strftime(NA_character_), NA_character_)
-E(strftime(c("1970-01-01", NA), "%Y"), c("1970", NA))
-E(strftime(factor(c("1970-01-01", NA)), "%Y"), c("1970", NA))
-E(strftime(c("1970-01-01", NA), c("%Y-%m-%d", "%Y")), c("1970-01-01", NA))
-E(strftime(c("1970-01-01"), c("%Y-%m-%d", "%Y")), c("1970-01-01", "1970"))
+E(strftime(c("1970-01-01", NA), "%Y"), c("1970", NA), worst=c("--", NA_character_))
+E(strftime(factor(c("1970-01-01", NA)), "%Y"), c("1970", NA), worst=c("--", NA_character_))
+E(strftime(c("1970-01-01", NA), c("%Y-%m-%d", "%Y")), c("1970-01-01", NA), worst=c("--", NA_character_))
+E(strftime(c("1970-01-01"), c("%Y-%m-%d", "%Y")), c("1970-01-01", "1970"), worst=c("--", ""))
 
 E(
     strftime(c("1970-01-01", "2021-05-26"), c("%Y-%m-%d", "%Y", "%y")),
     P(c("1970-01-01", "2021", "70"), warning=TRUE),
+    worst=P(c("--", "", ""), warning=TRUE),
     bad=P(c("1970-01-01", "2021", "70")),
     .comment="recycling rule warning"
 )
@@ -120,6 +122,7 @@ E(
     bad="1970-01-01 10:33:41",
     bad="1970-01-01 11:33:41",
     bad="1970-01-01 12:33:41",
+    worst="--T::+0100",
     P(error=TRUE),
     .comment="uninformative error message"
 )
@@ -139,28 +142,32 @@ E(
     strftime(t, "%Y-%m-%d"),
     "2021-05-27",
     bad="2021-05-26",
-    bad="2021-05-28"
+    bad="2021-05-28",
+    worst="--"
 )
 
 E(
     strftime(as.POSIXlt(t), "%Y-%m-%d"),
     "2021-05-27",
     bad="2021-05-26",
-    bad="2021-05-28"
+    bad="2021-05-28",
+    worst="--"
 )
 
 E(
     strftime(as.POSIXct(t), "%Y-%m-%d"),
     "2021-05-27",
     bad="2021-05-26",
-    bad="2021-05-28"
+    bad="2021-05-28",
+    worst="--"
 )
 
 E(
     strftime(as.Date(t), "%Y-%m-%d"),
     "2021-05-27",
     bad="2021-05-26",
-    bad="2021-05-28"
+    bad="2021-05-28",
+    worst=NA_character_
 )
 
 # only names of x are preserved
@@ -171,7 +178,8 @@ E(
     better=`attributes<-`(c("2021", "2021-05-27"), attributes(f)),
     structure(c("2021", "2021-05-27"), names=c("a", "a")),
     bad=structure(c("2021", "2021-05-27"), names=c("a", "")),
-    bad=structure(c("2021", "2021-05-27"), names=c("a", NA))
+    bad=structure(c("2021", "2021-05-27"), names=c("a", NA)),
+    worst=`attributes<-`(c("", "--"), attributes(f))
 )
 
 
@@ -179,5 +187,6 @@ x <- structure(c(a=t, b=t), attrib2="val2")
 E(
     strftime(x, "%Y"),
     structure(c("2021", "2021"), names=names(x), attrib2="val2"),
-    bad=c(a="2021", b="2021")
+    bad=c(a="2021", b="2021"),
+    worst=structure(c("", ""), names=names(x), attrib2="val2")
 )

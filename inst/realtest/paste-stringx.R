@@ -57,5 +57,5 @@ E(attributes(as.vector(y1c) %x+% xc), attributes(as.vector(y1) + x))
 E(attributes(as.vector(y2c) %x+% xc), attributes(as.vector(y2) + x))
 E(attributes(as.vector(y3c) %x+% xc), attributes(as.vector(y3) + x))
 
-E(as.Date(ISOdate(2021, 6, 4)) %x+% 99, "2021-06-0499")
+E(as.Date(ISOdate(2021, 6, 4)) %x+% 99, "2021-06-0499", worst=NA_character_)
 

@@ -5,6 +5,12 @@
 > see <https://github.com/gagolews/stringx/issues>.
 
 
+## 0.2.7 (2024-04-05)
+
+* [BUGFIX] Fixed failing checks/tests due to some updates in R.
+
+
+
 ## 0.2.6 (2023-11-30)
 
 * [BACKWARD INCOMPATIBILITY] `strptime` fills missing fields based

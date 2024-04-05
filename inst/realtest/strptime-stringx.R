@@ -4,7 +4,8 @@ t <- structure(ISOdatetime(2021, 05, 27, 12, 0, 0), names="t")  # default time z
 
 E(
     strftime(t, "%Y", locale="@calendar=hebrew"),
-    c(t="5781")
+    c(t="5781"),
+    worst=c(t="")
 )
 
 E(
@@ -30,12 +31,14 @@ t <- structure(ISOdatetime(2021, 05, 27, 12, 0, 0, tz="GMT"), names="t")
 
 E(
     strftime(t, "%H:%M:%S", tz="UTC", usetz=TRUE),
-    P(c(t="12:00:00"), warning=TRUE)
+    P(c(t="12:00:00"), warning=TRUE),
+    worst=P(c(t="::"), warning=TRUE)
 )
 
 E(
     strftime(t, "%H:%M:%S", tz="Europe/Berlin"),
-    c(t="14:00:00")
+    c(t="14:00:00"),
+    worst=c(t="::")
 )
 
 f <- structure(c(x="%Y-%d%m", y="%d%m-%Y"), attrib1="val1")
@@ -48,14 +51,16 @@ E(
 E(
     strftime(strptime(x, f, tz="UTC"), "%Y"),
     better=`attributes<-`(c("1603", "1502"), attributes(f)),
-    `attributes<-`(c("1603", "1502"), list(names=names(f)))
+    `attributes<-`(c("1603", "1502"), list(names=names(f))),
+    worst=`attributes<-`(c("", ""), attributes(f))
 )
 
 x <- structure(c(a="1603-1502", b="1602-1502"), attrib2="val2")
 E(
     strftime(strptime(x, "%Y-%d%m", tz="UTC"), "%Y"),
     better=`attributes<-`(c("1603", "1602"), attributes(x)),
-    `attributes<-`(c("1603", "1602"), list(names=names(x)))
+    `attributes<-`(c("1603", "1602"), list(names=names(x))),
+    worst=`attributes<-`(c("", ""), attributes(x))
 )
 
 
@@ -88,32 +93,32 @@ get_test_times <- function() {
 stringi::stri_timezone_set("Etc/GMT-14")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=paste0(i, " ", strcat(deparse(times[[i]]))))
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", worst="--", .comment=paste0(i, " ", strcat(deparse(times[[i]]))))
 
 stringi::stri_timezone_set("Etc/GMT+12")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=strcat(deparse(times[[i]])))
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", worst="--", .comment=strcat(deparse(times[[i]])))
 
 stringi::stri_timezone_set("UTC")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=strcat(deparse(times[[i]])))
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", worst="--", .comment=strcat(deparse(times[[i]])))
 
 stringi::stri_timezone_set("Australia/Melbourne")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=strcat(deparse(times[[i]])))
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", worst="--", .comment=strcat(deparse(times[[i]])))
 
 stringi::stri_timezone_set("Europe/Warsaw")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=strcat(deparse(times[[i]])))
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", worst="--", .comment=strcat(deparse(times[[i]])))
 
 stringi::stri_timezone_set("America/Montreal")
 times <- get_test_times()
 for (i in seq_along(times))
-    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", .comment=strcat(deparse(times[[i]])))
+    E(strftime(times[[i]], "%Y-%m-%d"), "1970-01-01", bad="1970-01-02", bad="1969-12-31", worst="--", .comment=strcat(deparse(times[[i]])))
 
 
 stringi::stri_timezone_set(oldtz)
