@@ -1,8 +1,8 @@
 Package: stringx
 Type: Package
 Title: Replacements for Base String Functions Powered by 'stringi'
-Version: 0.2.7
-Date: 2024-04-05
+Version: 0.2.8
+Date: 2024-04-09
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),
