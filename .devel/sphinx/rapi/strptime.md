@@ -140,7 +140,7 @@ strftime(Sys.time())  # default format - ISO 8601
 ```
 
 ```
-## [1] "2024-04-05T12:14:51+0200"
+## [1] "2024-04-09T10:08:12+0200"
 ```
 
 ```r
@@ -149,10 +149,10 @@ strftime(Sys.time(), f)  # current default locale
 ```
 
 ```
-## [1] "Friday 5 April 2024"                                            
-## [2] "2024-04-05"                                                     
-## [3] "today"                                                          
-## [4] "Friday 5 April 2024 at 12:14:51 pm Central European Summer Time"
+## [1] "Tuesday 9 April 2024"                                            
+## [2] "2024-04-09"                                                      
+## [3] "today"                                                           
+## [4] "Tuesday 9 April 2024 at 10:08:12 am Central European Summer Time"
 ```
 
 ```r
@@ -160,10 +160,10 @@ strftime(Sys.time(), f, locale="de_DE")
 ```
 
 ```
-## [1] "Freitag, 5. April 2024"                                         
-## [2] "2024-04-05"                                                     
-## [3] "heute"                                                          
-## [4] "Freitag, 5. April 2024 um 12:14:51 Mitteleuropäische Sommerzeit"
+## [1] "Dienstag, 9. April 2024"                                         
+## [2] "2024-04-09"                                                      
+## [3] "heute"                                                           
+## [4] "Dienstag, 9. April 2024 um 10:08:12 Mitteleuropäische Sommerzeit"
 ```
 
 ```r
@@ -171,7 +171,7 @@ strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "26 Adar II 5784"
+## [1] "1 Nisan 5784"
 ```
 
 ```r

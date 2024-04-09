@@ -61,8 +61,8 @@ E(
 # recycling rule, NA handling:
 E(strftime(character(0)), character(0))
 E(strftime(NA_character_), NA_character_)
-E(strftime(c("1970-01-01", NA), "%Y"), c("1970", NA), worst=c("--", NA_character_))
-E(strftime(factor(c("1970-01-01", NA)), "%Y"), c("1970", NA), worst=c("--", NA_character_))
+E(strftime(c("1970-01-01", NA), "%Y"), c("1970", NA), worst=c("--", NA_character_), worst=c("", NA_character_))
+E(strftime(factor(c("1970-01-01", NA)), "%Y"), c("1970", NA), worst=c("--", NA_character_), worst=c("", NA_character_))
 E(strftime(c("1970-01-01", NA), c("%Y-%m-%d", "%Y")), c("1970-01-01", NA), worst=c("--", NA_character_))
 E(strftime(c("1970-01-01"), c("%Y-%m-%d", "%Y")), c("1970-01-01", "1970"), worst=c("--", ""))
 
