@@ -41,16 +41,16 @@ grep(
 
 ## Arguments
 
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                |
-|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                          | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                                                                                             |
-| `pattern`                    | character vector of nonempty search patterns; for `grepv2` and `grep`, must not be longer than `x`                                                                                                                                                                                                                                                                                                             |
-| `...`                        | further arguments to [`stri_detect`](https://stringi.gagolewski.com/rapi/stri_detect.html), e.g., `max_count`, `locale`, `dotall`                                                                                                                                                                                                                                                                              |
-| `ignore_case`, `ignore.case` | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                    |
-| `fixed`                      | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
-| `invert`                     | single logical value; indicates whether a no-match is rather of interest                                                                                                                                                                                                                                                                                                                                       |
-| `value`                      | character vector of replacement strings or a single logical value indicating whether indexes of strings in `x` matching patterns should be returned                                                                                                                                                                                                                                                            |
-| `perl`, `useBytes`           | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be examined |
+| `pattern` | character vector of nonempty search patterns; for `grepv2` and `grep`, must not be longer than `x` |
+| `...` | further arguments to [`stri_detect`](https://stringi.gagolewski.com/rapi/stri_detect.html), e.g., `max_count`, `locale`, `dotall` |
+| `ignore_case`, `ignore.case` | single logical value; indicates whether matching should be case-insensitive |
+| `fixed` | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
+| `invert` | single logical value; indicates whether a no-match is rather of interest |
+| `value` | character vector of replacement strings or a single logical value indicating whether indexes of strings in `x` matching patterns should be returned |
+| `perl`, `useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\] |
 
 ## Details
 
@@ -105,7 +105,7 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`strsplit`](strs
 
 
 
-```r
+``` r
 x <- c("abc", "1237", "\U0001f602", "\U0001f603", "stringx\U0001f970", NA)
 grepl2(x, "\\p{L}")
 ```
@@ -114,7 +114,7 @@ grepl2(x, "\\p{L}")
 ## [1]  TRUE FALSE FALSE FALSE  TRUE    NA
 ```
 
-```r
+``` r
 which(grepl2(x, "\\p{L}"))  # like grep
 ```
 
@@ -122,7 +122,7 @@ which(grepl2(x, "\\p{L}"))  # like grep
 ## [1] 1 5
 ```
 
-```r
+``` r
 # at least 1 letter or digit:
 p <- c("\\p{L}", "\\p{N}")
 `dimnames<-`(outer(x, p, grepl2), list(x, p))
@@ -138,7 +138,7 @@ p <- c("\\p{L}", "\\p{N}")
 ## <NA>          NA     NA
 ```
 
-```r
+``` r
 x |> grepv2("\\p{L}")
 ```
 
@@ -146,7 +146,7 @@ x |> grepv2("\\p{L}")
 ## [1] "abc"       "stringx🥰"
 ```
 
-```r
+``` r
 grepv2(x, "\\p{L}", invert=TRUE) <- "\U0001F496"
 print(x)
 ```

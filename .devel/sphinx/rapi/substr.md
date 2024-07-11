@@ -44,14 +44,14 @@ substring(text, first = 1L, last = -1L) <- value
 
 ## Arguments
 
-|                          |                                                                                                                                                                                                                                                 |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`, `text`              | character vector whose parts are to be extracted/replaced                                                                                                                                                                                       |
-| `start`, `first`         | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the start indexes; e.g., 1 denotes the first code point; negative indexes count from the end of a string, i.e., -1 is the last character                        |
-| `stop`, `last`           | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the end indexes (inclusive); note that if the start position is farther than the end position, this indicates an empty substring therein (see Examples)         |
-| `length`                 | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the substring lengths; negative lengths result in a missing value or empty vector (see `ignore_negative_length`) or the corresponding substring being unchanged |
-| `ignore_negative_length` | single logical value; whether negative lengths should be ignored or yield missing values                                                                                                                                                        |
-| `value`                  | character vector (for `substr`) or list of character vectors (for `gsubstr`) defining the replacements strings                                                                                                                                  |
+|  |  |
+|----|----|
+| `x`, `text` | character vector whose parts are to be extracted/replaced |
+| `start`, `first` | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the start indexes; e.g., 1 denotes the first code point; negative indexes count from the end of a string, i.e., -1 is the last character |
+| `stop`, `last` | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the end indexes (inclusive); note that if the start position is farther than the end position, this indicates an empty substring therein (see Examples) |
+| `length` | numeric vector (for `substr`) or list of numeric vectors (for `gsubstr`) giving the substring lengths; negative lengths result in a missing value or empty vector (see `ignore_negative_length`) or the corresponding substring being unchanged |
+| `ignore_negative_length` | single logical value; whether negative lengths should be ignored or yield missing values |
+| `value` | character vector (for `substr`) or list of character vectors (for `gsubstr`) defining the replacements strings |
 
 ## Details
 
@@ -110,7 +110,7 @@ Related function(s): [`strtrim`](strtrim.md), [`nchar`](nchar.md), [`startsWith`
 
 
 
-```r
+``` r
 x <- "spam, spam, bacon, and spam"
 base::substr(x, c(1, 13), c(4, 17))
 ```
@@ -119,7 +119,7 @@ base::substr(x, c(1, 13), c(4, 17))
 ## [1] "spam"
 ```
 
-```r
+``` r
 base::substring(x, c(1, 13), c(4, 17))
 ```
 
@@ -127,7 +127,7 @@ base::substring(x, c(1, 13), c(4, 17))
 ## [1] "spam"  "bacon"
 ```
 
-```r
+``` r
 substr(x, c(1, 13), c(4, 17))
 ```
 
@@ -135,7 +135,7 @@ substr(x, c(1, 13), c(4, 17))
 ## [1] "spam"  "bacon"
 ```
 
-```r
+``` r
 substrl(x, c(1, 13), c(4, 5))
 ```
 
@@ -143,7 +143,7 @@ substrl(x, c(1, 13), c(4, 5))
 ## [1] "spam"  "bacon"
 ```
 
-```r
+``` r
 # replacement function used as an ordinary one - return a copy of x:
 base::`substr<-`(x, 1, 4, value="jam")
 ```
@@ -152,7 +152,7 @@ base::`substr<-`(x, 1, 4, value="jam")
 ## [1] "jamm, spam, bacon, and spam"
 ```
 
-```r
+``` r
 `substr<-`(x, 1, 4, value="jam")
 ```
 
@@ -160,7 +160,7 @@ base::`substr<-`(x, 1, 4, value="jam")
 ## [1] "jam, spam, bacon, and spam"
 ```
 
-```r
+``` r
 base::`substr<-`(x, 1, 4, value="porridge")
 ```
 
@@ -168,7 +168,7 @@ base::`substr<-`(x, 1, 4, value="porridge")
 ## [1] "porr, spam, bacon, and spam"
 ```
 
-```r
+``` r
 `substr<-`(x, 1, 4, value="porridge")
 ```
 
@@ -176,7 +176,7 @@ base::`substr<-`(x, 1, 4, value="porridge")
 ## [1] "porridge, spam, bacon, and spam"
 ```
 
-```r
+``` r
 # interoperability with gregexpr2:
 p <- "[\\w&&[^a]][\\w&&[^n]][\\w&&[^d]]\\w+"  # regex: all words but 'and'
 gsubstrl(x, gregexpr2(x, p))
@@ -187,7 +187,7 @@ gsubstrl(x, gregexpr2(x, p))
 ## [1] "spam"  "spam"  "bacon" "spam"
 ```
 
-```r
+``` r
 `gsubstrl<-`(x, gregexpr2(x, p), value=list(c("a", "b", "c", "d")))
 ```
 
@@ -195,7 +195,7 @@ gsubstrl(x, gregexpr2(x, p))
 ## [1] "a, b, c, and d"
 ```
 
-```r
+``` r
 # replacement function modifying x in-place:
 substr(x, 1, 4) <- "eggs"
 substr(x, 1, 0) <- "porridge, "        # prepend (start<stop)

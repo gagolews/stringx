@@ -14,14 +14,14 @@ printf(fmt, ..., file = "", sep = "\n", append = FALSE, na_string = "NA")
 
 ## Arguments
 
-|             |                                                                                                                                |
-|-------------|--------------------------------------------------------------------------------------------------------------------------------|
-| `fmt`       | character vector of format strings                                                                                             |
-| `...`       | vectors with data to format (coercible to integer, real, or character)                                                         |
+|  |  |
+|----|----|
+| `fmt` | character vector of format strings |
+| `...` | vectors with data to format (coercible to integer, real, or character) |
 | `na_string` | single string to represent missing values; if `NA`, missing values in `...` result in the corresponding outputs be missing too |
-| `file`      | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
-| `sep`       | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
-| `append`    | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html)                                                  |
+| `file` | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html) |
+| `sep` | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html) |
+| `append` | see [`cat`](https://stat.ethz.ch/R-manual/R-devel/library/base/help/cat.html) |
 
 ## Details
 
@@ -70,7 +70,7 @@ Related function(s): [`paste`](paste.md), [`strrep`](strrep.md), [`strtrim`](str
 
 
 
-```r
+``` r
 # UTF-8 number of bytes vs Unicode code point width:
 l <- c("e", "e\u00b2", "\u03c0", "\u03c0\u00b2", "\U0001f602\U0001f603")
 r <- c(exp(1), exp(2), pi, pi^2, NaN)
@@ -85,7 +85,7 @@ cat(base::sprintf("%8s=%+.3f", l, r), sep="\n")
 ## 😂😃=NaN
 ```
 
-```r
+``` r
 cat(stringx::sprintf("%8s=%+.3f", l, r), sep="\n")
 ```
 

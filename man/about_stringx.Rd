@@ -2,6 +2,7 @@
 % Please edit documentation in R/about_stringx.R
 \docType{package}
 \name{about_stringx}
+\alias{-package}
 \alias{about_stringx}
 \alias{stringx}
 \alias{stringx-package}
@@ -33,4 +34,5 @@ internationalisation, localisation, ICU, ICU4C, i18n, l10n, Unicode
 }
 \seealso{
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
+
 }

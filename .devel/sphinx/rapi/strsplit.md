@@ -22,16 +22,16 @@ strsplit(
 
 ## Arguments
 
-|                    |                                                                                                                                                                                                                                                                                                                                                                                                                |
-|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                                                                                             |
-| `pattern`          | character vector of nonempty search patterns                                                                                                                                                                                                                                                                                                                                                                   |
-| `...`              | further arguments to [`stri_split`](https://stringi.gagolewski.com/rapi/stri_split.html), e.g., `omit_empty`, `locale`, `dotall`                                                                                                                                                                                                                                                                               |
-| `ignore_case`      | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                    |
-| `fixed`            | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
-| `perl`, `useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                |
-| `ignore.case`      | alias to the `ignore_case` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                             |
-| `split`            | alias to the `pattern` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                                 |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be examined |
+| `pattern` | character vector of nonempty search patterns |
+| `...` | further arguments to [`stri_split`](https://stringi.gagolewski.com/rapi/stri_split.html), e.g., `omit_empty`, `locale`, `dotall` |
+| `ignore_case` | single logical value; indicates whether matching should be case-insensitive |
+| `fixed` | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
+| `perl`, `useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\] |
+| `ignore.case` | alias to the `ignore_case` argument \[DEPRECATED\] |
+| `split` | alias to the `pattern` argument \[DEPRECATED\] |
 
 ## Details
 
@@ -82,7 +82,7 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grepl`](grepl.m
 
 
 
-```r
+``` r
 stringx::strsplit(c(x="a, b", y="c,d,  e"), ",\\s*")
 ```
 
@@ -94,7 +94,7 @@ stringx::strsplit(c(x="a, b", y="c,d,  e"), ",\\s*")
 ## [1] "c" "d" "e"
 ```
 
-```r
+``` r
 x <- strcat(c(
     "abc", "123", ",!.", "\U0001F4A9",
     "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
@@ -111,7 +111,7 @@ base::strsplit(x, "")  # stringx does not support this
 ## [16] "⛹"  "🏿" "‍"   "♀"  "️"   "🏴" "󠁧"   "󠁢"   "󠁳"   "󠁣"   "󠁴"   "󠁿"
 ```
 
-```r
+``` r
 stringx::strsplit(x, "(?s)(?=.)", omit_empty=TRUE)  # look-ahead for any char with dot-all
 ```
 
@@ -121,7 +121,7 @@ stringx::strsplit(x, "(?s)(?=.)", omit_empty=TRUE)  # look-ahead for any char wi
 ## [16] "⛹"  "🏿" "‍"   "♀"  "️"   "🏴" "󠁧"   "󠁢"   "󠁳"   "󠁣"   "󠁴"   "󠁿"
 ```
 
-```r
+``` r
 stringi::stri_split_boundaries(x, type="character")  # grapheme clusters
 ```
 

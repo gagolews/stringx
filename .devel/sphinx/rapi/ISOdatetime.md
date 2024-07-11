@@ -36,12 +36,12 @@ Sys.time()
 
 ## Arguments
 
-|                                              |                                                                                                                                                                                                                                                                         |
-|----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `year`, `month`, `day`, `hour`, `min`, `sec` | numeric vectors                                                                                                                                                                                                                                                         |
-| `tz`                                         | `NULL` or `''` for the default time zone (see [`stri_timezone_get`](https://stringi.gagolewski.com/rapi/stri_timezone_set.html)) or a single string with a timezone identifier, see [`stri_timezone_list`](https://stringi.gagolewski.com/rapi/stri_timezone_list.html) |
-| `lenient`                                    | single logical value; should date/time parsing be lenient?                                                                                                                                                                                                              |
-| `locale`                                     | `NULL` or `''` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html)              |
+|  |  |
+|----|----|
+| `year`, `month`, `day`, `hour`, `min`, `sec` | numeric vectors |
+| `tz` | `NULL` or `''` for the default time zone (see [`stri_timezone_get`](https://stringi.gagolewski.com/rapi/stri_timezone_set.html)) or a single string with a timezone identifier, see [`stri_timezone_list`](https://stringi.gagolewski.com/rapi/stri_timezone_list.html) |
+| `lenient` | single logical value; should date/time parsing be lenient? |
+| `locale` | `NULL` or `''` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
 
 ## Value
 
@@ -72,7 +72,7 @@ Related function(s): [`strptime`](strptime.md)
 
 
 
-```r
+``` r
 ISOdate(1970, 1, 1)
 ```
 
@@ -80,7 +80,7 @@ ISOdate(1970, 1, 1)
 ## [1] "1970-01-01T00:00:00+0100"
 ```
 
-```r
+``` r
 ISOdatetime(1970, 1, 1, 12, 0, 0)
 ```
 

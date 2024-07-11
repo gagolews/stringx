@@ -55,20 +55,20 @@ sort(
 
 ## Arguments
 
-|                     |                                                                                                                                                                                                                                                            |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                 | character vector whose elements are to be sorted                                                                                                                                                                                                           |
-| `...`               | further arguments passed to other methods                                                                                                                                                                                                                  |
-| `locale`            | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
-| `strength`          | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `alternate_shifted` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `french`            | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `uppercase_first`   | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `case_level`        | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `normalisation`     | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `numeric`           | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `decreasing`        | single logical value; if `FALSE`, the ordering is nondecreasing (weakly increasing)                                                                                                                                                                        |
-| `na.last`           | single logical value; if `TRUE`, then missing values are placed at the end; if `FALSE`, they are put at the beginning; if `NA`, then they are removed from the output whatsoever.                                                                          |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be sorted |
+| `...` | further arguments passed to other methods |
+| `locale` | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+| `strength` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `alternate_shifted` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `french` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `uppercase_first` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `case_level` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `normalisation` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `numeric` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `decreasing` | single logical value; if `FALSE`, the ordering is nondecreasing (weakly increasing) |
+| `na.last` | single logical value; if `TRUE`, then missing values are placed at the end; if `FALSE`, they are put at the beginning; if `NA`, then they are removed from the output whatsoever. |
 
 ## Details
 
@@ -113,7 +113,7 @@ Related function(s): [`strcoll`](strcoll.md)
 
 
 
-```r
+``` r
 x <- c("a1", "a100", "a101", "a1000", "a10", "a10", "a11", "a99", "a10", "a1")
 base::sort.default(x)   # lexicographic sort
 ```
@@ -123,7 +123,7 @@ base::sort.default(x)   # lexicographic sort
 ## [10] "a99"
 ```
 
-```r
+``` r
 sort(x, numeric=TRUE)   # calls stringx:::sort.character
 ```
 
@@ -132,7 +132,7 @@ sort(x, numeric=TRUE)   # calls stringx:::sort.character
 ## [10] "a1000"
 ```
 
-```r
+``` r
 xtfrm2(x, numeric=TRUE)  # calls stringx:::xtfrm2.character
 ```
 
@@ -140,7 +140,7 @@ xtfrm2(x, numeric=TRUE)  # calls stringx:::xtfrm2.character
 ##  [1]  1  8  9 10  3  3  6  7  3  1
 ```
 
-```r
+``` r
 rank(xtfrm2(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
 ```
 
@@ -148,7 +148,7 @@ rank(xtfrm2(x, numeric=TRUE), ties.method="average")  # ranks with averaged ties
 ##  [1]  1.5  8.0  9.0 10.0  4.0  4.0  6.0  7.0  4.0  1.5
 ```
 
-```r
+``` r
 order(xtfrm2(x, numeric=TRUE))    # ordering permutation
 ```
 
@@ -156,7 +156,7 @@ order(xtfrm2(x, numeric=TRUE))    # ordering permutation
 ##  [1]  1 10  5  6  9  7  8  2  3  4
 ```
 
-```r
+``` r
 x[order(xtfrm2(x, numeric=TRUE))] # equivalent to sort()
 ```
 
@@ -165,7 +165,7 @@ x[order(xtfrm2(x, numeric=TRUE))] # equivalent to sort()
 ## [10] "a1000"
 ```
 
-```r
+``` r
 # order a data frame w.r.t. decreasing ids and increasing vals
 d <- data.frame(vals=round(runif(length(x)), 1), ids=x)
 d[order(-xtfrm2(d[["ids"]], numeric=TRUE), d[["vals"]]), ]

@@ -12,9 +12,9 @@ strtrim(x, width)
 
 ## Arguments
 
-|         |                                                                                       |
-|---------|---------------------------------------------------------------------------------------|
-| `x`     | character vector whose elements are to be trimmed                                     |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be trimmed |
 | `width` | numeric vector giving the widths to which the corresponding strings are to be trimmed |
 
 ## Details
@@ -56,7 +56,7 @@ Related function(s): [`sprintf`](sprintf.md), [`substr`](substr.md), [`nchar`](n
 
 
 
-```r
+``` r
 base::strtrim("aaaaa", 1:3)
 ```
 
@@ -64,7 +64,7 @@ base::strtrim("aaaaa", 1:3)
 ## [1] "a"
 ```
 
-```r
+``` r
 stringx::strtrim("aaaaa", 1:3)
 ```
 
@@ -72,7 +72,7 @@ stringx::strtrim("aaaaa", 1:3)
 ## [1] "a"   "aa"  "aaa"
 ```
 
-```r
+``` r
 x <- c(
     "\U0001F4A9",
     "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
@@ -87,7 +87,7 @@ print(x)
 ## [1] "💩"    "🙍🏼‍♂️" "🙍🏻‍♂" "⛹🏿‍♀️"  "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
 ```
 
-```r
+``` r
 base::strtrim(x, 2)
 ```
 
@@ -95,7 +95,7 @@ base::strtrim(x, 2)
 ## [1] "💩" "🙍" "🙍" "⛹"  "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
 ```
 
-```r
+``` r
 stringx::strtrim(x, 2)
 ```
 

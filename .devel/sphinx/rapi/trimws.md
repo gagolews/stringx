@@ -12,10 +12,10 @@ trimws(x, which = "both", whitespace = "\\p{Wspace}")
 
 ## Arguments
 
-|              |                                                                                                                                                                                                      |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`          | character vector whose elements are to be trimmed                                                                                                                                                    |
-| `which`      | single string; either `"both"`, `"left"`, or `"right"`; side(s) from which the code points matching the `whitespace` pattern are to be removed                                                       |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be trimmed |
+| `which` | single string; either `"both"`, `"left"`, or `"right"`; side(s) from which the code points matching the `whitespace` pattern are to be removed |
 | `whitespace` | single string; specifies the set of Unicode code points for removal, see \'Character Classes\' in [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html) for more details |
 
 ## Details
@@ -51,7 +51,7 @@ Related function(s): [`sub`](gsub.md)
 
 
 
-```r
+``` r
 base::trimws("NAAAAANA!!!NANAAAAA", whitespace=NA)  # stringx raises an error
 ```
 
@@ -59,7 +59,7 @@ base::trimws("NAAAAANA!!!NANAAAAA", whitespace=NA)  # stringx raises an error
 ## [1] "NA!!!NA"
 ```
 
-```r
+``` r
 x <- "   :)\v\u00a0 \n\r\t"
 base::trimws(x)
 ```
@@ -68,7 +68,7 @@ base::trimws(x)
 ## [1] ":)\v "
 ```
 
-```r
+``` r
 stringx::trimws(x)
 ```
 

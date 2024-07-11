@@ -32,15 +32,15 @@ gregextr2(x, pattern, ..., ignore_case = FALSE, fixed = FALSE) <- value
 
 ## Arguments
 
-|                  |                                                                                                                                                                                                                                                                                                                                                                                                                |
-|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`              | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                                                                                             |
-| `pattern`        | character vector of nonempty search patterns                                                                                                                                                                                                                                                                                                                                                                   |
-| `...`            | further arguments to [`stri_locate`](https://stringi.gagolewski.com/rapi/stri_locate.html), e.g., `omit_empty`, `locale`, `dotall`                                                                                                                                                                                                                                                                             |
-| `ignore_case`    | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                    |
-| `fixed`          | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
-| `capture_groups` | single logical value; whether matches individual capture groups should be extracted separately                                                                                                                                                                                                                                                                                                                 |
-| `value`          | character vector (for `regextr`) or list of character vectors (for `gregextr`) defining the replacement strings                                                                                                                                                                                                                                                                                                |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be examined |
+| `pattern` | character vector of nonempty search patterns |
+| `...` | further arguments to [`stri_locate`](https://stringi.gagolewski.com/rapi/stri_locate.html), e.g., `omit_empty`, `locale`, `dotall` |
+| `ignore_case` | single logical value; indicates whether matching should be case-insensitive |
+| `fixed` | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
+| `capture_groups` | single logical value; whether matches individual capture groups should be extracted separately |
+| `value` | character vector (for `regextr`) or list of character vectors (for `gregextr`) defining the replacement strings |
 
 ## Details
 
@@ -77,7 +77,7 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`strsplit`](strs
 
 
 
-```r
+``` r
 x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
 regextr2(x, "(?<x>a)(?<y>cac?)")
 ```
@@ -87,7 +87,7 @@ regextr2(x, "(?<x>a)(?<y>cac?)")
 ## "acac"  "aca"     NA     NA
 ```
 
-```r
+``` r
 gregextr2(x, "(?<x>a)(?<y>cac?)")
 ```
 
@@ -105,7 +105,7 @@ gregextr2(x, "(?<x>a)(?<y>cac?)")
 ## [1] NA
 ```
 
-```r
+``` r
 regextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 ```
 
@@ -127,7 +127,7 @@ regextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 ## NA NA NA
 ```
 
-```r
+``` r
 gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 ```
 
@@ -157,7 +157,7 @@ gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 ## y NA
 ```
 
-```r
+``` r
 # substitution - note the different replacement strings:
 `gregextr2<-`(x, "(?<x>a)(?<y>cac?)", value=list(c("!", "?"), "#"))
 ```
@@ -167,7 +167,7 @@ gregextr2(x, "(?<x>a)(?<y>cac?)", capture_groups=TRUE)
 ##       "!?"       "g#" "actgggca"         NA
 ```
 
-```r
+``` r
 # references to capture groups can only be used in gsub and sub:
 gsub2(x, "(?<x>a)(?<y>cac?)", "{$1}{$2}")
 ```
@@ -177,7 +177,7 @@ gsub2(x, "(?<x>a)(?<y>cac?)", "{$1}{$2}")
 ## "{a}{cac}{a}{ca}"        "g{a}{ca}"        "actgggca"                NA
 ```
 
-```r
+``` r
 regextr2(x, "(?<x>a)(?<y>cac?)") <- "\U0001D554\U0001F4A9"
 print(x)  # x was modified 'in-place'
 ```

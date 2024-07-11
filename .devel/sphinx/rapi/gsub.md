@@ -36,15 +36,15 @@ gsub(
 
 ## Arguments
 
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                |
-|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                          | character vector with strings whose chunks are to be modified                                                                                                                                                                                                                                                                                                                                                  |
-| `pattern`                    | character vector of nonempty search patterns                                                                                                                                                                                                                                                                                                                                                                   |
-| `replacement`                | character vector with the corresponding replacement strings; in `sub2` and `gsub2`, back-references (whenever `fixed=FALSE`) are indicated by `$0`..`$99` and `$<name>`, whereas the base-R compatible `sub` and `gsub`, only allow `\1`..`\9`                                                                                                                                                                 |
-| `...`                        | further arguments to [`stri_replace_first`](https://stringi.gagolewski.com/rapi/stri_replace.html) or [`stri_replace_all`](https://stringi.gagolewski.com/rapi/stri_replace.html), e.g., `locale`, `dotall`                                                                                                                                                                                                    |
-| `ignore_case`, `ignore.case` | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                    |
-| `fixed`                      | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
-| `perl`, `useBytes`           | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                |
+|  |  |
+|----|----|
+| `x` | character vector with strings whose chunks are to be modified |
+| `pattern` | character vector of nonempty search patterns |
+| `replacement` | character vector with the corresponding replacement strings; in `sub2` and `gsub2`, back-references (whenever `fixed=FALSE`) are indicated by `$0`..`$99` and `$<name>`, whereas the base-R compatible `sub` and `gsub`, only allow `\1`..`\9` |
+| `...` | further arguments to [`stri_replace_first`](https://stringi.gagolewski.com/rapi/stri_replace.html) or [`stri_replace_all`](https://stringi.gagolewski.com/rapi/stri_replace.html), e.g., `locale`, `dotall` |
+| `ignore_case`, `ignore.case` | single logical value; indicates whether matching should be case-insensitive |
+| `fixed` | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
+| `perl`, `useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\] |
 
 ## Details
 
@@ -95,7 +95,7 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grepl2`](grepl.
 
 
 
-```r
+``` r
 "change \U0001f602 me \U0001f603" |> gsub2("\\p{L}+", "O_O")
 ```
 
@@ -103,7 +103,7 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`grepl2`](grepl.
 ## [1] "O_O 😂 O_O 😃"
 ```
 
-```r
+``` r
 x <- c("mario", "Mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario", NA)
 sub2(x, "mario", "M\u00E1rio", fixed=NA, strength=1L)
 ```
@@ -112,7 +112,7 @@ sub2(x, "mario", "M\u00E1rio", fixed=NA, strength=1L)
 ## [1] "Mário"   "Mário"   "Mário"   "Mário"   "María"   "Rosario" NA
 ```
 
-```r
+``` r
 sub2(x, "mario", "Mario", fixed=NA, strength=2L)
 ```
 
@@ -120,7 +120,7 @@ sub2(x, "mario", "Mario", fixed=NA, strength=2L)
 ## [1] "Mario"   "Mario"   "Mário"   "MÁRIO"   "María"   "Rosario" NA
 ```
 
-```r
+``` r
 x <- "abcdefghijklmnopqrstuvwxyz"
 p <- "(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)"
 base::sub(p, "\\1\\9", x)
@@ -130,7 +130,7 @@ base::sub(p, "\\1\\9", x)
 ## [1] "ainopqrstuvwxyz"
 ```
 
-```r
+``` r
 base::gsub(p, "\\1\\9", x)
 ```
 
@@ -138,15 +138,15 @@ base::gsub(p, "\\1\\9", x)
 ## [1] "ainv"
 ```
 
-```r
+``` r
 base::gsub(p, "\\1\\9", x, perl=TRUE)
 ```
 
 ```
-## [1] ""
+## [1] "ainv"
 ```
 
-```r
+``` r
 base::gsub(p, "\\1\\13", x)
 ```
 
@@ -154,7 +154,7 @@ base::gsub(p, "\\1\\13", x)
 ## [1] "aa3nn3"
 ```
 
-```r
+``` r
 sub2(x, p, "$1$13")
 ```
 
@@ -162,7 +162,7 @@ sub2(x, p, "$1$13")
 ## [1] "amnopqrstuvwxyz"
 ```
 
-```r
+``` r
 gsub2(x, p, "$1$13")
 ```
 

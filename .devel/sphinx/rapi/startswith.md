@@ -30,15 +30,15 @@ endsWith(
 
 ## Arguments
 
-|                    |                                                                                                                                                                                                                                                                                                                                          |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                       |
-| `pattern`          | character vector with patterns to search for                                                                                                                                                                                                                                                                                             |
-| `...`              | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale`                                                                                                                               |
-| `ignore_case`      | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                              |
-| `fixed`            | single logical value; `TRUE` for fixed pattern matching (see [about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](grepl.md) instead |
-| `ignore.case`      | alias to the `ignore_case` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                       |
-| `prefix`, `suffix` | aliases to the `pattern` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                         |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be examined |
+| `pattern` | character vector with patterns to search for |
+| `...` | further arguments to [`stri_startswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html) and [`stri_endswith`](https://stringi.gagolewski.com/rapi/stri_startsendswith.html), e.g., `locale` |
+| `ignore_case` | single logical value; indicates whether matching should be case-insensitive |
+| `fixed` | single logical value; `TRUE` for fixed pattern matching (see [about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)); `FALSE` is not supported -- use [`grepl`](grepl.md) instead |
+| `ignore.case` | alias to the `ignore_case` argument \[DEPRECATED\] |
+| `prefix`, `suffix` | aliases to the `pattern` argument \[DEPRECATED\] |
 
 ## Details
 
@@ -79,7 +79,7 @@ Related function(s): [`grepl`](grepl.md), [`substr`](substr.md)
 
 
 
-```r
+``` r
 startsWith("ababa", c("a", "ab", "aba", "baba", NA))
 ```
 
@@ -87,7 +87,7 @@ startsWith("ababa", c("a", "ab", "aba", "baba", NA))
 ## [1]  TRUE  TRUE  TRUE FALSE    NA
 ```
 
-```r
+``` r
 outer(
     c("aba", "abb", "abc", "baba", "bac"),
     c("A", "B", "C"),
@@ -105,7 +105,7 @@ outer(
 ## [5,] FALSE FALSE  TRUE
 ```
 
-```r
+``` r
 x <- c("Mario", "mario", "M\u00E1rio", "M\u00C1RIO", "Mar\u00EDa", "Rosario")
 x[startsWith(x, "mario", ignore_case=TRUE)]
 ```
@@ -114,7 +114,7 @@ x[startsWith(x, "mario", ignore_case=TRUE)]
 ## [1] "Mario" "mario"
 ```
 
-```r
+``` r
 x[startsWith(x, "mario", fixed=NA, strength=1L)]
 ```
 

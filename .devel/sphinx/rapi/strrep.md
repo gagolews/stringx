@@ -14,10 +14,10 @@ e1 %x*% e2
 
 ## Arguments
 
-|               |                                                                                  |
-|---------------|----------------------------------------------------------------------------------|
-| `e1`, `x`     | character vector (or an object coercible to) whose elements are to be duplicated |
-| `e2`, `times` | numeric vector giving the number of times to repeat the corresponding strings    |
+|  |  |
+|----|----|
+| `e1`, `x` | character vector (or an object coercible to) whose elements are to be duplicated |
+| `e2`, `times` | numeric vector giving the number of times to repeat the corresponding strings |
 
 ## Details
 
@@ -56,7 +56,7 @@ Related function(s): [`paste`](paste.md), [`sprintf`](sprintf.md)
 
 
 
-```r
+``` r
 x <- structure(c(A="a", B=NA, C="c"), attrib1="value1")
 x %x*% 3
 ```
@@ -68,7 +68,7 @@ x %x*% 3
 ## [1] "value1"
 ```
 
-```r
+``` r
 x %x*% 1:3
 ```
 
@@ -79,7 +79,7 @@ x %x*% 1:3
 ## [1] "value1"
 ```
 
-```r
+``` r
 "a" %x*% 1:3
 ```
 
@@ -87,7 +87,7 @@ x %x*% 1:3
 ## [1] "a"   "aa"  "aaa"
 ```
 
-```r
+``` r
 stringx::strrep(x, 3)
 ```
 
@@ -98,7 +98,7 @@ stringx::strrep(x, 3)
 ## [1] "value1"
 ```
 
-```r
+``` r
 base::strrep(x, 3)
 ```
 
@@ -107,7 +107,7 @@ base::strrep(x, 3)
 ## "aaa"    NA "ccc"
 ```
 
-```r
+``` r
 y <- matrix(1:6, nrow=2, dimnames=list(c("A", "B"), NULL))
 y %x*% 1:2
 ```
@@ -116,7 +116,7 @@ y %x*% 1:2
 ## [1] "1"  "22" "3"  "44" "5"  "66"
 ```
 
-```r
+``` r
 stringx::strrep(y, 1:2)
 ```
 
@@ -124,7 +124,7 @@ stringx::strrep(y, 1:2)
 ## [1] "1"  "22" "3"  "44" "5"  "66"
 ```
 
-```r
+``` r
 base::strrep(y, 1:2)
 ```
 

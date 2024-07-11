@@ -35,17 +35,17 @@ e1 %x>=% e2
 
 ## Arguments
 
-|                     |                                                                                                                                                                                                                                                            |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `e1`, `e2`          | character vector whose corresponding elements are to be compared                                                                                                                                                                                           |
-| `locale`            | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
-| `strength`          | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `alternate_shifted` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `french`            | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `uppercase_first`   | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `case_level`        | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `normalisation`     | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
-| `numeric`           | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html)                                                                                                                                                                    |
+|  |  |
+|----|----|
+| `e1`, `e2` | character vector whose corresponding elements are to be compared |
+| `locale` | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+| `strength` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `alternate_shifted` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `french` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `uppercase_first` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `case_level` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `normalisation` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
+| `numeric` | see [`stri_opts_collator`](https://stringi.gagolewski.com/rapi/stri_opts_collator.html) |
 
 ## Details
 
@@ -82,7 +82,7 @@ Related function(s): [`xtfrm`](sort.md)
 
 
 
-```r
+``` r
 # lexicographic vs. numeric sort
 strcoll("100", c("1", "10", "11", "99", "100", "101", "1000"))
 ```
@@ -91,7 +91,7 @@ strcoll("100", c("1", "10", "11", "99", "100", "101", "1000"))
 ## [1]  1  1 -1 -1  0 -1 -1
 ```
 
-```r
+``` r
 strcoll("100", c("1", "10", "11", "99", "100", "101", "1000"), numeric=TRUE)
 ```
 
@@ -99,7 +99,7 @@ strcoll("100", c("1", "10", "11", "99", "100", "101", "1000"), numeric=TRUE)
 ## [1]  1  1  1  1  0 -1 -1
 ```
 
-```r
+``` r
 strcoll("hladn\u00FD", "chladn\u00FD", locale="sk_SK")
 ```
 

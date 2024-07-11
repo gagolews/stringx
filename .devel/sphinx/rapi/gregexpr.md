@@ -62,15 +62,15 @@ gregexec(
 
 ## Arguments
 
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                |
-|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                          | character vector whose elements are to be examined                                                                                                                                                                                                                                                                                                                                                             |
-| `pattern`                    | character vector of nonempty search patterns                                                                                                                                                                                                                                                                                                                                                                   |
-| `...`                        | further arguments to [`stri_locate`](https://stringi.gagolewski.com/rapi/stri_locate.html), e.g., `omit_empty`, `locale`, `dotall`                                                                                                                                                                                                                                                                             |
-| `ignore_case`, `ignore.case` | single logical value; indicates whether matching should be case-insensitive                                                                                                                                                                                                                                                                                                                                    |
-| `fixed`                      | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
-| `perl`, `useBytes`           | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                |
-| `text`                       | alias to the `x` argument \[DEPRECATED\]                                                                                                                                                                                                                                                                                                                                                                       |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be examined |
+| `pattern` | character vector of nonempty search patterns |
+| `...` | further arguments to [`stri_locate`](https://stringi.gagolewski.com/rapi/stri_locate.html), e.g., `omit_empty`, `locale`, `dotall` |
+| `ignore_case`, `ignore.case` | single logical value; indicates whether matching should be case-insensitive |
+| `fixed` | single logical value; `FALSE` for matching with regular expressions (see [about_search_regex](https://stringi.gagolewski.com/rapi/about_search_regex.html)); `TRUE` for fixed pattern matching ([about_search_fixed](https://stringi.gagolewski.com/rapi/about_search_fixed.html)); `NA` for the Unicode collation algorithm ([about_search_coll](https://stringi.gagolewski.com/rapi/about_search_coll.html)) |
+| `perl`, `useBytes` | not used (with a warning if attempting to do so) \[DEPRECATED\] |
+| `text` | alias to the `x` argument \[DEPRECATED\] |
 
 ## Details
 
@@ -133,7 +133,7 @@ Related function(s): [`paste`](paste.md), [`nchar`](nchar.md), [`strsplit`](strs
 
 
 
-```r
+``` r
 x <- c(aca1="acacaca", aca2="gaca", noaca="actgggca", na=NA)
 regexpr2(x, "(A)[ACTG]\\1", ignore_case=TRUE)
 ```
@@ -145,7 +145,7 @@ regexpr2(x, "(A)[ACTG]\\1", ignore_case=TRUE)
 ## [1]  3  3 -1 NA
 ```
 
-```r
+``` r
 regexpr2(x, "aca") >= 0  # like grepl2
 ```
 
@@ -154,7 +154,7 @@ regexpr2(x, "aca") >= 0  # like grepl2
 ##  TRUE  TRUE FALSE    NA
 ```
 
-```r
+``` r
 gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
 ```
 
@@ -180,7 +180,7 @@ gregexpr2(x, "aca", fixed=TRUE, overlap=TRUE)
 ## [1] NA
 ```
 
-```r
+``` r
 # two named capture groups:
 regexec2(x, "(?<x>a)(?<y>cac?)")
 ```
@@ -215,7 +215,7 @@ regexec2(x, "(?<x>a)(?<y>cac?)")
 ## NA NA NA
 ```
 
-```r
+``` r
 gregexec2(x, "(?<x>a)(?<y>cac?)")
 ```
 
@@ -265,7 +265,7 @@ gregexec2(x, "(?<x>a)(?<y>cac?)")
 ## y   NA
 ```
 
-```r
+``` r
 # extraction:
 gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\1", ignore_case=TRUE))
 ```
@@ -284,7 +284,7 @@ gsubstrl(x, gregexpr2(x, "(A)[ACTG]\\1", ignore_case=TRUE))
 ## [1] NA
 ```
 
-```r
+``` r
 gregextr2(x, "(A)[ACTG]\\1", ignore_case=TRUE)  # equivalent
 ```
 

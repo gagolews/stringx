@@ -94,4 +94,5 @@ digits_hex
 }
 \seealso{
 The official online manual of \pkg{stringx} at \url{https://stringx.gagolewski.com/}
+
 }

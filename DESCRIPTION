@@ -2,7 +2,7 @@ Package: stringx
 Type: Package
 Title: Replacements for Base String Functions Powered by 'stringi'
 Version: 0.2.8
-Date: 2024-04-09
+Date: 2024-07-11
 Authors@R: c(
     person("Marek", "Gagolewski",
         role = c("aut", "cre", "cph"),
@@ -34,4 +34,4 @@ Imports:
 Suggests:
     realtest (>= 0.2.1)
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2

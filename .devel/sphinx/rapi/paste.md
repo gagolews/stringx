@@ -18,15 +18,15 @@ strcat(x, collapse = "", na.rm = FALSE)
 
 ## Arguments
 
-|            |                                                                                                             |
-|------------|-------------------------------------------------------------------------------------------------------------|
-| `...`      | character vectors (or objects coercible to) whose corresponding/consecutive elements are to be concatenated |
-| `sep`      | single string; separates terms                                                                              |
-| `collapse` | single string or `NULL`; an optional separator if tokens are to be merged into a single string              |
-| `recycle0` | single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored                |
-| `e1`, `e2` | character vectors (or objects coercible to) whose corresponding elements are to be concatenated             |
-| `x`        | character vector (or an object coercible to) whose consecutive elements are to be concatenated              |
-| `na.rm`    | single logical value; if `TRUE`, missing values are silently ignored                                        |
+|  |  |
+|----|----|
+| `...` | character vectors (or objects coercible to) whose corresponding/consecutive elements are to be concatenated |
+| `sep` | single string; separates terms |
+| `collapse` | single string or `NULL`; an optional separator if tokens are to be merged into a single string |
+| `recycle0` | single logical value; if `FALSE`, then empty vectors provided via `...` are silently ignored |
+| `e1`, `e2` | character vectors (or objects coercible to) whose corresponding elements are to be concatenated |
+| `x` | character vector (or an object coercible to) whose consecutive elements are to be concatenated |
+| `na.rm` | single logical value; if `TRUE`, missing values are silently ignored |
 
 ## Details
 
@@ -91,7 +91,7 @@ Related function(s): [`strrep`](strrep.md), [`sprintf`](sprintf.md)
 
 
 
-```r
+``` r
 # behaviour of `+` vs. base::paste vs. stringx::paste
 x <- structure(c(x=1, y=NA, z=100, w=1000), F="*")
 y1 <- structure(c(a=1, b=2, c=3), G="#", F="@")
@@ -112,7 +112,7 @@ x + y1
 ## [1] "*"
 ```
 
-```r
+``` r
 x + y2
 ```
 
@@ -125,7 +125,7 @@ x + y2
 ## [1] "*"
 ```
 
-```r
+``` r
 x + y3
 ```
 
@@ -139,7 +139,7 @@ x + y3
 ## [1] "*"
 ```
 
-```r
+``` r
 y2 + x
 ```
 
@@ -152,7 +152,7 @@ y2 + x
 ## [1] "#"
 ```
 
-```r
+``` r
 base::paste(x, y1)
 ```
 
@@ -160,7 +160,7 @@ base::paste(x, y1)
 ## [1] "1 1"    "NA 2"   "100 3"  "1000 1"
 ```
 
-```r
+``` r
 base::paste(x, y2)
 ```
 
@@ -168,7 +168,7 @@ base::paste(x, y2)
 ## [1] "1 1"    "NA 2"   "100 3"  "1000 4"
 ```
 
-```r
+``` r
 base::paste(x, y3)
 ```
 
@@ -176,7 +176,7 @@ base::paste(x, y3)
 ## [1] "1 1"    "NA 2"   "100 3"  "1000 4"
 ```
 
-```r
+``` r
 stringx::paste(x, y1)
 ```
 
@@ -189,7 +189,7 @@ stringx::paste(x, y1)
 ## [1] "1 1"    NA       "100 3"  "1000 1"
 ```
 
-```r
+``` r
 stringx::paste(x, y2)
 ```
 
@@ -197,7 +197,7 @@ stringx::paste(x, y2)
 ## [1] "1 1"    NA       "100 3"  "1000 4"
 ```
 
-```r
+``` r
 stringx::paste(x, y3)
 ```
 
@@ -205,7 +205,7 @@ stringx::paste(x, y3)
 ## [1] "1 1"    NA       "100 3"  "1000 4"
 ```
 
-```r
+``` r
 base::paste(x, character(0), y2, sep=",")
 ```
 
@@ -213,7 +213,7 @@ base::paste(x, character(0), y2, sep=",")
 ## [1] "1,,1"    "NA,,2"   "100,,3"  "1000,,4"
 ```
 
-```r
+``` r
 stringx::paste(x, character(0), y2, sep=",")
 ```
 
@@ -221,7 +221,7 @@ stringx::paste(x, character(0), y2, sep=",")
 ## [1] "1,1"    NA       "100,3"  "1000,4"
 ```
 
-```r
+``` r
 x %x+% y1
 ```
 
@@ -234,7 +234,7 @@ x %x+% y1
 ## [1] "11"    NA      "1003"  "10001"
 ```
 
-```r
+``` r
 x %x+% y2
 ```
 
@@ -242,7 +242,7 @@ x %x+% y2
 ## [1] "11"    NA      "1003"  "10004"
 ```
 
-```r
+``` r
 x %x+% y3
 ```
 
@@ -250,7 +250,7 @@ x %x+% y3
 ## [1] "11"    NA      "1003"  "10004"
 ```
 
-```r
+``` r
 y2 %x+% x
 ```
 
@@ -258,7 +258,7 @@ y2 %x+% x
 ## [1] "11"    NA      "3100"  "41000"
 ```
 
-```r
+``` r
 x %x+% character(0)
 ```
 
@@ -266,7 +266,7 @@ x %x+% character(0)
 ## character(0)
 ```
 
-```r
+``` r
 strcat(x, collapse=",")
 ```
 
@@ -274,7 +274,7 @@ strcat(x, collapse=",")
 ## [1] NA
 ```
 
-```r
+``` r
 strcat(x, collapse=",", na.rm=TRUE)
 ```
 

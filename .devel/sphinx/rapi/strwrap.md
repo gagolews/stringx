@@ -21,16 +21,16 @@ strwrap(
 
 ## Arguments
 
-|            |                                                                                                                                                                                                                                                            |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`        | character vector whose elements are to be word-wrapped                                                                                                                                                                                                     |
-| `width`    | single integer; maximal total width of the code points per line (as determined by [`stri_width`](https://stringi.gagolewski.com/rapi/stri_width.html))                                                                                                     |
-| `indent`   | single integer; first line indentation size                                                                                                                                                                                                                |
-| `exdent`   | single integer; consequent lines indentation size                                                                                                                                                                                                          |
-| `prefix`   | single string; prefix for each line except the first                                                                                                                                                                                                       |
-| `simplify` | see Value                                                                                                                                                                                                                                                  |
-| `initial`  | single string; prefix for the first line                                                                                                                                                                                                                   |
-| `locale`   | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+|  |  |
+|----|----|
+| `x` | character vector whose elements are to be word-wrapped |
+| `width` | single integer; maximal total width of the code points per line (as determined by [`stri_width`](https://stringi.gagolewski.com/rapi/stri_width.html)) |
+| `indent` | single integer; first line indentation size |
+| `exdent` | single integer; consequent lines indentation size |
+| `prefix` | single string; prefix for each line except the first |
+| `simplify` | see Value |
+| `initial` | single string; prefix for the first line |
+| `locale` | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
 
 ## Details
 
@@ -77,7 +77,7 @@ Related function(s): [`sprintf`](sprintf.md), [`trimws`](trimws.md), [`nchar`](n
 
 
 
-```r
+``` r
 strwrap(paste0(
     strrep("az ", 20),
     strrep("\u0105\u20AC ", 20),

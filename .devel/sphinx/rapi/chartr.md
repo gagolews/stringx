@@ -22,14 +22,14 @@ casefold(x, upper = NA)
 
 ## Arguments
 
-|                      |                                                                                                                                                                                                                                                            |
-|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`                  | character vector (or an object coercible to)                                                                                                                                                                                                               |
-| `transform`          | single string with ICU general transform specifier, see [`stri_trans_list`](https://stringi.gagolewski.com/rapi/stri_trans_list.html)                                                                                                                      |
-| `pattern`, `old`     | single string                                                                                                                                                                                                                                              |
-| `replacement`, `new` | single string, preferably of the same length as `old`                                                                                                                                                                                                      |
-| `locale`             | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
-| `upper`              | single logical value; switches between case folding (the default, `NA`), lower-, and upper-case                                                                                                                                                            |
+|  |  |
+|----|----|
+| `x` | character vector (or an object coercible to) |
+| `transform` | single string with ICU general transform specifier, see [`stri_trans_list`](https://stringi.gagolewski.com/rapi/stri_trans_list.html) |
+| `pattern`, `old` | single string |
+| `replacement`, `new` | single string, preferably of the same length as `old` |
+| `locale` | `NULL` or `""` for the default locale (see [`stri_locale_get`](https://stringi.gagolewski.com/rapi/stri_locale_set.html)) or a single string with a locale identifier, see [`stri_locale_list`](https://stringi.gagolewski.com/rapi/stri_locale_list.html) |
+| `upper` | single logical value; switches between case folding (the default, `NA`), lower-, and upper-case |
 
 ## Details
 
@@ -60,7 +60,7 @@ The official online manual of <span class="pkg">stringx</span> at <https://strin
 
 
 
-```r
+``` r
 strtrans(strcat(letters_bf), "Any-NFKD; Any-Upper")
 ```
 
@@ -68,7 +68,7 @@ strtrans(strcat(letters_bf), "Any-NFKD; Any-Upper")
 ## [1] "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ```
 
-```r
+``` r
 strtrans(strcat(letters_bb[1:6]), "Any-Hex/C")
 ```
 
@@ -76,7 +76,7 @@ strtrans(strcat(letters_bb[1:6]), "Any-Hex/C")
 ## [1] "\\U0001D552\\U0001D553\\U0001D554\\U0001D555\\U0001D556\\U0001D557"
 ```
 
-```r
+``` r
 strtrans(strcat(letters_greek), "Greek-Latin")
 ```
 
@@ -84,7 +84,7 @@ strtrans(strcat(letters_greek), "Greek-Latin")
 ## [1] "abgdezēthiklmn'xoprstyphchpsō"
 ```
 
-```r
+``` r
 toupper(letters_greek)
 ```
 
@@ -93,7 +93,7 @@ toupper(letters_greek)
 ## [20] "Υ" "Φ" "Χ" "Ψ" "Ω"
 ```
 
-```r
+``` r
 tolower(LETTERS_GREEK)
 ```
 
@@ -102,7 +102,7 @@ tolower(LETTERS_GREEK)
 ## [20] "υ" "φ" "χ" "ψ" "ω"
 ```
 
-```r
+``` r
 base::toupper("gro\u00DF")
 ```
 
@@ -110,7 +110,7 @@ base::toupper("gro\u00DF")
 ## [1] "GROß"
 ```
 
-```r
+``` r
 stringx::toupper("gro\u00DF")
 ```
 
@@ -118,7 +118,7 @@ stringx::toupper("gro\u00DF")
 ## [1] "GROSS"
 ```
 
-```r
+``` r
 casefold("gro\u00DF")
 ```
 
@@ -126,7 +126,7 @@ casefold("gro\u00DF")
 ## [1] "gross"
 ```
 
-```r
+``` r
 x <- as.matrix(c(a="\u00DFpam ba\U0001D554on spam", b=NA))
 chartr("\u00DF\U0001D554aba", "SCXBA", x)
 ```
@@ -137,7 +137,7 @@ chartr("\u00DF\U0001D554aba", "SCXBA", x)
 ## b NA
 ```
 
-```r
+``` r
 toupper('i', locale='en_US')
 ```
 
@@ -145,7 +145,7 @@ toupper('i', locale='en_US')
 ## [1] "I"
 ```
 
-```r
+``` r
 toupper('i', locale='tr_TR')
 ```
 

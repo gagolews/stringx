@@ -14,12 +14,12 @@ nzchar(x, keepNA = TRUE)
 
 ## Arguments
 
-|           |                                                                                                                                           |
-|-----------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `x`       | character vector or an object coercible to                                                                                                |
-| `type`    | `"chars"` gives the number of code points, `"width"` estimates the string width, `"bytes"` computes the number of bytes                   |
-| `allowNA` | not used (with a warning if attempting to do so) \[DEPRECATED\]                                                                           |
-| `keepNA`  | if `FALSE`, missing values will be treated as `"NA"` strings; otherwise, the corresponding outputs will be missing as well \[DEPRECATED\] |
+|  |  |
+|----|----|
+| `x` | character vector or an object coercible to |
+| `type` | `"chars"` gives the number of code points, `"width"` estimates the string width, `"bytes"` computes the number of bytes |
+| `allowNA` | not used (with a warning if attempting to do so) \[DEPRECATED\] |
+| `keepNA` | if `FALSE`, missing values will be treated as `"NA"` strings; otherwise, the corresponding outputs will be missing as well \[DEPRECATED\] |
 
 ## Details
 
@@ -56,7 +56,7 @@ Related function(s): [`sprintf`](sprintf.md), [`substr`](substr.md), [`strtrim`]
 
 
 
-```r
+``` r
 x <- c(
     "\U0001F4A9",
     "\U0001F64D\U0001F3FC\U0000200D\U00002642\U0000FE0F",
@@ -71,7 +71,7 @@ print(x)
 ## [1] "💩"    "🙍🏼‍♂️" "🙍🏻‍♂" "⛹🏿‍♀️"  "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
 ```
 
-```r
+``` r
 base::nchar(x, "width")
 ```
 
@@ -79,7 +79,7 @@ base::nchar(x, "width")
 ## [1] 2 5 5 4 2
 ```
 
-```r
+``` r
 stringx::nchar(x, "width")
 ```
 
