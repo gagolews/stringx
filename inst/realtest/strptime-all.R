@@ -123,6 +123,7 @@ E(
     bad="1970-01-01 11:33:41",
     bad="1970-01-01 12:33:41",
     worst="--T::+0100",
+    worst="--T::+0000",
     P(error=TRUE),
     .comment="uninformative error message"
 )
