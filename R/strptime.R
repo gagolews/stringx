@@ -1,7 +1,7 @@
 # kate: default-dictionary en_AU
 
 ## stringx package for R
-## Copyleft (C) 2021-2024, Marek Gagolewski <https://www.gagolewski.com/>
+## Copyleft (C) 2021-2025, Marek Gagolewski <https://www.gagolewski.com/>
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -262,7 +262,12 @@ as.POSIXlt.POSIXxt <- function(x, tz=attr(x, "tzone")[1L], ..., locale=NULL)
 {
     if (!is.POSIXxt(x)) x <- as.POSIXxt(x)
 
+    zone <- stringi::stri_timezone_info(tz=tz)
+    isdst <- as.integer(zone[["UsesDaylightTime"]])
+    isdst[is.na(isdst)] <- -1L
+
     y <- stringi::stri_datetime_fields(x, tz=tz, locale=locale)
+    n <- length(y[["Second"]])
     structure(
         list(
             sec=y[["Second"]],
@@ -273,10 +278,11 @@ as.POSIXlt.POSIXxt <- function(x, tz=attr(x, "tzone")[1L], ..., locale=NULL)
             year=structure(as.integer(y[["Year"]]-1900L), names=names(x)),
             wday=as.integer(y[["DayOfWeek"]]-1L),
             yday=as.integer(y[["DayOfYear"]]-1L),
-            isdst=-1L,
-            zone=stringi::stri_timezone_info(tz=tz)[["Name"]],
-            tzone=tz
+            isdst=rep(isdst, n),
+            zone=rep(zone[["Name"]], n),
+            gmtoff=rep(zone[["RawOffset"]]*3600, n)
         ),
+        tzone=tz,
         class=c("POSIXlt", "POSIXt")
     )
 }

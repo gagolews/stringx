@@ -5,7 +5,16 @@
 > see <https://github.com/gagolews/stringx/issues>.
 
 
+## 0.2.9 (2025-01-11)
+
+* [BUGFIX] `as.POSIXlt.POSIXxt` did not set `gmtoff`.
+
+
 ## 0.2.8 (2024-04-09)
+
+* [BUGFIX] Fixed failing checks/tests due to some updates in R.
+
+
 ## 0.2.7 (2024-04-05)
 
 * [BUGFIX] Fixed failing checks/tests due to some updates in R.

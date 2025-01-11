@@ -140,7 +140,7 @@ strftime(Sys.time())  # default format - ISO 8601
 ```
 
 ```
-## [1] "2024-07-11T12:25:48+0200"
+## [1] "2025-01-11T17:25:20+0100"
 ```
 
 ``` r
@@ -149,10 +149,10 @@ strftime(Sys.time(), f)  # current default locale
 ```
 
 ```
-## [1] "Thursday, July 11, 2024"                                            
-## [2] "2024-07-11"                                                         
-## [3] "today"                                                              
-## [4] "Thursday, July 11, 2024 at 12:25:48 PM Central European Summer Time"
+## [1] "Saturday, January 11, 2025"                                             
+## [2] "2025-01-11"                                                             
+## [3] "today"                                                                  
+## [4] "Saturday, January 11, 2025 at 5:25:20 PM Central European Standard Time"
 ```
 
 ``` r
@@ -160,10 +160,10 @@ strftime(Sys.time(), f, locale="de_DE")
 ```
 
 ```
-## [1] "Donnerstag, 11. Juli 2024"                                         
-## [2] "2024-07-11"                                                        
-## [3] "heute"                                                             
-## [4] "Donnerstag, 11. Juli 2024 um 12:25:48 Mitteleuropäische Sommerzeit"
+## [1] "Samstag, 11. Januar 2025"                                         
+## [2] "2025-01-11"                                                       
+## [3] "heute"                                                            
+## [4] "Samstag, 11. Januar 2025 um 17:25:20 Mitteleuropäische Normalzeit"
 ```
 
 ``` r
@@ -171,7 +171,7 @@ strftime(Sys.time(), "date_short", locale="en_IL@calendar=hebrew")
 ```
 
 ```
-## [1] "5 Tamuz 5784"
+## [1] "11 Tevet 5785"
 ```
 
 ``` r

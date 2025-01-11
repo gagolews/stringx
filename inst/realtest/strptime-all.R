@@ -1,7 +1,9 @@
 E(strptime(character(0), "%Y-%m-%d"),
     structure(as.POSIXct(c()), class=c("POSIXxt", "POSIXct", "POSIXt")),
+    structure(as.POSIXct(c()), class=c("POSIXxt", "POSIXct", "POSIXt"), tzone=""),
     as.POSIXct(c()),
-    as.POSIXlt(c())
+    as.POSIXlt(c()),
+    value_comparer=all.equal  # storage mode may be 'double' or 'integer'
 )
 
 E(strftime(strptime(NA_character_, "%Y-%m-%d")), NA_character_)
@@ -9,9 +11,11 @@ E(strftime(strptime(NA_character_, "%Y-%m-%d")), NA_character_)
 E(
     strptime("1970-01-01", character(0)),
     structure(as.POSIXct(c()), class=c("POSIXxt", "POSIXct", "POSIXt")),
+    structure(as.POSIXct(c()), class=c("POSIXxt", "POSIXct", "POSIXt"), tzone=""),
     as.POSIXct(c()),
     as.POSIXlt(c()),
-    bad=P(error=TRUE)
+    bad=P(error=TRUE),
+    value_comparer=all.equal  # storage mode may be 'double' or 'integer'
 )
 
 E(strftime(strptime("1970-01-01", NA_character_)), NA_character_)
@@ -23,7 +27,8 @@ E(
         c("%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%b"),
         tz="UTC"
     ))),
-    c(0L, 0L, NA_integer_)
+    c(0L, 0L, NA_integer_),
+    value_comparer=all.equal  # storage mode may be 'double' or 'integer'
 )
 
 E(

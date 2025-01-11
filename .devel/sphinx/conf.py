@@ -1,4 +1,4 @@
-# Copyleft (C) 2021-2024, Marek Gagolewski <https://www.gagolewski.com/>
+# Copyleft (C) 2021-2025, Marek Gagolewski <https://www.gagolewski.com/>
 # Configuration file for the Sphinx documentation builder.
 
 import sys, os

@@ -2,10 +2,9 @@
 % Please edit documentation in R/about_stringx.R
 \docType{package}
 \name{about_stringx}
-\alias{-package}
+
 \alias{about_stringx}
 \alias{stringx}
-\alias{stringx-package}
 \title{Drop-in Replacements for Base String Functions Powered by Stringi}
 \description{
 \pkg{stringx} reimplements the built-in R string processing functions
